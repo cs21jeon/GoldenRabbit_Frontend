@@ -35,7 +35,7 @@ async function fetchPropertiesFromAirtable() {
     }
     
     // 각 매물에 대한 카드 생성
-    properties.forEach(property => {
+    properties.forEach((property, index) => {  // index 파라미터 추가
       const fields = property.fields;
       const recordId = property.id; // 레코드 ID 저장
       
