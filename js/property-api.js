@@ -211,6 +211,9 @@ async function fetchPropertiesFromAirtable() {
     // 모달 표시
     modalBackground.style.display = 'flex';
     document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+
+    // ✅ 히스토리 상태 추가
+    history.pushState({ modalOpen: true }, null, '');
   }
   
   // 모달 닫기 함수
@@ -262,3 +265,10 @@ async function fetchPropertiesFromAirtable() {
   
   // 전역 함수로 노출
   window.closeModal = closeModal;
+
+  // ✅ 뒤로가기 버튼으로 모달 닫기
+  window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.modalOpen) {
+      closeModal();
+    }
+  });
