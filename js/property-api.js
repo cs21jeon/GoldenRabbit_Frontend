@@ -56,7 +56,7 @@ async function fetchPropertiesFromAirtable() {
         fields['대표사진'].length > 0 &&
         fields['대표사진'][0].url
       ) {
-        photoUrl = fields['대표사진'][0].url;
+        photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
       } else if (
         fields['대표사진'] &&
         typeof fields['대표사진'] === 'string'
