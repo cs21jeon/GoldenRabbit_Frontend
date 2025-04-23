@@ -132,7 +132,7 @@
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://source.unsplash.com/random/1600x900/?building') no-repeat center center/cover;
             color: white;
             text-align: center;
-            padding: 120px 0;
+            padding: 60px 0;
         }
         
         #welcome h2 {
@@ -830,12 +830,32 @@
                 </div>
                 <div class="office-info">
                     <h3>금토끼부동산중개 사무실</h3>
-                    <div class="address-detail">
-                        <p><strong>주소</strong> 서울시 동작구 사당동 272-26 1층</p>
-                        <p><strong>연락처</strong> 02-3471-7377</p>
-                        <p><strong>영업시간</strong> 평일 10:00 ~ 19:00<br>토요일 10:00 ~ 15:00</p>
-                        <p><strong>오시는 길</strong> 7호선 남성역 2번출구<br>남쪽으로 도보 150m</p>
-                    </div>
+                    <div class="address-detail" style="display: table;">
+                        <div style="display: table-row;">
+                          <div style="display: table-cell; padding-right: 10px;"><strong>주소</strong></div>
+                          <div style="display: table-cell;">서울시 동작구 사당동 272-26 1층</div>
+                        </div>
+                        <div style="display: table-row;">
+                          <div style="display: table-cell; padding-right: 10px;"><strong>연락처</strong></div>
+                          <div style="display: table-cell;">02-3471-7377</div>
+                        </div>
+                        <div style="display: table-row;">
+                          <div style="display: table-cell; padding-right: 10px;"><strong>영업시간</strong></div>
+                          <div style="display: table-cell;">평일 10:00 ~ 19:00</div>
+                        </div>
+                        <div style="display: table-row;">
+                          <div style="display: table-cell;"></div>
+                          <div style="display: table-cell;">토요일 10:00 ~ 15:00</div>
+                        </div>
+                        <div style="display: table-row;">
+                          <div style="display: table-cell; padding-right: 10px;"><strong>오시는 길</strong></div>
+                          <div style="display: table-cell;">7호선 남성역 2번출구</div>
+                        </div>
+                        <div style="display: table-row;">
+                          <div style="display: table-cell;"></div>
+                          <div style="display: table-cell;">남쪽으로 도보 150m</div>
+                        </div>
+                      </div>
                     <div class="direction-link">
                         <a href="https://map.naver.com/p/search/사당동%20272-26" target="_blank" class="btn">네이버 지도 보기</a>
                     </div>
@@ -1123,109 +1143,6 @@
     const fullscreenBtn = document.getElementById('fullscreen-btn');
     const expandIcon = fullscreenBtn.querySelector('.expand-icon');
     const collapseIcon = fullscreenBtn.querySelector('.collapse-icon');
-    
-    // 전체 화면 토글 함수
-    function toggleFullscreen() {
-      if (mapContainer.classList.contains('fullscreen')) {
-        // 전체 화면 모드 종료
-        mapContainer.classList.remove('fullscreen');
-        document.body.classList.remove('map-fullscreen');
-        expandIcon.style.display = 'block';
-        collapseIcon.style.display = 'none';
-      } else {
-        // 전체 화면 모드 시작
-        mapContainer.classList.add('fullscreen');
-        document.body.classList.add('map-fullscreen');
-        expandIcon.style.display = 'none';
-        collapseIcon.style.display = 'block';
-      }
-    }
-    
-    // 버튼 클릭 이벤트
-    fullscreenBtn.addEventListener('click', toggleFullscreen);
-    
-    // ESC 키로 전체 화면 종료
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mapContainer.classList.contains('fullscreen')) {
-        toggleFullscreen();
-      }
-    });
-  });
-</script>1~<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mapContainer = document.querySelector('.map-container');
-    const fullscreenBtn = document.getElementById('fullscreen-btn');
-    const expandIcon = fullscreenBtn.querySelector('.expand-icon');
-    const collapseIcon = fullscreenBtn.querySelector('.collapse-icon');
-    
-    // 전체 화면 토글 함수
-    function toggleFullscreen() {
-      if (mapContainer.classList.contains('fullscreen')) {
-        // 전체 화면 모드 종료
-        mapContainer.classList.remove('fullscreen');
-        document.body.classList.remove('map-fullscreen');
-        expandIcon.style.display = 'block';
-        collapseIcon.style.display = 'none';
-      } else {
-        // 전체 화면 모드 시작
-        mapContainer.classList.add('fullscreen');
-        document.body.classList.add('map-fullscreen');
-        expandIcon.style.display = 'none';
-        collapseIcon.style.display = 'block';
-      }
-    }
-    
-    // 버튼 클릭 이벤트
-    fullscreenBtn.addEventListener('click', toggleFullscreen);
-    
-    // ESC 키로 전체 화면 종료
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mapContainer.classList.contains('fullscreen')) {
-        toggleFullscreen();
-      }
-    });
-  });
-</script>1~<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mapContainer = document.querySelector('.map-container');
-    const fullscreenBtn = document.getElementById('fullscreen-btn');
-    const expandIcon = fullscreenBtn.querySelector('.expand-icon');
-    const collapseIcon = fullscreenBtn.querySelector('.collapse-icon');
-    
-    // 전체 화면 토글 함수
-    function toggleFullscreen() {
-      if (mapContainer.classList.contains('fullscreen')) {
-        // 전체 화면 모드 종료
-        mapContainer.classList.remove('fullscreen');
-        document.body.classList.remove('map-fullscreen');
-        expandIcon.style.display = 'block';
-        collapseIcon.style.display = 'none';
-      } else {
-        // 전체 화면 모드 시작
-        mapContainer.classList.add('fullscreen');
-        document.body.classList.add('map-fullscreen');
-        expandIcon.style.display = 'none';
-        collapseIcon.style.display = 'block';
-      }
-    }
-    
-    // 버튼 클릭 이벤트
-    fullscreenBtn.addEventListener('click', toggleFullscreen);
-    
-    // ESC 키로 전체 화면 종료
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && mapContainer.classList.contains('fullscreen')) {
-        toggleFullscreen();
-      }
-    });
-  });
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const mapContainer = document.querySelector('.map-container');
-    const fullscreenBtn = document.getElementById('fullscreen-btn');
-    const expandIcon = fullscreenBtn.querySelector('.expand-icon');
-    const collapseIcon = fullscreenBtn.querySelector('.collapse-icon');
     const expandText = fullscreenBtn.querySelector('.expand-text');
     const collapseText = fullscreenBtn.querySelector('.collapse-text');
     const mapIframe = document.getElementById('map-iframe');
@@ -1279,6 +1196,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=4"></script>
+<script src="/js/pwa-install.js?v=5"></script>
 </body>
 </html>
