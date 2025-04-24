@@ -131,26 +131,28 @@ function showPropertyDetails(property, recordId, index) {
   const airtableRecordLink = `https://airtable.com/shrMoyiS143vdYbYS?recordId=${recordId}`;
 
   modalBackground.innerHTML = `
-    <div class="modal-content">
-      <div class="modal-close" onclick="closeModal()">×</div>
-      <div class="modal-header">
-        <div class="modal-image clickable" data-record-url="${airtableRecordLink}">
-          <div class="image-overlay"><span>사진 클릭 시 상세보기</span></div>
+    <div id="modalBackground" class="modal-background">
+      <div class="modal-content">
+        <div class="modal-close" onclick="closeModal()">&times;</div>
+        <div class="modal-header">
+          <div class="modal-image clickable" style="background-image: url('${photoUrl}');" data-record-url="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/viweFlrK1v4aXqYH8/${recordId}">
+            <div class="image-overlay"><span>사진 클릭 시 상세보기</span></div>
+          </div>
         </div>
-      </div>
-      <div class="modal-body">
-        <h2 class="modal-title">${address}</h2>
-        <div class="modal-price">${priceInBillion ? priceInBillion + '억원' : ''}</div>
-        <div class="modal-description">${property['비고'] || ''} ${address} 위치의 매물입니다.</div>
-        <div class="modal-details">
-          <div class="detail-item"><div class="detail-label">대지면적</div><div class="detail-value">${property['토지면적(㎡)'] || 0}㎡</div></div>
-          <div class="detail-item"><div class="detail-label">연면적</div><div class="detail-value">${property['연면적(㎡)'] || 0}㎡</div></div>
-          <div class="detail-item"><div class="detail-label">준공년도</div><div class="detail-value">${buildYear}년</div></div>
-        </div>
-        <div style="text-align:center; margin-top:30px;">
-          <a href="#contact" class="btn" onclick="closeModal()" style="display:block; margin-bottom:10px;">문의하기</a>
-          <a href="${airtableRecordLink}" class="btn" target="_blank">상세내용 보기</a>
-          <a href="${airtableViewLink}" class="btn" style="background-color:#4CAF50; display:block;" target="_blank">추천매물 6선 모아보기</a>
+        <div class="modal-body">
+          <h2 class="modal-title">${address}</h2>
+          <div class="modal-price">${priceInBillion ? priceInBillion + '억원' : ''}</div>
+          <div class="modal-description">${property['비고'] || ''} ${address} 위치의 매물입니다.</div>
+          <div class="modal-details">
+            <div class="detail-item"><div class="detail-label">대지면적</div><div class="detail-value">${property['토지면적(㎡)'] || 0}㎡</div></div>
+            <div class="detail-item"><div class="detail-label">연면적</div><div class="detail-value">${property['연면적(㎡)'] || 0}㎡</div></div>
+            <div class="detail-item"><div class="detail-label">준공년도</div><div class="detail-value">${buildYear}년</div></div>
+          </div>
+          <div class="modal-buttons">
+            <a href="#contact" class="btn btn-contact" onclick="closeModal()">문의하기</a>
+            <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/viweFlrK1v4aXqYH8/${recordId}" class="btn btn-detail" target="_blank">상세내용 보기</a>
+            <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB" class="btn btn-recomm" target="_blank">추천매물 6선 모아보기</a>
+          </div>
         </div>
       </div>
     </div>
@@ -177,26 +179,99 @@ function injectStyles() {
     const styleElement = document.createElement('style');
     styleElement.id = 'property-custom-styles';
     styleElement.textContent = `
-      .modal-image.clickable {
-        cursor: pointer;
+      .modal-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+
+      .modal-content {
         position: relative;
+        width: 90%;
+        max-width: 600px;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        padding-bottom: 20px;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        cursor: pointer;
+        z-index: 10000;
+      }
+
+      .modal-header {
+        position: relative;
+        height: 250px;
         overflow: hidden;
       }
+
+      .modal-image.clickable {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        position: relative;
+      }
+
       .modal-image .image-overlay {
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 8px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
         text-align: center;
+        padding: 10px;
         opacity: 0;
-        transition: opacity 0.3s;
+        transition: opacity 0.3s ease;
       }
+
       .modal-image.clickable:hover .image-overlay {
         opacity: 1;
       }
+
+      .modal-body {
+        padding: 20px;
+      }
+
+      .modal-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 30px;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 8px;
+        text-decoration: none;
+        color: white;
+      }
+
+      .btn-contact { background-color: #009688; }
+      .btn-detail { background-color: #2962FF; }
+      .btn-recomm { background-color: #4CAF50; }
+
       @media (hover: none) and (pointer: coarse) {
         .modal-image .image-overlay {
           opacity: 1;
