@@ -208,7 +208,7 @@ function injectStyles() {
         right: 20px;
         font-size: 24px;
         font-weight: bold;
-        color: #333;
+        color: white;
         cursor: pointer;
         z-index: 10000;
       }
