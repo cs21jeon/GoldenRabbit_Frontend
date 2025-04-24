@@ -128,13 +128,13 @@ function showPropertyDetails(property, recordId, index) {
 
   const address = property['지번 주소'] || '주소 정보 없음';
   const airtableViewLink = `https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS?recordId=${recordId}`;
-  const airtableRecordLink = `https://airtable.com/appGSg5QfDNKgFf73/tblXf8gXLSByNZOTB/${recordId}`;
+  const airtableRecordLink = `https://airtable.com/shrMoyiS143vdYbYS?recordId=${recordId}`;
 
   modalBackground.innerHTML = `
     <div class="modal-content">
       <div class="modal-close" onclick="closeModal()">×</div>
       <div class="modal-header">
-        <div class="modal-image clickable" style="background-image: url('${photoUrl}');" data-record-url="${airtableRecordLink}">
+        <div class="modal-image clickable" data-record-url="${airtableRecordLink}">
           <div class="image-overlay"><span>사진 클릭 시 상세보기</span></div>
         </div>
       </div>
@@ -149,7 +149,7 @@ function showPropertyDetails(property, recordId, index) {
         </div>
         <div style="text-align:center; margin-top:30px;">
           <a href="#contact" class="btn" onclick="closeModal()" style="display:block; margin-bottom:10px;">문의하기</a>
-          <a href="${airtableRecordLink}" class="btn" style="background-color:#2962FF; display:block; margin-bottom:10px;" target="_blank">상세내용 보기</a>
+          <a href="${airtableRecordLink}" class="btn" target="_blank">상세내용 보기</a>
           <a href="${airtableViewLink}" class="btn" style="background-color:#4CAF50; display:block;" target="_blank">추천매물 6선 모아보기</a>
         </div>
       </div>
