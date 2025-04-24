@@ -1,4 +1,93 @@
-// 매물 상세 정보를 모달로 표시하는 함수
+async function fetchPropertiesFromAirtable() {
+  try {
+    const viewId = 'viweFlrK1v4aXqYH8'; // 안전하게 뷰 ID 직접 사용
+    const response = await fetch(`/api/property-list?view=${viewId}`);
+    
+    if (!response.ok) {
+      throw new Error(`API 요청 실패: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('에어테이블 응답 데이터:', data);
+
+    if (data && data.records && Array.isArray(data.records)) {
+      return data.records;
+    } else {
+      console.error('에어테이블 응답 형식이 예상과 다릅니다:', data);
+      return [];
+    }
+  } catch (error) {
+    console.error('에어테이블 데이터 가져오기 실패:', error);
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'error-message';
+    errorDiv.textContent = `데이터 불러오기 실패: ${error.message}`;
+    const propertiesGrid = document.querySelector('.properties-grid');
+    if (propertiesGrid) {
+      propertiesGrid.innerHTML = '';
+      propertiesGrid.appendChild(errorDiv);
+    }
+    return [];
+  }
+}
+
+function renderProperties(properties) {
+  const propertiesGrid = document.querySelector('.properties-grid');
+  propertiesGrid.innerHTML = '';
+
+  if (!Array.isArray(properties) || properties.length === 0) {
+    propertiesGrid.innerHTML = '<div class="no-properties">현재 등록된 매물이 없습니다.</div>';
+    return;
+  }
+
+  properties.forEach((property, index) => {
+    const fields = property.fields;
+    const recordId = property.id;
+    const address = fields['지번 주소'] || '주소 정보 없음';
+    const priceInWon = fields['매가(만원)'] || 0;
+    const priceInBillion = (priceInWon / 10000).toFixed(1).replace('.0', '');
+    const landArea = fields['토지면적(㎡)'] || 0;
+    const buildingArea = fields['연면적(㎡)'] || 0;
+    const buildYear = fields['사용승인일'] ? fields['사용승인일'].substring(0, 4) : '';
+
+    let photoUrl = '/api/placeholder/400/300';
+    if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+      photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
+    } else if (typeof fields['대표사진'] === 'string') {
+      try {
+        const parsed = JSON.parse(fields['대표사진']);
+        if (parsed[0]?.url) {
+          photoUrl = parsed[0].url;
+        }
+      } catch (e) {
+        console.warn('대표사진 JSON 파싱 실패:', e);
+      }
+    } else if (fields['사진링크']) {
+      const photoLinks = fields['사진링크'].split(',');
+      if (photoLinks[0]) {
+        photoUrl = photoLinks[0].trim();
+      }
+    }
+
+    const propertyCard = document.createElement('div');
+    propertyCard.className = 'property-card';
+    propertyCard.dataset.recordId = recordId;
+    propertyCard.innerHTML = `
+      <div class="property-image" style="background-image: url('${photoUrl}');"></div>
+      <div class="property-info">
+        <div class="property-title">${address}</div>
+        <div class="property-price">${priceInBillion}억원</div>
+        <div class="property-features">
+          <div class="feature">대지면적: ${landArea}㎡</div>
+          <div class="feature">연면적: ${buildingArea}㎡</div>
+          <div class="feature">연식: ${buildYear}년</div>
+        </div>
+      </div>
+    `;
+    propertyCard.addEventListener('click', () => showPropertyDetails(fields, recordId, index));
+    propertiesGrid.appendChild(propertyCard);
+  });
+}
+
 function showPropertyDetails(property, recordId, index) {
   if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
     document.querySelectorAll('.price-bubble').forEach(el => el.style.display = 'none');
@@ -10,7 +99,6 @@ function showPropertyDetails(property, recordId, index) {
     modalBackground.id = 'modalBackground';
     modalBackground.className = 'modal-background';
     document.body.appendChild(modalBackground);
-
     modalBackground.addEventListener('click', (e) => {
       if (e.target === modalBackground) closeModal();
     });
@@ -19,14 +107,13 @@ function showPropertyDetails(property, recordId, index) {
   const priceInWon = property['매가(만원)'] || 0;
   const priceInBillion = priceInWon ? (priceInWon / 10000).toFixed(1).replace('.0', '') : '';
   const buildYear = property['사용승인일'] ? property['사용승인일'].substring(0, 4) : '';
-
   let photoUrl = '/api/placeholder/800/400';
-  if (property['대표사진'] && Array.isArray(property['대표사진']) && property['대표사진'][0]?.url) {
+  if (Array.isArray(property['대표사진']) && property['대표사진'][0]?.url) {
     photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
   } else if (typeof property['대표사진'] === 'string') {
     try {
       const parsed = JSON.parse(property['대표사진']);
-      if (Array.isArray(parsed) && parsed[0]?.url) {
+      if (parsed[0]?.url) {
         photoUrl = parsed[0].url;
       }
     } catch (e) {
@@ -34,7 +121,7 @@ function showPropertyDetails(property, recordId, index) {
     }
   } else if (property['사진링크']) {
     const photoLinks = property['사진링크'].split(',');
-    if (photoLinks.length > 0 && photoLinks[0].trim()) {
+    if (photoLinks[0]) {
       photoUrl = photoLinks[0].trim();
     }
   }
@@ -54,25 +141,16 @@ function showPropertyDetails(property, recordId, index) {
       <div class="modal-body">
         <h2 class="modal-title">${address}</h2>
         <div class="modal-price">${priceInBillion ? priceInBillion + '억원' : ''}</div>
-        <div class="modal-description">${property['비고'] || ''} ${address} 위치의 매물입니다. 자세한 정보는 문의 바랍니다.</div>
+        <div class="modal-description">${property['비고'] || ''} ${address} 위치의 매물입니다.</div>
         <div class="modal-details">
-          <div class="detail-item">
-            <div class="detail-label">대지면적</div>
-            <div class="detail-value">${property['토지면적(㎡)'] || 0}㎡</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-label">연면적</div>
-            <div class="detail-value">${property['연면적(㎡)'] || 0}㎡</div>
-          </div>
-          <div class="detail-item">
-            <div class="detail-label">준공년도</div>
-            <div class="detail-value">${buildYear}년</div>
-          </div>
+          <div class="detail-item"><div class="detail-label">대지면적</div><div class="detail-value">${property['토지면적(㎡)'] || 0}㎡</div></div>
+          <div class="detail-item"><div class="detail-label">연면적</div><div class="detail-value">${property['연면적(㎡)'] || 0}㎡</div></div>
+          <div class="detail-item"><div class="detail-label">준공년도</div><div class="detail-value">${buildYear}년</div></div>
         </div>
-        <div style="text-align: center; margin-top: 30px; margin-bottom: 20px;">
-          <a href="#contact" class="btn" onclick="closeModal()" style="margin-bottom: 15px; display: block;">문의하기</a>
-          <a href="${airtableRecordLink}" class="btn" style="background-color: #2962FF; margin-bottom: 15px; display: block;" target="_blank">상세내용 보기</a>
-          <a href="${airtableViewLink}" class="btn" style="background-color: #4CAF50; display: block;" target="_blank">추천매물 6선 모아보기</a>
+        <div style="text-align:center; margin-top:30px;">
+          <a href="#contact" class="btn" onclick="closeModal()" style="display:block; margin-bottom:10px;">문의하기</a>
+          <a href="${airtableRecordLink}" class="btn" style="background-color:#2962FF; display:block; margin-bottom:10px;" target="_blank">상세내용 보기</a>
+          <a href="${airtableViewLink}" class="btn" style="background-color:#4CAF50; display:block;" target="_blank">추천매물 6선 모아보기</a>
         </div>
       </div>
     </div>
@@ -83,13 +161,18 @@ function showPropertyDetails(property, recordId, index) {
   history.pushState({ modalOpen: true }, null, '');
 }
 
-// 에어테이블 레코드 상세 페이지 열기 함수
-function openRecordDetail(url) {
-  window.open(url, '_blank');
+function closeModal() {
+  const modal = document.getElementById('modalBackground');
+  if (modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+      document.querySelectorAll('.price-bubble').forEach(el => el.style.display = 'block');
+    }
+  }
 }
 
-// CSS 및 이벤트 리스너 등록
-document.addEventListener('DOMContentLoaded', function() {
+function injectStyles() {
   if (!document.getElementById('property-custom-styles')) {
     const styleElement = document.createElement('style');
     styleElement.id = 'property-custom-styles';
@@ -122,28 +205,44 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(styleElement);
   }
+}
 
-  // 이미지 클릭 or 터치 시 상세 페이지 이동
+function registerImageClickListeners() {
   ['click', 'touchstart'].forEach(evt => {
     document.body.addEventListener(evt, function(e) {
       const el = e.target.closest('.modal-image.clickable');
-      if (el && el.dataset.recordUrl) {
-        openRecordDetail(el.dataset.recordUrl);
+      if (el?.dataset.recordUrl) {
+        window.open(el.dataset.recordUrl, '_blank');
       }
     });
   });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  const section = document.getElementById('properties');
+  if (!section) return;
+
+  let propertiesGrid = section.querySelector('.properties-grid');
+  if (!propertiesGrid) {
+    propertiesGrid = document.createElement('div');
+    propertiesGrid.className = 'properties-grid';
+    const container = section.querySelector('.container');
+    container?.appendChild(propertiesGrid);
+  }
+
+  propertiesGrid.innerHTML = '<div class="loading-message">매물 정보를 불러오는 중입니다...</div>';
+
+  const properties = await fetchPropertiesFromAirtable();
+  renderProperties(properties);
+  injectStyles();
+  registerImageClickListeners();
 });
 
-// 전역 함수 등록
-window.closeModal = function() {
-  const modal = document.getElementById('modalBackground');
-  if (modal) modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
-};
-window.openRecordDetail = openRecordDetail;
+window.closeModal = closeModal;
+window.openRecordDetail = (url) => window.open(url, '_blank');
 
 window.addEventListener('popstate', function(event) {
-  if (event.state && event.state.modalOpen) {
+  if (event.state?.modalOpen) {
     closeModal();
   }
 });
