@@ -131,7 +131,7 @@ function showPropertyDetails(property, recordId, index) {
   const airtableRecordLink = `https://airtable.com/shrMoyiS143vdYbYS?recordId=${recordId}`;
 
   modalBackground.innerHTML = `
-    <div id="modalBackground" class="modal-background">
+    <div id="modalBackground" class="modal-background" style="overflow-y: auto;">
       <div class="modal-content">
         <div class="modal-close" onclick="closeModal()">&times;</div>
         <div class="modal-header">
@@ -190,16 +190,19 @@ function injectStyles() {
         align-items: center;
         justify-content: center;
         z-index: 9999;
+        overflow-y: auto;
+        padding: 20px;
       }
 
       .modal-content {
         position: relative;
-        width: 90%;
-        max-width: 600px;
+        width: 100%;
+        max-width: 500px;
         background: #fff;
         border-radius: 12px;
         overflow: hidden;
         padding-bottom: 20px;
+        box-sizing: border-box;
       }
 
       .modal-close {
