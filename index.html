@@ -660,35 +660,40 @@
     <!-- 매물 섹션 -->
     <section id="properties">
         <div class="container">
+    
+        <div class="section-title">
+            <h2>추천 매물</h2>
+            <p>금토끼부동산중개에서 엄선한<br>우수 매물을 소개합니다</p>
+        </div>
+    
+        <!-- 매물 그리드 - JavaScript로 동적 생성됩니다 -->
+        <div class="properties-grid">
+            <div class="loading-message">매물 정보를 불러오는 중입니다...</div>
+        </div>
+    
+        <!-- 지도 섹션 -->
+        <div id="map-section" style="margin-top: 60px;">
             <div class="section-title">
-                <h2>추천 매물</h2>
-                <p>금토끼부동산중개에서 엄선한<br>우수 매물을 소개합니다</p>
+            <h2>매물 지도</h2>
+            <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
             </div>
-            
-            <!-- 매물 그리드 - JavaScript로 동적 생성됩니다 -->
-            <div class="properties-grid">
-                <div class="loading-message">매물 정보를 불러오는 중입니다...</div>
+    
+            <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
+            <!-- 전체 화면 버튼 (텍스트 포함) -->
+            <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
+                <span class="expand-icon">⛶</span>
+                <span class="collapse-icon" style="display:none;">✕</span>
+                <span class="btn-text expand-text">전체화면보기</span>
+                <span class="btn-text collapse-text" style="display:none;">전체화면닫기</span>
+            </button>
+    
+            <iframe id="map-section" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
             </div>
-            
-            <!-- 지도 섹션 -->
-	    <div style="margin-top: 60px;">
-	        <div class="section-title">
-	            <h2>매물 지도</h2>
-	            <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
-	        </div>
-		<div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
-		    <!-- 전체 화면 버튼 (텍스트 포함) -->
-		    <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
-		        <span class="expand-icon">⛶</span>
-		        <span class="collapse-icon" style="display:none;">✕</span>
-		        <span class="btn-text expand-text">전체화면보기</span>
-		        <span class="btn-text collapse-text" style="display:none;">전체화면닫기</span>
-		    </button>
-		    <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
-		</div>
-	    </div>	
+        </div>
+    
         </div>
     </section>
+  
 
     <!-- 모달 배경 -->
     <div class="modal-background" id="modalBackground" style="display: none;">
