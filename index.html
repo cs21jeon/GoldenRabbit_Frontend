@@ -855,7 +855,7 @@
               <form id="consultForm">
                 <div class="form-group">
                   <label for="propertyType">매물종류</label>
-                  <select id="modalpropertyType" class="form-control" required>
+                  <select id="modalpropertyType" name="propertyType" class="form-control" required>
                     <option value="">-- 선택하세요 --</option>
                     <option value="house">단독/다가구</option>
                     <option value="mixed">상가주택</option>
@@ -867,17 +867,17 @@
       
                 <div class="form-group">
                   <label for="phone">연락처</label>
-                  <input type="tel" id="modalphone" class="form-control" placeholder="010-0000-0000" required>
+                  <input type="tel" id="modalphone" name="phone" class="form-control" placeholder="010-0000-0000" required>
                 </div>
       
                 <div class="form-group">
                   <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
-                  <input type="email" id="modalemail" class="form-control" placeholder="이메일 주소">
+                  <input type="email" id="modalemail" name="email" class="form-control" placeholder="abc@abc.com">
                 </div>
       
                 <div class="form-group">
                   <label for="message">문의사항</label>
-                  <textarea id="modalmessage" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                  <textarea id="modalmessage" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
                 </div>
       
                 <!-- ✅ 상담 신청 버튼은 이 form 안에 있어야 함 -->
@@ -1003,7 +1003,7 @@
                 <form id="consultForm">
                     <div class="form-group">
                         <label for="propertyType">매물종류</label>
-                        <select id="propertyType" class="form-control" required>
+                        <select id="propertyType" name="propertyType" class="form-control" required>
                             <option value="">-- 선택하세요 --</option>
                             <option value="house">단독/다가구</option>
                             <option value="mixed">상가주택</option>
@@ -1015,17 +1015,17 @@
                     
                     <div class="form-group">
                         <label for="phone">연락처</label>
-                        <input type="tel" id="phone" class="form-control" placeholder="010-0000-0000" required>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="010-0000-0000" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
-                        <input type="email" id="email" class="form-control" placeholder="이메일 주소">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="이메일 주소">
                     </div>
                     
                     <div class="form-group">
                         <label for="message">문의사항</label>
-                        <textarea id="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                        <textarea id="message" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
                     </div>
                     
                     <button type="submit" class="btn btn-block">상담 신청하기</button>
@@ -1479,6 +1479,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=7"></script>
+<script src="/js/pwa-install.js?v=8"></script>
 </body>
 </html>

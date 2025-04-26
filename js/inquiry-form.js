@@ -99,10 +99,12 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.style.color = '#666';
             
             // 폼 데이터 수집
-            const propertyType = document.getElementById('propertyType').value;
-            const phone = document.getElementById('phone').value;
-            const email = document.getElementById('email').value || '';
-            const message = document.getElementById('message').value;
+            const form = consultForm; // 현재 제출 중인 consultForm
+
+            const propertyType = form.querySelector('[name="propertyType"]')?.value || '';
+            const phone = form.querySelector('[name="phone"]')?.value || '';
+            const email = form.querySelector('[name="email"]')?.value || '';
+            const message = form.querySelector('[name="message"]')?.value || '';
             
             // 서버에 보낼 데이터
             const data = {
