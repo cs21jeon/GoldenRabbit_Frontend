@@ -270,6 +270,7 @@ function injectStyles() {
         border-radius: 8px;
         text-decoration: none;
         color: white;
+        margin-bottom: 12px;
       }
 
       .btn-contact { background-color: #009688; }
