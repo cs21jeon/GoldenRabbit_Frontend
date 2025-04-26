@@ -726,6 +726,48 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* 상담 모달 추가 스타일 */
+        #consultModal .modal-content {
+            width: 90%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 12px;
+            overflow-y: auto;
+            max-height: 90vh;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        #consultModal .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        #consultModal .form-group {
+            margin-bottom: 15px;
+        }
+
+        #consultModal .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #consultModal .form-group input,
+        #consultModal .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -801,6 +843,34 @@
     <!-- 모달 배경 -->
     <div class="modal-background" id="modalBackground" style="display: none;">
         <!-- 모달 콘텐츠는 JavaScript에서 동적으로 생성됩니다 -->
+    </div>
+
+    <!-- 상담 모달 (새로 추가) -->
+    <div id="consultModal" class="modal-background" style="display: none;">
+        <div class="modal-content">
+        <div class="modal-close" onclick="closeConsultModal()">&times;</div>
+        <div class="modal-body">
+            <h2 class="modal-title">상담 문의</h2>
+            <form id="consultForm">
+            <div class="form-group">
+                <label for="name">이름</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="phone">전화번호</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+    
+            <div class="form-group">
+                <label for="message">문의사항</label>
+                <textarea id="message" name="message" required rows="4"></textarea>
+            </div>
+    
+            <button type="submit" class="btn btn-contact">상담 신청하기</button>
+            </form>
+        </div>
+        </div>
     </div>
 
     <!-- 로딩 스타일 -->
@@ -1107,7 +1177,30 @@
             }
         });
     });
+    
+    function openConsultModal(address) {
+        // 기존 매물 모달 닫기
+        closeModal();
+
+        // 상담모달 열기
+        const consultModal = document.getElementById('consultModal');
+        consultModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // 문의사항에 지번 주소 기본 입력
+        const messageField = document.getElementById('message');
+        messageField.value = `${address}에 대해 상담 문의합니다.`;
+    }
+
+    function closeConsultModal() {
+        const consultModal = document.getElementById('consultModal');
+        if (consultModal) {
+            consultModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
 </script>
+
     <!-- 모바일 하단 네비게이션 -->
 <div class="mobile-nav">
   <a href="#welcome" class="mobile-nav-item">
@@ -1368,6 +1461,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=3"></script>
+<script src="/js/pwa-install.js?v=4"></script>
 </body>
 </html>

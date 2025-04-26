@@ -149,7 +149,7 @@ function showPropertyDetails(property, recordId, index) {
             <div class="detail-item"><div class="detail-label">준공년도</div><div class="detail-value">${buildYear}년</div></div>
           </div>
           <div class="modal-buttons">
-            <a href="#contact" class="btn btn-contact" onclick="closeModal()">문의하기</a>
+            <a href="javascript:void(0);" class="btn btn-contact" onclick="openConsultModal('${address}')" style="margin-bottom: 15px; display: block;">문의하기</a>
             <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/viweFlrK1v4aXqYH8/${recordId}" class="btn btn-detail" target="_blank">상세내용 보기</a>
             <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB" class="btn btn-recomm" target="_blank">추천매물 6선 모아보기</a>
           </div>
