@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         consultForm.addEventListener('submit', function(e) {
             e.preventDefault();
             // 상태 메시지 초기화
+            closeConsultModal();  // 상담모달 닫기
             formStatus.style.display = 'none';
             privacyModal.style.display = 'block';
         });
