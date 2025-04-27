@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             // 사용자 입력 가져오기
-            const location = document.getElementById('location').value;
+            const ai_location = document.getElementById('ai_location').value;
             const priceRange = document.getElementById('priceRange').value;
             const investment = document.getElementById('investment').value;
             const expectedYield = document.getElementById('expectedYield').value;
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    location: location,
+                    ai_location: ai_location,
                     price_range: priceRange,
                     investment: investment,
                     expected_yield: expectedYield
