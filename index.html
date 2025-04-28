@@ -829,6 +829,7 @@
         <div class="section-title">
             <h2>금토끼부동산 블로그</h2>
             <p>최신 부동산 소식을 만나보세요.</p>
+            <div id="blogPosts"></div>
         </div>
         </div>
     </section>
@@ -839,7 +840,7 @@
         const posts = await response.json();
         
         const container = document.getElementById('blogPosts');
-        
+
         posts.forEach(post => {
             const div = document.createElement('div');
             div.className = 'blog-summary';
