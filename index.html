@@ -165,7 +165,7 @@
         /* 블로그 카드 전체 묶음 */
         .blog-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 카드 자동 나열 */
+            grid-template-columns: repeat(2, 1fr); /* 2개씩 */
             gap: 20px;
             margin-top: 30px;
         }
@@ -176,28 +176,29 @@
             border: 1px solid #ddd;
             border-radius: 12px;
             padding: 20px;
-            margin-bottom: 20px;
             text-align: left;
             box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
         }
 
         /* 제목 */
-            .blog-summary h3 {
+        .blog-summary h3 {
             font-size: 18px;
             margin-bottom: 10px;
             color: #333;
         }
 
         /* 요약 */
-            .blog-summary p {
+        .blog-summary p {
             font-size: 14px;
             color: #666;
-            flex-grow: 1; /* 요약이 길어도 버튼은 아래에 고정 */
             display: -webkit-box;
             -webkit-line-clamp: 2; /* 2줄까지만 */
-            line-clamp: 3; /* 표준용 */
+            line-clamp: 2;
             -webkit-box-orient: vertical;
-            box-orient: vertical; /* 표준용 */
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -205,14 +206,15 @@
         /* 본문 보기 버튼 */
         .blog-summary a {
             margin-top: 10px;
-            text-align: center;
-            background-color: #e38000;
+            background-color: #c7934f;
             color: white;
-            padding: 8px 12px;
+            padding: 4px 6px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 12px;
+            text-align: center;
+            display: block;
         }
 
         .blog-date {
@@ -223,12 +225,12 @@
 
         /* 블로그 더보기 버튼 */
         .btn-load-more {
-            padding: 12px 24px;
-            background-color: #e38000;
+            padding: 6px 12px;
+            background-color: #c7934f;
             color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 16px;
+            border-radius: 15px;
+            font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -236,7 +238,7 @@
         }
 
         .btn-load-more:hover {
-            background-color: #d06f00;
+            background-color: #c7934f;
         }
 
         /* 매물 섹션 */
@@ -889,61 +891,53 @@
             </div>
             <div class="blog-container" id="blogContainer"></div>
             <div style="text-align: center; margin-top: 20px;">
-                <button id="loadMoreBtn" style="display: none;" class="btn-load-more">더보기</button>
+                <button id="loadMoreBtn" style="display: none;" class="btn">더보기</button>
             </div>
         </div>
     </section>
 
     <script>
-    // 블로그 글 데이터 (예시)
-    const posts = [
-        { title: "블로그1", summary: "블로그1 요약 내용", link: "#", date: "2025-04-23" },
-        { title: "블로그2", summary: "블로그2 요약 내용", link: "#", date: "2025-04-22" },
-        { title: "블로그3", summary: "블로그3 요약 내용", link: "#", date: "2025-04-21" },
-        { title: "블로그4", summary: "블로그4 요약 내용", link: "#", date: "2025-04-20" },
-        { title: "블로그5", summary: "블로그5 요약 내용", link: "#", date: "2025-04-19" },
-    ];
+    document.addEventListener('DOMContentLoaded', async function() {
+        const blogContainer = document.getElementById('blogContainer');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let posts = [];
+        let postsToShow = 2;  // 처음에 2개
+        let currentCount = 0;
 
-    const blogPosts = posts;
-    
-    const blogContainer = document.getElementById('blogContainer');
-    const loadMoreBtn = document.getElementById('loadMoreBtn');
-
-    let postsToShow = 2; // 처음에 2개만 보여줌
-    let currentCount = 0;
-
-    // 블로그 글 렌더링 함수
-    function renderPosts() {
-        for (let i = currentCount; i < Math.min(currentCount + postsToShow, blogPosts.length); i++) {
-            const post = blogPosts[i];
-            const div = document.createElement('div');
-            div.className = 'blog-summary';
-            div.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.summary}</p>
-                <small>${post.date}</small><br>
-                <a href="${post.link}" target="_blank">본문 보기</a>
-            `;
-            blogContainer.appendChild(div);
+        // 블로그 데이터 불러오기
+        try {
+            const response = await fetch('/api/blog-feed');
+            posts = await response.json();
+            renderPosts();
+        } catch (error) {
+            console.error('블로그 글 불러오기 실패:', error);
         }
-        
-        currentCount += postsToShow;
-        
-        if (currentCount >= blogPosts.length) {
-            loadMoreBtn.style.display = 'none';
-        } else {
-            loadMoreBtn.style.display = 'inline-block';
+
+        function renderPosts() {
+            for (let i = currentCount; i < Math.min(currentCount + postsToShow, posts.length); i++) {
+                const post = posts[i];
+                const div = document.createElement('div');
+                div.className = 'blog-summary';
+                div.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <div class="blog-date">${post.published ? post.published.substring(0, 10) : ''}</div>
+                    <p>${post.summary}</p>
+                    <a href="${post.link}" target="_blank">본문 보기</a>
+                `;
+                blogContainer.appendChild(div);
+            }
+
+            currentCount += postsToShow;
+
+            if (currentCount >= posts.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-block';
+            }
         }
-    }
 
-    // 버튼 클릭 시 더 불러오기
-    loadMoreBtn.addEventListener('click', renderPosts);
-
-    // 페이지 처음 로드될 때
-    document.addEventListener('DOMContentLoaded', function() {
-        renderPosts();
+        loadMoreBtn.addEventListener('click', renderPosts);
     });
-
     </script>
 
     <!-- 매물 섹션 -->
