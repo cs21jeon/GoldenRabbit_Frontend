@@ -172,15 +172,13 @@
 
         /* 개별 카드 */
         .blog-summary {
-            background: white;
-            border: 1px solid #eee;
-            border-radius: 8px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 250px; /* 카드 높이 통일 */
+            margin-bottom: 20px;
+            text-align: left;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         /* 제목 */
@@ -217,14 +215,28 @@
             font-size: 14px;
         }
 
-        .blog-summary a:hover {
-            background-color: #d06f00;
-        }
-
         .blog-date {
             font-size: 12px;
             color: #999;
             margin-bottom: 8px;
+        }
+
+        /* 블로그 더보기 버튼 */
+        .btn-load-more {
+            padding: 12px 24px;
+            background-color: #e38000;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+
+        .btn-load-more:hover {
+            background-color: #d06f00;
         }
 
         /* 매물 섹션 */
@@ -869,8 +881,18 @@
     </section>
 
     <!-- 블로그 섹션 -->
-    <div class="blog-container" id="blogContainer"></div>
-    <button id="loadMoreBtn" style="display: none;">더보기</button>
+    <section id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>금토끼부동산중개 블로그</h2>
+                <p>최신 부동산 정보를 둘러보세요.</p>
+            </div>
+            <div class="blog-container" id="blogContainer"></div>
+            <div style="text-align: center; margin-top: 20px;">
+                <button id="loadMoreBtn" style="display: none;" class="btn">더보기</button>
+            </div>
+        </div>
+    </section>
 
     <script>
     // 블로그 글 데이터 (예시)
@@ -882,41 +904,45 @@
         { title: "블로그5", summary: "블로그5 요약 내용", link: "#", date: "2025-04-19" },
     ];
 
-    // 보여줄 갯수 설정
-    const INITIAL_SHOW_COUNT = 4;
-
+    const blogPosts = [ /* 네이버 블로그 글 목록 배열 */ ];
     const blogContainer = document.getElementById('blogContainer');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
 
-    // 처음 4개만 보여주기
-    posts.forEach((post, index) => {
-        const div = document.createElement('div');
-        div.className = 'blog-summary';
-        div.innerHTML = `
-            <h3>${post.title}</h3>
-            <div class="blog-date">${post.date}</div>
-            <p>${post.summary}</p>
-            <a href="${post.link}" target="_blank">본문 보기</a>
-        `;
-        if (index >= INITIAL_SHOW_COUNT) {
-            div.style.display = 'none';
+    let postsToShow = 2; // 처음에 2개만 보여줌
+    let currentCount = 0;
+
+    // 블로그 글 렌더링 함수
+    function renderPosts() {
+        for (let i = currentCount; i < Math.min(currentCount + postsToShow, blogPosts.length); i++) {
+            const post = blogPosts[i];
+            const div = document.createElement('div');
+            div.className = 'blog-summary';
+            div.innerHTML = `
+                <h3>${post.title}</h3>
+                <p>${post.summary}</p>
+                <small>${post.date}</small><br>
+                <a href="${post.link}" target="_blank">본문 보기</a>
+            `;
+            blogContainer.appendChild(div);
         }
-        blogContainer.appendChild(div);
+        
+        currentCount += postsToShow;
+        
+        if (currentCount >= blogPosts.length) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'inline-block';
+        }
+    }
+
+    // 버튼 클릭 시 더 불러오기
+    loadMoreBtn.addEventListener('click', renderPosts);
+
+    // 페이지 처음 로드될 때
+    document.addEventListener('DOMContentLoaded', function() {
+        renderPosts();
     });
 
-    // 더보기 버튼 설정
-    if (posts.length > INITIAL_SHOW_COUNT) {
-        loadMoreBtn.style.display = 'block';
-        loadMoreBtn.addEventListener('click', () => {
-            // 숨겨진 것들 다 보이게
-            const hiddenCards = blogContainer.querySelectorAll('.blog-summary[style*="display: none"]');
-            hiddenCards.forEach(card => {
-                card.style.display = 'flex';
-            });
-            // 버튼 숨기기
-            loadMoreBtn.style.display = 'none';
-        });
-    }
     </script>
 
     <!-- 매물 섹션 -->
