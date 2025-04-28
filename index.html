@@ -932,7 +932,7 @@
                 div.className = 'blog-summary';
                 div.innerHTML = `
                     <h3>${post.title}</h3>
-                    <div class="blog-date">${post.published ? post.published.substring(0, 10) : ''}</div>
+                    <div class="blog-date">${formatDate(post.published)}</div>
                     <p>${post.summary}</p>
                     <a href="${post.link}" target="_blank">본문 보기</a>
                 `;
