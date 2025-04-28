@@ -162,24 +162,69 @@
         }
         
         /* 블로그 섹션 */
+        /* 블로그 카드 전체 묶음 */
+        .blog-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 카드 자동 나열 */
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* 개별 카드 */
         .blog-summary {
-            background: #f9f9f9;
-            margin-bottom: 20px;
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 8px;
             padding: 20px;
-            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 250px; /* 카드 높이 통일 */
         }
-        .blog-summary h3 {
+
+        /* 제목 */
+            .blog-summary h3 {
+            font-size: 18px;
             margin-bottom: 10px;
+            color: #333;
         }
-        .blog-summary p {
+
+        /* 요약 */
+            .blog-summary p {
+            font-size: 14px;
             color: #666;
+            flex-grow: 1; /* 요약이 길어도 버튼은 아래에 고정 */
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* 2줄까지만 */
+            line-clamp: 3; /* 표준용 */
+            -webkit-box-orient: vertical;
+            box-orient: vertical; /* 표준용 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* 본문 보기 버튼 */
+        .blog-summary a {
+            margin-top: 10px;
+            text-align: center;
+            background-color: #e38000;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
             font-size: 14px;
         }
-        .blog-summary a {
-            display: inline-block;
-            margin-top: 10px;
-            color: #e38000;
-            font-weight: bold;
+
+        .blog-summary a:hover {
+            background-color: #d06f00;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 8px;
         }
 
         /* 매물 섹션 */
@@ -824,35 +869,54 @@
     </section>
 
     <!-- 블로그 섹션 -->
-    <section id="blog">
-        <div class="container">
-        <div class="section-title">
-            <h2>금토끼부동산 블로그</h2>
-            <p>최신 부동산 소식을 만나보세요.</p>
-            <div id="blogPosts"></div>
-        </div>
-        </div>
-    </section>
-      
-    <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-        const response = await fetch('/api/blog-feed');
-        const posts = await response.json();
-        
-        const container = document.getElementById('blogPosts');
+    <div class="blog-container" id="blogContainer"></div>
+    <button id="loadMoreBtn" style="display: none;">더보기</button>
 
-        posts.forEach(post => {
-            const div = document.createElement('div');
-            div.className = 'blog-summary';
-            div.style.textAlign = 'left';
-            div.innerHTML = `
-                <h3>${post.title}</h3>
-                <p>${post.summary}</p>
-                <a href="${post.link}" target="_blank">본문 보기</a>
-            `;
-            container.appendChild(div);
-        });
+    <script>
+    // 블로그 글 데이터 (예시)
+    const posts = [
+        { title: "블로그1", summary: "블로그1 요약 내용", link: "#", date: "2025-04-23" },
+        { title: "블로그2", summary: "블로그2 요약 내용", link: "#", date: "2025-04-22" },
+        { title: "블로그3", summary: "블로그3 요약 내용", link: "#", date: "2025-04-21" },
+        { title: "블로그4", summary: "블로그4 요약 내용", link: "#", date: "2025-04-20" },
+        { title: "블로그5", summary: "블로그5 요약 내용", link: "#", date: "2025-04-19" },
+    ];
+
+    // 보여줄 갯수 설정
+    const INITIAL_SHOW_COUNT = 4;
+
+    const blogContainer = document.getElementById('blogContainer');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+    // 처음 4개만 보여주기
+    posts.forEach((post, index) => {
+        const div = document.createElement('div');
+        div.className = 'blog-summary';
+        div.innerHTML = `
+            <h3>${post.title}</h3>
+            <div class="blog-date">${post.date}</div>
+            <p>${post.summary}</p>
+            <a href="${post.link}" target="_blank">본문 보기</a>
+        `;
+        if (index >= INITIAL_SHOW_COUNT) {
+            div.style.display = 'none';
+        }
+        blogContainer.appendChild(div);
     });
+
+    // 더보기 버튼 설정
+    if (posts.length > INITIAL_SHOW_COUNT) {
+        loadMoreBtn.style.display = 'block';
+        loadMoreBtn.addEventListener('click', () => {
+            // 숨겨진 것들 다 보이게
+            const hiddenCards = blogContainer.querySelectorAll('.blog-summary[style*="display: none"]');
+            hiddenCards.forEach(card => {
+                card.style.display = 'flex';
+            });
+            // 버튼 숨기기
+            loadMoreBtn.style.display = 'none';
+        });
+    }
     </script>
 
     <!-- 매물 섹션 -->
