@@ -173,11 +173,11 @@
         /* 개별 카드 */
         .blog-summary {
             background: #fff;
-            border: 1px solid #ddd;
+            border: 1px solid #ffffff;
             border-radius: 12px;
             padding: 20px;
             text-align: left;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -196,8 +196,8 @@
             font-size: 14px;
             color: #666;
             display: -webkit-box;
-            -webkit-line-clamp: 2; /* 2줄까지만 */
-            line-clamp: 2;
+            -webkit-line-clamp: 3; /* 2줄까지만 */
+            line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -206,19 +206,19 @@
         /* 본문 보기 버튼 */
         .blog-summary a {
             margin-top: 10px;
-            background-color: #c7934f;
+            background-color: #e6b06a;
             color: white;
             padding: 4px 6px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 12px;
+            font-size: 14px;
             text-align: center;
             display: block;
         }
 
         .blog-date {
-            font-size: 12px;
+            font-size: 14px;
             color: #999;
             margin-bottom: 8px;
         }
@@ -230,10 +230,9 @@
             color: white;
             border: none;
             border-radius: 15px;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             transition: background-color 0.3s;
         }
 
@@ -902,13 +901,14 @@
         const loadMoreBtn = document.getElementById('loadMoreBtn');
         let posts = [];
         let postsToShow = 2;  // 처음에 2개
+        let morePostsToShow = 4;     // 더보기 클릭 시 추가할 개수
         let currentCount = 0;
 
         // 블로그 데이터 불러오기
         try {
             const response = await fetch('/api/blog-feed');
             posts = await response.json();
-            renderPosts();
+            renderPosts(initialPostsToShow);  // 처음 2개만
         } catch (error) {
             console.error('블로그 글 불러오기 실패:', error);
         }
@@ -936,7 +936,10 @@
             }
         }
 
-        loadMoreBtn.addEventListener('click', renderPosts);
+        // 더보기 버튼 클릭 시
+        loadMoreBtn.addEventListener('click', function() {
+            renderPosts(morePostsToShow);  // 클릭할 때마다 4개 추가
+        });
     });
     </script>
 
