@@ -151,7 +151,7 @@ function showPropertyDetails(property, recordId, index) {
           <div class="modal-buttons">
             <a href="javascript:void(0);" class="btn btn-contact" onclick="openConsultModal('${address}')" style="margin-bottom: 15px; display: block;">문의하기</a>
             <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/viweFlrK1v4aXqYH8/${recordId}" class="btn btn-detail" target="_blank">상세내용 보기</a>
-            <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB" class="btn btn-recomm" target="_blank">추천매물 6선 모아보기</a>
+            <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB" class="btn btn-recomm" target="_blank">추천매물 3선 모아보기</a>
           </div>
         </div>
       </div>
