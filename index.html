@@ -165,9 +165,11 @@
         /* 블로그 카드 전체 묶음 */
         .blog-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2개씩 */
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* ✨ 핵심 */
             gap: 20px;
             margin-top: 30px;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         /* 개별 카드 */
@@ -1634,6 +1636,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=7"></script>
+<script src="/js/pwa-install.js?v=8"></script>
 </body>
 </html>
