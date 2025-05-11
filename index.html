@@ -23,6 +23,16 @@
     <link rel="apple-touch-startup-image" href="/images/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
     <title>금토끼부동산중개 - Golden Rabbit Real Estate</title>
     <style>
+        /*      기본 글자 크기 설정     */
+        html {
+            font-size: 16px;
+        }
+
+        @media (max-width: 768px) {
+            html {
+            font-size: 14px;
+            }
+        }
         /* 전체 스타일 */
         :root {
             --main-color: #a39042; /* 금토끼 로고 배경색 기준 */
@@ -36,6 +46,8 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Noto Sans KR', sans-serif;
+            word-break: keep-all;
+            white-space: normal;
         }
         
         body {
@@ -136,8 +148,11 @@
 	}
         
         #welcome h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: clamp(20px, 6vw, 36px);
+            line-height: 1.4;
+            word-break: keep-all;
+            white-space: normal;
+            text-wrap: balance;
         }
         
         #welcome p {
@@ -162,7 +177,6 @@
         }
         
         /* 블로그 섹션 */
-        /* 블로그 카드 전체 묶음 */
         .blog-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* ✨ 핵심 */
@@ -1638,6 +1652,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=9"></script>
+<script src="/js/pwa-install.js?v=0"></script>
 </body>
 </html>
