@@ -23,24 +23,6 @@
     <link rel="apple-touch-startup-image" href="/images/splash-1125x2436.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)">
     <title>금토끼부동산중개 - Golden Rabbit Real Estate</title>
     <style>
-        /*      기본 글자 크기 설정     */
-        html {
-            font-size: 16px;
-        }
-
-        @media (max-width: 768px) {
-            html {
-            font-size: 15px;
-            }
-        }
-
-        /* 더 작은 화면에서도 최소 크기 유지 */
-        @media (max-width: 480px) {
-            html {
-                font-size: 14px;
-            }
-        }
-
         /* 전체 스타일 */
         :root {
             --main-color: #a39042; /* 금토끼 로고 배경색 기준 */
@@ -54,8 +36,6 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Noto Sans KR', sans-serif;
-            word-break: keep-all;
-            white-space: normal;
         }
         
         body {
@@ -95,12 +75,12 @@
         }
         
         .logo h1 {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: 700;
         }
         
         .logo-sub {
-            font-size: 0.875rem;
+            font-size: 14px;
             color: #f1f1f1;
         }
         
@@ -117,7 +97,7 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.125rem;
+            font-size: 18px;
             transition: color 0.3s;
         }
         
@@ -136,14 +116,14 @@
         }
         
         .section-title h2 {
-            font-size: 2rem;
+            font-size: 32px;
             font-weight: 700;
             color: var(--main-color);
             margin-bottom: 10px;
         }
         
         .section-title p {
-            font-size: 1rem;
+            font-size: 16px;
             color: #666;
         }
         
@@ -156,15 +136,15 @@
 	}
         
         #welcome h2 {
-            font-size: clamp(1.25rem, 5vw, 2.25rem);
-            line-height: 1.4;
+            font-size: 36px;
+            margin-bottom: 20px;
             word-break: keep-all;
             white-space: normal;
             text-wrap: balance;
         }
         
         #welcome p {
-            font-size: 1.125rem;
+            font-size: 18px;
             max-width: 800px;
             margin: 0 auto 30px;
         }
@@ -185,6 +165,7 @@
         }
         
         /* 블로그 섹션 */
+        /* 블로그 카드 전체 묶음 */
         .blog-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* ✨ 핵심 */
@@ -813,22 +794,6 @@
             nav ul {
                 margin-top: 20px;
             }
-
-            nav ul li a {
-                font-size: 1rem; /* 모바일에서 메뉴 글자 크기 조정 */
-            }
-            
-            .logo h1 {
-                font-size: 1.3rem; /* 모바일에서 로고 글자 크기 조정 */
-            }
-            
-            #welcome h2 {
-                font-size: clamp(1.2rem, 4.5vw, 2rem); /* 모바일 환경에 맞게 조정 */
-            }
-            
-            #welcome p {
-                font-size: 1rem; /* 모바일에서 환영 문구 크기 조정 */
-            }
             
             .contact-container {
                 grid-template-columns: 1fr;
@@ -853,22 +818,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* 더 작은 화면에 대한 추가 조정 */
-        @media (max-width: 480px) {
-            .logo-sub {
-                font-size: 0.8rem; /* 매우 작은 화면에서 로고 서브 텍스트 조정 */
-            }
-            
-            nav ul li {
-                margin-left: 12px; /* 작은 화면에서 메뉴 간격 조정 */
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem; /* 섹션 제목 크기 조정 */
-            }
-        }
-
         /* 상담 모달 추가 스타일 */
         #consultModal .modal-content {
             width: 90%;
@@ -1692,6 +1641,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=1"></script>
+<script src="/js/pwa-install.js?v=2"></script>
 </body>
 </html>
