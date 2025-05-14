@@ -200,7 +200,8 @@
 
         .blog-thumb {
             width: 50%;
-            height: auto;
+            height: 150px;
+            object-fit: cover;
             margin-bottom: 10px;
             border-radius: 8px;
         }
@@ -946,12 +947,12 @@
                 const div = document.createElement('div');
                 div.className = 'blog-summary';
                 div.innerHTML = `
-                    ${post.thumbnail ? `<img src="${post.thumbnail}" class="blog-thumb">` : ''}
+                    <img src="${imageUrl}" alt="${post.title}" class="blog-thumb" />
                     <h3>${post.title}</h3>
                     <div class="blog-date">${formatDate(post.published)}</div>
                     <p>${post.summary}</p>
                     <a href="${post.link}" target="_blank">본문 보기</a>
-                `;
+                    `;
 
                 blogContainer.appendChild(div);
             }
@@ -2032,6 +2033,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=9"></script>
+<script src="/js/pwa-install.js?v=0"></script>
 </body>
 </html>
