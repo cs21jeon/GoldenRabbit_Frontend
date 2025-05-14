@@ -977,193 +977,6 @@
         <div class="properties-grid">
             <div class="loading-message">매물 정보를 불러오는 중입니다...</div>
         </div>
-
-        <!-- 매물 검색 필터 섹션 추가 -->
-        <div class="map-search-section" style="margin-bottom: 20px;">
-            <div class="section-title">
-                <h3>조건 검색</h3>
-            </div>
-            
-            <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
-                <form id="mapSearchForm">
-                    <div class="search-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                        
-                        <!-- 매가 조건 -->
-                        <div class="search-item">
-                            <label>매가</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
-                                <select id="priceCondition" class="form-control" style="width: 80px;">
-                                    <option value="all">전체</option>
-                                    <option value="above">이상</option>
-                                    <option value="below">이하</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- 실투자금 조건 -->
-                        <div class="search-item">
-                            <label>실투자금</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
-                                <select id="investmentCondition" class="form-control" style="width: 80px;">
-                                    <option value="all">전체</option>
-                                    <option value="above">이상</option>
-                                    <option value="below">이하</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- 수익률 조건 -->
-                        <div class="search-item">
-                            <label>수익률</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
-                                <select id="yieldCondition" class="form-control" style="width: 80px;">
-                                    <option value="all">전체</option>
-                                    <option value="above">이상</option>
-                                    <option value="below">이하</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- 토지면적 조건 -->
-                        <div class="search-item">
-                            <label>토지면적</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
-                                <select id="areaCondition" class="form-control" style="width: 80px;">
-                                    <option value="all">전체</option>
-                                    <option value="above">이상</option>
-                                    <option value="below">이하</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <!-- 사용승인일 조건 -->
-                        <div class="search-item">
-                            <label>사용승인일</label>
-                            <div style="display: flex; gap: 10px;">
-                                <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
-                                <select id="approvalCondition" class="form-control" style="width: 80px;">
-                                    <option value="all">전체</option>
-                                    <option value="before">이전</option>
-                                    <option value="after">이후</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
-                        <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
-                    </div>
-                </form>
-            </div>
-            
-            <div id="searchResults" style="margin-top: 10px; text-align: center; display: none;">
-                <p>검색 결과: <span id="resultCount">0</span>개의 매물을 찾았습니다.</p>
-            </div>
-        </div>
-
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const mapSearchForm = document.getElementById('mapSearchForm');
-            const resetButton = document.getElementById('resetSearch');
-            const searchResults = document.getElementById('searchResults');
-            const resultCount = document.getElementById('resultCount');
-            const mapIframe = document.getElementById('map-section');
-            
-            // iframe과 통신 메시지 수신
-            window.addEventListener('message', function(event) {
-                if (event.data.type === 'filterResult') {
-                    resultCount.textContent = event.data.count;
-                    searchResults.style.display = 'block';
-                }
-            });
-            
-            // 검색 폼 제출 처리
-            mapSearchForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // 검색 조건 수집
-                const searchData = {
-                    price_value: document.getElementById('priceValue').value,
-                    price_condition: document.getElementById('priceCondition').value,
-                    investment_value: document.getElementById('investmentValue').value,
-                    investment_condition: document.getElementById('investmentCondition').value,
-                    yield_value: document.getElementById('yieldValue').value,
-                    yield_condition: document.getElementById('yieldCondition').value,
-                    area_value: document.getElementById('areaValue').value,
-                    area_condition: document.getElementById('areaCondition').value,
-                    approval_date: document.getElementById('approvalDate').value,
-                    approval_condition: document.getElementById('approvalCondition').value
-                };
-                
-                // iframe에 메시지 전송
-                mapIframe.contentWindow.postMessage({
-                    type: 'filter',
-                    conditions: searchData
-                }, '*');
-            });
-            
-            // 검색 초기화
-            resetButton.addEventListener('click', function() {
-                mapSearchForm.reset();
-                searchResults.style.display = 'none';
-                
-                // iframe에 초기화 메시지 전송
-                mapIframe.contentWindow.postMessage({
-                    type: 'reset'
-                }, '*');
-            });
-        });
-        </script>
-
-        <style>
-        .search-form {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .search-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .search-item label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .search-item input,
-        .search-item select {
-            height: 38px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 0 10px;
-        }
-
-        .search-item input:focus,
-        .search-item select:focus {
-            outline: none;
-            border-color: #e38000;
-        }
-
-        #searchResults {
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #333;
-        }
-        </style>
     
         <!-- 지도 섹션 -->
         <div id="map-section" style="margin-top: 60px;">
@@ -1171,7 +984,192 @@
             <h2>매물 지도</h2>
             <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
             </div>
-    
+                    <!-- 매물 검색 필터 섹션 추가 -->
+            <div class="map-search-section" style="margin-bottom: 20px;">
+                <div class="section-title">
+                    <h3>조건 검색</h3>
+                </div>
+                
+                <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                    <form id="mapSearchForm">
+                        <div class="search-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                            
+                            <!-- 매가 조건 -->
+                            <div class="search-item">
+                                <label>매가</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                    <select id="priceCondition" class="form-control" style="width: 80px;">
+                                        <option value="all">전체</option>
+                                        <option value="above">이상</option>
+                                        <option value="below">이하</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 실투자금 조건 -->
+                            <div class="search-item">
+                                <label>실투자금</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                    <select id="investmentCondition" class="form-control" style="width: 80px;">
+                                        <option value="all">전체</option>
+                                        <option value="above">이상</option>
+                                        <option value="below">이하</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 수익률 조건 -->
+                            <div class="search-item">
+                                <label>수익률</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
+                                    <select id="yieldCondition" class="form-control" style="width: 80px;">
+                                        <option value="all">전체</option>
+                                        <option value="above">이상</option>
+                                        <option value="below">이하</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 토지면적 조건 -->
+                            <div class="search-item">
+                                <label>토지면적</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
+                                    <select id="areaCondition" class="form-control" style="width: 80px;">
+                                        <option value="all">전체</option>
+                                        <option value="above">이상</option>
+                                        <option value="below">이하</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- 사용승인일 조건 -->
+                            <div class="search-item">
+                                <label>사용승인일</label>
+                                <div style="display: flex; gap: 10px;">
+                                    <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
+                                    <select id="approvalCondition" class="form-control" style="width: 80px;">
+                                        <option value="all">전체</option>
+                                        <option value="before">이전</option>
+                                        <option value="after">이후</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 20px;">
+                            <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
+                            <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="searchResults" style="margin-top: 10px; text-align: center; display: none;">
+                    <p>검색 결과: <span id="resultCount">0</span>개의 매물을 찾았습니다.</p>
+                </div>
+            </div>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const mapSearchForm = document.getElementById('mapSearchForm');
+                const resetButton = document.getElementById('resetSearch');
+                const searchResults = document.getElementById('searchResults');
+                const resultCount = document.getElementById('resultCount');
+                const mapIframe = document.getElementById('map-section');
+                
+                // iframe과 통신 메시지 수신
+                window.addEventListener('message', function(event) {
+                    if (event.data.type === 'filterResult') {
+                        resultCount.textContent = event.data.count;
+                        searchResults.style.display = 'block';
+                    }
+                });
+                
+                // 검색 폼 제출 처리
+                mapSearchForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // 검색 조건 수집
+                    const searchData = {
+                        price_value: document.getElementById('priceValue').value,
+                        price_condition: document.getElementById('priceCondition').value,
+                        investment_value: document.getElementById('investmentValue').value,
+                        investment_condition: document.getElementById('investmentCondition').value,
+                        yield_value: document.getElementById('yieldValue').value,
+                        yield_condition: document.getElementById('yieldCondition').value,
+                        area_value: document.getElementById('areaValue').value,
+                        area_condition: document.getElementById('areaCondition').value,
+                        approval_date: document.getElementById('approvalDate').value,
+                        approval_condition: document.getElementById('approvalCondition').value
+                    };
+                    
+                    // iframe에 메시지 전송
+                    mapIframe.contentWindow.postMessage({
+                        type: 'filter',
+                        conditions: searchData
+                    }, '*');
+                });
+                
+                // 검색 초기화
+                resetButton.addEventListener('click', function() {
+                    mapSearchForm.reset();
+                    searchResults.style.display = 'none';
+                    
+                    // iframe에 초기화 메시지 전송
+                    mapIframe.contentWindow.postMessage({
+                        type: 'reset'
+                    }, '*');
+                });
+            });
+            </script>
+
+            <style>
+            .search-form {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .search-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
+
+            .search-item label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #333;
+            }
+
+            .search-item input,
+            .search-item select {
+                height: 38px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 0 10px;
+            }
+
+            .search-item input:focus,
+            .search-item select:focus {
+                outline: none;
+                border-color: #e38000;
+            }
+
+            #searchResults {
+                background: #f0f0f0;
+                padding: 10px;
+                border-radius: 4px;
+                font-weight: bold;
+                color: #333;
+            }
+            </style>
             <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
             <!-- 전체 화면 버튼 (텍스트 포함) -->
             <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
@@ -1828,6 +1826,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=3"></script>
+<script src="/js/pwa-install.js?v=4"></script>
 </body>
 </html>
