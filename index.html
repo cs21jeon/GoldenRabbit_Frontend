@@ -941,9 +941,10 @@
             console.error('블로그 글 불러오기 실패:', error);
         }
 
-        function renderPosts(countToAdd) {
-            for (let i = currentCount; i < Math.min(currentCount + countToAdd, posts.length); i++) {
+        function renderPosts(count) {
+            for (let i = currentCount; i < Math.min(currentCount + count, posts.length); i++) {
                 const post = posts[i];
+                const imageUrl = `/blog_thumbs/${post.id}.jpg`;
                 const div = document.createElement('div');
                 div.className = 'blog-summary';
                 div.innerHTML = `
@@ -952,12 +953,11 @@
                     <div class="blog-date">${formatDate(post.published)}</div>
                     <p>${post.summary}</p>
                     <a href="${post.link}" target="_blank">본문 보기</a>
-                    `;
-
+                `;
                 blogContainer.appendChild(div);
             }
 
-            currentCount += countToAdd;
+            currentCount += count;
 
             if (currentCount >= posts.length) {
                 loadMoreBtn.style.display = 'none';
@@ -965,6 +965,7 @@
                 loadMoreBtn.style.display = 'inline-block';
             }
         }
+
 
         loadMoreBtn.addEventListener('click', function () {
             renderPosts(morePostsToShow);
@@ -2033,6 +2034,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=0"></script>
+<script src="/js/pwa-install.js?v=1"></script>
 </body>
 </html>
