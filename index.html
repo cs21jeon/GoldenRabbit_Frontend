@@ -909,12 +909,12 @@
     </section>
 
     <script>
-    document.addEventListener('DOMContentLoaded', async function() {
+    document.addEventListener('DOMContentLoaded', async function () {
         const blogContainer = document.getElementById('blogContainer');
         const loadMoreBtn = document.getElementById('loadMoreBtn');
         let posts = [];
-        let initialPostsToShow = 2;  // 처음에 2개
-        let morePostsToShow = 4;     // 더보기 클릭 시 추가할 개수
+        let initialPostsToShow = 2;
+        let morePostsToShow = 4;
         let currentCount = 0;
 
         function formatDate(dateString) {
@@ -925,21 +925,21 @@
             return `${year}.${month}.${day}`;
         }
 
-        // 블로그 데이터 불러오기
         try {
             const response = await fetch('/api/blog-feed');
             posts = await response.json();
-            renderPosts(initialPostsToShow);  // 처음 2개만
+            renderPosts(initialPostsToShow);
         } catch (error) {
             console.error('블로그 글 불러오기 실패:', error);
         }
 
-        function renderPosts() {
-            for (let i = currentCount; i < Math.min(currentCount + initialPostsToShow, posts.length); i++) {
+        function renderPosts(countToAdd) {
+            for (let i = currentCount; i < Math.min(currentCount + countToAdd, posts.length); i++) {
                 const post = posts[i];
                 const div = document.createElement('div');
                 div.className = 'blog-summary';
                 div.innerHTML = `
+                    <img src="${post.thumbnail || '/images/placeholder.png'}" alt="썸네일" style="width:100%; border-radius: 8px; margin-bottom: 10px;">
                     <h3>${post.title}</h3>
                     <div class="blog-date">${formatDate(post.published)}</div>
                     <p>${post.summary}</p>
@@ -948,7 +948,7 @@
                 blogContainer.appendChild(div);
             }
 
-            currentCount += initialPostsToShow;
+            currentCount += countToAdd;
 
             if (currentCount >= posts.length) {
                 loadMoreBtn.style.display = 'none';
@@ -957,9 +957,8 @@
             }
         }
 
-        // 더보기 버튼 클릭 시
-        loadMoreBtn.addEventListener('click', function() {
-            renderPosts(morePostsToShow);  // 클릭할 때마다 4개 추가
+        loadMoreBtn.addEventListener('click', function () {
+            renderPosts(morePostsToShow);
         });
     });
     </script>
@@ -2025,6 +2024,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=7"></script>
+<script src="/js/pwa-install.js?v=8"></script>
 </body>
 </html>
