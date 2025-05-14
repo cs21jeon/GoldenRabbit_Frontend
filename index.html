@@ -984,6 +984,17 @@
             <h2>매물 지도</h2>
             <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
             </div>
+            <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
+            <!-- 전체 화면 버튼 (텍스트 포함) -->
+            <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
+                <span class="expand-icon">⛶</span>
+                <span class="collapse-icon" style="display:none;">✕</span>
+                <span class="btn-text expand-text">전체화면보기</span>
+                <span class="btn-text collapse-text" style="display:none;">전체화면닫기</span>
+            </button>
+    
+            <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
+            </div>
             <!-- 매물 검색 필터 섹션 추가 -->
             <div class="map-search-section" style="margin-bottom: 20px;">
                 <div class="section-title">
@@ -1075,39 +1086,46 @@
 
             <script>
             document.addEventListener('DOMContentLoaded', function() {
+                console.log('DOM 로드 완료');
+                
                 const mapSearchForm = document.getElementById('mapSearchForm');
                 const resetButton = document.getElementById('resetSearch');
                 const searchResults = document.getElementById('searchResults');
                 const resultCount = document.getElementById('resultCount');
                 
-                // iframe 찾기
-                let mapIframe = document.getElementById('map-section');
-                if (!mapIframe) {
-                    mapIframe = document.querySelector('iframe[src="airtable_map.html"]');
+                // iframe 찾기 함수
+                function getMapIframe() {
+                    return document.getElementById('map-iframe') || 
+                        document.getElementById('map-section') || 
+                        document.querySelector('iframe[src="airtable_map.html"]');
                 }
                 
-                // iframe이 없으면 에러 로그
-                if (!mapIframe) {
-                    console.error('지도 iframe을 찾을 수 없습니다.');
-                    return;
-                }
-                
-                // iframe 로드 상태 플래그
-                let iframeLoaded = false;
-                
-                // iframe 로드 이벤트 리스너
-                mapIframe.addEventListener('load', function() {
-                    iframeLoaded = true;
-                    console.log('iframe 로드 완료');
-                });
-                
-                // iframe이 이미 로드되었는지 확인
-                if (mapIframe.contentDocument && mapIframe.contentDocument.readyState === 'complete') {
-                    iframeLoaded = true;
+                // 메시지 전송 함수
+                function sendMessageToIframe(message) {
+                    const iframe = getMapIframe();
+                    if (!iframe) {
+                        console.error('iframe을 찾을 수 없습니다.');
+                        return false;
+                    }
+                    
+                    try {
+                        // contentWindow가 있는지 확인
+                        if (iframe.contentWindow) {
+                            iframe.contentWindow.postMessage(message, '*');
+                            return true;
+                        } else {
+                            console.error('iframe.contentWindow가 없습니다.');
+                            return false;
+                        }
+                    } catch (error) {
+                        console.error('메시지 전송 중 오류:', error);
+                        return false;
+                    }
                 }
                 
                 // iframe과 통신 메시지 수신
                 window.addEventListener('message', function(event) {
+                    console.log('메시지 수신:', event.data);
                     if (event.data && event.data.type === 'filterResult') {
                         resultCount.textContent = event.data.count;
                         searchResults.style.display = 'block';
@@ -1115,70 +1133,97 @@
                 });
                 
                 // 검색 폼 제출 처리
-                mapSearchForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // iframe 로드 확인
-                    if (!iframeLoaded) {
-                        alert('지도가 아직 로드 중입니다. 잠시 후 다시 시도해주세요.');
-                        return;
-                    }
-                    
-                    // 검색 조건 수집
-                    const searchData = {
-                        price_value: document.getElementById('priceValue').value,
-                        price_condition: document.getElementById('priceCondition').value,
-                        investment_value: document.getElementById('investmentValue').value,
-                        investment_condition: document.getElementById('investmentCondition').value,
-                        yield_value: document.getElementById('yieldValue').value,
-                        yield_condition: document.getElementById('yieldCondition').value,
-                        area_value: document.getElementById('areaValue').value,
-                        area_condition: document.getElementById('areaCondition').value,
-                        approval_date: document.getElementById('approvalDate').value,
-                        approval_condition: document.getElementById('approvalCondition').value
-                    };
-                    
-                    console.log('검색 조건:', searchData);
-                    
-                    try {
-                        // iframe에 메시지 전송
-                        mapIframe.contentWindow.postMessage({
+                if (mapSearchForm) {
+                    mapSearchForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        console.log('검색 폼 제출');
+                        
+                        // 검색 조건 수집
+                        const searchData = {
+                            price_value: document.getElementById('priceValue').value,
+                            price_condition: document.getElementById('priceCondition').value,
+                            investment_value: document.getElementById('investmentValue').value,
+                            investment_condition: document.getElementById('investmentCondition').value,
+                            yield_value: document.getElementById('yieldValue').value,
+                            yield_condition: document.getElementById('yieldCondition').value,
+                            area_value: document.getElementById('areaValue').value,
+                            area_condition: document.getElementById('areaCondition').value,
+                            approval_date: document.getElementById('approvalDate').value,
+                            approval_condition: document.getElementById('approvalCondition').value
+                        };
+                        
+                        console.log('검색 조건:', searchData);
+                        
+                        // 메시지 전송 시도
+                        const sent = sendMessageToIframe({
                             type: 'filter',
                             conditions: searchData
-                        }, '*');
-                    } catch (error) {
-                        console.error('메시지 전송 오류:', error);
-                    }
-                });
+                        });
+                        
+                        if (!sent) {
+                            alert('지도가 아직 로드 중입니다. 잠시 후 다시 시도해주세요.');
+                        }
+                    });
+                }
                 
                 // 검색 초기화
-                resetButton.addEventListener('click', function() {
-                    mapSearchForm.reset();
-                    searchResults.style.display = 'none';
-                    
-                    if (!iframeLoaded) {
-                        console.log('iframe이 아직 로드되지 않았습니다.');
-                        return;
-                    }
-                    
-                    try {
-                        // iframe에 초기화 메시지 전송
-                        mapIframe.contentWindow.postMessage({
+                if (resetButton) {
+                    resetButton.addEventListener('click', function() {
+                        console.log('검색 초기화');
+                        mapSearchForm.reset();
+                        searchResults.style.display = 'none';
+                        
+                        sendMessageToIframe({
                             type: 'reset'
-                        }, '*');
-                    } catch (error) {
-                        console.error('초기화 메시지 전송 오류:', error);
-                    }
-                });
+                        });
+                    });
+                }
                 
-                // 지연 로드 대비 - 5초 후 강제 로드 설정
-                setTimeout(function() {
-                    if (!iframeLoaded) {
-                        iframeLoaded = true;
-                        console.log('타임아웃 후 iframe 로드 가정');
+                // iframe 확인 및 로드 대기
+                const iframe = getMapIframe();
+                if (iframe) {
+                    console.log('iframe 찾음:', iframe);
+                    
+                    // 이미 로드된 경우
+                    if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+                        console.log('iframe 이미 로드됨');
+                    } else {
+                        // 로드 이벤트 리스너
+                        iframe.addEventListener('load', function() {
+                            console.log('iframe 로드 이벤트 발생');
+                        });
                     }
-                }, 5000);
+                } else {
+                    console.error('초기에 iframe을 찾을 수 없습니다.');
+                }
+                
+                // 주기적으로 iframe 상태 확인 (디버깅용)
+                let checkCount = 0;
+                const checkInterval = setInterval(function() {
+                    const iframe = getMapIframe();
+                    if (iframe && iframe.contentWindow) {
+                        console.log('iframe.contentWindow 사용 가능');
+                        clearInterval(checkInterval);
+                    } else {
+                        console.log(`iframe 체크 ${++checkCount}회: contentWindow 아직 없음`);
+                        if (checkCount > 10) {
+                            clearInterval(checkInterval);
+                            console.error('iframe contentWindow를 찾을 수 없습니다.');
+                        }
+                    }
+                }, 1000);
             });
+
+            // 전역 함수로도 등록 (디버깅용)
+            window.testIframeMessage = function() {
+                const iframe = document.querySelector('iframe[src="airtable_map.html"]');
+                if (iframe && iframe.contentWindow) {
+                    iframe.contentWindow.postMessage({type: 'test'}, '*');
+                    console.log('테스트 메시지 전송됨');
+                } else {
+                    console.error('iframe 또는 contentWindow를 찾을 수 없습니다.');
+                }
+            };
             </script>
 
             <style>
@@ -1224,17 +1269,6 @@
                 color: #333;
             }
             </style>
-            <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
-            <!-- 전체 화면 버튼 (텍스트 포함) -->
-            <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
-                <span class="expand-icon">⛶</span>
-                <span class="collapse-icon" style="display:none;">✕</span>
-                <span class="btn-text expand-text">전체화면보기</span>
-                <span class="btn-text collapse-text" style="display:none;">전체화면닫기</span>
-            </button>
-    
-            <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
-            </div>
         </div>
     
         </div>
@@ -1879,6 +1913,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=6"></script>
+<script src="/js/pwa-install.js?v=7"></script>
 </body>
 </html>
