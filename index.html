@@ -1152,7 +1152,27 @@
                             
                         } catch (error) {
                             console.error('검색 오류:', error);
-                            searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
+                            
+                            if (response) {
+                                try {
+                                    const errorData = await response.json();
+                                    console.error('서버 응답:', errorData);
+                                    searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                        검색 중 오류가 발생했습니다.<br>
+                                        에러: ${errorData.error || '알 수 없는 오류'}<br>
+                                        <small>${errorData.details || ''}</small>
+                                    </div>`;
+                                } catch (e) {
+                                    const errorText = await response.text();
+                                    console.error('서버 응답 텍스트:', errorText);
+                                    searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                        검색 중 오류가 발생했습니다.<br>
+                                        ${errorText}
+                                    </div>`;
+                                }
+                            } else {
+                                searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
+                            }
                         }
                     });
                     
@@ -1857,6 +1877,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=9"></script>
+<script src="/js/pwa-install.js?v=0"></script>
 </body>
 </html>
