@@ -998,7 +998,7 @@
                 <!-- 매물 검색 필터 섹션 -->
                 <div class="map-search-section" style="margin-bottom: 20px;">
                     <div class="section-title">
-                        <h3>조건 검색</h3>
+                        <h2>조건 검색</h2>
                     </div>
                     
                     <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
@@ -1081,166 +1081,188 @@
                     
                     <!-- 검색 결과 표시 영역 -->
                     <div id="searchResults" style="margin-top: 20px; display: none;">
-                        <div style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
-                            <strong>검색 결과: <span id="resultCount">0</span>개의 매물을 찾았습니다.</strong>
+                        <div id="searchStatus" style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
+                            <strong id="searchStatusText">조건에 맞는 매물을 검색중입니다...</strong>
                         </div>
                         
                         <!-- 검색 결과 지도 컨테이너 -->
-                        <div id="searchMapContainer" style="width: 100%; height: 500px; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                        <div id="searchMapContainer" style="width: 100%; min-height: 500px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
                             <div class="loading-message" style="text-align: center; padding: 150px 20px;">
                                 지도를 불러오는 중입니다...
                             </div>
                         </div>
                     </div>
-                </div>
-                <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    const mapSearchForm = document.getElementById('mapSearchForm');
-                    const resetButton = document.getElementById('resetSearch');
-                    const searchResults = document.getElementById('searchResults');
-                    const resultCount = document.getElementById('resultCount');
-                    const searchMapContainer = document.getElementById('searchMapContainer');
-                    
-                    console.log('검색 폼 초기화');
-                    
-                    if (!mapSearchForm) {
-                        console.error('검색 폼을 찾을 수 없습니다!');
-                        return;
+
+                    <style>
+                    /* 모바일 최적화 스타일 */
+                    @media (max-width: 768px) {
+                        #searchMapContainer {
+                            min-height: 60vh !important; /* 뷰포트 높이의 60% */
+                            max-height: 400px !important;
+                        }
+                        
+                        #searchMapContainer > div:first-child {
+                            height: 100% !important;
+                        }
+                        
+                        /* iframe이 포함된 경우 크기 조정 */
+                        #searchMapContainer iframe {
+                            height: 100% !important;
+                        }
                     }
-                    
-                    // 검색 폼 제출 처리
-                    mapSearchForm.addEventListener('submit', async function(e) {
-                        e.preventDefault();
-                        console.log('검색 폼 제출됨');
+
+                    /* 데스크톱 */
+                    @media (min-width: 769px) {
+                        #searchMapContainer {
+                            height: 500px;
+                        }
+                    }
+                    </style>
+
+                    <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const mapSearchForm = document.getElementById('mapSearchForm');
+                        const resetButton = document.getElementById('resetSearch');
+                        const searchResults = document.getElementById('searchResults');
+                        const searchStatus = document.getElementById('searchStatus');
+                        const searchStatusText = document.getElementById('searchStatusText');
+                        const searchMapContainer = document.getElementById('searchMapContainer');
                         
-                        // 검색 조건 수집
-                        const searchData = {
-                            price_value: document.getElementById('priceValue').value,
-                            price_condition: document.getElementById('priceCondition').value,
-                            investment_value: document.getElementById('investmentValue').value,
-                            investment_condition: document.getElementById('investmentCondition').value,
-                            yield_value: document.getElementById('yieldValue').value,
-                            yield_condition: document.getElementById('yieldCondition').value,
-                            area_value: document.getElementById('areaValue').value,
-                            area_condition: document.getElementById('areaCondition').value,
-                            approval_date: document.getElementById('approvalDate').value,
-                            approval_condition: document.getElementById('approvalCondition').value
-                        };
+                        console.log('검색 폼 초기화');
                         
-                        console.log('검색 조건:', searchData);
+                        if (!mapSearchForm) {
+                            console.error('검색 폼을 찾을 수 없습니다!');
+                            return;
+                        }
                         
-                        // 검색 결과 표시
-                        searchResults.style.display = 'block';
-                        searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
-                        
-                        let response; // response를 try 블록 밖에서 선언
-                        
-                        try {
-                            console.log('API 호출 시작');
+                        // 검색 폼 제출 처리
+                        mapSearchForm.addEventListener('submit', async function(e) {
+                            e.preventDefault();
+                            console.log('검색 폼 제출됨');
                             
-                            // API 호출
-                            response = await fetch('/api/search-map', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify(searchData)
-                            });
+                            // 검색 조건 수집
+                            const searchData = {
+                                price_value: document.getElementById('priceValue').value,
+                                price_condition: document.getElementById('priceCondition').value,
+                                investment_value: document.getElementById('investmentValue').value,
+                                investment_condition: document.getElementById('investmentCondition').value,
+                                yield_value: document.getElementById('yieldValue').value,
+                                yield_condition: document.getElementById('yieldCondition').value,
+                                area_value: document.getElementById('areaValue').value,
+                                area_condition: document.getElementById('areaCondition').value,
+                                approval_date: document.getElementById('approvalDate').value,
+                                approval_condition: document.getElementById('approvalCondition').value
+                            };
                             
-                            console.log('API 응답 상태:', response.status);
-                            console.log('API 응답 OK:', response.ok);
+                            console.log('검색 조건:', searchData);
                             
-                            if (!response.ok) {
-                                throw new Error(`검색 요청 실패: ${response.status}`);
-                            }
+                            // 검색 시작 - 로딩 메시지 표시
+                            searchResults.style.display = 'block';
+                            searchStatusText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 조건에 맞는 매물을 검색중입니다...';
+                            searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
                             
-                            const result = await response.json();
-                            console.log('API 응답 데이터:', result);
+                            let response;
                             
-                            // 지도 업데이트
-                            if (result.map_html) {
-                                searchMapContainer.innerHTML = result.map_html;
-                                console.log('지도 HTML 업데이트 완료');
-                            } else {
-                                console.error('map_html이 응답에 없습니다');
-                                searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: orange;">지도 데이터가 없습니다.</div>';
-                            }
-                            
-                            // 결과 수 표시
-                            resultCount.textContent = result.count || '0';
-                            
-                            // 통계 정보 표시 (있을 경우)
-                            if (result.statistics) {
-                                const stats = result.statistics;
-                                console.log('검색 통계:', stats);
+                            try {
+                                console.log('API 호출 시작');
                                 
-                                // 기존 통계 제거
-                                const existingStats = document.querySelector('.search-stats');
-                                if (existingStats) {
-                                    existingStats.remove();
+                                // API 호출
+                                response = await fetch('/api/search-map', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify(searchData)
+                                });
+                                
+                                console.log('API 응답 상태:', response.status);
+                                
+                                if (!response.ok) {
+                                    throw new Error(`검색 요청 실패: ${response.status}`);
                                 }
                                 
-                                const statsHtml = `
-                                    <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
-                                        <strong>검색 통계:</strong><br>
-                                        - 전체 매물: ${stats.total_records}개<br>
-                                        - 상태 필터링: ${stats.status_filtered}개 제외<br>
-                                        - 조건 필터링: ${stats.condition_filtered}개 제외<br>
-                                        - 필터 통과: ${stats.passed_filter}개<br>
-                                        - 지오코딩 실패: ${stats.geocoding_failed}개<br>
-                                        - 지도에 표시: ${stats.markers_added}개
-                                    </div>
-                                `;
-                                searchResults.insertAdjacentHTML('beforeend', statsHtml);
-                            } else {
-                                console.log('통계 정보가 없습니다');
-                            }
-                            
-                            // 검색 결과로 스크롤
-                            searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            
-                        } catch (error) {
-                            console.error('검색 오류:', error);
-                            
-                            if (response) {
-                                try {
-                                    const errorData = await response.json();
-                                    console.error('서버 JSON 응답:', errorData);
-                                    searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                        검색 중 오류가 발생했습니다.<br>
-                                        에러: ${errorData.error || error.message}<br>
-                                        <small>${errorData.details || ''}</small>
-                                    </div>`;
-                                } catch (jsonError) {
-                                    console.error('JSON 파싱 실패:', jsonError);
-                                    try {
-                                        const errorText = await response.text();
-                                        console.error('서버 텍스트 응답:', errorText);
-                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                            검색 중 오류가 발생했습니다.<br>
-                                            ${errorText || error.message}
-                                        </div>`;
-                                    } catch (textError) {
-                                        console.error('텍스트 읽기 실패:', textError);
-                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                            검색 중 오류가 발생했습니다.<br>
-                                            ${error.message}
-                                        </div>`;
+                                const result = await response.json();
+                                console.log('API 응답 데이터:', result);
+                                
+                                // 지도 업데이트
+                                if (result.map_html) {
+                                    // 지도 HTML 삽입
+                                    searchMapContainer.innerHTML = result.map_html;
+                                    
+                                    // 모바일에서 지도 크기 조정
+                                    if (window.innerWidth <= 768) {
+                                        const mapDiv = searchMapContainer.querySelector('div[style*="width:100%"]');
+                                        if (mapDiv) {
+                                            mapDiv.style.height = '100%';
+                                            const iframe = mapDiv.querySelector('iframe');
+                                            if (iframe) {
+                                                iframe.style.height = '100%';
+                                            }
+                                        }
                                     }
                                 }
-                            } else {
-                                searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                    검색 중 오류가 발생했습니다.<br>
-                                    네트워크 오류: ${error.message}
-                                </div>`;
+                                
+                                // 검색 완료 - 결과 표시
+                                searchStatusText.innerHTML = `검색 결과: <span id="resultCount">${result.count}</span>개의 매물을 찾았습니다.`;
+                                
+                                // 통계 정보 표시 (있을 경우)
+                                if (result.statistics) {
+                                    const stats = result.statistics;
+                                    console.log('검색 통계:', stats);
+                                    
+                                    // 기존 통계 제거
+                                    const existingStats = document.querySelector('.search-stats');
+                                    if (existingStats) {
+                                        existingStats.remove();
+                                    }
+                                    
+                                    const statsHtml = `
+                                        <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
+                                            <strong>검색 통계:</strong><br>
+                                            - 전체 매물: ${stats.total_records}개<br>
+                                            - 상태 필터링: ${stats.status_filtered}개 제외<br>
+                                            - 조건 필터링: ${stats.condition_filtered}개 제외<br>
+                                            - 필터 통과: ${stats.passed_filter}개<br>
+                                            - 지오코딩 실패: ${stats.geocoding_failed}개<br>
+                                            - 지도에 표시: ${stats.markers_added}개
+                                        </div>
+                                    `;
+                                    searchResults.insertAdjacentHTML('beforeend', statsHtml);
+                                }
+                                
+                                // 검색 결과로 스크롤
+                                searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                
+                            } catch (error) {
+                                console.error('검색 오류:', error);
+                                
+                                searchStatusText.innerHTML = '<i class="fas fa-exclamation-circle"></i> 검색 중 오류가 발생했습니다.';
+                                
+                                if (response) {
+                                    try {
+                                        const errorData = await response.json();
+                                        console.error('서버 응답:', errorData);
+                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                            검색 중 오류가 발생했습니다.<br>
+                                            에러: ${errorData.error || '알 수 없는 오류'}<br>
+                                            <small>${errorData.details || ''}</small>
+                                        </div>`;
+                                    } catch (e) {
+                                        const errorText = await response.text();
+                                        console.error('서버 응답 텍스트:', errorText);
+                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                            검색 중 오류가 발생했습니다.<br>
+                                            ${errorText}
+                                        </div>`;
+                                    }
+                                } else {
+                                    searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
+                                }
                             }
-                        }
-                    });
-                    
-                    // 검색 초기화
-                    if (resetButton) {
+                        });
+                        
+                        // 검색 초기화
                         resetButton.addEventListener('click', function() {
-                            console.log('검색 초기화');
                             mapSearchForm.reset();
                             searchResults.style.display = 'none';
                             searchMapContainer.innerHTML = '';
@@ -1251,13 +1273,8 @@
                                 existingStats.remove();
                             }
                         });
-                    } else {
-                        console.error('초기화 버튼을 찾을 수 없습니다!');
-                    }
-                    
-                    console.log('검색 기능 초기화 완료');
-                });
-                </script>
+                    });
+                    </script>
 
                 <style>
                 .search-form {
@@ -1951,6 +1968,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=5"></script>
+<script src="/js/pwa-install.js?v=6"></script>
 </body>
 </html>
