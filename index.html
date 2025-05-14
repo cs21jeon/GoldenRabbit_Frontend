@@ -984,7 +984,7 @@
             <h2>매물 지도</h2>
             <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
             </div>
-                    <!-- 매물 검색 필터 섹션 추가 -->
+            <!-- 매물 검색 필터 섹션 추가 -->
             <div class="map-search-section" style="margin-bottom: 20px;">
                 <div class="section-title">
                     <h3>조건 검색</h3>
@@ -1079,7 +1079,18 @@
                 const resetButton = document.getElementById('resetSearch');
                 const searchResults = document.getElementById('searchResults');
                 const resultCount = document.getElementById('resultCount');
-                const mapIframe = document.getElementById('map-section');
+                
+                // iframe 찾기 - id로 찾지 못하면 src로 찾기
+                let mapIframe = document.getElementById('map-section');
+                if (!mapIframe) {
+                    mapIframe = document.querySelector('iframe[src="airtable_map.html"]');
+                }
+                
+                // iframe이 없으면 에러 로그
+                if (!mapIframe) {
+                    console.error('지도 iframe을 찾을 수 없습니다.');
+                    return;
+                }
                 
                 // iframe과 통신 메시지 수신
                 window.addEventListener('message', function(event) {
@@ -1092,6 +1103,12 @@
                 // 검색 폼 제출 처리
                 mapSearchForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    
+                    // iframe이 로드되었는지 확인
+                    if (!mapIframe.contentWindow) {
+                        console.error('iframe이 아직 로드되지 않았습니다.');
+                        return;
+                    }
                     
                     // 검색 조건 수집
                     const searchData = {
@@ -1107,6 +1124,8 @@
                         approval_condition: document.getElementById('approvalCondition').value
                     };
                     
+                    console.log('검색 조건:', searchData);
+                    
                     // iframe에 메시지 전송
                     mapIframe.contentWindow.postMessage({
                         type: 'filter',
@@ -1118,6 +1137,11 @@
                 resetButton.addEventListener('click', function() {
                     mapSearchForm.reset();
                     searchResults.style.display = 'none';
+                    
+                    if (!mapIframe.contentWindow) {
+                        console.error('iframe이 아직 로드되지 않았습니다.');
+                        return;
+                    }
                     
                     // iframe에 초기화 메시지 전송
                     mapIframe.contentWindow.postMessage({
@@ -1179,13 +1203,12 @@
                 <span class="btn-text collapse-text" style="display:none;">전체화면닫기</span>
             </button>
     
-            <iframe id="map-section" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
+            <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
             </div>
         </div>
     
         </div>
-    </section>
-  
+    </section>  
 
     <!-- 모달 배경 -->
     <div class="modal-background" id="modalBackground" style="display: none;">
@@ -1826,6 +1849,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=4"></script>
+<script src="/js/pwa-install.js?v=5"></script>
 </body>
 </html>
