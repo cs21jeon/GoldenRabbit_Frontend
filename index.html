@@ -994,6 +994,7 @@
         
                 <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
                 </div>
+
                 <!-- 매물 검색 필터 섹션 -->
                 <div class="map-search-section" style="margin-bottom: 20px;">
                     <div class="section-title">
@@ -1093,39 +1094,52 @@
                     </div>
                 </div>
                 <script>
-                // AI 매물 검색 스크립트
-                function initAIPropertySearch() {
-                    const aiSearchForm = document.getElementById('aiSearchForm');
-                    const aiSearchResults = document.getElementById('aiSearchResults');
-                    const aiRecommendations = document.getElementById('aiRecommendations');
-                    const aiLoading = document.getElementById('aiLoading');
+                document.addEventListener('DOMContentLoaded', function() {
+                    const mapSearchForm = document.getElementById('mapSearchForm');
+                    const resetButton = document.getElementById('resetSearch');
+                    const searchResults = document.getElementById('searchResults');
+                    const resultCount = document.getElementById('resultCount');
+                    const searchMapContainer = document.getElementById('searchMapContainer');
                     
-                    if (!aiSearchForm) {
-                        console.log('AI 검색 폼을 찾을 수 없습니다.');
+                    console.log('검색 폼 초기화');
+                    
+                    if (!mapSearchForm) {
+                        console.error('검색 폼을 찾을 수 없습니다!');
                         return;
                     }
                     
-                    aiSearchForm.addEventListener('submit', async function(e) {
+                    // 검색 폼 제출 처리
+                    mapSearchForm.addEventListener('submit', async function(e) {
                         e.preventDefault();
+                        console.log('검색 폼 제출됨');
                         
                         // 검색 조건 수집
                         const searchData = {
-                            location: document.getElementById('ai_location').value,
-                            price_range: document.getElementById('priceRange').value,
-                            investment: document.getElementById('investment').value,
-                            expected_yield: document.getElementById('expectedYield').value
+                            price_value: document.getElementById('priceValue').value,
+                            price_condition: document.getElementById('priceCondition').value,
+                            investment_value: document.getElementById('investmentValue').value,
+                            investment_condition: document.getElementById('investmentCondition').value,
+                            yield_value: document.getElementById('yieldValue').value,
+                            yield_condition: document.getElementById('yieldCondition').value,
+                            area_value: document.getElementById('areaValue').value,
+                            area_condition: document.getElementById('areaCondition').value,
+                            approval_date: document.getElementById('approvalDate').value,
+                            approval_condition: document.getElementById('approvalCondition').value
                         };
                         
-                        console.log('AI 검색 조건:', searchData);
+                        console.log('검색 조건:', searchData);
                         
-                        // 검색 결과 및 로딩 표시
-                        aiSearchResults.style.display = 'block';
-                        aiLoading.style.display = 'block';
-                        aiRecommendations.innerHTML = '';
+                        // 검색 결과 표시
+                        searchResults.style.display = 'block';
+                        searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
+                        
+                        let response; // response를 try 블록 밖에서 선언
                         
                         try {
+                            console.log('API 호출 시작');
+                            
                             // API 호출
-                            const response = await fetch('/api/property-search', {
+                            response = await fetch('/api/search-map', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -1133,106 +1147,115 @@
                                 body: JSON.stringify(searchData)
                             });
                             
+                            console.log('API 응답 상태:', response.status);
+                            console.log('API 응답 OK:', response.ok);
+                            
                             if (!response.ok) {
-                                throw new Error('AI 검색 요청 실패');
+                                throw new Error(`검색 요청 실패: ${response.status}`);
                             }
                             
                             const result = await response.json();
+                            console.log('API 응답 데이터:', result);
                             
-                            // 로딩 숨기기
-                            aiLoading.style.display = 'none';
-                            
-                            // 검색 통계 HTML 생성
-                            let statsHtml = '';
-                            if (result.total_properties !== undefined) {
-                                statsHtml = `
-                                    <div style="background: #e3f2fd; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-                                        <h4 style="margin-top: 0; color: #1976d2;">AI 검색 통계</h4>
-                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                                            <div style="padding: 10px; background: white; border-radius: 4px;">
-                                                <div style="font-size: 24px; font-weight: bold; color: #1976d2;">${result.searched_properties}</div>
-                                                <div style="font-size: 14px; color: #666;">전체 검색된 레코드</div>
-                                            </div>
-                                            <div style="padding: 10px; background: white; border-radius: 4px;">
-                                                <div style="font-size: 24px; font-weight: bold; color: #1976d2;">${result.valid_properties}</div>
-                                                <div style="font-size: 14px; color: #666;">유효한 매물</div>
-                                            </div>
-                                            <div style="padding: 10px; background: white; border-radius: 4px;">
-                                                <div style="font-size: 24px; font-weight: bold; color: #1976d2;">${result.total_properties}</div>
-                                                <div style="font-size: 14px; color: #666;">조건에 맞는 매물</div>
-                                            </div>
-                                            <div style="padding: 10px; background: white; border-radius: 4px;">
-                                                <div style="font-size: 24px; font-weight: bold; color: #e38000;">${result.ai_analyzed}</div>
-                                                <div style="font-size: 14px; color: #666;">AI가 분석한 매물</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `;
+                            // 지도 업데이트
+                            if (result.map_html) {
+                                searchMapContainer.innerHTML = result.map_html;
+                                console.log('지도 HTML 업데이트 완료');
+                            } else {
+                                console.error('map_html이 응답에 없습니다');
+                                searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: orange;">지도 데이터가 없습니다.</div>';
                             }
                             
-                            // AI 추천 결과 표시
-                            const recommendationsHtml = `
-                                <div style="background: #f5f5f5; padding: 20px; border-radius: 8px;">
-                                    <h4 style="margin-top: 0; color: #333;">AI 추천 결과</h4>
-                                    <div style="white-space: pre-wrap; line-height: 1.6;">
-                                        ${result.recommendations.replace(/\n/g, '<br>')}
+                            // 결과 수 표시
+                            resultCount.textContent = result.count || '0';
+                            
+                            // 통계 정보 표시 (있을 경우)
+                            if (result.statistics) {
+                                const stats = result.statistics;
+                                console.log('검색 통계:', stats);
+                                
+                                // 기존 통계 제거
+                                const existingStats = document.querySelector('.search-stats');
+                                if (existingStats) {
+                                    existingStats.remove();
+                                }
+                                
+                                const statsHtml = `
+                                    <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
+                                        <strong>검색 통계:</strong><br>
+                                        - 전체 매물: ${stats.total_records}개<br>
+                                        - 상태 필터링: ${stats.status_filtered}개 제외<br>
+                                        - 조건 필터링: ${stats.condition_filtered}개 제외<br>
+                                        - 필터 통과: ${stats.passed_filter}개<br>
+                                        - 지오코딩 실패: ${stats.geocoding_failed}개<br>
+                                        - 지도에 표시: ${stats.markers_added}개
                                     </div>
-                                </div>
-                            `;
+                                `;
+                                searchResults.insertAdjacentHTML('beforeend', statsHtml);
+                            } else {
+                                console.log('통계 정보가 없습니다');
+                            }
                             
-                            // 결과 표시
-                            aiRecommendations.innerHTML = statsHtml + recommendationsHtml;
-                            
-                            // 결과로 스크롤
-                            aiSearchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                            
-                            console.log('AI 검색 통계:', {
-                                searched: result.searched_properties,
-                                valid: result.valid_properties,
-                                matched: result.total_properties,
-                                analyzed: result.ai_analyzed
-                            });
+                            // 검색 결과로 스크롤
+                            searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             
                         } catch (error) {
-                            console.error('AI 검색 오류:', error);
-                            
-                            aiLoading.style.display = 'none';
-                            
-                            let errorMessage = '검색 중 오류가 발생했습니다. 다시 시도해주세요.';
+                            console.error('검색 오류:', error);
                             
                             if (response) {
                                 try {
                                     const errorData = await response.json();
-                                    console.error('서버 응답:', errorData);
-                                    if (errorData.error) {
-                                        errorMessage = `에러: ${errorData.error}`;
-                                        if (errorData.details) {
-                                            errorMessage += `<br><small>${errorData.details}</small>`;
-                                        }
-                                    }
-                                } catch (e) {
+                                    console.error('서버 JSON 응답:', errorData);
+                                    searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                        검색 중 오류가 발생했습니다.<br>
+                                        에러: ${errorData.error || error.message}<br>
+                                        <small>${errorData.details || ''}</small>
+                                    </div>`;
+                                } catch (jsonError) {
+                                    console.error('JSON 파싱 실패:', jsonError);
                                     try {
                                         const errorText = await response.text();
-                                        console.error('서버 응답 텍스트:', errorText);
-                                        errorMessage = `에러: ${errorText}`;
+                                        console.error('서버 텍스트 응답:', errorText);
+                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                            검색 중 오류가 발생했습니다.<br>
+                                            ${errorText || error.message}
+                                        </div>`;
                                     } catch (textError) {
-                                        console.error('응답 텍스트 읽기 실패:', textError);
+                                        console.error('텍스트 읽기 실패:', textError);
+                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                            검색 중 오류가 발생했습니다.<br>
+                                            ${error.message}
+                                        </div>`;
                                     }
                                 }
+                            } else {
+                                searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                    검색 중 오류가 발생했습니다.<br>
+                                    네트워크 오류: ${error.message}
+                                </div>`;
                             }
-                            
-                            aiRecommendations.innerHTML = `
-                                <div style="color: red; text-align: center; padding: 20px; background: #ffebee; border-radius: 8px;">
-                                    ${errorMessage}
-                                </div>
-                            `;
                         }
                     });
-                }
-
-                // DOMContentLoaded 이벤트에서 초기화
-                document.addEventListener('DOMContentLoaded', function() {
-                    initAIPropertySearch();
+                    
+                    // 검색 초기화
+                    if (resetButton) {
+                        resetButton.addEventListener('click', function() {
+                            console.log('검색 초기화');
+                            mapSearchForm.reset();
+                            searchResults.style.display = 'none';
+                            searchMapContainer.innerHTML = '';
+                            
+                            // 통계 정보도 제거
+                            const existingStats = document.querySelector('.search-stats');
+                            if (existingStats) {
+                                existingStats.remove();
+                            }
+                        });
+                    } else {
+                        console.error('초기화 버튼을 찾을 수 없습니다!');
+                    }
+                    
+                    console.log('검색 기능 초기화 완료');
                 });
                 </script>
 
@@ -1928,6 +1951,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=2"></script>
+<script src="/js/pwa-install.js?v=3"></script>
 </body>
 </html>
