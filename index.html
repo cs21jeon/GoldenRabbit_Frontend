@@ -1080,7 +1080,7 @@
                 const searchResults = document.getElementById('searchResults');
                 const resultCount = document.getElementById('resultCount');
                 
-                // iframe 찾기 - id로 찾지 못하면 src로 찾기
+                // iframe 찾기
                 let mapIframe = document.getElementById('map-section');
                 if (!mapIframe) {
                     mapIframe = document.querySelector('iframe[src="airtable_map.html"]');
@@ -1092,9 +1092,23 @@
                     return;
                 }
                 
+                // iframe 로드 상태 플래그
+                let iframeLoaded = false;
+                
+                // iframe 로드 이벤트 리스너
+                mapIframe.addEventListener('load', function() {
+                    iframeLoaded = true;
+                    console.log('iframe 로드 완료');
+                });
+                
+                // iframe이 이미 로드되었는지 확인
+                if (mapIframe.contentDocument && mapIframe.contentDocument.readyState === 'complete') {
+                    iframeLoaded = true;
+                }
+                
                 // iframe과 통신 메시지 수신
                 window.addEventListener('message', function(event) {
-                    if (event.data.type === 'filterResult') {
+                    if (event.data && event.data.type === 'filterResult') {
                         resultCount.textContent = event.data.count;
                         searchResults.style.display = 'block';
                     }
@@ -1104,9 +1118,9 @@
                 mapSearchForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // iframe이 로드되었는지 확인
-                    if (!mapIframe.contentWindow) {
-                        console.error('iframe이 아직 로드되지 않았습니다.');
+                    // iframe 로드 확인
+                    if (!iframeLoaded) {
+                        alert('지도가 아직 로드 중입니다. 잠시 후 다시 시도해주세요.');
                         return;
                     }
                     
@@ -1126,11 +1140,15 @@
                     
                     console.log('검색 조건:', searchData);
                     
-                    // iframe에 메시지 전송
-                    mapIframe.contentWindow.postMessage({
-                        type: 'filter',
-                        conditions: searchData
-                    }, '*');
+                    try {
+                        // iframe에 메시지 전송
+                        mapIframe.contentWindow.postMessage({
+                            type: 'filter',
+                            conditions: searchData
+                        }, '*');
+                    } catch (error) {
+                        console.error('메시지 전송 오류:', error);
+                    }
                 });
                 
                 // 검색 초기화
@@ -1138,16 +1156,28 @@
                     mapSearchForm.reset();
                     searchResults.style.display = 'none';
                     
-                    if (!mapIframe.contentWindow) {
-                        console.error('iframe이 아직 로드되지 않았습니다.');
+                    if (!iframeLoaded) {
+                        console.log('iframe이 아직 로드되지 않았습니다.');
                         return;
                     }
                     
-                    // iframe에 초기화 메시지 전송
-                    mapIframe.contentWindow.postMessage({
-                        type: 'reset'
-                    }, '*');
+                    try {
+                        // iframe에 초기화 메시지 전송
+                        mapIframe.contentWindow.postMessage({
+                            type: 'reset'
+                        }, '*');
+                    } catch (error) {
+                        console.error('초기화 메시지 전송 오류:', error);
+                    }
                 });
+                
+                // 지연 로드 대비 - 5초 후 강제 로드 설정
+                setTimeout(function() {
+                    if (!iframeLoaded) {
+                        iframeLoaded = true;
+                        console.log('타임아웃 후 iframe 로드 가정');
+                    }
+                }, 5000);
             });
             </script>
 
@@ -1849,6 +1879,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=5"></script>
+<script src="/js/pwa-install.js?v=6"></script>
 </body>
 </html>
