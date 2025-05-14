@@ -1147,6 +1147,24 @@
                             // 결과 수 표시
                             resultCount.textContent = result.count;
                             
+                            // 통계 정보 표시 (있을 경우)
+                            if (result.statistics) {
+                                const stats = result.statistics;
+                                console.log('검색 통계:', stats);
+                                const statsHtml = `
+                                    <div style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
+                                        <strong>검색 통계:</strong><br>
+                                        - 전체 매물: ${stats.total_records}개<br>
+                                        - 상태 필터링: ${stats.status_filtered}개 제외<br>
+                                        - 조건 필터링: ${stats.condition_filtered}개 제외<br>
+                                        - 필터 통과: ${stats.passed_filter}개<br>
+                                        - 지오코딩 실패: ${stats.geocoding_failed}개<br>
+                                        - 지도에 표시: ${stats.markers_added}개
+                                    </div>
+                                `;
+                                document.getElementById('searchResults').insertAdjacentHTML('beforeend', statsHtml);
+                            }
+                            
                             // 검색 결과로 스크롤
                             searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             
@@ -1877,6 +1895,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=0"></script>
+<script src="/js/pwa-install.js?v=1"></script>
 </body>
 </html>
