@@ -1199,9 +1199,8 @@
         }
         
         nav ul.main-menu > li > a {
-            color: #333;
-            padding: 15px 20px;
-            font-size: 16px;
+            font-weight: 700; /* 메인 메뉴 굵게 */
+            background-color: #f9f9f9; /* 메인 메뉴 배경색 */
         }
         
         nav ul.main-menu > li > a:hover {
@@ -1226,7 +1225,37 @@
         }
         
         nav ul.sub-menu li a {
-            padding-left: 40px;
+            padding-left: 35px; /* 서브 메뉴 들여쓰기 */
+            font-size: 14px; /* 서브 메뉴 글자 크기 작게 */
+            border-left: 3px solid transparent; /* 왼쪽 테두리 */
+        }
+
+        nav ul.sub-menu li a.active {
+            background-color: var(--very-light-main-color);
+            color: var(--main-color);
+            border-left-color: var(--main-color);
+            font-weight: 600;
+        }
+
+        nav .menu-scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 80px; /* 하단 트레이 영역보다 더 큰 여백 */
+            scrollbar-width: thin;
+            scrollbar-color: var(--main-color) transparent;
+        }
+        
+        nav .menu-scroll-area::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        nav .menu-scroll-area::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        nav .menu-scroll-area::-webkit-scrollbar-thumb {
+            background-color: var(--main-color);
+            border-radius: 6px;
         }
         
         .fixed-menu {
@@ -1347,33 +1376,35 @@
             
             <!-- 메인 메뉴 및 서브메뉴 -->
             <nav>
-                <ul class="main-menu">
-                    <li>
-                        <a href="#welcome">홈</a>
-                        <ul class="sub-menu">
-                            <li><a href="#map-section">매물지도보기</a></li>
-                            <li><a href="#ceo-intro">대표소개</a></li>
-                            <li><a href="#blog">블로그</a></li>
-                            <li><a href="#location">오시는길</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#properties">매물정보</a>
-                        <ul class="sub-menu">
-                            <li><a href="#map-section">매물지도로보기</a></li>
-                            <li><a href="#property-search">매물검색</a></li>
-                            <li><a href="#featured-properties">대표매물</a></li>
-                            <li><a href="#ai-search">AI매물검색</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#contact">커뮤니티</a>
-                        <ul class="sub-menu">
-                            <li><a href="#contact">문의하기</a></li>
-                            <li><a href="#real-estate-sites">부동산 관련 사이트</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="menu-scroll-area">
+                    <ul class="main-menu">
+                        <li>
+                            <a href="#welcome">홈</a>
+                            <ul class="sub-menu">
+                                <li><a href="#map-section">매물지도보기</a></li>
+                                <li><a href="#ceo-intro">대표소개</a></li>
+                                <li><a href="#blog">블로그</a></li>
+                                <li><a href="#location">오시는길</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#properties">매물정보</a>
+                            <ul class="sub-menu">
+                                <li><a href="#map-section">매물지도로보기</a></li>
+                                <li><a href="#property-search">매물검색</a></li>
+                                <li><a href="#featured-properties">대표매물</a></li>
+                                <li><a href="#ai-search">AI매물검색</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#contact">커뮤니티</a>
+                            <ul class="sub-menu">
+                                <li><a href="#contact">문의하기</a></li>
+                                <li><a href="#real-estate-sites">부동산 관련 사이트</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
@@ -2113,6 +2144,31 @@
                 navItems[currentSectionIndex].classList.add('active');
             }
             
+            // 사이드 메뉴 서브메뉴 항목 활성화
+            const allSubMenuItems = document.querySelectorAll('.sub-menu a');
+            allSubMenuItems.forEach(item => {
+                item.classList.remove('active');
+                
+                const targetId = item.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const rect = targetSection.getBoundingClientRect();
+                        const offset = 150;
+                        
+                        if (rect.top <= offset && rect.bottom >= offset) {
+                            item.classList.add('active');
+                            
+                            // 부모 메뉴 항목 펼치기
+                            const parentLi = item.closest('.main-menu > li');
+                            if (parentLi && window.innerWidth <= 768) {
+                                parentLi.classList.add('active');
+                            }
+                        }
+                    }
+                }
+            });
+        
             // 부드러운 스크롤
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
