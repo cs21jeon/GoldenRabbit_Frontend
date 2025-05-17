@@ -25,10 +25,10 @@
     <style>
         /* 전체 스타일 */
         :root {
-            --main-color: #a39042; /* 금토끼 로고 배경색 기준 */
-            --light-main-color: #c7b978; /* 연한 버전 */
-            --very-light-main-color: #f0e8c9; /* 매우 연한 버전 */
-            --dark-main-color: #7d6d32; /* 진한 버전 */
+            --main-color: #a39042;
+            --light-main-color: #c7b978;
+            --very-light-main-color: #f0e8c9;
+            --dark-main-color: #7d6d32;
         }
         
         * {
@@ -50,7 +50,7 @@
             padding: 0 20px;
         }
         
-        /* 헤더 스타일 */
+        /* 헤더 스타일 수정 - 드롭다운 메뉴 추가 */
         header {
             background-color: var(--main-color);
             color: white;
@@ -86,11 +86,11 @@
             color: #f1f1f1;
         }
         
-        /* 새로운 메인 메뉴 스타일 */
+        /* 새로운 메인 메뉴 스타일 - 처음에는 서브메뉴 숨김 */
         nav {
             position: relative;
         }
-
+        
         nav ul.main-menu {
             display: flex;
             list-style: none;
@@ -115,7 +115,7 @@
             color: var(--very-light-main-color);
         }
         
-        /* 서브메뉴 스타일 */
+        /* 서브메뉴 스타일 - 초기에는 숨김 */
         nav ul.sub-menu {
             position: absolute;
             top: 100%;
@@ -133,6 +133,7 @@
             padding: 10px 0;
         }
         
+        /* 메인 메뉴 항목에 호버했을 때 서브메뉴 표시 */
         nav ul.main-menu > li:hover ul.sub-menu {
             opacity: 1;
             visibility: visible;
@@ -157,8 +158,8 @@
             background-color: var(--very-light-main-color);
             color: var(--main-color);
         }
-
-        /* 모바일 메뉴 토글 버튼 */
+        
+        /* 모바일 메뉴 토글 버튼 - 헤더 오른쪽에 배치 */
         .menu-toggle {
             display: none;
             background: none;
@@ -166,8 +167,80 @@
             color: white;
             font-size: 24px;
             cursor: pointer;
+            padding: 5px;
+            width: 40px;
+            height: 40px;
+            line-height: 1;
+            border-radius: 4px;
+            transition: background-color 0.3s;
         }
-
+        
+        .menu-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* 고정 메뉴 (데스크톱에서만 표시) */
+        .fixed-menu {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: 180px;
+            z-index: 100;
+            transition: transform 0.3s;
+            transform: translateX(200px);
+            visibility: hidden;
+            opacity: 0;
+        }
+        
+        .fixed-menu.visible {
+            transform: translateX(0);
+            visibility: visible;
+            opacity: 1;
+        }
+        
+        .fixed-menu-title {
+            color: var(--main-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .fixed-menu ul {
+            list-style: none;
+        }
+        
+        .fixed-menu ul li {
+            margin-bottom: 10px;
+        }
+        
+        .fixed-menu ul li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .fixed-menu ul li a:hover {
+            background-color: var(--very-light-main-color);
+            color: var(--main-color);
+        }
+        
+        .fixed-menu ul li.menu-title {
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #888;
+            font-size: 13px;
+        }
+        
         /* 섹션 공통 스타일 */
         section {
             padding: 60px 0;
@@ -225,6 +298,49 @@
         
         .btn:hover {
             background-color: var(--dark-main-color);
+        }
+
+        /* 대표소개 섹션 스타일 */
+        #ceo-intro {
+            background-color: #fff;
+        }
+        
+        .ceo-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .ceo-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .ceo-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ceo-bio {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .ceo-bio h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--main-color);
+        }
+        
+        .ceo-bio p {
+            margin-bottom: 15px;
+            line-height: 1.8;
         }
         
         /* 블로그 섹션 */
@@ -300,143 +416,6 @@
             margin-bottom: 8px;
         }
 
-        /* 모바일 하단 네비게이션 수정 */
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: white;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-            padding: 10px 0 5px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease-in-out;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-        
-        .mobile-nav.visible {
-            transform: translateY(0);
-        }
-        
-        .mobile-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: #666;
-            width: 33.33%; /* 3개 메뉴이므로 33.33%로 변경 */
-            float: left;
-            padding: 5px 0;
-            transition: color 0.3s;
-        }
-        
-        .mobile-nav-item:hover, .mobile-nav-item.active {
-            color: var(--main-color);
-        }
-        
-        .mobile-nav-icon {
-            font-size: 24px;
-            margin-bottom: 2px;
-        }
-        
-        .mobile-nav-text {
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        /* 반응형 스타일 */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-            
-            nav ul.main-menu {
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background-color: var(--main-color);
-                flex-direction: column;
-                padding: 0;
-                margin: 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-                transform: translateY(-10px);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.3s ease;
-            }
-            
-            nav ul.main-menu.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            nav ul.main-menu > li {
-                margin: 0;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-            
-            nav ul.main-menu > li > a {
-                padding: 15px 20px;
-                font-size: 16px;
-            }
-            
-            nav ul.sub-menu {
-                position: static;
-                width: 100%;
-                background-color: rgba(0,0,0,0.1);
-                box-shadow: none;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                display: none;
-                padding: 0;
-            }
-            
-            nav ul.main-menu > li.active ul.sub-menu {
-                display: block;
-            }
-            
-            nav ul.sub-menu li a {
-                padding: 12px 30px;
-                color: white;
-            }
-            
-            nav ul.sub-menu li a:hover {
-                background-color: rgba(255,255,255,0.1);
-                color: white;
-            }
-            
-            .header-content {
-                flex-direction: row; /* 로고와 메뉴 토글 버튼을 가로로 배치 */
-                justify-content: space-between;
-                align-items: center;
-            }
-            
-            .mobile-nav {
-                display: flex;
-                justify-content: space-around;
-            }
-            
-            body {
-                padding-bottom: 70px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            /* 푸터의 바로가기 섹션 삭제 */
-            .footer-links {
-                display: none;
-            }
-        }
-
         /* 블로그 더보기 버튼 */
         .btn-load-more {
             display: block;         /* 한 줄 전체 차지 */
@@ -460,8 +439,28 @@
             background-color: var(--dark-main-color);
         }
 
+        /* 대표매물 섹션 */
+        #featured-properties {
+            background-color: var(--very-light-main-color);
+        }
+        
         /* 매물 섹션 */
         #properties {
+            background-color: #f9f9f9;
+        }
+        
+        /* 매물지도로보기 섹션 */
+        #map-section {
+            background-color: #fff;
+        }
+        
+        /* 매물검색 섹션 */
+        #property-search {
+            background-color: #f5f5f5;
+        }
+        
+        /* AI 매물검색 섹션 */
+        #ai-search {
             background-color: var(--very-light-main-color);
         }
         
@@ -544,7 +543,7 @@
             background-color: white;
             width: 70%;
             max-width: 800px;
-	    max-height: 80vh;
+	        max-height: 80vh;
             border-radius: 8px;
             overflow: auto;
             position: relative;
@@ -781,325 +780,597 @@
         background-color: var(--main-color);
     }
 
-    /* 반응형 디자인 */
-    @media (max-width: 768px) {
-        .ai-search-container {
-            grid-template-columns: 1fr;
-        }
+    /* 매물 검색 필터 섹션 스타일 */
+    #property-search {
+        padding: 60px 0;
+    }
+
+    .search-form {
+        background: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+    }
+
+    .search-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+
+    .search-item label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .search-item input,
+    .search-item select {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 0 15px;
+        font-size: 14px;
+    }
+
+    .search-item input:focus,
+    .search-item select:focus {
+        outline: none;
+        border-color: var(--main-color);
+    }
+
+    .search-buttons {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .search-buttons .btn {
+        margin: 0 10px;
+    }
+
+    /* 부동산 관련 사이트 섹션 스타일 */
+    #real-estate-sites {
+        background-color: #f9f9f9;
+    }
+
+    .sites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .site-card {
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        padding: 20px;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .site-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .site-logo {
+        width: 100%;
+        height: 100px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .site-logo img {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+    }
+
+    .site-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--main-color);
+        margin-bottom: 10px;
+    }
+
+    .site-description {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+
+    .site-link {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: var(--light-main-color);
+        color: white;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+
+    .site-link:hover {
+        background-color: var(--main-color);
     }
 
 	/* 스크롤 방지 */
 	body.map-fullscreen {
 	  overflow: hidden !important;
 	}
-        /* 상담 섹션 */
-        #contact {
-            background-color: #f9f9f9;
+    
+    /* 상담 섹션 */
+    #contact {
+        background-color: #f9f9f9;
+    }
+    
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+    
+    .contact-info h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: var(--main-color);
+    }
+    
+    .contact-detail {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+        background-color: var(--light-main-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+    
+    .contact-text h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+    
+    .contact-form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    textarea.form-control {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .btn-block {
+        display: block;
+        width: 100%;
+    }
+    
+    /* 위치 섹션 */
+    #location {
+        background-color: #fff;
+    }
+    
+    .office-details {
+        display: flex;
+        margin-bottom: 30px;
+    }
+    
+    .office-image {
+        width: 50%;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-right: 30px;
+    }
+    
+    .office-image img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    .office-info {
+        width: 50%;
+    }
+    
+    .office-info h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: var(--main-color);
+    }
+    
+    .address-detail {
+        margin-bottom: 20px;
+    }
+    
+    .address-detail p {
+        margin-bottom: 5px;
+    }
+    
+    .direction-link {
+        margin-top: 20px;
+    }
+    
+    /* 푸터 스타일 */
+    footer {
+        background-color: #333;
+        color: white;
+        padding: 50px 0 20px;
+    }
+    
+    .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 30px;
+    }
+    
+    .footer-logo {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    
+    .footer-description {
+        margin-bottom: 20px;
+        color: #ccc;
+        font-size: 14px;
+    }
+    
+    .social-icons {
+        display: flex;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        background-color: #555;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        transition: background-color 0.3s;
+    }
+    
+    .social-icon:hover {
+        background-color: var(--light-main-color);
+    }
+    
+    .footer-links h3, .footer-contact h3 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .footer-links ul {
+        list-style: none;
+    }
+
+    .footer-links ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links ul li a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-links ul li a:hover {
+        color: var(--light-main-color);
+    }
+
+    .footer-contact p {
+        margin-bottom: 10px;
+        color: #ccc;
+    }
+    
+    .copyright {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+        color: #999;
+        font-size: 14px;
+    }
+    
+    /* 모바일 하단 네비게이션 스타일 */
+    .mobile-nav {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+        padding: 10px 0 5px;
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+    
+    .mobile-nav.visible {
+        transform: translateY(0);
+    }
+    
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: #666;
+        width: 33.33%;
+        float: left;
+        padding: 5px 0;
+        transition: color 0.3s;
+    }
+    
+    .mobile-nav-item:hover, .mobile-nav-item.active {
+        color: var(--main-color);
+    }
+    
+    .mobile-nav-icon {
+        font-size: 24px;
+        margin-bottom: 2px;
+    }
+    
+    .mobile-nav-text {
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    /* 반응형 스타일 */
+    @media (max-width: 768px) {
+        .header-content {
+            position: relative;
         }
         
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-        
-        .contact-info h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--main-color);
-        }
-        
-        .contact-detail {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--light-main-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 15px;
-            flex-shrink: 0;
-        }
-        
-        .contact-text h4 {
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
+        .menu-toggle {
             display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
         
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        nav {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            transition: left 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+        
+        nav.open {
+            left: 0;
+        }
+        
+        nav ul.main-menu {
+            flex-direction: column;
+            padding: 20px 0;
+        }
+        
+        nav ul.main-menu > li {
+            margin: 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        nav ul.main-menu > li > a {
+            color: #333;
+            padding: 15px 20px;
             font-size: 16px;
         }
         
-        textarea.form-control {
-            min-height: 120px;
-            resize: vertical;
-        }
-        
-        .btn-block {
-            display: block;
-            width: 100%;
-        }
-        
-        /* 위치 섹션 */
-        .office-details {
-            display: flex;
-            margin-bottom: 30px;
-        }
-        
-        .office-image {
-            width: 50%;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-right: 30px;
-        }
-        
-        .office-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .office-info {
-            width: 50%;
-        }
-        
-        .office-info h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        nav ul.main-menu > li > a:hover {
             color: var(--main-color);
+            background-color: var(--very-light-main-color);
         }
         
-        .address-detail {
+        nav ul.sub-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            box-shadow: none;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        nav ul.main-menu > li.active ul.sub-menu {
+            max-height: 500px;
+        }
+        
+        nav ul.sub-menu li a {
+            padding-left: 40px;
+        }
+        
+        .fixed-menu {
+            display: none; /* 모바일에서는 고정 메뉴 숨김 */
+        }
+        
+        .mobile-nav {
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        body {
+            padding-bottom: 70px;
+        }
+        
+        .contact-container, .office-details {
+            grid-template-columns: 1fr;
+        }
+        
+        .office-image, .office-info {
+            width: 100%;
+            margin-right: 0;
             margin-bottom: 20px;
-        }
-        
-        .address-detail p {
-            margin-bottom: 5px;
-        }
-        
-        .direction-link {
-            margin-top: 20px;
-        }
-        
-        /* 푸터 스타일 */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 50px 0 20px;
         }
         
         .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 30px;
+            grid-template-columns: 1fr;
+            gap: 30px;
         }
         
-        .footer-logo {
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .properties-grid {
+            grid-template-columns: 1fr;
         }
         
-        .footer-description {
-            margin-bottom: 20px;
-            color: #ccc;
-            font-size: 14px;
+        .ai-search-container {
+            grid-template-columns: 1fr;
         }
         
-        .social-icons {
-            display: flex;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: #555;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 10px;
-            transition: background-color 0.3s;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--light-main-color);
-        }
-        
-        .footer-links h3, .footer-contact h3 {
-            font-size: 18px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links ul li a {
-            color: #ccc;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-links ul li a:hover {
-            color: var(--light-main-color);
-        }
-
-        .footer-contact p {
-            margin-bottom: 10px;
-            color: #ccc;
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            color: #999;
-            font-size: 14px;
-        }
-        
-        /* 반응형 스타일 */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 20px;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .office-details {
-                flex-direction: column;
-            }
-            
-            .office-image, .office-info {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 20px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .properties-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        /* 상담 모달 추가 스타일 */
-        #consultModal .modal-content {
-            width: 90%;
-            max-width: 400px;
-            background: #fff;
-            border-radius: 12px;
-            overflow-y: auto;
-            max-height: 90vh;
-            padding: 20px;
-            box-sizing: border-box;
-            position: relative;
-        }
-
-        #consultModal .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            cursor: pointer;
-            z-index: 10000;
-        }
-
-        #consultModal .form-group {
-            margin-bottom: 15px;
-        }
-
-        #consultModal .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        #consultModal .form-group input,
-        #consultModal .form-group textarea {
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 14px;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
         }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    
+    /* 상담 모달 추가 스타일 */
+    #consultModal .modal-content {
+        width: 90%;
+        max-width: 400px;
+        background: #fff;
+        border-radius: 12px;
+        overflow-y: auto;
+        max-height: 90vh;
+        padding: 20px;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    #consultModal .modal-close {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        z-index: 10000;
+    }
+
+    #consultModal .form-group {
+        margin-bottom: 15px;
+    }
+
+    #consultModal .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    #consultModal .form-group input,
+    #consultModal .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
     </style>
-</head>
+</head>  
+
 <body>
     <!-- 헤더 영역 -->
     <header id="top">
         <div class="container header-content">
             <div class="logo">
-                <!-- 여기에 로고 파일 경로를 넣으세요 -->
+                <!-- 로고 -->
                 <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고">
                 <div>
                     <h1>금토끼부동산중개</h1>
                     <div class="logo-sub">Golden Rabbit Real Estate</div>
                 </div>
             </div>
+            
             <!-- 모바일 메뉴 토글 버튼 -->
             <button class="menu-toggle">☰</button>
+            
             <!-- 메인 메뉴 및 서브메뉴 -->
             <nav>
                 <ul class="main-menu">
-                    <li><a href="#welcome">홈</a></li>
                     <li>
-                        <a href="#properties">매물정보</a>
+                        <a href="#welcome">홈</a>
                         <ul class="sub-menu">
-                            <li><a href="#map-section">매물 지도</a></li>
-                            <li><a href="#properties">매물검색</a></li>
-                            <li><a href="#ai-search">AI매물추천</a></li>
+                            <li><a href="#map-section">매물지도보기</a></li>
+                            <li><a href="#ceo-intro">대표소개</a></li>
+                            <li><a href="#blog">블로그</a></li>
+                            <li><a href="#location">오시는길</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#blog">커뮤니티</a>
+                        <a href="#properties">매물정보</a>
                         <ul class="sub-menu">
-                            <li><a href="#blog">부동산 관련 사이트</a></li>
+                            <li><a href="#map-section">매물지도로보기</a></li>
+                            <li><a href="#property-search">매물검색</a></li>
+                            <li><a href="#featured-properties">대표매물</a></li>
+                            <li><a href="#ai-search">AI매물검색</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#contact">커뮤니티</a>
+                        <ul class="sub-menu">
                             <li><a href="#contact">문의하기</a></li>
+                            <li><a href="#real-estate-sites">부동산 관련 사이트</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -1107,12 +1378,53 @@
         </div>
     </header>
 
-    <!-- 환영 섹션 -->
+    <!-- 모바일 메뉴 오버레이 -->
+    <div class="menu-overlay"></div>
+
+    <!-- 고정 메뉴 (데스크톱용) -->
+    <div class="fixed-menu">
+        <div class="fixed-menu-title">빠른 메뉴</div>
+        <ul>
+            <li class="menu-title">홈</li>
+            <li><a href="#welcome">홈화면</a></li>
+            <li><a href="#ceo-intro">대표소개</a></li>
+            <li><a href="#blog">블로그</a></li>
+            <li><a href="#location">오시는길</a></li>
+            
+            <li class="menu-title">매물정보</li>
+            <li><a href="#map-section">매물지도로보기</a></li>
+            <li><a href="#property-search">매물검색</a></li>
+            <li><a href="#featured-properties">대표매물</a></li>
+            <li><a href="#ai-search">AI매물검색</a></li>
+            
+            <li class="menu-title">커뮤니티</li>
+            <li><a href="#contact">문의하기</a></li>
+            <li><a href="#real-estate-sites">부동산 관련 사이트</a></li>
+        </ul>
+    </div>
+
+    <!-- 환영 섹션 (홈) -->
     <section id="welcome">
         <div class="container">
             <h2>수익형 부동산 전문<br>금토끼부동산중개</h2>
             <p>트렌드를 잘 아는 부동산 전문가와 함께<br>최적의 솔루션을 찾아보세요.</p>
             <a href="#map-section" class="btn">모든 매물 지도로 보기</a>
+        </div>
+    </section>
+
+    <!-- 대표소개 섹션 -->
+    <section id="ceo-intro">
+        <div class="container">
+            <div class="section-title">
+                <h2>대표소개</h2>
+                <p>금토끼부동산중개 대표를 소개합니다</p>
+            </div>
+            <div class="ceo-content">
+                <!-- 여기에 대표소개 내용 추가 예정 -->
+                <p style="text-align: center; padding: 50px; background-color: #f9f9f9; border-radius: 8px;">
+                    이 섹션은 준비 중입니다. 곧 대표소개 내용이 추가될 예정입니다.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -1211,26 +1523,30 @@
         });
     </script>
 
-    <!-- 매물 섹션 -->
-    <section id="properties">
-        <div class="container">    
+    <!-- 대표매물 섹션 -->
+    <section id="featured-properties">
+        <div class="container">
             <div class="section-title">
-                <h2>추천 매물</h2>
-                <p>금토끼부동산중개에서 엄선한<br>우수 매물을 소개합니다</p>
+                <h2>대표매물</h2>
+                <p>금토끼부동산중개의 추천 매물을 소개합니다</p>
             </div>
-        
-            <!-- 매물 그리드 - JavaScript로 동적 생성됩니다 -->
-            <div class="properties-grid">
-                <div class="loading-message">매물 정보를 불러오는 중입니다...</div>
+            <div class="featured-properties-grid">
+                <!-- 이 부분은 기존 매물 섹션과 동일한 방식으로 구현 가능 -->
+                <div class="properties-grid" id="featuredPropertiesGrid">
+                    <div class="loading-message">대표 매물 정보를 불러오는 중입니다...</div>
+                </div>
             </div>
-        
-            <!-- 지도 섹션 -->
-            <div id="map-section" style="margin-top: 60px;">
-                <div class="section-title">
+        </div>
+    </section>
+
+    <!-- 매물지도로보기 섹션 -->
+    <section id="map-section">
+        <div class="container">
+            <div class="section-title">
                 <h2>매물 지도</h2>
                 <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
-                </div>
-                <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
+            </div>
+            <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
                 <!-- 전체 화면 버튼 (텍스트 포함) -->
                 <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
                     <span class="expand-icon">⛶</span>
@@ -1240,636 +1556,275 @@
                 </button>
         
                 <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
-                </div>
-
-                <!-- 매물 검색 필터 섹션 -->
-                <div class="map-search-section" style="margin-bottom: 20px;">
-                    <div class="section-title">
-                        <h2>조건 검색</h2>
-                        <p>희망조건을 조회하고<br>지도로 확인하세요</p>
-                    </div>
-                    
-                    <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
-                        <form id="mapSearchForm">
-                            <div class="search-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                                
-                                <!-- 매가 조건 -->
-                                <div class="search-item">
-                                    <label>매가</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
-                                        <select id="priceCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 실투자금 조건 -->
-                                <div class="search-item">
-                                    <label>실투자금</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
-                                        <select id="investmentCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 수익률 조건 -->
-                                <div class="search-item">
-                                    <label>수익률</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
-                                        <select id="yieldCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 토지면적 조건 -->
-                                <div class="search-item">
-                                    <label>토지면적</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
-                                        <select id="areaCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 사용승인일 조건 -->
-                                <div class="search-item">
-                                    <label>사용승인일</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
-                                        <select id="approvalCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="before">이전</option>
-                                            <option value="after">이후</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 20px;">
-                                <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
-                                <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
-                            </div>
-                        </form>
-                    </div>
-                    
-                    <!-- 검색 결과 표시 영역 부분 수정 -->
-                    <div id="searchResults" style="margin-top: 20px; display: none;">
-                        <div id="searchStatus" style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
-                            <strong id="searchStatusText">조건에 맞는 매물을 검색중입니다...</strong>
-                        </div>
-                        
-                        <!-- 검색 결과 지도 컨테이너 - 고유 클래스 사용 -->
-                        <div id="searchMapContainer" class="search-map-container" style="width: 100%; height: 500px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
-                            <div class="loading-message" style="text-align: center; padding: 150px 20px;">
-                                지도를 불러오는 중입니다...
-                            </div>
-                        </div>
-                    </div>
-
-                    <style>
-                    /* 기존 지도 컨테이너와 충돌 방지를 위한 검색 결과 전용 스타일 */
-                    .search-map-container {
-                        width: 100% !important;
-                        position: relative !important;
-                        overflow: visible !important; /* hidden에서 visible로 변경 */
-                    }
-
-                    /* 모바일에서 검색 결과 지도 최적화 */
-                    @media (max-width: 768px) {
-                        .search-map-container {
-                            height: 400px !important;
-                            min-height: 350px !important;
-                        }
-                        
-                        /* folium 생성 div 스타일 강제 적용 */
-                        .search-map-container > div {
-                            width: 100% !important;
-                            height: 100% !important;
-                            position: relative !important;
-                        }
-                        
-                        /* iframe 크기 강제 적용 */
-                        .search-map-container iframe {
-                            width: 100% !important;
-                            height: 100% !important;
-                            position: absolute !important;
-                            top: 0 !important;
-                            left: 0 !important;
-                        }
-                        
-                        /* folium 내부 div들에 대한 스타일 */
-                        .search-map-container div[style*="width:100%"] {
-                            height: 100% !important;
-                        }
-                        
-                        .search-map-container div[style*="position:relative"] {
-                            height: 100% !important;
-                        }
-                    }
-
-                    /* 데스크톱 */
-                    @media (min-width: 769px) {
-                        .search-map-container {
-                            height: 500px !important;
-                        }
-                    }
-
-                    /* 검색 결과 지도 관련 추가 스타일 */
-                    #searchMapContainer * {
-                        box-sizing: border-box !important;
-                    }
-
-                    /* 로딩 메시지 스타일 */
-                    .search-map-container .loading-message {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        text-align: center;
-                        padding: 20px;
-                    }
-                    </style>
-
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const mapSearchForm = document.getElementById('mapSearchForm');
-                        const resetButton = document.getElementById('resetSearch');
-                        const searchResults = document.getElementById('searchResults');
-                        const searchStatus = document.getElementById('searchStatus');
-                        const searchStatusText = document.getElementById('searchStatusText');
-                        const searchMapContainer = document.getElementById('searchMapContainer');
-                        
-                        console.log('검색 폼 초기화');
-                        
-                        if (!mapSearchForm) {
-                            console.error('검색 폼을 찾을 수 없습니다!');
-                            return;
-                        }
-                        
-                        // 검색 폼 제출 처리
-                        mapSearchForm.addEventListener('submit', async function(e) {
-                            e.preventDefault();
-                            console.log('검색 폼 제출됨');
-                            
-                            // 검색 조건 수집
-                            const searchData = {
-                                price_value: document.getElementById('priceValue').value,
-                                price_condition: document.getElementById('priceCondition').value,
-                                investment_value: document.getElementById('investmentValue').value,
-                                investment_condition: document.getElementById('investmentCondition').value,
-                                yield_value: document.getElementById('yieldValue').value,
-                                yield_condition: document.getElementById('yieldCondition').value,
-                                area_value: document.getElementById('areaValue').value,
-                                area_condition: document.getElementById('areaCondition').value,
-                                approval_date: document.getElementById('approvalDate').value,
-                                approval_condition: document.getElementById('approvalCondition').value
-                            };
-                            
-                            console.log('검색 조건:', searchData);
-                            
-                            // 검색 시작 - 로딩 메시지 표시
-                            searchResults.style.display = 'block';
-                            searchStatusText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 조건에 맞는 매물을 검색중입니다...';
-                            searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
-                            
-                            let response;
-                            
-                            try {
-                                console.log('API 호출 시작');
-                                
-                                // API 호출
-                                response = await fetch('/api/search-map', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(searchData)
-                                });
-                                
-                                console.log('API 응답 상태:', response.status);
-                                
-                                if (!response.ok) {
-                                    throw new Error(`검색 요청 실패: ${response.status}`);
-                                }
-                                
-                                const result = await response.json();
-                                console.log('API 응답 데이터:', result);
-                                
-                                // 지도 업데이트
-                                // 검색 완료 후 지도 크기 강제 조정 부분 수정
-                                if (result.map_html) {
-                                    // 지도 HTML 삽입
-                                    searchMapContainer.innerHTML = result.map_html;
-                                    
-                                    // 지도 렌더링 후 크기 강제 조정
-                                    setTimeout(() => {
-                                        // 모든 하위 div와 iframe 찾기
-                                        const innerDivs = searchMapContainer.querySelectorAll('div[style*="width"]');
-                                        const iframes = searchMapContainer.querySelectorAll('iframe');
-                                        
-                                        // 컨테이너 자체 높이 설정
-                                        if (window.innerWidth <= 768) {
-                                            searchMapContainer.style.height = '400px';
-                                            searchMapContainer.style.minHeight = '350px';
-                                            
-                                            // 모든 하위 요소 크기 조정
-                                            innerDivs.forEach(div => {
-                                                div.style.width = '100%';
-                                                div.style.height = '100%';
-                                                if (div.style.position === 'relative') {
-                                                    div.style.position = 'relative';
-                                                }
-                                            });
-                                            
-                                            iframes.forEach(iframe => {
-                                                iframe.style.width = '100%';
-                                                iframe.style.height = '100%';
-                                                iframe.style.position = 'absolute';
-                                                iframe.style.top = '0';
-                                                iframe.style.left = '0';
-                                            });
-                                        }
-                                    }, 100);
-                                }
-                                
-                                // 검색 완료 - 결과 표시
-                                searchStatusText.innerHTML = `검색 결과: <span id="resultCount">${result.count}</span>개의 매물을 찾았습니다.`;
-                                
-                                // 통계 정보 표시 (있을 경우)
-                                if (result.statistics) {
-                                    const stats = result.statistics;
-                                    console.log('검색 통계:', stats);
-                                    
-                                    // 기존 통계 제거
-                                    const existingStats = document.querySelector('.search-stats');
-                                    if (existingStats) {
-                                        existingStats.remove();
-                                    }
-                                    
-                                    const statsHtml = `
-                                        <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
-                                            <strong>검색 통계:</strong><br>
-                                            - 전체 매물: ${stats.total_records}개<br>
-                                            - 상태 필터링: ${stats.status_filtered}개 제외<br>
-                                            - 조건 필터링: ${stats.condition_filtered}개 제외<br>
-                                            - 필터 통과: ${stats.passed_filter}개<br>
-                                            - 지오코딩 실패: ${stats.geocoding_failed}개<br>
-                                            - 지도에 표시: ${stats.markers_added}개
-                                        </div>
-                                    `;
-                                    searchResults.insertAdjacentHTML('beforeend', statsHtml);
-                                }
-                                
-                                // 검색 결과로 스크롤
-                                searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                
-                            } catch (error) {
-                                console.error('검색 오류:', error);
-                                
-                                searchStatusText.innerHTML = '<i class="fas fa-exclamation-circle"></i> 검색 중 오류가 발생했습니다.';
-                                
-                                if (response) {
-                                    try {
-                                        const errorData = await response.json();
-                                        console.error('서버 응답:', errorData);
-                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                            검색 중 오류가 발생했습니다.<br>
-                                            에러: ${errorData.error || '알 수 없는 오류'}<br>
-                                            <small>${errorData.details || ''}</small>
-                                        </div>`;
-                                    } catch (e) {
-                                        const errorText = await response.text();
-                                        console.error('서버 응답 텍스트:', errorText);
-                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                            검색 중 오류가 발생했습니다.<br>
-                                            ${errorText}
-                                        </div>`;
-                                    }
-                                } else {
-                                    searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
-                                }
-                            }
-                        });
-                        
-                        // 검색 초기화
-                        resetButton.addEventListener('click', function() {
-                            mapSearchForm.reset();
-                            searchResults.style.display = 'none';
-                            searchMapContainer.innerHTML = '';
-                            
-                            // 통계 정보도 제거
-                            const existingStats = document.querySelector('.search-stats');
-                            if (existingStats) {
-                                existingStats.remove();
-                            }
-                        });
-                    });
-                    </script>
-
-                <style>
-                .search-form {
-                    background: #f8f9fa;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                }
-
-                .search-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 15px;
-                }
-
-                .search-item label {
-                    display: block;
-                    margin-bottom: 5px;
-                    font-weight: bold;
-                    color: #333;
-                }
-
-                .search-item input,
-                .search-item select {
-                    height: 38px;
-                    border: 1px solid #ddd;
-                    border-radius: 4px;
-                    padding: 0 10px;
-                }
-
-                .search-item input:focus,
-                .search-item select:focus {
-                    outline: none;
-                    border-color: #e38000;
-                }
-
-                #searchResults {
-                    animation: fadeIn 0.5s ease-in;
-                }
-
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
-
-                .loading-message {
-                    color: #888;
-                    font-size: 18px;
-                }
-                </style>
-            </div>    
-        </div>
-    </section>  
-
-    <!-- 모달 배경 -->
-    <div class="modal-background" id="modalBackground" style="display: none;">
-        <!-- 모달 콘텐츠는 JavaScript에서 동적으로 생성됩니다 -->
-    </div>
-
-    <!-- 상담 모달 (새로 추가) -->
-    <div id="consultModal" class="modal-background" style="display: none;">
-        <div class="modal-content">
-          <div class="modal-close" onclick="closeConsultModal()">&times;</div>
-          <div class="modal-body">
-            <h2 class="modal-title">상담 문의</h2>
-            <div class="contact-form">
-              <form id="consultForm">
-                <div class="form-group">
-                  <label for="propertyType">매물종류</label>
-                  <select id="modalpropertyType" name="propertyType" class="form-control" required>
-                    <option value="">-- 선택하세요 --</option>
-                    <option value="house">단독/다가구</option>
-                    <option value="mixed">상가주택</option>
-                    <option value="commercial">상업용건물</option>
-                    <option value="land">재건축/토지</option>
-                    <option value="sell">매물접수</option>
-                  </select>
-                </div>
-      
-                <div class="form-group">
-                  <label for="phone">연락처</label>
-                  <input type="tel" id="modalphone" name="phone" class="form-control" placeholder="010-0000-0000" required>
-                </div>
-      
-                <div class="form-group">
-                  <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
-                  <input type="email" id="modalemail" name="email" class="form-control" placeholder="abc@abc.com">
-                </div>
-      
-                <div class="form-group">
-                  <label for="message">문의사항</label>
-                  <textarea id="modalmessage" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
-                </div>
-      
-                <!-- ✅ 상담 신청 버튼은 이 form 안에 있어야 함 -->
-                <button type="submit" class="btn btn-contact btn-block">상담 신청하기</button>
-      
-                <!-- 제출 상태 메시지 -->
-                <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>      
-
-    <!-- 로딩 스타일 -->
-    <style>
-        .loading-message, .no-properties {
-            text-align: center;
-            padding: 50px;
-            font-size: 18px;
-            color: #888;
-            background-color: #f8f8f8;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-        
-        /* 로딩 애니메이션 */
-        .loading-message:after {
-            content: "...";
-            animation: dots 1.5s steps(4, end) infinite;
-            display: inline-block;
-            width: 20px;
-            text-align: left;
-        }
-        
-        @keyframes dots {
-            0%, 20% { content: ""; }
-            40% { content: "."; }
-            60% { content: ".."; }
-            80%, 100% { content: "..."; }
-        }
-    </style>
-
-    <!-- 에어테이블 API 스크립트 -->
-    <script src="/js/property-api.js"></script>
-    <script src="/js/inquiry-form.js"></script>
-    <script src="/js/ai-property-search.js"></script>
-
-<!-- 상담 섹션과 함께 사용할 스크립트 -->
-
-<!-- AI 매물 검색 섹션 -->
-<section id="ai-search">
-    <div class="container">
-        <div class="section-title">
-            <h2>AI 맞춤 매물 검색</h2>
-            <p>원하는 조건을 입력하시면<br>인공지능이 최적의 매물을 추천해 드립니다</p>
-        </div>
-        
-        <div class="ai-search-container">
-            <div class="ai-search-form">
-                <form id="aiSearchForm">
-                    <div class="form-group">
-                        <label for="ai_location">희망 지역</label>
-                        <input type="text" id="ai_location" class="form-control" placeholder="예: 사당동, 신림동, 동작구 등등" required>
+    </section>
+    
+    <!-- 매물검색 섹션 -->
+    <section id="property-search">
+        <div class="container">
+            <div class="section-title">
+                <h2>매물 검색</h2>
+                <p>원하는 조건으로 매물을 검색하세요</p>
+            </div>
+            
+            <div class="search-form">
+                <form id="mapSearchForm">
+                    <div class="search-grid">
+                        <!-- 매가 조건 -->
+                        <div class="search-item">
+                            <label>매가</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                <select id="priceCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 실투자금 조건 -->
+                        <div class="search-item">
+                            <label>실투자금</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                <select id="investmentCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 수익률 조건 -->
+                        <div class="search-item">
+                            <label>수익률</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
+                                <select id="yieldCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 토지면적 조건 -->
+                        <div class="search-item">
+                            <label>토지면적</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
+                                <select id="areaCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 사용승인일 조건 -->
+                        <div class="search-item">
+                            <label>사용승인일</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
+                                <select id="approvalCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="before">이전</option>
+                                    <option value="after">이후</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="priceRange">희망 매매가</label>
-                        <select id="priceRange" class="form-control" required>
-                            <option value="">-- 선택하세요 --</option>
-                            <option value="15억 이하">15억 이하</option>
-                            <option value="15억-30억">15억-30억</option>
-                            <option value="30억 이상">30억 이상</option>
-                        </select>
+                    <div class="search-buttons">
+                        <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
+                        <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="investment">실투자금</label>
-                        <select id="investment" class="form-control" required>
-                            <option value="">-- 선택하세요 --</option>
-                            <option value="10억 이하">10억 이하</option>
-                            <option value="10억-20억">10억-20억</option>
-                            <option value="20억 이상">20억 이상</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="expectedYield">희망 투자수익률</label>
-                        <select id="expectedYield" class="form-control" required>
-                            <option value="">-- 선택하세요 --</option>
-                            <option value="수익률 무관">수익률 무관</option>
-                            <option value="3% 이상">3% 이상</option>
-                            <option value="5% 이상">5% 이상</option>
-                            <option value="7% 이상">7% 이상</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-block">AI 매물 추천받기</button>
                 </form>
             </div>
             
-            <div class="ai-search-results" id="aiSearchResults" style="display: none;">
-                <h3>맞춤 추천 매물</h3>
-                <div class="ai-loading" id="aiLoading">
-                    <div class="loading-spinner"></div>
-                    <p>AI가 최적의 매물을 찾고 있습니다...</p>
+            <!-- 검색 결과 표시 영역 -->
+            <div id="searchResults" style="margin-top: 20px; display: none;">
+                <div id="searchStatus" style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
+                    <strong id="searchStatusText">조건에 맞는 매물을 검색중입니다...</strong>
                 </div>
-                <div id="aiRecommendations"></div>
+                
+                <!-- 검색 결과 지도 컨테이너 -->
+                <div id="searchMapContainer" class="search-map-container" style="width: 100%; height: 500px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                    <div class="loading-message" style="text-align: center; padding: 150px 20px;">
+                        지도를 불러오는 중입니다...
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 상담 섹션 -->
-<section id="contact">
-    <div class="container">
-        <div class="section-title">
-            <h2>상담 문의</h2>
-            <p>건물 매매, 임대에 관련된 모든 질문에<br>성심성의껏 답변해 드리겠습니다</p>
-        </div>
-        
-        <div class="contact-container">
-            <div class="contact-form">
-                <form id="consultForm">
-                    <div class="form-group">
-                        <label for="propertyType">매물종류</label>
-                        <select id="propertyType" name="propertyType" class="form-control" required>
-                            <option value="">-- 선택하세요 --</option>
-                            <option value="house">단독/다가구</option>
-                            <option value="mixed">상가주택</option>
-                            <option value="commercial">상업용건물</option>
-                            <option value="land">재건축/토지</option>
-                            <option value="sell">매물접수</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">연락처</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="010-0000-0000" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
-                        <input type="email" id="email" name="email" class="form-control" placeholder="이메일 주소">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">문의사항</label>
-                        <textarea id="message" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-block">상담 신청하기</button>
-                    
-                    <!-- 제출 상태 메시지 -->
-                    <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
-                </form>
+    <!-- AI 매물검색 섹션 -->
+    <section id="ai-search">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI 맞춤 매물 검색</h2>
+                <p>원하는 조건을 입력하시면<br>인공지능이 최적의 매물을 추천해 드립니다</p>
             </div>
-            <div class="contact-info">
-                <h3>문의 방법</h3>
-                
-                <div class="contact-detail">
-                    <div class="contact-icon">📞</div>
-                    <div class="contact-text">
-                        <h4>전화 문의</h4>
-                        <p>02-3471-7377</p>
-                        <p>평일 9:00 ~ 18:00</p>
-                    </div>
+            
+            <div class="ai-search-container">
+                <div class="ai-search-form">
+                    <form id="aiSearchForm">
+                        <div class="form-group">
+                            <label for="ai_location">희망 지역</label>
+                            <input type="text" id="ai_location" class="form-control" placeholder="예: 사당동, 신림동, 동작구 등등" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priceRange">희망 매매가</label>
+                            <select id="priceRange" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="15억 이하">15억 이하</option>
+                                <option value="15억-30억">15억-30억</option>
+                                <option value="30억 이상">30억 이상</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investment">실투자금</label>
+                            <select id="investment" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="10억 이하">10억 이하</option>
+                                <option value="10억-20억">10억-20억</option>
+                                <option value="20억 이상">20억 이상</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expectedYield">희망 투자수익률</label>
+                            <select id="expectedYield" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="수익률 무관">수익률 무관</option>
+                                <option value="3% 이상">3% 이상</option>
+                                <option value="5% 이상">5% 이상</option>
+                                <option value="7% 이상">7% 이상</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">AI 매물 추천받기</button>
+                    </form>
                 </div>
                 
-                <div class="contact-detail">
-                    <div class="contact-icon">📱</div>
-                    <div class="contact-text">
-                        <h4>모바일</h4>
-                        <p>010-4019-6509</p>
-                        <p>언제든지 연락 가능합니다</p>
+                <div class="ai-search-results" id="aiSearchResults" style="display: none;">
+                    <h3>맞춤 추천 매물</h3>
+                    <div class="ai-loading" id="aiLoading">
+                        <div class="loading-spinner"></div>
+                        <p>AI가 최적의 매물을 찾고 있습니다...</p>
                     </div>
+                    <div id="aiRecommendations"></div>
                 </div>
-                
-                <div class="contact-detail">
-                    <div class="contact-icon">✉️</div>
-                    <div class="contact-text">
-                        <h4>이메일</h4>
-                        <p>cs21.jeon@gmail.com</p>
-                        <p>24시간 내에 답변 드립니다</p>
-                    </div>
-                </div>
-                
-                <div class="contact-detail">
-                    <div class="contact-icon">🏢</div>
-                    <div class="contact-text">
-                        <h4>방문 상담</h4>
-                        <p>서울시 동작구 사당동 272-26</p>
-                        <p>남성역센트럴뷰 1층</p>
-                    </div>
-                </div>
-            </div>        
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <!-- 부동산 관련 사이트 섹션 -->
+    <section id="real-estate-sites">
+        <div class="container">
+            <div class="section-title">
+                <h2>부동산 관련 사이트</h2>
+                <p>유용한 부동산 정보 사이트를 소개합니다</p>
+            </div>
+            <div class="sites-grid">
+                <!-- 여기에 부동산 관련 사이트 목록이 표시됩니다 -->
+                <p style="text-align: center; padding: 50px; background-color: #f9f9f9; border-radius: 8px; grid-column: 1/-1;">
+                    이 섹션은 준비 중입니다. 곧 유용한 부동산 관련 사이트 목록이 추가될 예정입니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상담 섹션 -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>상담 문의</h2>
+                <p>건물 매매, 임대에 관련된 모든 질문에<br>성심성의껏 답변해 드리겠습니다</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form id="consultForm">
+                        <div class="form-group">
+                            <label for="propertyType">매물종류</label>
+                            <select id="propertyType" name="propertyType" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="house">단독/다가구</option>
+                                <option value="mixed">상가주택</option>
+                                <option value="commercial">상업용건물</option>
+                                <option value="land">재건축/토지</option>
+                                <option value="sell">매물접수</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">연락처</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="010-0000-0000" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="이메일 주소">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">문의사항</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">상담 신청하기</button>
+                        
+                        <!-- 제출 상태 메시지 -->
+                        <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>문의 방법</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>전화 문의</h4>
+                            <p>02-3471-7377</p>
+                            <p>평일 9:00 ~ 18:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-text">
+                            <h4>모바일</h4>
+                            <p>010-4019-6509</p>
+                            <p>언제든지 연락 가능합니다</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            <h4>이메일</h4>
+                            <p>cs21.jeon@gmail.com</p>
+                            <p>24시간 내에 답변 드립니다</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-icon">🏢</div>
+                        <div class="contact-text">
+                            <h4>방문 상담</h4>
+                            <p>서울시 동작구 사당동 272-26</p>
+                            <p>남성역센트럴뷰 1층</p>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+        </div>
+    </section>
 
     <!-- 위치 섹션 -->
     <section id="location">
@@ -1915,11 +1870,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- 푸터 영역 (바로가기 섹션 삭제) -->
+    <!-- 푸터 영역 -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1951,78 +1905,197 @@
                         </a>
                     </div>
                 </div>
+                
+                <!-- 푸터의 바로가기 섹션 삭제 (모바일에서는 display:none으로 처리) -->
+                <div class="footer-links">
+                    <h3>바로가기</h3>
+                    <ul>
+                        <li><a href="#welcome">홈</a></li>
+                        <li><a href="#properties">매물정보</a></li>
+                        <li><a href="#contact">커뮤니티</a></li>
+                    </ul>
+                </div>
             </div>
             
             <div class="copyright">
                 &copy; 2024 금토끼부동산중개. All rights reserved. <br> 대표: 전창성 | 사업자등록번호: 520-41-01170 <br> 중개사무소등록번호: 11590-2024-00048
             </div>
         </div>
-    </footer>    
+    </footer>
 
-<!-- 자바스크립트 -->
+    <!-- 모바일 하단 네비게이션 -->
+    <div class="mobile-nav">
+        <a href="#welcome" class="mobile-nav-item">
+            <div class="mobile-nav-icon">🏠</div>
+            <div class="mobile-nav-text">홈</div>
+        </a>
+        <a href="#properties" class="mobile-nav-item">
+            <div class="mobile-nav-icon">🏢</div>
+            <div class="mobile-nav-text">매물정보</div>
+        </a>
+        <a href="#contact" class="mobile-nav-item">
+            <div class="mobile-nav-icon">💬</div>
+            <div class="mobile-nav-text">커뮤니티</div>
+        </a>
+    </div>
+
+    <!-- 모달 배경 -->
+    <div class="modal-background" id="modalBackground" style="display: none;">
+        <!-- 모달 콘텐츠는 JavaScript에서 동적으로 생성됩니다 -->
+    </div>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal-background" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-close" onclick="closeConsultModal()">&times;</div>
+          <div class="modal-body">
+            <h2 class="modal-title">상담 문의</h2>
+            <div class="contact-form">
+              <form id="consultForm">
+                <div class="form-group">
+                  <label for="propertyType">매물종류</label>
+                  <select id="modalpropertyType" name="propertyType" class="form-control" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="house">단독/다가구</option>
+                    <option value="mixed">상가주택</option>
+                    <option value="commercial">상업용건물</option>
+                    <option value="land">재건축/토지</option>
+                    <option value="sell">매물접수</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="phone">연락처</label>
+                  <input type="tel" id="modalphone" name="phone" class="form-control" placeholder="010-0000-0000" required>
+                </div>
+      
+                <div class="form-group">
+                  <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
+                  <input type="email" id="modalemail" name="email" class="form-control" placeholder="abc@abc.com">
+                </div>
+      
+                <div class="form-group">
+                  <label for="message">문의사항</label>
+                  <textarea id="modalmessage" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                </div>
+      
+                <!-- 상담 신청 버튼 -->
+                <button type="submit" class="btn btn-contact btn-block">상담 신청하기</button>
+      
+                <!-- 제출 상태 메시지 -->
+                <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- 자바스크립트 -->
     <script>
-        // 모바일 메뉴 토글
         document.addEventListener('DOMContentLoaded', function() {
+            // 모바일 메뉴 관련 요소
             const menuToggle = document.querySelector('.menu-toggle');
-            const mainMenu = document.querySelector('.main-menu');
+            const nav = document.querySelector('nav');
+            const menuOverlay = document.querySelector('.menu-overlay');
+            const mainMenuItems = document.querySelectorAll('.main-menu > li');
             
+            // 고정 메뉴 요소
+            const fixedMenu = document.querySelector('.fixed-menu');
+            
+            // 모바일 하단 네비게이션
+            const mobileNav = document.querySelector('.mobile-nav');
+            
+            // 모바일 메뉴 토글
             menuToggle.addEventListener('click', function() {
-                mainMenu.classList.toggle('active');
+                nav.classList.toggle('open');
+                menuOverlay.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
             });
             
-            // 모바일 메뉴 서브메뉴 토글
-            const menuItems = document.querySelectorAll('.main-menu > li');
+            // 오버레이 클릭 시 메뉴 닫기
+            menuOverlay.addEventListener('click', function() {
+                nav.classList.remove('open');
+                menuOverlay.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            });
             
-            menuItems.forEach(item => {
+            // 모바일에서 메인 메뉴 클릭 시 서브메뉴 토글
+            mainMenuItems.forEach(item => {
                 item.addEventListener('click', function(e) {
-                    // 서브메뉴가 있는 항목만 처리
-                    if (window.innerWidth <= 768 && item.querySelector('.sub-menu')) {
-                        if (e.target === item.querySelector('a')) {
-                            e.preventDefault();
-                            
-                            // 다른 메뉴의 active 상태 제거
-                            menuItems.forEach(otherItem => {
-                                if (otherItem !== item) {
-                                    otherItem.classList.remove('active');
-                                }
-                            });
-                            
-                            // 현재 메뉴 토글
-                            item.classList.toggle('active');
-                        }
+                    if (window.innerWidth <= 768 && e.target === item.querySelector('a')) {
+                        e.preventDefault();
+                        
+                        // 다른 항목의 active 클래스 제거
+                        mainMenuItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('active');
+                            }
+                        });
+                        
+                        // 현재 항목 토글
+                        item.classList.toggle('active');
                     }
                 });
             });
             
-            // 모바일 하단 네비게이션
-            const mobileNav = document.querySelector('.mobile-nav');
+            // 모바일에서 서브메뉴 항목 클릭 시 메뉴 닫기
+            document.querySelectorAll('.sub-menu a').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        nav.classList.remove('open');
+                        menuOverlay.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+            });
+            
+            // 스크롤 이벤트 - 고정 메뉴 표시 및 모바일 네비게이션
             let lastScrollTop = 0;
             let isVisible = false;
+            let fixedMenuVisible = false;
             
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 
-                if (scrollTop > lastScrollTop && scrollTop > 100) {
-                    if (!isVisible) {
-                        mobileNav.classList.add('visible');
-                        isVisible = true;
+                // 모바일 하단 네비게이션 표시/숨김
+                if (window.innerWidth <= 768) {
+                    if (scrollTop > lastScrollTop && scrollTop > 100) {
+                        if (!isVisible) {
+                            mobileNav.classList.add('visible');
+                            isVisible = true;
+                        }
+                    } else if (scrollTop < lastScrollTop) {
+                        if (isVisible) {
+                            mobileNav.classList.remove('visible');
+                            isVisible = false;
+                        }
                     }
-                } else if (scrollTop < lastScrollTop) {
-                    if (isVisible) {
-                        mobileNav.classList.remove('visible');
-                        isVisible = false;
+                }
+                
+                // 데스크톱에서 고정 메뉴 표시/숨김
+                if (window.innerWidth > 768) {
+                    if (scrollTop > 300) {
+                        if (!fixedMenuVisible) {
+                            fixedMenu.classList.add('visible');
+                            fixedMenuVisible = true;
+                        }
+                    } else {
+                        if (fixedMenuVisible) {
+                            fixedMenu.classList.remove('visible');
+                            fixedMenuVisible = false;
+                        }
                     }
                 }
                 
                 lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
                 
-                // 현재 섹션에 따라 활성 메뉴 표시
+                // 현재 섹션에 따라 모바일 네비게이션 활성화
                 updateActiveNavItem();
             });
             
             // 현재 위치에 따른 메뉴 활성화
             function updateActiveNavItem() {
-                const sections = ['welcome', 'properties', 'blog'];
+                const sections = ['welcome', 'properties', 'contact'];
                 const navItems = document.querySelectorAll('.mobile-nav-item');
                 
                 let currentSectionIndex = 0;
@@ -2043,56 +2116,17 @@
             // 부드러운 스크롤
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    // 모바일 서브메뉴에서만 이벤트 처리 방지
-                    if (window.innerWidth <= 768 && 
-                        this.parentElement.parentElement.classList.contains('sub-menu')) {
-                        const targetId = this.getAttribute('href');
-                        if (targetId === '#') return;
-                        
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            e.preventDefault();
-                            window.scrollTo({
-                                top: targetElement.offsetTop,
-                                behavior: 'smooth'
-                            });
-                            
-                            // 모바일 메뉴 닫기
-                            mainMenu.classList.remove('active');
-                        }
-                    } else if (!this.parentElement.querySelector('.sub-menu') || 
-                              window.innerWidth > 768) {
-                        // 서브메뉴가 없거나 데스크톱 모드에서 부드러운 스크롤 적용
-                        const targetId = this.getAttribute('href');
-                        if (targetId === '#') return;
-                        
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            e.preventDefault();
-                            window.scrollTo({
-                                top: targetElement.offsetTop,
-                                behavior: 'smooth'
-                            });
-                            
-                            // 모바일 메뉴 닫기 (모바일 모드인 경우)
-                            if (window.innerWidth <= 768) {
-                                mainMenu.classList.remove('active');
-                            }
-                        }
+                    // 서브메뉴 펼침 방지 제외
+                    if (this.parentElement.querySelector('.sub-menu') && window.innerWidth <= 768) {
+                        return;
                     }
-                });
-            });
-            
-            // 모바일 네비게이션 메뉴 클릭 시 부드러운 스크롤
-            document.querySelectorAll('.mobile-nav-item').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
                     
                     const targetId = this.getAttribute('href');
-                    if(targetId === '#') return;
+                    if (targetId === '#') return;
                     
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
+                    const targetElement = document.getElementById(targetId.substring(1));
+                    if (targetElement) {
+                        e.preventDefault();
                         window.scrollTo({
                             top: targetElement.offsetTop,
                             behavior: 'smooth'
@@ -2101,10 +2135,101 @@
                 });
             });
             
-            // 페이지 로드 시 바로 실행
+            // 지도 전체화면 토글
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            if (fullscreenBtn) {
+                const mapContainer = document.querySelector('.map-container');
+                const expandIcon = fullscreenBtn.querySelector('.expand-icon');
+                const collapseIcon = fullscreenBtn.querySelector('.collapse-icon');
+                const expandText = fullscreenBtn.querySelector('.expand-text');
+                const collapseText = fullscreenBtn.querySelector('.collapse-text');
+                
+                fullscreenBtn.addEventListener('click', function() {
+                    mapContainer.classList.toggle('fullscreen');
+                    document.body.classList.toggle('map-fullscreen');
+                    
+                    if (mapContainer.classList.contains('fullscreen')) {
+                        expandIcon.style.display = 'none';
+                        collapseIcon.style.display = 'block';
+                        expandText.style.display = 'none';
+                        collapseText.style.display = 'block';
+                    } else {
+                        expandIcon.style.display = 'block';
+                        collapseIcon.style.display = 'none';
+                        expandText.style.display = 'block';
+                        collapseText.style.display = 'none';
+                    }
+                });
+            }
+            
+            // ESC 키로 전체 화면 종료
+            document.addEventListener('keydown', function(e) {
+                const mapContainer = document.querySelector('.map-container');
+                if (e.key === 'Escape' && mapContainer && mapContainer.classList.contains('fullscreen')) {
+                    fullscreenBtn.click();
+                }
+            });
+            
+            // 상담 모달 열기/닫기
+            window.openConsultModal = function(address) {
+                const consultModal = document.getElementById('consultModal');
+                consultModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                if (address) {
+                    const messageField = document.getElementById('modalmessage');
+                    messageField.value = `${address}에 대해 상담 문의합니다.`;
+                }
+            };
+            
+            window.closeConsultModal = function() {
+                const consultModal = document.getElementById('consultModal');
+                consultModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+            
+            // 페이지 로드 시 초기화
             updateActiveNavItem();
         });
     </script>
-<script src="/js/pwa-install.js?v=6"></script>
+
+    <!-- 에어테이블 API 스크립트 -->
+    <script src="/js/property-api.js"></script>
+    <script src="/js/inquiry-form.js"></script>
+    <script src="/js/ai-property-search.js"></script>
+    <!-- 서비스 워커 등록 -->
+    <script>
+     if ('serviceWorker' in navigator) {
+       window.addEventListener('load', () => {
+         navigator.serviceWorker.register('/sw.js')
+           .then(registration => {
+             console.log('서비스 워커가 등록되었습니다:', registration.scope);
+             
+             // 업데이트 확인
+             registration.update();
+             
+             // 업데이트 감지 시 페이지 새로고침 유도
+             registration.addEventListener('updatefound', () => {
+               if (registration.installing) {
+                 registration.installing.addEventListener('statechange', () => {
+                   if (registration.waiting) {
+                     if (navigator.serviceWorker.controller) {
+                       // 사용자에게 새로고침 안내 메시지 표시
+                       if (confirm('새 버전이 있습니다. 지금 업데이트하시겠습니까?')) {
+                         window.location.reload();
+                       }
+                     }
+                   }
+                 });
+               }
+             });
+           })
+           .catch(error => {
+             console.log('서비스 워커 등록 실패:', error);
+           });
+       });
+     }
+    </script>
+<script src="/js/pwa-install.js?v=7"></script>
 </body>
 </html>
