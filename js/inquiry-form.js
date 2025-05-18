@@ -78,8 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
         consultForm.addEventListener('submit', function(e) {
             e.preventDefault();
             // 상태 메시지 초기화
-            closeConsultModal();  // 상담모달 닫기
             formStatus.style.display = 'none';
+            // closeConsultModal 함수가 정의되어 있는지 확인
+            if (typeof closeConsultModal === 'function') {
+                closeConsultModal();  // 상담모달 닫기
+            }
             privacyModal.style.display = 'block';
         });
         
@@ -106,6 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = form.querySelector('[name="email"]')?.value || '';
             const message = form.querySelector('[name="message"]')?.value || '';
             
+            // 폼 유효성 검사
+            if (!propertyType || !phone || !message) {
+                formStatus.textContent = '필수 입력 항목을 모두 입력해 주세요.';
+                formStatus.style.color = 'red';
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+                return;
+            }
+            
             // 서버에 보낼 데이터
             const data = {
                 propertyType: propertyType,
@@ -113,6 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 email: email,
                 message: message
             };
+            
+            console.log('전송할 데이터:', data); // 디버깅용
             
             try {
                 // 서버리스 함수 호출
@@ -130,7 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('서버 응답 데이터:', responseData);
                 
                 if (!response.ok) {
-                    throw new Error(`서버 요청 실패: ${response.status}`);
+                    const errorMsg = responseData.error || responseData.details || '알 수 없는 오류가 발생했습니다.';
+                    throw new Error(`서버 요청 실패: ${errorMsg}`);
                 }
                 
                 // 폼 초기화
@@ -145,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('상담 접수 실패:', error);
                 // 오류 메시지
-                formStatus.textContent = '상담 접수 중 오류가 발생했습니다. 전화로 문의해 주세요.';
+                formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
                 formStatus.style.color = 'red';
             } finally {
                 // 버튼 상태 복원
