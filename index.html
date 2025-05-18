@@ -899,7 +899,7 @@
     <section id="welcome">
         <div class="container">
             <h2>수익형 부동산 전문<br>금토끼부동산중개</h2>
-            <p>트렌드를 잘 아는 부동산 전문가와 함께<br>최적의 솔루션을 찾아보세요.</p>
+            <p>트렌드를 잘 아는 부동산 전문가와 함께<br>최적의 솔루션을 찾아보세요</p>
             <a href="#map-section" class="btn">모든 매물 지도로 보기</a>
         </div>
     </section>
@@ -923,14 +923,14 @@
                         <ul class="career-list">
                             <li><span class="year">2024.</span> [민간]상업용부동산분석사 취득</li>
                             <li><span class="year">2023.</span> 제33회 공인중개사자격증 취득</li>
-                            <li><span class="year">2006-2022.</span> 삼성전자 반도체 공정개발 (수석연구원)</li>
+                            <li><span class="year">2006-2022.</span> 삼성전자 반도체 공정개발 (수석연구원 퇴사)</li>
                             <li><span class="year">2002.</span> 연세대학교 전기전자공학과 석사학위 취득</li>
                         </ul>
                     </div>
                     
                     <div class="career-item">
                         <h4>지향점</h4>
-                        <p>AI를 적극 활용한 차별화된<br>부동산 중개의 길을 열고자 합니다.</p>
+                        <p>AI를 적극 활용한 차별화된 부동산 중개의 길을 열고자 합니다.</p>
                     </div>
                     
                     <div class="career-item">
@@ -961,18 +961,18 @@
             display: flex;
             flex-wrap: wrap;
             align-items: flex-start;
-            gap: 30px;
+            gap: 40px;
             margin-top: 40px;
         }
         
         .profile-image {
             flex: 1;
             min-width: 300px;
+            max-width: 400px; /* 사진 최대 폭 제한 */
         }
         
         .profile-image img {
             width: 100%;
-            max-width: 400px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
@@ -983,7 +983,7 @@
         }
         
         .profile-info h3 {
-            font-size: 24px;
+            font-size: 26px;
             margin-bottom: 25px;
             color: #333;
             border-bottom: 2px solid #e38000;
@@ -997,13 +997,13 @@
         }
         
         .career-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .career-item h4 {
-            font-size: 18px;
+            font-size: 20px;
             color: #444;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             position: relative;
             padding-left: 15px;
         }
@@ -1023,13 +1023,15 @@
         .career-list {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 0 20px; /* 들여쓰기 추가 */
         }
         
         .career-list li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             padding-left: 20px;
             position: relative;
+            font-size: 16px; /* 글씨 크기 증가 */
+            line-height: 1.5;
         }
         
         .career-list li:before {
@@ -1048,13 +1050,15 @@
         .tool-list {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin: 0 0 0 20px; /* 들여쓰기 추가 */
         }
         
         .tool-list li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             padding-left: 20px;
             position: relative;
+            font-size: 16px; /* 글씨 크기 증가 */
+            line-height: 1.5;
         }
         
         .tool-list li:before {
@@ -1068,6 +1072,13 @@
             color: #e38000;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .profile-info p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-left: 20px; /* 들여쓰기 추가 */
         }
         
         .profile-info a:hover {
@@ -1088,6 +1099,21 @@
             
             .profile-image img {
                 max-width: 300px;
+            }
+            
+            /* 모바일에서 글씨 크기 증가 */
+            .career-list li, 
+            .tool-list li,
+            .profile-info p {
+                font-size: 18px;
+            }
+            
+            .career-item h4 {
+                font-size: 22px;
+            }
+            
+            .profile-info h3 {
+                font-size: 28px;
             }
         }
     </style>
@@ -2268,6 +2294,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=6"></script>
+<script src="/js/pwa-install.js?v=7"></script>
 </body>
 </html>
