@@ -1815,6 +1815,200 @@
     </div>
 </section>
 
+<!-- 부동산 관련 사이트 섹션 -->
+<section id="real-estate-links">
+    <div class="container">
+        <div class="section-title">
+            <h2>부동산 관련 사이트</h2>
+            <p>부동산 정보 확인에<br>유용한 공식 사이트 모음</p>
+        </div>
+        
+        <div class="links-container">
+            <div class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="link-content">
+                    <h3>토지정보</h3>
+                    <p>토지이음</p>
+                    <a href="https://www.eum.go.kr/web/am/amMain.jsp#" target="_blank" class="link-button">사이트 바로가기</a>
+                </div>
+            </div>
+            
+            <div class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="link-content">
+                    <h3>건축물정보</h3>
+                    <p>세움터</p>
+                    <a href="https://www.eais.go.kr/" target="_blank" class="link-button">사이트 바로가기</a>
+                </div>
+            </div>
+            
+            <div class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="link-content">
+                    <h3>공적장부발급</h3>
+                    <p>정부24</p>
+                    <a href="https://www.gov.kr/portal/main/nologin" target="_blank" class="link-button">사이트 바로가기</a>
+                </div>
+            </div>
+            
+            <div class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-tag"></i>
+                </div>
+                <div class="link-content">
+                    <h3>부동산공시가격</h3>
+                    <p>부동산공시가격</p>
+                    <a href="https://www.realtyprice.kr/notice/main/mainBody.htm" target="_blank" class="link-button">사이트 바로가기</a>
+                </div>
+            </div>
+            
+            <div class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="link-content">
+                    <h3>부동산실거래가</h3>
+                    <p>실거래가공개시스템</p>
+                    <a href="https://rt.molit.go.kr/" target="_blank" class="link-button">사이트 바로가기</a>
+                </div>
+            </div>
+            
+            <div class="link-card">
+                <div class="link-icon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="link-content">
+                    <h3>부동산비용</h3>
+                    <p>부동산계산기</p>
+                    <a href="https://xn--989a00af8jnslv3dba.com/" target="_blank" class="link-button">사이트 바로가기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    #real-estate-links {
+        padding: 60px 0;
+        background-color: #f5f5f5;
+    }
+    
+    .links-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+    }
+    
+    .link-card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        overflow: hidden;
+        transition: transform 0.3s, box-shadow 0.3s;
+        display: flex;
+        align-items: center;
+        padding: 25px;
+    }
+    
+    .link-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .link-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(227, 128, 0, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        flex-shrink: 0;
+    }
+    
+    .link-icon i {
+        font-size: 28px;
+        color: #e38000;
+    }
+    
+    .link-content {
+        flex-grow: 1;
+    }
+    
+    .link-content h3 {
+        font-size: 18px;
+        color: #333;
+        margin: 0 0 5px 0;
+    }
+    
+    .link-content p {
+        font-size: 14px;
+        color: #666;
+        margin: 0 0 15px 0;
+    }
+    
+    .link-button {
+        display: inline-block;
+        padding: 8px 20px;
+        background-color: #e38000;
+        color: white;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.3s;
+    }
+    
+    .link-button:hover {
+        background-color: #b36000;
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+        .links-container {
+            grid-template-columns: 1fr;
+        }
+        
+        .link-card {
+            padding: 20px;
+        }
+        
+        .link-icon {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .link-icon i {
+            font-size: 24px;
+        }
+        
+        .link-content h3 {
+            font-size: 20px;
+        }
+        
+        .link-content p {
+            font-size: 16px;
+        }
+        
+        .link-button {
+            font-size: 16px;
+            padding: 10px 20px;
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+
+<!-- FontAwesome 추가 (아이콘 사용을 위함) -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
 <!-- 상담 섹션 -->
 <section id="contact">
     <div class="container">
@@ -2294,6 +2488,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=9"></script>
+<script src="/js/pwa-install.js?v=0"></script>
 </body>
 </html>
