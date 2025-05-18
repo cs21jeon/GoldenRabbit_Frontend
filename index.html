@@ -709,7 +709,8 @@
 <!-- FontAwesome 추가 (아이콘 사용을 위함) -->
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
 
-<!-- 최종 수정된 상담 폼 HTML -->
+
+<!-- 수정된 HTML 및 스크립트 (숨겨진 필드 문제 해결) -->
 <section id="contact">
     <div class="container">
         <div class="section-title">
@@ -718,7 +719,7 @@
         </div>        
         <div class="contact-container">
             <div class="contact-form">
-                <!-- form action과 method 속성을 제거하고 onsubmit 추가 -->
+                <!-- form에서 method와 action 속성 제거하고 onsubmit 추가 -->
                 <form id="consultForm" onsubmit="return false;">
                     <div class="form-group">
                         <label for="propertyType">매물종류</label>
@@ -797,7 +798,7 @@
     </div>
 </section>
 
-<!-- 인라인 스크립트 - 해당 페이지에 직접 포함시킬 수 있음 -->
+<!-- 인라인 스크립트 - 직접 유효성 검사 사용 -->
 <script>
 // HTML이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function() {
@@ -807,6 +808,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const consultForm = document.getElementById('consultForm');
     const formStatus = document.getElementById('formStatus');
     const submitButton = document.getElementById('submitConsult');
+    
+    // 폼 요소 참조
+    const propertyTypeInput = document.getElementById('propertyType');
+    const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
     
     // 요소 존재 확인
     if (!consultForm || !formStatus || !submitButton) {
@@ -819,8 +826,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // 모달 요소 생성 (고유한 ID 사용)
-    const privacyModalId = 'privacyModalConsult2'; // 고유 ID 사용
-    const completionModalId = 'completionModalConsult2'; // 고유 ID 사용
+    const privacyModalId = 'privacyModalDirectSubmit'; // 완전히 고유한 ID 사용
+    const completionModalId = 'completionModalDirectSubmit'; // 완전히 고유한 ID 사용
     
     // 이미 모달이 있는지 확인
     if (!document.getElementById(privacyModalId)) {
@@ -836,12 +843,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>귀하는 개인정보 수집 및 이용에 대한 동의를 거부할 권리가 있으나, 동의 거부 시 상담 서비스 이용이 제한됩니다.</p>
                 </div>
                 <div style="display: flex; align-items: center; margin-bottom: 20px;">
-                    <input type="checkbox" id="privacyCheckConsult2" style="margin-right: 8px;">
-                    <label for="privacyCheckConsult2">개인정보 수집 및 이용에 동의합니다.</label>
+                    <input type="checkbox" id="privacyCheckDirect" style="margin-right: 8px;">
+                    <label for="privacyCheckDirect">개인정보 수집 및 이용에 동의합니다.</label>
                 </div>
                 <div style="text-align: center;">
-                    <button id="agreeBtnConsult2" disabled style="padding: 8px 16px; background-color: #ccc; color: white; border: none; border-radius: 4px; cursor: not-allowed; margin-right: 10px;">동의하기</button>
-                    <button id="cancelBtnConsult2" style="padding: 8px 16px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">취소</button>
+                    <button id="agreeBtnDirect" disabled style="padding: 8px 16px; background-color: #ccc; color: white; border: none; border-radius: 4px; cursor: not-allowed; margin-right: 10px;">동의하기</button>
+                    <button id="cancelBtnDirect" style="padding: 8px 16px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer;">취소</button>
                 </div>
             </div>
         </div>
@@ -850,7 +857,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
                 <h3 style="margin-top: 0; color: green;">상담접수가 완료되었습니다</h3>
                 <p>빠른시일 내에 회신드리겠습니다.</p>
-                <button id="closeBtnConsult2" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px;">닫기</button>
+                <button id="closeBtnDirect" style="padding: 8px 16px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 15px;">닫기</button>
             </div>
         </div>`;
         
@@ -862,10 +869,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // 모달 및 관련 요소
     const privacyModal = document.getElementById(privacyModalId);
     const completionModal = document.getElementById(completionModalId);
-    const privacyCheck = document.getElementById('privacyCheckConsult2');
-    const agreeBtn = document.getElementById('agreeBtnConsult2');
-    const cancelBtn = document.getElementById('cancelBtnConsult2');
-    const closeBtn = document.getElementById('closeBtnConsult2');
+    const privacyCheck = document.getElementById('privacyCheckDirect');
+    const agreeBtn = document.getElementById('agreeBtnDirect');
+    const cancelBtn = document.getElementById('cancelBtnDirect');
+    const closeBtn = document.getElementById('closeBtnDirect');
     
     if (!privacyModal || !completionModal || !privacyCheck || !agreeBtn || !cancelBtn || !closeBtn) {
         console.error('모달 요소를 찾을 수 없습니다.');
@@ -899,21 +906,44 @@ document.addEventListener('DOMContentLoaded', function() {
         formStatus.style.color = 'green';
     });
     
+    // 폼 수동 유효성 검사 함수
+    function validateForm() {
+        // 필수 필드 확인
+        if (!propertyTypeInput.value) {
+            alert('매물종류를 선택해주세요.');
+            propertyTypeInput.focus();
+            return false;
+        }
+        
+        if (!phoneInput.value) {
+            alert('연락처를 입력해주세요.');
+            phoneInput.focus();
+            return false;
+        }
+        
+        if (!messageInput.value) {
+            alert('문의사항을 입력해주세요.');
+            messageInput.focus();
+            return false;
+        }
+        
+        // 모든 검사 통과
+        return true;
+    }
+    
     // 상담 신청 버튼 클릭 이벤트 핸들러 (직접 바인딩)
-    submitButton.onclick = function(e) {
+    submitButton.addEventListener('click', function(e) {
         console.log('상담 신청 버튼 클릭됨');
         e.preventDefault(); // 기본 동작 방지
         
-        // 폼 유효성 검사
-        if (!consultForm.checkValidity()) {
-            // HTML5 기본 유효성 검사 메시지 표시
-            consultForm.reportValidity();
-            return;
+        // 수동 유효성 검사
+        if (!validateForm()) {
+            return; // 유효성 검사 실패 시 중단
         }
         
         // 개인정보 동의 모달 표시
         privacyModal.style.display = 'block';
-    };
+    });
     
     // 동의하기 버튼 클릭 시 실제 폼 제출 처리
     agreeBtn.addEventListener('click', async function() {
@@ -929,18 +959,12 @@ document.addEventListener('DOMContentLoaded', function() {
         formStatus.textContent = '상담 문의를 접수 중입니다...';
         formStatus.style.color = '#666';
         
-        // 폼 데이터 수집
-        const propertyType = consultForm.querySelector('[name="propertyType"]').value;
-        const phone = consultForm.querySelector('[name="phone"]').value;
-        const email = consultForm.querySelector('[name="email"]').value || '';
-        const message = consultForm.querySelector('[name="message"]').value;
-        
-        // 서버에 보낼 데이터
+        // 폼 데이터 수집 (DOM 요소에서 직접 값을 가져옴)
         const data = {
-            propertyType: propertyType,
-            phone: phone,
-            email: email,
-            message: message
+            propertyType: propertyTypeInput.value,
+            phone: phoneInput.value,
+            email: emailInput.value || '',
+            message: messageInput.value
         };
         
         console.log('전송할 데이터:', data);
@@ -957,7 +981,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             console.log('서버 응답 상태:', response.status);
             
-            // 응답 파싱
             let responseData;
             try {
                 responseData = await response.json();
@@ -1315,6 +1338,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=7"></script>
+<script src="/js/pwa-install.js?v=8"></script>
 </body>
 </html>
