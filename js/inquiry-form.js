@@ -2,6 +2,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const consultForm = document.getElementById('consultForm');
     const formStatus = document.getElementById('formStatus');
+    const submitButton = document.getElementById('submitConsult');
+    
+    if (!consultForm || !formStatus || !submitButton) {
+        console.error('필요한 HTML 요소를 찾을 수 없습니다.');
+        return;
+    }
     
     // 개인정보 동의 모달 요소 생성 및 추가
     const modalHTML = `
@@ -73,100 +79,111 @@ document.addEventListener('DOMContentLoaded', function() {
         formStatus.style.color = 'green';
     });
     
-    if (consultForm) {
-        // 폼 제출 시 개인정보 동의 모달 표시
-        consultForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // 상태 메시지 초기화
-            formStatus.style.display = 'none';
-            // closeConsultModal 함수가 정의되어 있는지 확인
-            if (typeof closeConsultModal === 'function') {
-                closeConsultModal();  // 상담모달 닫기
+    // 외부에서 상담 모달을 열 수 있도록 전역 함수 추가
+    window.openConsultModal = function(address) {
+        if (consultForm) {
+            const messageField = consultForm.querySelector('[name="message"]');
+            if (messageField && address) {
+                messageField.value = `${address} 매물에 관심있습니다.`;
             }
-            privacyModal.style.display = 'block';
-        });
+            
+            // 페이지에 consultModal이 있다면 표시
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                consultModal.style.display = 'block';
+            }
+        }
+    };
+    
+    // 외부에서 상담 모달을 닫을 수 있도록 전역 함수 추가
+    window.closeConsultModal = function() {
+        const consultModal = document.getElementById('consultModal');
+        if (consultModal) {
+            consultModal.style.display = 'none';
+        }
+    };
+    
+    // 상담 신청 버튼 클릭 이벤트 핸들러
+    submitButton.addEventListener('click', function() {
+        // 폼 유효성 검사
+        if (!consultForm.checkValidity()) {
+            // HTML5 기본 유효성 검사 메시지 표시
+            consultForm.reportValidity();
+            return;
+        }
         
-        // 동의하기 버튼 클릭 시 실제 폼 제출 처리
-        agreeBtn.addEventListener('click', async function() {
-            privacyModal.style.display = 'none'; // 동의 모달 닫기
+        // 개인정보 동의 모달 표시
+        privacyModal.style.display = 'block';
+    });
+    
+    // 동의하기 버튼 클릭 시 실제 폼 제출 처리
+    agreeBtn.addEventListener('click', async function() {
+        privacyModal.style.display = 'none'; // 동의 모달 닫기
+        
+        // 로딩 표시
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = '접수 중...';
+        
+        // 상태 메시지 표시
+        formStatus.style.display = 'block';
+        formStatus.textContent = '상담 문의를 접수 중입니다...';
+        formStatus.style.color = '#666';
+        
+        // 폼 데이터 수집
+        const propertyType = consultForm.querySelector('[name="propertyType"]')?.value || '';
+        const phone = consultForm.querySelector('[name="phone"]')?.value || '';
+        const email = consultForm.querySelector('[name="email"]')?.value || '';
+        const message = consultForm.querySelector('[name="message"]')?.value || '';
+        
+        // 서버에 보낼 데이터
+        const data = {
+            propertyType: propertyType,
+            phone: phone,
+            email: email,
+            message: message
+        };
+        
+        console.log('전송할 데이터:', data); // 디버깅용
+        
+        try {
+            // 서버리스 함수 호출
+            const response = await fetch('/api/submit-inquiry', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
             
-            // 로딩 표시
-            const submitButton = consultForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            submitButton.disabled = true;
-            submitButton.textContent = '접수 중...';
+            // 응답 로깅 (디버깅용)
+            console.log('서버 응답 상태:', response.status);
+            const responseData = await response.json();
+            console.log('서버 응답 데이터:', responseData);
             
-            // 상태 메시지 표시
-            formStatus.style.display = 'block';
-            formStatus.textContent = '상담 문의를 접수 중입니다...';
-            formStatus.style.color = '#666';
-            
-            // 폼 데이터 수집
-            const form = consultForm; // 현재 제출 중인 consultForm
-
-            const propertyType = form.querySelector('[name="propertyType"]')?.value || '';
-            const phone = form.querySelector('[name="phone"]')?.value || '';
-            const email = form.querySelector('[name="email"]')?.value || '';
-            const message = form.querySelector('[name="message"]')?.value || '';
-            
-            // 폼 유효성 검사
-            if (!propertyType || !phone || !message) {
-                formStatus.textContent = '필수 입력 항목을 모두 입력해 주세요.';
-                formStatus.style.color = 'red';
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-                return;
+            if (!response.ok) {
+                const errorMsg = responseData.error || responseData.details || '알 수 없는 오류가 발생했습니다.';
+                throw new Error(`서버 요청 실패: ${errorMsg}`);
             }
             
-            // 서버에 보낼 데이터
-            const data = {
-                propertyType: propertyType,
-                phone: phone,
-                email: email,
-                message: message
-            };
+            // 폼 초기화
+            consultForm.reset();
             
-            console.log('전송할 데이터:', data); // 디버깅용
+            // 상태 메시지 숨기기 (팝업으로 대체)
+            formStatus.style.display = 'none';
             
-            try {
-                // 서버리스 함수 호출
-                const response = await fetch('/api/submit-inquiry', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                // 응답 로깅 (디버깅용)
-                console.log('서버 응답 상태:', response.status);
-                const responseData = await response.json();
-                console.log('서버 응답 데이터:', responseData);
-                
-                if (!response.ok) {
-                    const errorMsg = responseData.error || responseData.details || '알 수 없는 오류가 발생했습니다.';
-                    throw new Error(`서버 요청 실패: ${errorMsg}`);
-                }
-                
-                // 폼 초기화
-                consultForm.reset();
-                
-                // 상태 메시지 숨기기 (팝업으로 대체)
-                formStatus.style.display = 'none';
-                
-                // 완료 모달 표시
-                completionModal.style.display = 'block';
-                
-            } catch (error) {
-                console.error('상담 접수 실패:', error);
-                // 오류 메시지
-                formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
-                formStatus.style.color = 'red';
-            } finally {
-                // 버튼 상태 복원
-                submitButton.disabled = false;
-                submitButton.textContent = originalButtonText;
-            }
-        });
-    }
+            // 완료 모달 표시
+            completionModal.style.display = 'block';
+            
+        } catch (error) {
+            console.error('상담 접수 실패:', error);
+            // 오류 메시지
+            formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
+            formStatus.style.color = 'red';
+        } finally {
+            // 버튼 상태 복원
+            submitButton.disabled = false;
+            submitButton.textContent = originalButtonText;
+        }
+    });
 });
