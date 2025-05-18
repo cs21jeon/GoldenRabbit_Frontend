@@ -223,6 +223,13 @@ nav ul li a:hover {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
+/* 기존 그리드 클래스 유지 (JavaScript 호환성) */
+.properties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
 /* 인사말 섹션 */
 #greeting {
     padding: 60px 0;
