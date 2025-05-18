@@ -21,7 +21,7 @@ async function fetchPropertiesFromAirtable() {
     const errorDiv = document.createElement('div');
     errorDiv.className = 'error-message';
     errorDiv.textContent = `데이터 불러오기 실패: ${error.message}`;
-    const propertiesGrid = document.querySelector('.properties-grid');
+    const propertiesGrid = document.querySelector('#recommended-properties .properties-grid');
     if (propertiesGrid) {
       propertiesGrid.innerHTML = '';
       propertiesGrid.appendChild(errorDiv);
@@ -31,7 +31,7 @@ async function fetchPropertiesFromAirtable() {
 }
 
 function renderProperties(properties) {
-  const propertiesGrid = document.querySelector('.properties-grid');
+  const propertiesGrid = document.querySelector('#recommended-properties .properties-grid');
   propertiesGrid.innerHTML = '';
 
   if (!Array.isArray(properties) || properties.length === 0) {
@@ -299,7 +299,7 @@ function registerImageClickListeners() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-  const section = document.getElementById('properties');
+  const section = document.getElementById('recommended-properties');
   if (!section) return;
 
   let propertiesGrid = section.querySelector('.properties-grid');

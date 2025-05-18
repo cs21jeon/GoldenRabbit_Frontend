@@ -127,43 +127,43 @@
             color: #666;
         }
         
-	/* 환영 섹션 */
-	#welcome {
-	    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/building_image.png') no-repeat center center/cover;
-	    color: white;
-	    text-align: center;
-	    padding: 60px 0;
-	}
-        
-        #welcome h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            word-break: keep-all;
-            white-space: normal;
-            text-wrap: balance;
-        }
-        
-        #welcome p {
-            font-size: 18px;
-            max-width: 800px;
-            margin: 0 auto 30px;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--main-color);
+        /* 환영 섹션 */
+        #welcome {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/images/building_image.png') no-repeat center center/cover;
             color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            transition: background-color 0.3s;
+            text-align: center;
+            padding: 60px 0;
         }
-        
-        .btn:hover {
-            background-color: var(--dark-main-color);
-        }
-        
+            
+            #welcome h2 {
+                font-size: 36px;
+                margin-bottom: 20px;
+                word-break: keep-all;
+                white-space: normal;
+                text-wrap: balance;
+            }
+            
+            #welcome p {
+                font-size: 18px;
+                max-width: 800px;
+                margin: 0 auto 30px;
+            }
+            
+            .btn {
+                display: inline-block;
+                padding: 12px 30px;
+                background-color: var(--main-color);
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                font-weight: 500;
+                transition: background-color 0.3s;
+            }
+            
+            .btn:hover {
+                background-color: var(--dark-main-color);
+            }
+            
         /* 블로그 섹션 */
         /* 블로그 카드 전체 묶음 */
         .blog-container {
@@ -344,7 +344,7 @@
             background-color: white;
             width: 70%;
             max-width: 800px;
-	    max-height: 80vh;
+        max-height: 80vh;
             border-radius: 8px;
             overflow: auto;
             position: relative;
@@ -429,169 +429,170 @@
             margin-bottom: 30px;
         }
 
-	/* 지도 컨트롤 버튼 - 텍스트 포함 버전 */
-	.map-control-btn {
-	    position: absolute;
-	    top: 10px;
-	    right: 60px;
-	    z-index: 10;
-	    background: white;
-	    border: none;
-	    border-radius: 4px;
-	    padding: 0 12px;
-	    height: 36px;
-	    font-size: 14px;
-	    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-	    cursor: pointer;
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    opacity: 0.9;
-	    transition: opacity 0.3s;
-	}
-	
-	.map-control-btn:hover {
-	    opacity: 1;
-	    background-color: #f8f8f8;
-	}
-	
-	.map-control-btn .expand-icon,
-	.map-control-btn .collapse-icon {
-	    margin-right: 6px;
-	    font-size: 18px;
-	}
-	
-	.map-control-btn .btn-text {
-	    font-weight: 500;
-	}
-	
-	/* 전체 화면 모드 스타일 */
-	.map-container.fullscreen {
-	  position: fixed !important;
-	  top: 0 !important;
-	  left: 0 !important;
-	  width: 100vw !important;
-	  height: 100vh !important;
-	  z-index: 9999 !important;
-	  margin: 0 !important;
-	  padding: 0 !important;
-	  border-radius: 0 !important;
-	  background: white !important;
-	}
-
-	.map-container.fullscreen iframe {
-	  width: 100% !important;
-	  height: 100% !important;
-	  display: block !important;
-	}
-
-    /* AI 매물 검색 섹션 스타일 */
-    #ai-search {
-        background-color: var(--very-light-main-color);
-        padding: 60px 0;
-    }
-
-    .ai-search-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-    }
-
-    .ai-search-form {
-        background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    }
-
-    .ai-search-results {
-        background-color: white;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-    }
-
-    .ai-search-results h3 {
-        color: var(--main-color);
-        margin-bottom: 20px;
-        font-size: 22px;
-    }
-
-    .ai-loading {
-        text-align: center;
-        padding: 30px;
-    }
-
-    .loading-spinner {
-        width: 50px;
-        height: 50px;
-        border: 5px solid #f3f3f3;
-        border-top: 5px solid var(--main-color);
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 20px;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    .recommendation-item {
-        padding: 20px;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 15px;
-    }
-
-    .recommendation-item:last-child {
-        border-bottom: none;
-        margin-bottom: 0;
-    }
-
-    .recommendation-title {
-        font-size: 18px;
-        font-weight: 700;
-        color: var(--main-color);
-        margin-bottom: 10px;
-    }
-
-    .recommendation-price {
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    .recommendation-reason {
-        color: #666;
-        font-size: 14px;
-        line-height: 1.6;
-    }
-
-    .view-property-btn {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 8px 15px;
-        background-color: var(--light-main-color);
-        color: white;
-        border-radius: 4px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-
-    .view-property-btn:hover {
-        background-color: var(--main-color);
-    }
-
-    /* 반응형 디자인 */
-    @media (max-width: 768px) {
-        .ai-search-container {
-            grid-template-columns: 1fr;
+        /* 지도 컨트롤 버튼 - 텍스트 포함 버전 */
+        .map-control-btn {
+            position: absolute;
+            top: 10px;
+            right: 60px;
+            z-index: 10;
+            background: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0 12px;
+            height: 36px;
+            font-size: 14px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.9;
+            transition: opacity 0.3s;
         }
-    }
+        
+        .map-control-btn:hover {
+            opacity: 1;
+            background-color: #f8f8f8;
+        }
+        
+        .map-control-btn .expand-icon,
+        .map-control-btn .collapse-icon {
+            margin-right: 6px;
+            font-size: 18px;
+        }
+        
+        .map-control-btn .btn-text {
+            font-weight: 500;
+        }
+        
+        /* 전체 화면 모드 스타일 */
+        .map-container.fullscreen {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 9999 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            background: white !important;
+        }
 
-	/* 스크롤 방지 */
-	body.map-fullscreen {
-	  overflow: hidden !important;
-	}
+        .map-container.fullscreen iframe {
+            width: 100% !important;
+            height: 100% !important;
+            display: block !important;
+        }
+
+        /* AI 매물 검색 섹션 스타일 */
+        #ai-search {
+            background-color: var(--very-light-main-color);
+            padding: 60px 0;
+        }
+
+        .ai-search-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .ai-search-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .ai-search-results {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .ai-search-results h3 {
+            color: var(--main-color);
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .ai-loading {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--main-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .recommendation-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .recommendation-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .recommendation-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--main-color);
+            margin-bottom: 10px;
+        }
+
+        .recommendation-price {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-reason {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .view-property-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            background-color: var(--light-main-color);
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .view-property-btn:hover {
+            background-color: var(--main-color);
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .ai-search-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 스크롤 방지 */
+        body.map-fullscreen {
+            overflow: hidden !important;
+        }
+
         /* 상담 섹션 */
         #contact {
             background-color: #f9f9f9;
@@ -914,7 +915,6 @@
             </div>
         </div>
     </section>
-
     <script>
         document.addEventListener('DOMContentLoaded', async function () {
             const blogContainer = document.getElementById('blogContainer');
@@ -996,26 +996,28 @@
         });
     </script>
 
-    <!-- 매물 섹션 -->
-    <section id="properties">
+    <!-- 1. 추천 매물 섹션 -->
+    <section id="recommended-properties">
         <div class="container">    
             <div class="section-title">
                 <h2>추천 매물</h2>
                 <p>금토끼부동산중개에서 엄선한<br>우수 매물을 소개합니다</p>
-            </div>
-        
+            </div>        
             <!-- 매물 그리드 - JavaScript로 동적 생성됩니다 -->
             <div class="properties-grid">
                 <div class="loading-message">매물 정보를 불러오는 중입니다...</div>
             </div>
-        
-            <!-- 지도 섹션 -->
-            <div id="map-section" style="margin-top: 60px;">
-                <div class="section-title">
+        </div>
+    </section>
+
+    <!-- 2. 지도보기 섹션 -->
+    <section id="map-view">
+        <div class="container">
+            <div class="section-title">
                 <h2>매물 지도</h2>
                 <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
-                </div>
-                <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
+            </div>
+            <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
                 <!-- 전체 화면 버튼 (텍스트 포함) -->
                 <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
                     <span class="expand-icon">⛶</span>
@@ -1025,397 +1027,399 @@
                 </button>
         
                 <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 매물검색 섹션 -->
+    <section id="property-search">
+        <div class="container">
+            <div class="section-title">
+                <h2>조건 검색</h2>
+                <p>희망조건을 조회하고<br>지도로 확인하세요</p>
+            </div>
+            
+            <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                <form id="mapSearchForm">
+                    <div class="search-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        
+                        <!-- 매가 조건 -->
+                        <div class="search-item">
+                            <label>매가</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                <select id="priceCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 실투자금 조건 -->
+                        <div class="search-item">
+                            <label>실투자금</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                <select id="investmentCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 수익률 조건 -->
+                        <div class="search-item">
+                            <label>수익률</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
+                                <select id="yieldCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 토지면적 조건 -->
+                        <div class="search-item">
+                            <label>토지면적</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
+                                <select id="areaCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 사용승인일 조건 -->
+                        <div class="search-item">
+                            <label>사용승인일</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
+                                <select id="approvalCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="before">이전</option>
+                                    <option value="after">이후</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
+                        <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 검색 결과 표시 영역 -->
+            <div id="searchResults" style="margin-top: 20px; display: none;">
+                <div id="searchStatus" style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
+                    <strong id="searchStatusText">조건에 맞는 매물을 검색중입니다...</strong>
                 </div>
-
-                <!-- 매물 검색 필터 섹션 -->
-                <div class="map-search-section" style="margin-bottom: 20px;">
-                    <div class="section-title">
-                        <h2>조건 검색</h2>
-                        <p>희망조건을 조회하고<br>지도로 확인하세요</p>
+                
+                <!-- 검색 결과 지도 컨테이너 - 고유 클래스 사용 -->
+                <div id="searchMapContainer" class="search-map-container" style="width: 100%; height: 500px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                    <div class="loading-message" style="text-align: center; padding: 150px 20px;">
+                        지도를 불러오는 중입니다...
                     </div>
+                </div>
+            </div>
+
+            <style>
+            /* 기존 지도 컨테이너와 충돌 방지를 위한 검색 결과 전용 스타일 */
+            .search-map-container {
+                width: 100% !important;
+                position: relative !important;
+                overflow: visible !important; /* hidden에서 visible로 변경 */
+            }
+
+            /* 모바일에서 검색 결과 지도 최적화 */
+            @media (max-width: 768px) {
+                .search-map-container {
+                    height: 400px !important;
+                    min-height: 350px !important;
+                }
+                
+                /* folium 생성 div 스타일 강제 적용 */
+                .search-map-container > div {
+                    width: 100% !important;
+                    height: 100% !important;
+                    position: relative !important;
+                }
+                
+                /* iframe 크기 강제 적용 */
+                .search-map-container iframe {
+                    width: 100% !important;
+                    height: 100% !important;
+                    position: absolute !important;
+                    top: 0 !important;
+                    left: 0 !important;
+                }
+                
+                /* folium 내부 div들에 대한 스타일 */
+                .search-map-container div[style*="width:100%"] {
+                    height: 100% !important;
+                }
+                
+                .search-map-container div[style*="position:relative"] {
+                    height: 100% !important;
+                }
+            }
+
+            /* 데스크톱 */
+            @media (min-width: 769px) {
+                .search-map-container {
+                    height: 500px !important;
+                }
+            }
+
+            /* 검색 결과 지도 관련 추가 스타일 */
+            #searchMapContainer * {
+                box-sizing: border-box !important;
+            }
+
+            /* 로딩 메시지 스타일 */
+            .search-map-container .loading-message {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                padding: 20px;
+            }
+            </style>
+
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const mapSearchForm = document.getElementById('mapSearchForm');
+                const resetButton = document.getElementById('resetSearch');
+                const searchResults = document.getElementById('searchResults');
+                const searchStatus = document.getElementById('searchStatus');
+                const searchStatusText = document.getElementById('searchStatusText');
+                const searchMapContainer = document.getElementById('searchMapContainer');
+                
+                console.log('검색 폼 초기화');
+                
+                if (!mapSearchForm) {
+                    console.error('검색 폼을 찾을 수 없습니다!');
+                    return;
+                }
+                
+                // 검색 폼 제출 처리
+                mapSearchForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    console.log('검색 폼 제출됨');
                     
-                    <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
-                        <form id="mapSearchForm">
-                            <div class="search-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
-                                
-                                <!-- 매가 조건 -->
-                                <div class="search-item">
-                                    <label>매가</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
-                                        <select id="priceCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 실투자금 조건 -->
-                                <div class="search-item">
-                                    <label>실투자금</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
-                                        <select id="investmentCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 수익률 조건 -->
-                                <div class="search-item">
-                                    <label>수익률</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
-                                        <select id="yieldCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 토지면적 조건 -->
-                                <div class="search-item">
-                                    <label>토지면적</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
-                                        <select id="areaCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="above">이상</option>
-                                            <option value="below">이하</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <!-- 사용승인일 조건 -->
-                                <div class="search-item">
-                                    <label>사용승인일</label>
-                                    <div style="display: flex; gap: 10px;">
-                                        <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
-                                        <select id="approvalCondition" class="form-control" style="width: 80px;">
-                                            <option value="all">전체</option>
-                                            <option value="before">이전</option>
-                                            <option value="after">이후</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 20px;">
-                                <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
-                                <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
-                            </div>
-                        </form>
-                    </div>
+                    // 검색 조건 수집
+                    const searchData = {
+                        price_value: document.getElementById('priceValue').value,
+                        price_condition: document.getElementById('priceCondition').value,
+                        investment_value: document.getElementById('investmentValue').value,
+                        investment_condition: document.getElementById('investmentCondition').value,
+                        yield_value: document.getElementById('yieldValue').value,
+                        yield_condition: document.getElementById('yieldCondition').value,
+                        area_value: document.getElementById('areaValue').value,
+                        area_condition: document.getElementById('areaCondition').value,
+                        approval_date: document.getElementById('approvalDate').value,
+                        approval_condition: document.getElementById('approvalCondition').value
+                    };
                     
-                    <!-- 검색 결과 표시 영역 부분 수정 -->
-                    <div id="searchResults" style="margin-top: 20px; display: none;">
-                        <div id="searchStatus" style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
-                            <strong id="searchStatusText">조건에 맞는 매물을 검색중입니다...</strong>
-                        </div>
+                    console.log('검색 조건:', searchData);
+                    
+                    // 검색 시작 - 로딩 메시지 표시
+                    searchResults.style.display = 'block';
+                    searchStatusText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 조건에 맞는 매물을 검색중입니다...';
+                    searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
+                    
+                    let response;
+                    
+                    try {
+                        console.log('API 호출 시작');
                         
-                        <!-- 검색 결과 지도 컨테이너 - 고유 클래스 사용 -->
-                        <div id="searchMapContainer" class="search-map-container" style="width: 100%; height: 500px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
-                            <div class="loading-message" style="text-align: center; padding: 150px 20px;">
-                                지도를 불러오는 중입니다...
-                            </div>
-                        </div>
-                    </div>
-
-                    <style>
-                    /* 기존 지도 컨테이너와 충돌 방지를 위한 검색 결과 전용 스타일 */
-                    .search-map-container {
-                        width: 100% !important;
-                        position: relative !important;
-                        overflow: visible !important; /* hidden에서 visible로 변경 */
-                    }
-
-                    /* 모바일에서 검색 결과 지도 최적화 */
-                    @media (max-width: 768px) {
-                        .search-map-container {
-                            height: 400px !important;
-                            min-height: 350px !important;
-                        }
-                        
-                        /* folium 생성 div 스타일 강제 적용 */
-                        .search-map-container > div {
-                            width: 100% !important;
-                            height: 100% !important;
-                            position: relative !important;
-                        }
-                        
-                        /* iframe 크기 강제 적용 */
-                        .search-map-container iframe {
-                            width: 100% !important;
-                            height: 100% !important;
-                            position: absolute !important;
-                            top: 0 !important;
-                            left: 0 !important;
-                        }
-                        
-                        /* folium 내부 div들에 대한 스타일 */
-                        .search-map-container div[style*="width:100%"] {
-                            height: 100% !important;
-                        }
-                        
-                        .search-map-container div[style*="position:relative"] {
-                            height: 100% !important;
-                        }
-                    }
-
-                    /* 데스크톱 */
-                    @media (min-width: 769px) {
-                        .search-map-container {
-                            height: 500px !important;
-                        }
-                    }
-
-                    /* 검색 결과 지도 관련 추가 스타일 */
-                    #searchMapContainer * {
-                        box-sizing: border-box !important;
-                    }
-
-                    /* 로딩 메시지 스타일 */
-                    .search-map-container .loading-message {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        text-align: center;
-                        padding: 20px;
-                    }
-                    </style>
-
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const mapSearchForm = document.getElementById('mapSearchForm');
-                        const resetButton = document.getElementById('resetSearch');
-                        const searchResults = document.getElementById('searchResults');
-                        const searchStatus = document.getElementById('searchStatus');
-                        const searchStatusText = document.getElementById('searchStatusText');
-                        const searchMapContainer = document.getElementById('searchMapContainer');
-                        
-                        console.log('검색 폼 초기화');
-                        
-                        if (!mapSearchForm) {
-                            console.error('검색 폼을 찾을 수 없습니다!');
-                            return;
-                        }
-                        
-                        // 검색 폼 제출 처리
-                        mapSearchForm.addEventListener('submit', async function(e) {
-                            e.preventDefault();
-                            console.log('검색 폼 제출됨');
-                            
-                            // 검색 조건 수집
-                            const searchData = {
-                                price_value: document.getElementById('priceValue').value,
-                                price_condition: document.getElementById('priceCondition').value,
-                                investment_value: document.getElementById('investmentValue').value,
-                                investment_condition: document.getElementById('investmentCondition').value,
-                                yield_value: document.getElementById('yieldValue').value,
-                                yield_condition: document.getElementById('yieldCondition').value,
-                                area_value: document.getElementById('areaValue').value,
-                                area_condition: document.getElementById('areaCondition').value,
-                                approval_date: document.getElementById('approvalDate').value,
-                                approval_condition: document.getElementById('approvalCondition').value
-                            };
-                            
-                            console.log('검색 조건:', searchData);
-                            
-                            // 검색 시작 - 로딩 메시지 표시
-                            searchResults.style.display = 'block';
-                            searchStatusText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 조건에 맞는 매물을 검색중입니다...';
-                            searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
-                            
-                            let response;
-                            
-                            try {
-                                console.log('API 호출 시작');
-                                
-                                // API 호출
-                                response = await fetch('/api/search-map', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(searchData)
-                                });
-                                
-                                console.log('API 응답 상태:', response.status);
-                                
-                                if (!response.ok) {
-                                    throw new Error(`검색 요청 실패: ${response.status}`);
-                                }
-                                
-                                const result = await response.json();
-                                console.log('API 응답 데이터:', result);
-                                
-                                // 지도 업데이트
-                                // 검색 완료 후 지도 크기 강제 조정 부분 수정
-                                if (result.map_html) {
-                                    // 지도 HTML 삽입
-                                    searchMapContainer.innerHTML = result.map_html;
-                                    
-                                    // 지도 렌더링 후 크기 강제 조정
-                                    setTimeout(() => {
-                                        // 모든 하위 div와 iframe 찾기
-                                        const innerDivs = searchMapContainer.querySelectorAll('div[style*="width"]');
-                                        const iframes = searchMapContainer.querySelectorAll('iframe');
-                                        
-                                        // 컨테이너 자체 높이 설정
-                                        if (window.innerWidth <= 768) {
-                                            searchMapContainer.style.height = '400px';
-                                            searchMapContainer.style.minHeight = '350px';
-                                            
-                                            // 모든 하위 요소 크기 조정
-                                            innerDivs.forEach(div => {
-                                                div.style.width = '100%';
-                                                div.style.height = '100%';
-                                                if (div.style.position === 'relative') {
-                                                    div.style.position = 'relative';
-                                                }
-                                            });
-                                            
-                                            iframes.forEach(iframe => {
-                                                iframe.style.width = '100%';
-                                                iframe.style.height = '100%';
-                                                iframe.style.position = 'absolute';
-                                                iframe.style.top = '0';
-                                                iframe.style.left = '0';
-                                            });
-                                        }
-                                    }, 100);
-                                }
-                                
-                                // 검색 완료 - 결과 표시
-                                searchStatusText.innerHTML = `검색 결과: <span id="resultCount">${result.count}</span>개의 매물을 찾았습니다.`;
-                                
-                                // 통계 정보 표시 (있을 경우)
-                                if (result.statistics) {
-                                    const stats = result.statistics;
-                                    console.log('검색 통계:', stats);
-                                    
-                                    // 기존 통계 제거
-                                    const existingStats = document.querySelector('.search-stats');
-                                    if (existingStats) {
-                                        existingStats.remove();
-                                    }
-                                    
-                                    const statsHtml = `
-                                        <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
-                                            <strong>검색 통계:</strong><br>
-                                            - 전체 매물: ${stats.total_records}개<br>
-                                            - 상태 필터링: ${stats.status_filtered}개 제외<br>
-                                            - 조건 필터링: ${stats.condition_filtered}개 제외<br>
-                                            - 필터 통과: ${stats.passed_filter}개<br>
-                                            - 지오코딩 실패: ${stats.geocoding_failed}개<br>
-                                            - 지도에 표시: ${stats.markers_added}개
-                                        </div>
-                                    `;
-                                    searchResults.insertAdjacentHTML('beforeend', statsHtml);
-                                }
-                                
-                                // 검색 결과로 스크롤
-                                searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                
-                            } catch (error) {
-                                console.error('검색 오류:', error);
-                                
-                                searchStatusText.innerHTML = '<i class="fas fa-exclamation-circle"></i> 검색 중 오류가 발생했습니다.';
-                                
-                                if (response) {
-                                    try {
-                                        const errorData = await response.json();
-                                        console.error('서버 응답:', errorData);
-                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                            검색 중 오류가 발생했습니다.<br>
-                                            에러: ${errorData.error || '알 수 없는 오류'}<br>
-                                            <small>${errorData.details || ''}</small>
-                                        </div>`;
-                                    } catch (e) {
-                                        const errorText = await response.text();
-                                        console.error('서버 응답 텍스트:', errorText);
-                                        searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
-                                            검색 중 오류가 발생했습니다.<br>
-                                            ${errorText}
-                                        </div>`;
-                                    }
-                                } else {
-                                    searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
-                                }
-                            }
+                        // API 호출
+                        response = await fetch('/api/search-map', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(searchData)
                         });
                         
-                        // 검색 초기화
-                        resetButton.addEventListener('click', function() {
-                            mapSearchForm.reset();
-                            searchResults.style.display = 'none';
-                            searchMapContainer.innerHTML = '';
+                        console.log('API 응답 상태:', response.status);
+                        
+                        if (!response.ok) {
+                            throw new Error(`검색 요청 실패: ${response.status}`);
+                        }
+                        
+                        const result = await response.json();
+                        console.log('API 응답 데이터:', result);
+                        
+                        // 지도 업데이트
+                        // 검색 완료 후 지도 크기 강제 조정 부분 수정
+                        if (result.map_html) {
+                            // 지도 HTML 삽입
+                            searchMapContainer.innerHTML = result.map_html;
                             
-                            // 통계 정보도 제거
+                            // 지도 렌더링 후 크기 강제 조정
+                            setTimeout(() => {
+                                // 모든 하위 div와 iframe 찾기
+                                const innerDivs = searchMapContainer.querySelectorAll('div[style*="width"]');
+                                const iframes = searchMapContainer.querySelectorAll('iframe');
+                                
+                                // 컨테이너 자체 높이 설정
+                                if (window.innerWidth <= 768) {
+                                    searchMapContainer.style.height = '400px';
+                                    searchMapContainer.style.minHeight = '350px';
+                                    
+                                    // 모든 하위 요소 크기 조정
+                                    innerDivs.forEach(div => {
+                                        div.style.width = '100%';
+                                        div.style.height = '100%';
+                                        if (div.style.position === 'relative') {
+                                            div.style.position = 'relative';
+                                        }
+                                    });
+                                    
+                                    iframes.forEach(iframe => {
+                                        iframe.style.width = '100%';
+                                        iframe.style.height = '100%';
+                                        iframe.style.position = 'absolute';
+                                        iframe.style.top = '0';
+                                        iframe.style.left = '0';
+                                    });
+                                }
+                            }, 100);
+                        }
+                        
+                        // 검색 완료 - 결과 표시
+                        searchStatusText.innerHTML = `검색 결과: <span id="resultCount">${result.count}</span>개의 매물을 찾았습니다.`;
+                        
+                        // 통계 정보 표시 (있을 경우)
+                        if (result.statistics) {
+                            const stats = result.statistics;
+                            console.log('검색 통계:', stats);
+                            
+                            // 기존 통계 제거
                             const existingStats = document.querySelector('.search-stats');
                             if (existingStats) {
                                 existingStats.remove();
                             }
-                        });
-                    });
-                    </script>
+                            
+                            const statsHtml = `
+                                <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
+                                    <strong>검색 통계:</strong><br>
+                                    - 전체 매물: ${stats.total_records}개<br>
+                                    - 상태 필터링: ${stats.status_filtered}개 제외<br>
+                                    - 조건 필터링: ${stats.condition_filtered}개 제외<br>
+                                    - 필터 통과: ${stats.passed_filter}개<br>
+                                    - 지오코딩 실패: ${stats.geocoding_failed}개<br>
+                                    - 지도에 표시: ${stats.markers_added}개
+                                </div>
+                            `;
+                            searchResults.insertAdjacentHTML('beforeend', statsHtml);
+                        }
+                        
+                        // 검색 결과로 스크롤
+                        searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        
+                    } catch (error) {
+                        console.error('검색 오류:', error);
+                        
+                        searchStatusText.innerHTML = '<i class="fas fa-exclamation-circle"></i> 검색 중 오류가 발생했습니다.';
+                        
+                        if (response) {
+                            try {
+                                const errorData = await response.json();
+                                console.error('서버 응답:', errorData);
+                                searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                    검색 중 오류가 발생했습니다.<br>
+                                    에러: ${errorData.error || '알 수 없는 오류'}<br>
+                                    <small>${errorData.details || ''}</small>
+                                </div>`;
+                            } catch (e) {
+                                const errorText = await response.text();
+                                console.error('서버 응답 텍스트:', errorText);
+                                searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                    검색 중 오류가 발생했습니다.<br>
+                                    ${errorText}
+                                </div>`;
+                            }
+                        } else {
+                            searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
+                        }
+                    }
+                });
+                
+                // 검색 초기화
+                resetButton.addEventListener('click', function() {
+                    mapSearchForm.reset();
+                    searchResults.style.display = 'none';
+                    searchMapContainer.innerHTML = '';
+                    
+                    // 통계 정보도 제거
+                    const existingStats = document.querySelector('.search-stats');
+                    if (existingStats) {
+                        existingStats.remove();
+                    }
+                });
+            });
+            </script>
 
-                <style>
-                .search-form {
-                    background: #f8f9fa;
-                    padding: 20px;
-                    border-radius: 8px;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                }
+            <style>
+            .search-form {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
 
-                .search-grid {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                    gap: 15px;
-                }
+            .search-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 15px;
+            }
 
-                .search-item label {
-                    display: block;
-                    margin-bottom: 5px;
-                    font-weight: bold;
-                    color: #333;
-                }
+            .search-item label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: #333;
+            }
 
-                .search-item input,
-                .search-item select {
-                    height: 38px;
-                    border: 1px solid #ddd;
-                    border-radius: 4px;
-                    padding: 0 10px;
-                }
+            .search-item input,
+            .search-item select {
+                height: 38px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 0 10px;
+            }
 
-                .search-item input:focus,
-                .search-item select:focus {
-                    outline: none;
-                    border-color: #e38000;
-                }
+            .search-item input:focus,
+            .search-item select:focus {
+                outline: none;
+                border-color: #e38000;
+            }
 
-                #searchResults {
-                    animation: fadeIn 0.5s ease-in;
-                }
+            #searchResults {
+                animation: fadeIn 0.5s ease-in;
+            }
 
-                @keyframes fadeIn {
-                    from { opacity: 0; }
-                    to { opacity: 1; }
-                }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
 
-                .loading-message {
-                    color: #888;
-                    font-size: 18px;
-                }
-                </style>
-            </div>    
+            .loading-message {
+                color: #888;
+                font-size: 18px;
+            }
+            </style>
         </div>
     </section>  
 
@@ -1736,16 +1740,6 @@
                         </a>
                     </div>
                 </div>
-                
-                <div class="footer-links">
-                    <h3>바로가기</h3>
-                    <ul>
-                        <li><a href="#welcome">홈</a></li>
-                        <li><a href="#properties">매물정보</a></li>
-                        <li><a href="#contact">상담문의</a></li>
-                        <li><a href="#location">오시는길</a></li>
-                    </ul>
-                </div>
             </div>
             
             <div class="copyright">
@@ -2058,6 +2052,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=1"></script>
+<script src="/js/pwa-install.js?v=2"></script>
 </body>
 </html>
