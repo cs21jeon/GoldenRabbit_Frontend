@@ -103,7 +103,7 @@
             </div>
         </div>
     </section>
-    <!-- 수정된 블로그 섹션 -->
+    <!-- 완전히 수정된 블로그 섹션 -->
     <section id="blog">
         <div class="container">
             <div class="section-title">
@@ -133,6 +133,24 @@
                 return `${year}.${month}.${day}`;
             }
 
+            // HTML 콘텐츠에서 모든 이미지 태그 제거
+            function stripImgTags(html) {
+                // 임시 div 생성하여 HTML 파싱
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                
+                // 모든 img 태그 제거
+                const imgElements = tempDiv.querySelectorAll('img');
+                imgElements.forEach(img => img.remove());
+                
+                // 남은 텍스트만 반환 (최대 150자)
+                let text = tempDiv.textContent.trim();
+                if (text.length > 150) {
+                    text = text.substring(0, 147) + '...';
+                }
+                return text;
+            }
+
             try {
                 const response = await fetch('/api/blog-feed');
                 posts = await response.json();
@@ -140,7 +158,7 @@
                 if (posts && posts.length > 0) {
                     renderPosts(initialPostsToShow);
                     
-                    // 포스트가 initialPostsToShow 개수보다 많으면 더보기 버튼 표시
+                    // 더 많은 포스트가 있으면 더보기 버튼 표시
                     if (posts.length > initialPostsToShow) {
                         loadMoreBtn.style.display = 'inline-block';
                     }
@@ -156,46 +174,60 @@
                 for (let i = currentCount; i < Math.min(currentCount + count, posts.length); i++) {
                     const post = posts[i];
                     
-                    // 서버에 저장된 로컬 썸네일 경로 사용
+                    // 로컬 썸네일 경로 사용
                     const localImagePath = `/blog_thumbs/${post.id}.jpg`;
                     const defaultImagePath = '/images/default-thumb.jpg';
                     
                     const div = document.createElement('div');
                     div.className = 'blog-summary';
                     
-                    // 이미지 태그 생성 (has_thumbnail 속성을 확인)
-                    let imgTag;
+                    // 이미지 부분 생성 (summary에서 이미지 분리)
+                    const imageElement = document.createElement('img');
+                    imageElement.className = 'blog-thumb';
+                    imageElement.alt = post.title;
+                    
+                    // 로컬 이미지 존재 여부에 따라 이미지 경로 설정
                     if (post.has_thumbnail === true) {
-                        // 서버에 미리 다운로드된 썸네일이 있는 경우
-                        imgTag = `<img 
-                            src="${localImagePath}" 
-                            alt="${post.title}" 
-                            class="blog-thumb" 
-                            onerror="this.onerror=null; this.src='${defaultImagePath}';" />`;
+                        imageElement.src = localImagePath;
                     } else {
-                        // 다운로드된 썸네일이 없는 경우 기본 이미지 사용
-                        imgTag = `<img 
-                            src="${defaultImagePath}" 
-                            alt="${post.title}" 
-                            class="blog-thumb" />`;
+                        imageElement.src = defaultImagePath;
                     }
                     
-                    // 보안상 HTML 인젝션 방지
-                    const safeTitle = document.createElement('div');
-                    safeTitle.textContent = post.title;
-                    const titleText = safeTitle.textContent;
+                    // 이미지 로딩 실패 시 기본 이미지로 대체
+                    imageElement.onerror = function() {
+                        this.onerror = null; // 중복 오류 방지
+                        this.src = defaultImagePath;
+                    };
                     
-                    const safeDescription = document.createElement('div');
-                    safeDescription.textContent = post.summary || '블로그 글 내용을 확인하려면 본문 보기를 클릭하세요.';
-                    const descriptionText = safeDescription.textContent;
+                    // 요약 텍스트 처리 (이미지 태그 제거)
+                    const cleanSummary = stripImgTags(post.summary || '');
                     
-                    div.innerHTML = `
-                        ${imgTag}
-                        <h3>${titleText}</h3>
-                        <div class="blog-date">${formatDate(post.published)}</div>
-                        <p>${descriptionText}</p>
-                        <a href="${post.link}" target="_blank" rel="noopener noreferrer">본문 보기</a>
-                    `;
+                    // 제목 생성 (안전한 텍스트만)
+                    const titleElement = document.createElement('h3');
+                    titleElement.textContent = post.title;
+                    
+                    // 날짜 생성
+                    const dateElement = document.createElement('div');
+                    dateElement.className = 'blog-date';
+                    dateElement.textContent = formatDate(post.published);
+                    
+                    // 요약 생성
+                    const summaryElement = document.createElement('p');
+                    summaryElement.textContent = cleanSummary;
+                    
+                    // 링크 생성
+                    const linkElement = document.createElement('a');
+                    linkElement.href = post.link;
+                    linkElement.target = '_blank';
+                    linkElement.rel = 'noopener noreferrer';
+                    linkElement.textContent = '본문 보기';
+                    
+                    // 요소들 추가
+                    div.appendChild(imageElement);
+                    div.appendChild(titleElement);
+                    div.appendChild(dateElement);
+                    div.appendChild(summaryElement);
+                    div.appendChild(linkElement);
                     
                     blogContainer.appendChild(div);
                 }
@@ -1356,6 +1388,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=9"></script>
+<script src="/js/pwa-install.js?v=0"></script>
 </body>
 </html>
