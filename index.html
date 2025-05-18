@@ -903,6 +903,194 @@
             <a href="#map-section" class="btn">모든 매물 지도로 보기</a>
         </div>
     </section>
+    
+    <!-- 인사말 섹션 -->
+    <section id="greeting">
+        <div class="container">
+            <div class="section-title">
+                <h2>인사말</h2>
+                <p>금토끼부동산의<br>대표와 철학을 소개합니다</p>
+            </div>
+            <div class="greeting-content">
+                <div class="profile-image">
+                    <img src="/images/profile_jeonchangseong.jpg" alt="전창성 대표 프로필">
+                </div>
+                <div class="profile-info">
+                    <h3>대표 <span class="highlight">전창성</span></h3>
+                    
+                    <div class="career-item">
+                        <h4>이력</h4>
+                        <ul class="career-list">
+                            <li><span class="year">2024.</span> [민간]상업용부동산분석사 취득</li>
+                            <li><span class="year">2023.</span> 제33회 공인중개사자격증 취득</li>
+                            <li><span class="year">2006-2022.</span> 삼성전자 반도체 공정개발 (수석연구원)</li>
+                            <li><span class="year">2002.</span> 연세대학교 전기전자공학과 석사학위 취득</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-item">
+                        <h4>지향점</h4>
+                        <p>AI를 적극 활용한 차별화된<br>부동산 중개의 길을 열고자 합니다.</p>
+                    </div>
+                    
+                    <div class="career-item">
+                        <h4>활용Tool</h4>
+                        <ul class="tool-list">
+                            <li><strong>AI</strong>: ChatGPT, Claude 등</li>
+                            <li><strong>자동화</strong>: n8n 등</li>
+                            <li><strong>DB</strong>: Airtable</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-item">
+                        <h4>결과물</h4>
+                        <p>홈페이지 직접 제작 <a href="https://goldenrabbit.biz" target="_blank">https://goldenrabbit.biz</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        #greeting {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .greeting-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .profile-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .profile-info h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #333;
+            border-bottom: 2px solid #e38000;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .highlight {
+            color: #e38000;
+            font-weight: bold;
+        }
+        
+        .career-item {
+            margin-bottom: 20px;
+        }
+        
+        .career-item h4 {
+            font-size: 18px;
+            color: #444;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .career-item h4:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: #e38000;
+            border-radius: 50%;
+        }
+        
+        .career-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .career-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .career-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #e38000;
+        }
+        
+        .year {
+            font-weight: bold;
+            color: #555;
+            margin-right: 5px;
+        }
+        
+        .tool-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tool-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tool-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #e38000;
+        }
+        
+        .profile-info a {
+            color: #e38000;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .profile-info a:hover {
+            color: #b36000;
+            text-decoration: underline;
+        }
+        
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            .greeting-content {
+                flex-direction: column;
+            }
+            
+            .profile-image {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .profile-image img {
+                max-width: 300px;
+            }
+        }
+    </style>
 
     <!-- 블로그 섹션 -->
     <section id="blog">
@@ -2080,6 +2268,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=5"></script>
+<script src="/js/pwa-install.js?v=6"></script>
 </body>
 </html>
