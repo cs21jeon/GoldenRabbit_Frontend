@@ -1110,10 +1110,36 @@
                         
                     </div>
                     
-                    <div style="text-align: center; margin-top: 20px;">
-                        <button type="submit" class="btn">조건에 맞는 매물 검색하기</button>
-                        <button type="button" id="resetSearch" class="btn" style="background-color: #6c757d;">검색 초기화</button>
+                    <div class="search-buttons" style="text-align: center; margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                        <button type="submit" class="btn search-button">조건에 맞는 매물 검색하기</button>
+                        <button type="button" id="resetSearch" class="btn reset-button" style="background-color: #6c757d;">검색 초기화</button>
                     </div>
+
+                    <style>
+                    /* 검색 버튼 반응형 스타일 */
+                    .search-buttons {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 10px;
+                        margin-top: 20px;
+                    }
+                    
+                    .search-button, .reset-button {
+                        min-width: 150px;
+                        flex: 0 1 auto;
+                    }
+                    
+                    @media (max-width: 576px) {
+                        .search-buttons {
+                            flex-direction: column;
+                        }
+                        
+                        .search-button, .reset-button {
+                            width: 100%;
+                        }
+                    }
+                    </style>
                 </form>
             </div>
             
@@ -2052,6 +2078,6 @@
     });
   });
 </script>
-<script src="/js/pwa-install.js?v=2"></script>
+<script src="/js/pwa-install.js?v=3"></script>
 </body>
 </html>

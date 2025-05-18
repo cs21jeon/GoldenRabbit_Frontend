@@ -52,6 +52,8 @@ function renderProperties(properties) {
     let photoUrl = '/api/placeholder/400/300';
     if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
       photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
+      // 이미지 URL 유효성 확인 로그 추가
+      console.log('매물 카드 이미지 URL:', photoUrl);
     } else if (typeof fields['대표사진'] === 'string') {
       try {
         const parsed = JSON.parse(fields['대표사진']);
@@ -110,6 +112,7 @@ function showPropertyDetails(property, recordId, index) {
   let photoUrl = '/api/placeholder/800/400';
   if (Array.isArray(property['대표사진']) && property['대표사진'][0]?.url) {
     photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
+    console.log('모달 이미지 URL:', photoUrl);
   } else if (typeof property['대표사진'] === 'string') {
     try {
       const parsed = JSON.parse(property['대표사진']);
