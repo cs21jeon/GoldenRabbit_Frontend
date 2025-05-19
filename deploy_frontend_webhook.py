@@ -23,8 +23,8 @@ def webhook():
 
     # 인증 성공 시 배포 실행
     try:
-        subprocess.run(["git", "-C", "/home/sftpuser/www", "pull"], check=True)
-        subprocess.run(["systemctl", "restart", "vworld"], check=True)
+        subprocess.run(["sudo", "git", "-C", "/home/sftpuser/www", "pull"], check=True)
+        subprocess.run(["sudo", "systemctl", "restart", "vworld"], check=True)
         return "Deployed successfully", 200
     except subprocess.CalledProcessError as e:
         return f"Deployment failed: {e}", 500
