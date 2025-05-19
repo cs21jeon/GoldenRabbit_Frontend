@@ -23,11 +23,22 @@ def webhook():
 
     # 인증 성공 시 배포 실행
     try:
-        subprocess.run(["sudo", "git", "-C", "/home/sftpuser/www", "pull"], check=True)
+        # Git pull with detailed output
+        result = subprocess.run(
+            ["sudo", "git", "-C", "/home/sftpuser/www", "pull"],
+            check=True,
+            capture_output=True,
+            text=True
+        )
+        # Log success and output
+        print(f"Git pull output: {result.stdout}")
         subprocess.run(["sudo", "systemctl", "restart", "vworld"], check=True)
-        return "Deployed successfully", 200
+        return f"Deployed successfully. Git output: {result.stdout}", 200
     except subprocess.CalledProcessError as e:
-        return f"Deployment failed: {e}", 500
+        # Log detailed error
+        error_msg = f"Deployment failed: {e}. Stdout: {e.stdout}, Stderr: {e.stderr}"
+        print(error_msg)
+        return error_msg, 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=9001)
