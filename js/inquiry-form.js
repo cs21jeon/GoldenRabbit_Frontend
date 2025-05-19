@@ -314,6 +314,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // 콘설트 모달 열기
         const consultModal = document.getElementById('consultModal');
         if (consultModal) {
+            // 모달 폼 요소들 가져오기
+            const modalPropertyType = document.getElementById('modalpropertyType');
+            const modalMessage = document.getElementById('modalmessage');
+            
             // 메세지 필드에 매물 주소 설정 (모달용 메시지 필드 사용)
             if (modalMessage && address) {
                 modalMessage.value = `${address} 매물에 관심있습니다.`;
@@ -325,6 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('consultModal이 표시되었습니다.');
             
             // 상태 메시지 초기화
+            const formStatus = document.getElementById('formStatus');
             if (formStatus) {
                 formStatus.style.display = 'none';
             }
@@ -334,7 +339,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 기본 이벤트 방지 (페이지 상단으로 스크롤 방지)
         return false;
-    };
+    }
     
     // 외부에서 상담 모달을 닫을 수 있도록 전역 함수 추가
     window.closeConsultModal = function() {
