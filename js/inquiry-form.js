@@ -32,6 +32,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // 모달 준비
     prepareModals();
     
+    // 메인 폼에 submit 이벤트 리스너 직접 추가 (중요: 기본 동작 방지)
+    consultForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // 폼 제출 기본 동작 중지
+        console.log('폼 제출 기본 동작 중지됨');
+            
+        // 폼이 제출되었을 때 submitButton 클릭과 동일한 효과
+        if (submitButton) {
+            submitButton.click();
+        }
+    });
+    
     // 상담 신청 버튼 클릭 이벤트 핸들러
     console.log('상담 신청 버튼에 이벤트 리스너를 등록합니다.');
     submitButton.addEventListener('click', function(e) {
@@ -201,14 +212,8 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.textContent = '상담신청이 정상적으로 처리되었습니다.';
             formStatus.style.color = 'green';
             
-            // 메인 폼 초기화
-            if (consultForm) consultForm.reset();
-            
-            // 모달 폼도 초기화
-            if (modalPropertyType) modalPropertyType.value = '';
-            if (modalPhone) modalPhone.value = '';
-            if (modalEmail) modalEmail.value = '';
-            if (modalMessage) modalMessage.value = '';
+            // 모든 폼 초기화 - 메인 폼과 모달 폼 모두
+            resetAllForms();
         });
         
         // 동의하기 버튼 클릭 시 실제 폼 제출 처리
@@ -277,12 +282,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error(`서버 요청 실패: ${errorMsg}`);
                 }
                 
-                // 폼 초기화 (메인 폼과 모달 폼 모두)
-                if (consultForm) consultForm.reset();
-                if (modalPropertyType) modalPropertyType.value = '';
-                if (modalPhone) modalPhone.value = '';
-                if (modalEmail) modalEmail.value = '';
-                if (modalMessage) modalMessage.value = '';
+                // 폼 초기화
+                resetAllForms();
                 
                 console.log('폼이 초기화되었습니다.');
                 
@@ -305,6 +306,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('버튼 상태가 복원되었습니다.');
             }
         });
+    }
+    
+    // 모든 폼 초기화 함수
+    function resetAllForms() {
+        // 메인 폼 초기화
+        if (consultForm) {
+            consultForm.reset();
+        }
+        
+        // 모달 폼 명시적으로 초기화
+        if (modalPropertyType) modalPropertyType.value = '';
+        if (modalPhone) modalPhone.value = '';
+        if (modalEmail) modalEmail.value = '';
+        if (modalMessage) modalMessage.value = '';
+        
+        // 메인 폼 요소들도 명시적으로 초기화
+        if (mainPropertyType) mainPropertyType.value = '';
+        if (mainPhone) mainPhone.value = '';
+        if (mainEmail) mainEmail.value = '';
+        if (mainMessage) mainMessage.value = '';
     }
     
     // 외부에서 상담 모달을 열 수 있도록 전역 함수 추가
