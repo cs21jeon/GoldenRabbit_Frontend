@@ -6,16 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const styleElement = document.createElement('style');
     styleElement.textContent = `
         #privacyModal {
-            z-index: 1100 !important; /* consultModal보다 높은 z-index 설정 */
+            z-index: 10100 !important; /* 최상위 z-index */
         }
         #completionModal {
-            z-index: 1100 !important; /* consultModal보다 높은 z-index 설정 */
+            z-index: 10100 !important; /* 최상위 z-index */
         }
         #consultModal {
-            z-index: 1000; /* 기본 z-index */
+            z-index: 10050 !important; /* 추천매물 모달보다 높고, 개인정보/완료 모달보다 낮은 z-index */
+        }
+        #modalBackground {
+            z-index: 9900 !important; /* 추천매물 모달 */
         }
     `;
     document.head.appendChild(styleElement);
+    console.log('모달 z-index 스타일이 추가되었습니다.');
     
     // 필수 DOM 요소 참조
     const consultForm = document.getElementById('consultForm');
@@ -128,13 +132,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const completionModal = document.getElementById('completionModal');
             
             if (privacyModal) {
-                privacyModal.style.zIndex = "1100";
-                console.log('privacyModal z-index 수정: 1100');
+                privacyModal.style.zIndex = "10100";
+                console.log('privacyModal z-index 수정: 10100');
             }
             
             if (completionModal) {
-                completionModal.style.zIndex = "1100";
-                console.log('completionModal z-index 수정: 1100');
+                completionModal.style.zIndex = "10100";
+                console.log('completionModal z-index 수정: 10100');
+            }
+            
+            // 상담 모달의 z-index도 수정
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                consultModal.style.zIndex = "10050";
+                console.log('consultModal z-index 수정: 10050');
             }
             
             setupExistingModals();
@@ -143,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 개인정보 동의 모달 요소 생성 및 추가 (z-index 수정)
         const modalHTML = `
-        <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
+        <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 10100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                 <h3 style="margin-top: 0;">개인정보 수집 및 이용 동의</h3>
                 <div style="margin-bottom: 20px; height: 150px; overflow-y: auto; padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">
@@ -163,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
         
-        <div id="completionModal" class="modal" style="display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
+        <div id="completionModal" class="modal" style="display: none; position: fixed; z-index: 10100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
                 <h3 style="margin-top: 0; color: green;">상담접수가 완료되었습니다</h3>
                 <p>빠른시일 내에 회신드리겠습니다.</p>
@@ -173,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 모달 HTML을 body에 추가
         document.body.insertAdjacentHTML('beforeend', modalHTML);
-        console.log('모달 HTML이 추가되었습니다. z-index 설정: 1100');
+        console.log('모달 HTML이 추가되었습니다. z-index 설정: 10100');
         
         setupExistingModals();
     }
@@ -230,11 +241,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('완료 모달의 닫기 버튼이 클릭되었습니다.');
             completionModal.style.display = 'none';
             
-            // 상담 모달이 열려 있었다면 닫기
+            // 상담 모달 닫기 
+            // (추천매물 모달은 열린 상태로 유지하고 상담 모달만 닫음)
             const consultModal = document.getElementById('consultModal');
             if (consultModal && consultModal.style.display !== 'none') {
                 consultModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                
+                // 추천매물 모달이 열려있는 경우 body의 overflow는 hidden 유지
+                const modalBackground = document.getElementById('modalBackground');
+                if (!modalBackground || modalBackground.style.display === 'none') {
+                    document.body.style.overflow = 'auto'; // 추천매물 모달이 없을 때만 스크롤 복원
+                }
             }
             
             // 성공 메시지 표시
@@ -358,13 +375,110 @@ document.addEventListener('DOMContentLoaded', function() {
         if (mainMessage) mainMessage.value = '';
     }
     
-    // 외부에서 상담 모달을 열 수 있도록 전역 함수 추가
+    // 추천매물 모달에서 상담신청 버튼 클릭 시 이벤트 처리를 위한 MutationObserver
+    const observePropertyModal = function() {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.addedNodes && mutation.addedNodes.length > 0) {
+                    for (let i = 0; i < mutation.addedNodes.length; i++) {
+                        const node = mutation.addedNodes[i];
+                        if (node.id === 'modalBackground' || 
+                            (node.nodeType === 1 && node.querySelector('#modalBackground'))) {
+                            console.log('추천매물 모달이 추가되었습니다.');
+                            
+                            // 모달이 추가된 후 약간의 지연시간을 두고 처리
+                            setTimeout(function() {
+                                // 새로 추가된 모달에서 상담신청 버튼 찾기
+                                const btns = document.querySelectorAll('#modalBackground .btn-contact');
+                                console.log('찾은 상담신청 버튼 수:', btns.length);
+                                
+                                btns.forEach(function(btn) {
+                                    // 기존 클릭 이벤트 리스너 제거
+                                    const clone = btn.cloneNode(true);
+                                    btn.parentNode.replaceChild(clone, btn);
+                                    
+                                    // 새 이벤트 리스너 추가
+                                    clone.addEventListener('click', function(e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        
+                                        console.log('추천매물 모달에서 상담신청 버튼 클릭됨');
+                                        
+                                        // 주소 추출 (이미 a 태그의 onclick에 담겨있음)
+                                        let address = '';
+                                        try {
+                                            // 모달 제목에서 주소 추출
+                                            const modalContent = clone.closest('.modal-content');
+                                            if (modalContent) {
+                                                const titleElement = modalContent.querySelector('.modal-title');
+                                                if (titleElement) {
+                                                    address = titleElement.textContent.trim();
+                                                    console.log('추출된 주소:', address);
+                                                }
+                                            }
+                                        } catch(err) {
+                                            console.error('주소 추출 오류:', err);
+                                        }
+                                        
+                                        // 상담 모달 열기
+                                        window.openConsultModal(address);
+                                        
+                                        return false;
+                                    });
+                                });
+                            }, 300);
+                        }
+                    }
+                }
+                
+                // 추천매물 모달 속성 변경 감지 (display 변경)
+                if (mutation.type === 'attributes' && 
+                    mutation.attributeName === 'style' && 
+                    mutation.target.id === 'modalBackground') {
+                    
+                    const style = window.getComputedStyle(mutation.target);
+                    if (style.display === 'flex' || style.display === 'block') {
+                        console.log('추천매물 모달이 표시되었습니다.');
+                        
+                        // 모달 z-index 확인 및 조정
+                        const zIndex = parseInt(style.zIndex);
+                        if (zIndex > 10000 || isNaN(zIndex)) {
+                            mutation.target.style.zIndex = "9900";
+                            console.log('추천매물 모달 z-index 조정: 9900');
+                        }
+                    }
+                }
+            });
+        });
+        
+        // body의 변경 감시
+        observer.observe(document.body, { 
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['style']
+        });
+        
+        console.log('추천매물 모달 변경 감시가 시작되었습니다.');
+    };
+    
+    // 추천매물 모달 감시 시작
+    observePropertyModal();
+    
+    // 외부에서 상담 모달을 열 수 있도록 전역 함수 수정
     window.openConsultModal = function(address) {
         console.log('openConsultModal 호출됨:', address);
         
         // 콘설트 모달 열기
         const consultModal = document.getElementById('consultModal');
         if (consultModal) {
+            // z-index 설정 확인 및 조정 
+            const currentZIndex = parseInt(window.getComputedStyle(consultModal).zIndex);
+            if (currentZIndex < 10050 || isNaN(currentZIndex)) {
+                consultModal.style.zIndex = "10050";
+                console.log('consultModal z-index 설정: 10050');
+            }
+            
             // 모달 폼 요소들 가져오기
             const modalPropertyType = document.getElementById('modalpropertyType');
             const modalMessage = document.getElementById('modalmessage');
@@ -376,7 +490,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 모달 표시
             consultModal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+            
+            // 추천매물 모달이 이미 열려있으면 body의 overflow는 그대로 유지
+            // 그렇지 않으면 overflow를 hidden으로 설정
+            const modalBackground = document.getElementById('modalBackground');
+            if (!modalBackground || modalBackground.style.display === 'none') {
+                document.body.style.overflow = 'hidden'; // 스크롤 방지
+            }
+            
             console.log('consultModal이 표시되었습니다.');
             
             // 상태 메시지 초기화
@@ -390,7 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 기본 이벤트 방지 (페이지 상단으로 스크롤 방지)
         return false;
-    }
+    };
     
     // 외부에서 상담 모달을 닫을 수 있도록 전역 함수 추가
     window.closeConsultModal = function() {
@@ -398,7 +519,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const consultModal = document.getElementById('consultModal');
         if (consultModal) {
             consultModal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // 배경 스크롤 복원
+            
+            // 추천매물 모달이 열려있는 경우 body의 overflow는 hidden 유지
+            const modalBackground = document.getElementById('modalBackground');
+            if (!modalBackground || modalBackground.style.display === 'none') {
+                document.body.style.overflow = 'auto'; // 추천매물 모달이 없을 때만 스크롤 복원
+            }
+            
             console.log('consultModal이 닫혔습니다.');
         } else {
             console.log('consultModal을 찾을 수 없습니다.');
