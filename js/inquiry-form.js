@@ -2,6 +2,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM이 로드되었습니다. 상담 폼 초기화를 시작합니다.');
     
+    // z-index 문제 해결을 위한 스타일 추가
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+        #privacyModal {
+            z-index: 1100 !important; /* consultModal보다 높은 z-index 설정 */
+        }
+        #completionModal {
+            z-index: 1100 !important; /* consultModal보다 높은 z-index 설정 */
+        }
+        #consultModal {
+            z-index: 1000; /* 기본 z-index */
+        }
+    `;
+    document.head.appendChild(styleElement);
+    
     // 필수 DOM 요소 참조
     const consultForm = document.getElementById('consultForm');
     const formStatus = document.getElementById('formStatus');
@@ -107,13 +122,28 @@ document.addEventListener('DOMContentLoaded', function() {
         // 이미 모달이 있는지 확인
         if (document.getElementById('privacyModal')) {
             console.log('이미 모달이 존재합니다. 새로 생성하지 않습니다.');
+            
+            // 기존 모달의 z-index 수정
+            const privacyModal = document.getElementById('privacyModal');
+            const completionModal = document.getElementById('completionModal');
+            
+            if (privacyModal) {
+                privacyModal.style.zIndex = "1100";
+                console.log('privacyModal z-index 수정: 1100');
+            }
+            
+            if (completionModal) {
+                completionModal.style.zIndex = "1100";
+                console.log('completionModal z-index 수정: 1100');
+            }
+            
             setupExistingModals();
             return;
         }
         
-        // 개인정보 동의 모달 요소 생성 및 추가
+        // 개인정보 동의 모달 요소 생성 및 추가 (z-index 수정)
         const modalHTML = `
-        <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
+        <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                 <h3 style="margin-top: 0;">개인정보 수집 및 이용 동의</h3>
                 <div style="margin-bottom: 20px; height: 150px; overflow-y: auto; padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">
@@ -133,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
         
-        <div id="completionModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
+        <div id="completionModal" class="modal" style="display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
                 <h3 style="margin-top: 0; color: green;">상담접수가 완료되었습니다</h3>
                 <p>빠른시일 내에 회신드리겠습니다.</p>
@@ -143,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 모달 HTML을 body에 추가
         document.body.insertAdjacentHTML('beforeend', modalHTML);
-        console.log('모달 HTML이 추가되었습니다.');
+        console.log('모달 HTML이 추가되었습니다. z-index 설정: 1100');
         
         setupExistingModals();
     }
@@ -212,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             formStatus.textContent = '상담신청이 정상적으로 처리되었습니다.';
             formStatus.style.color = 'green';
             
-            // 모든 폼 초기화 - 메인 폼과 모달 폼 모두
+            // 모든 폼 초기화
             resetAllForms();
         });
         
