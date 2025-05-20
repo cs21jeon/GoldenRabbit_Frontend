@@ -248,8 +248,8 @@ nav ul li a:hover {
 
 .profile-image {
     flex: 1;
-    min-width: 300px;
-    max-width: 400px; /* 사진 최대 폭 제한 */
+    min-width: 200px;
+    max-width: 300px; /* 사진 최대 폭 제한 */
 }
 
 .profile-image img {
