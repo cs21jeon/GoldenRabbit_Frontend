@@ -248,8 +248,8 @@ nav ul li a:hover {
 
 .profile-image {
     flex: 1;
-    min-width: 150px;
-    max-width: 200px; /* 사진 최대 폭 제한 */
+    min-width: 200px;
+    max-width: 300px; /* 사진 최대 폭 제한 */
 }
 
 .profile-image img {
@@ -338,33 +338,6 @@ nav ul li a:hover {
     font-size: 16px;
     line-height: 1.5;
     margin-left: 20px; /* 들여쓰기 추가 */
-}
-
-/* 모바일 반응형 스타일 */
-@media (max-width: 768px) {
-    .greeting-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 30px;
-    }
-    
-    .profile-image {
-        flex: none;
-        width: 50%; /* 모바일 화면 폭의 절반 */
-        max-width: 50vw; /* 뷰포트 폭의 50% */
-        min-width: unset;
-    }
-    
-    .profile-info {
-        flex: none;
-        width: 100%;
-        min-width: unset;
-    }
-    
-    .profile-info h3 {
-        font-size: 22px;
-        text-align: center;
-    }
 }
 
 /* 블로그 섹션 */
@@ -1173,7 +1146,36 @@ footer {
     }
 }
 
+/* 기존 모바일 반응형 스타일 부분을 이렇게 수정하세요 (라인 400번대와 1100번대 모두) */
+
+/* 모바일 반응형 스타일 */
 @media (max-width: 768px) {
+    /* 인사말 섹션 - 프로필 이미지 크기 조정 */
+    .greeting-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .profile-image {
+        flex: none;
+        width: 50%; /* 모바일 화면 폭의 절반 */
+        max-width: 50vw; /* 뷰포트 폭의 50% */
+        min-width: unset;
+    }
+    
+    .profile-info {
+        flex: none;
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .profile-info h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    /* 기타 모바일 스타일들 */
     .header-content {
         flex-direction: column;
     }
@@ -1215,7 +1217,7 @@ footer {
     }
     
     body {
-        padding-bottom: 70px; /* 모바일 네비게이션 높이만큼 여백 추가 */
+        padding-bottom: 70px;
     }
     
     .search-buttons {
@@ -1226,7 +1228,6 @@ footer {
         width: 100%;
     }
     
-    /* 모바일 지도 크기 조정 */
     .map-container {
         height: 350px;
     }
@@ -1236,14 +1237,12 @@ footer {
         min-height: 350px !important;
     }
     
-    /* folium 생성 div 스타일 강제 적용 */
     .search-map-container > div {
         width: 100% !important;
         height: 100% !important;
         position: relative !important;
     }
     
-    /* iframe 크기 강제 적용 */
     .search-map-container iframe {
         width: 100% !important;
         height: 100% !important;
@@ -1263,8 +1262,10 @@ footer {
         font-size: 22px;
     }
     
+    /* 이 부분을 수정 - 기존 28px를 22px로 변경하고 중앙정렬 추가 */
     .profile-info h3 {
-        font-size: 28px;
+        font-size: 22px;
+        text-align: center;
     }
     
     .link-card {
