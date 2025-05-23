@@ -340,6 +340,33 @@ nav ul li a:hover {
     margin-left: 20px; /* 들여쓰기 추가 */
 }
 
+/* 모바일 반응형 스타일 */
+@media (max-width: 768px) {
+    .greeting-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .profile-image {
+        flex: none;
+        width: 50%; /* 모바일 화면 폭의 절반 */
+        max-width: 50vw; /* 뷰포트 폭의 50% */
+        min-width: unset;
+    }
+    
+    .profile-info {
+        flex: none;
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .profile-info h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+}
+
 /* 블로그 섹션 */
 .blog-container {
     display: grid;
