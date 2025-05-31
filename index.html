@@ -238,19 +238,95 @@
         });
     </script>
 
-    <!-- 1. 추천 매물 섹션 -->
+    <!-- 1. 추천 매물 섹션 - 수정된 버전 -->
     <section id="properties">
         <div class="container">    
             <div class="section-title">
                 <h2>추천 매물</h2>
-                <p>금토끼부동산중개에서 엄선한<br>우수 매물을 소개합니다</p>
+                <p>금토끼부동산중개에서 엄선한<br>카테고리별 우수 매물을 소개합니다</p>
             </div>        
-            <!-- 매물 그리드 - JavaScript로 동적 생성됩니다 -->
-            <div class="properties-grid">
-                <div class="loading-message">매물 정보를 불러오는 중입니다...</div>
+            
+            <!-- 카테고리 카드 그리드 -->
+            <div class="category-grid">
+                <!-- 재건축용 토지 카드 -->
+                <div class="category-card" data-view-id="viwzEVzrr47fCbDNU" data-category="재건축용 토지">
+                    <div class="category-image">
+                        <img src="/images/category_land.jpg" alt="재건축용 토지" onerror="this.src='/images/default-thumb.jpg'">
+                    </div>
+                    <div class="category-content">
+                        <h3>재건축용 토지</h3>
+                        <p>대지 80평 이상 재건축용 매물</p>
+                        <div class="category-button">
+                            <span>대표 매물 보기</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 고수익률 건물 카드 -->
+                <div class="category-card" data-view-id="viwxS4dKAcQWmB0Be" data-category="고수익률 건물">
+                    <div class="category-image">
+                        <img src="/images/category_building.jpg" alt="고수익률 건물" onerror="this.src='/images/default-thumb.jpg'">
+                    </div>
+                    <div class="category-content">
+                        <h3>고수익률 건물</h3>
+                        <p>수익률 6% 이상 (비용 배제)</p>
+                        <div class="category-button">
+                            <span>대표 매물 보기</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 저가단독주택 카드 -->
+                <div class="category-card" data-view-id="viwUKnawSP8SkV9Sx" data-category="저가단독주택">
+                    <div class="category-image">
+                        <img src="/images/category_house.jpg" alt="저가단독주택" onerror="this.src='/images/default-thumb.jpg'">
+                    </div>
+                    <div class="category-content">
+                        <h3>저가단독주택</h3>
+                        <p>단독의 꿈. 20억 이하 저가 단독주택</p>
+                        <div class="category-button">
+                            <span>대표 매물 보기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 로딩 메시지 -->
+            <div class="loading-message" id="categoryLoading" style="display: none;">
+                대표 매물 정보를 불러오는 중입니다...
             </div>
         </div>
     </section>
+
+    <!-- 카테고리별 매물 모달 -->
+    <div id="categoryModal" class="modal-background" style="display: none;">
+        <div class="modal-content category-modal">
+            <div class="modal-close" onclick="closeCategoryModal()">&times;</div>
+            <div class="modal-header">
+                <h2 id="modalCategoryTitle" class="modal-title"></h2>
+                <p id="modalCategoryDescription" class="modal-description"></p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <div id="modalPropertyImage" class="modal-image clickable">
+                        <div class="image-overlay">
+                            <span>사진 클릭 시 상세보기</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-property-info">
+                    <div id="modalPropertyDetails" class="property-details">
+                        <!-- 동적으로 생성될 내용 -->
+                    </div>
+                    <div class="modal-buttons">
+                        <a href="javascript:void(0);" id="modalInquiryBtn" class="btn btn-contact">문의하기</a>
+                        <a href="#" id="modalDetailBtn" class="btn btn-detail" target="_blank">상세내용 보기</a>
+                        <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB" class="btn btn-recomm" target="_blank">추천매물 모아보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
 
     <!-- 2. 지도보기 섹션 -->
     <section id="map-view">

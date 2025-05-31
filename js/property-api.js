@@ -1,331 +1,406 @@
-async function fetchPropertiesFromAirtable() {
-  try {
-    const viewId = 'viweFlrK1v4aXqYH8'; // 안전하게 뷰 ID 직접 사용
-    const response = await fetch(`/api/property-list?view=${viewId}`);
+// property-api.js - 카테고리 시스템 버전 2.0
+
+// ===== 전역 변수 및 설정 =====
+let currentCategoryModal = null;
+
+// 카테고리 설정 객체
+const categoryConfig = {
+    'viwzEVzrr47fCbDNU': {
+        name: '재건축용 토지',
+        description: '대지 80평 이상 재건축용 매물',
+        fields: ['지번 주소', '토지면적(㎡)', '매가(만원)']
+    },
+    'viwxS4dKAcQWmB0Be': {
+        name: '고수익률 건물',
+        description: '수익률 6% 이상 (비용 배제)',
+        fields: ['지번 주소', '매가(만원)', '융자제외수익률(%)']
+    },
+    'viwUKnawSP8SkV9Sx': {
+        name: '저가단독주택',
+        description: '단독의 꿈. 20억 이하 저가 단독주택',
+        fields: ['지번 주소', '매가(만원)', '사용승인일']
+    }
+};
+
+// ===== 카테고리 매물 로딩 함수 =====
+async function loadCategoryProperty(viewId, categoryName) {
+    const loadingElement = document.getElementById('categoryLoading');
     
-    if (!response.ok) {
-      throw new Error(`API 요청 실패: ${response.status}`);
+    try {
+        // 로딩 표시
+        if (loadingElement) {
+            loadingElement.style.display = 'block';
+        }
+        
+        console.log(`대표 매물 로딩: ${categoryName} (뷰: ${viewId})`);
+        
+        // API 호출
+        const response = await fetch(`/api/category-property?view=${viewId}`);
+        
+        if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(`API 요청 실패: ${response.status} - ${errorData.message || response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('API 응답:', data);
+        
+        if (data && data.records && data.records.length > 0) {
+            // 대표 매물 표시
+            showCategoryModal(data.records[0], categoryName, viewId);
+        } else {
+            console.warn('대표 매물을 찾을 수 없습니다.');
+            alert('현재 해당 카테고리의 대표 매물이 없습니다.');
+        }
+        
+    } catch (error) {
+        console.error('대표 매물 로딩 실패:', error);
+        alert(`매물 정보를 불러오는 중 오류가 발생했습니다.\n${error.message}`);
+    } finally {
+        // 로딩 숨김
+        if (loadingElement) {
+            loadingElement.style.display = 'none';
+        }
     }
-
-    const data = await response.json();
-    console.log('에어테이블 응답 데이터:', data);
-
-    if (data && data.records && Array.isArray(data.records)) {
-      return data.records;
-    } else {
-      console.error('에어테이블 응답 형식이 예상과 다릅니다:', data);
-      return [];
-    }
-  } catch (error) {
-    console.error('에어테이블 데이터 가져오기 실패:', error);
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'error-message';
-    errorDiv.textContent = `데이터 불러오기 실패: ${error.message}`;
-    const propertiesGrid = document.querySelector('#properties .properties-grid');
-    if (propertiesGrid) {
-      propertiesGrid.innerHTML = '';
-      propertiesGrid.appendChild(errorDiv);
-    }
-    return [];
-  }
 }
 
-function renderProperties(properties) {
-  const propertiesGrid = document.querySelector('#properties .properties-grid');
-  propertiesGrid.innerHTML = '';
-
-  if (!Array.isArray(properties) || properties.length === 0) {
-    propertiesGrid.innerHTML = '<div class="no-properties">현재 등록된 매물이 없습니다.</div>';
-    return;
-  }
-
-  properties.forEach((property, index) => {
+// ===== 카테고리 모달 표시 함수 =====
+function showCategoryModal(property, categoryName, viewId) {
+    console.log('모달 표시:', property);
+    
+    const modal = document.getElementById('categoryModal');
+    if (!modal) {
+        console.error('카테고리 모달 요소를 찾을 수 없습니다.');
+        return;
+    }
+    
     const fields = property.fields;
     const recordId = property.id;
-    const address = fields['지번 주소'] || '주소 정보 없음';
-    const priceInWon = fields['매가(만원)'] || 0;
-    const priceInBillion = (priceInWon / 10000).toFixed(1).replace('.0', '');
-    const landArea = fields['토지면적(㎡)'] || 0;
-    const buildingArea = fields['연면적(㎡)'] || 0;
-    const buildYear = fields['사용승인일'] ? fields['사용승인일'].substring(0, 4) : '';
-
-    let photoUrl = '/api/placeholder/400/300';
+    
+    // 모달 제목과 설명 설정
+    const config = categoryConfig[viewId];
+    const title = config ? config.name : categoryName;
+    const description = config ? config.description : '';
+    
+    const titleElement = document.getElementById('modalCategoryTitle');
+    const descriptionElement = document.getElementById('modalCategoryDescription');
+    
+    if (titleElement) titleElement.textContent = title;
+    if (descriptionElement) descriptionElement.textContent = description;
+    
+    // 대표사진 설정
+    const imageElement = document.getElementById('modalPropertyImage');
+    let photoUrl = '/images/default-thumb.jpg';
+    
     if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
-      photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
-      // 이미지 URL 유효성 확인 로그 추가
-      console.log('매물 카드 이미지 URL:', photoUrl);
-    } else if (typeof fields['대표사진'] === 'string') {
-      try {
-        const parsed = JSON.parse(fields['대표사진']);
-        if (parsed[0]?.url) {
-          photoUrl = parsed[0].url;
-        }
-      } catch (e) {
-        console.warn('대표사진 JSON 파싱 실패:', e);
-      }
+        photoUrl = fields['대표사진'][0].url;
     } else if (fields['사진링크']) {
-      const photoLinks = fields['사진링크'].split(',');
-      if (photoLinks[0]) {
-        photoUrl = photoLinks[0].trim();
-      }
-    }
-
-    const propertyCard = document.createElement('div');
-    propertyCard.className = 'property-card';
-    propertyCard.dataset.recordId = recordId;
-    propertyCard.innerHTML = `
-      <div class="property-image" style="background-image: url('${photoUrl}');"></div>
-      <div class="property-info">
-        <div class="property-title">${address}</div>
-        <div class="property-price">${priceInBillion}억원</div>
-        <div class="property-features">
-          <div class="feature">대지면적: ${landArea}㎡</div>
-          <div class="feature">연면적: ${buildingArea}㎡</div>
-          <div class="feature">연식: ${buildYear}년</div>
-        </div>
-      </div>
-    `;
-    propertyCard.addEventListener('click', () => showPropertyDetails(fields, recordId, index));
-    propertiesGrid.appendChild(propertyCard);
-  });
-}
-
-function showPropertyDetails(property, recordId, index) {
-  if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-    document.querySelectorAll('.price-bubble').forEach(el => el.style.display = 'none');
-  }
-
-  let modalBackground = document.getElementById('modalBackground');
-  if (!modalBackground) {
-    modalBackground = document.createElement('div');
-    modalBackground.id = 'modalBackground';
-    modalBackground.className = 'modal-background';
-    document.body.appendChild(modalBackground);
-    modalBackground.addEventListener('click', (e) => {
-      if (e.target === modalBackground) closeModal();
-    });
-  }
-
-  const priceInWon = property['매가(만원)'] || 0;
-  const priceInBillion = priceInWon ? (priceInWon / 10000).toFixed(1).replace('.0', '') : '';
-  const buildYear = property['사용승인일'] ? property['사용승인일'].substring(0, 4) : '';
-  let photoUrl = '/api/placeholder/800/400';
-  if (Array.isArray(property['대표사진']) && property['대표사진'][0]?.url) {
-    photoUrl = `/images/recomm_building/recomm_${index + 1}.jpg`;
-    console.log('모달 이미지 URL:', photoUrl);
-  } else if (typeof property['대표사진'] === 'string') {
-    try {
-      const parsed = JSON.parse(property['대표사진']);
-      if (parsed[0]?.url) {
-        photoUrl = parsed[0].url;
-      }
-    } catch (e) {
-      console.warn('대표사진 JSON 파싱 실패:', e);
-    }
-  } else if (property['사진링크']) {
-    const photoLinks = property['사진링크'].split(',');
-    if (photoLinks[0]) {
-      photoUrl = photoLinks[0].trim();
-    }
-  }
-
-  const address = property['지번 주소'] || '주소 정보 없음';
-  const airtableViewLink = `https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS?recordId=${recordId}`;
-  const airtableRecordLink = `https://airtable.com/shrMoyiS143vdYbYS?recordId=${recordId}`;
-
-  modalBackground.innerHTML = `
-    <div id="modalBackground" class="modal-background">
-      <div class="modal-content">
-        <div class="modal-close" onclick="closeModal()">&times;</div>
-        <div class="modal-header">
-          <div class="modal-image clickable" style="background-image: url('${photoUrl}');" data-record-url="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/viweFlrK1v4aXqYH8/${recordId}">
-            <div class="image-overlay"><span>사진 클릭 시 상세보기</span></div>
-          </div>
-        </div>
-        <div class="modal-body">
-          <h2 class="modal-title">${address}</h2>
-          <div class="modal-price">${priceInBillion ? priceInBillion + '억원' : ''}</div>
-          <div class="modal-description">${property['비고'] || ''} ${address} 위치의 매물입니다.</div>
-          <div class="modal-details">
-            <div class="detail-item"><div class="detail-label">대지면적</div><div class="detail-value">${property['토지면적(㎡)'] || 0}㎡</div></div>
-            <div class="detail-item"><div class="detail-label">연면적</div><div class="detail-value">${property['연면적(㎡)'] || 0}㎡</div></div>
-            <div class="detail-item"><div class="detail-label">준공년도</div><div class="detail-value">${buildYear}년</div></div>
-          </div>
-          <div class="modal-buttons">
-            <a href="javascript:void(0);" class="btn btn-contact" onclick="event.preventDefault(); return openConsultModal('${address}');" style="margin-bottom: 15px; display: block;">문의하기</a>
-            <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/viweFlrK1v4aXqYH8/${recordId}" class="btn btn-detail" target="_blank">상세내용 보기</a>
-            <a href="https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB" class="btn btn-recomm" target="_blank">추천매물 3선 모아보기</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  modalBackground.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  history.pushState({ modalOpen: true }, null, '');
-}
-
-function closeModal() {
-  const modal = document.getElementById('modalBackground');
-  if (modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
-      document.querySelectorAll('.price-bubble').forEach(el => el.style.display = 'block');
-    }
-  }
-}
-
-function injectStyles() {
-  if (!document.getElementById('property-custom-styles')) {
-    const styleElement = document.createElement('style');
-    styleElement.id = 'property-custom-styles';
-    styleElement.textContent = `
-      .modal-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        padding: 20px;
-        overflow: auto;
-      }
-
-      .modal-content {
-        position: relative;
-        width: 100%;
-        max-width: 500px;
-        background: #fff;
-        border-radius: 12px;
-        overflow-y: auto;
-        max-height: 90vh;
-        padding-bottom: 20px;
-        box-sizing: border-box;
-      }
-
-      .modal-close {
-        position: absolute;
-        top: 15px;
-        right: 20px;
-        font-size: 24px;
-        font-weight: bold;
-        color: white;
-        cursor: pointer;
-        z-index: 10000;
-      }
-
-      .modal-header {
-        position: relative;
-        height: 250px;
-        overflow: hidden;
-      }
-
-      .modal-image.clickable {
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        cursor: pointer;
-        position: relative;
-      }
-
-      .modal-image .image-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: rgba(0, 0, 0, 0.6);
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .modal-image.clickable:hover .image-overlay {
-        opacity: 1;
-      }
-
-      .modal-body {
-        padding: 20px;
-      }
-
-      .modal-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 30px;
-      }
-
-      .btn {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        border-radius: 8px;
-        text-decoration: none;
-        color: white;
-        margin-bottom: 12px;
-      }
-
-      .btn-contact { background-color: #009688; }
-      .btn-detail { background-color: #2962FF; }
-      .btn-recomm { background-color: #4CAF50; }
-
-      @media (hover: none) and (pointer: coarse) {
-        .modal-image .image-overlay {
-          opacity: 1;
+        const photoLinks = fields['사진링크'].split(',');
+        if (photoLinks[0]) {
+            photoUrl = photoLinks[0].trim();
         }
-      }
+    }
+    
+    if (imageElement) {
+        // 이미지 설정
+        imageElement.style.backgroundImage = `url('${photoUrl}')`;
+        
+        // 이미지 로딩 실패 시 기본 이미지로 대체
+        const img = new Image();
+        img.onload = function() {
+            imageElement.style.backgroundImage = `url('${photoUrl}')`;
+        };
+        img.onerror = function() {
+            console.warn('이미지 로딩 실패, 기본 이미지 사용:', photoUrl);
+            imageElement.style.backgroundImage = `url('/images/default-thumb.jpg')`;
+        };
+        img.src = photoUrl;
+        
+        // 에어테이블 상세보기 링크 설정
+        const detailUrl = `https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/${viewId}/${recordId}`;
+        imageElement.onclick = () => window.open(detailUrl, '_blank');
+        
+        // 상세보기 버튼 링크 설정
+        const detailBtn = document.getElementById('modalDetailBtn');
+        if (detailBtn) {
+            detailBtn.href = detailUrl;
+        }
+    }
+    
+    // 문의하기 버튼 설정
+    const inquiryBtn = document.getElementById('modalInquiryBtn');
+    if (inquiryBtn) {
+        const address = fields['지번 주소'] || '매물';
+        inquiryBtn.onclick = function() {
+            // 카테고리 모달 먼저 닫기
+            closeCategoryModal();
+            // 상담 모달 열기
+            if (typeof openConsultModal === 'function') {
+                openConsultModal(address);
+            } else {
+                console.warn('openConsultModal 함수를 찾을 수 없습니다.');
+            }
+        };
+    }
+    
+    // 매물 상세 정보 생성
+    const detailsContainer = document.getElementById('modalPropertyDetails');
+    if (detailsContainer) {
+        detailsContainer.innerHTML = generatePropertyDetails(fields, categoryName);
+    }
+    
+    // 모달 표시
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    currentCategoryModal = modal;
+    
+    console.log('카테고리 모달 표시 완료');
+}
+
+// ===== 매물 상세 정보 생성 함수 =====
+function generatePropertyDetails(fields, categoryName) {
+    let detailsHtml = '';
+    
+    // 지번 주소 (공통)
+    if (fields['지번 주소']) {
+        detailsHtml += createDetailRow('위치', fields['지번 주소']);
+    }
+    
+    // 매가 (공통)
+    if (fields['매가(만원)']) {
+        const priceDisplay = formatPrice(fields['매가(만원)']);
+        detailsHtml += createDetailRow('매가', priceDisplay);
+    }
+    
+    // 카테고리별 추가 정보
+    switch (categoryName) {
+        case '재건축용 토지':
+            if (fields['토지면적(㎡)']) {
+                const sqm = fields['토지면적(㎡)'];
+                const pyeong = Math.round(sqm / 3.3058);
+                detailsHtml += createDetailRow('토지면적', `${pyeong}평 (${sqm.toLocaleString()}㎡)`);
+            }
+            break;
+            
+        case '고수익률 건물':
+            if (fields['융자제외수익률(%)']) {
+                detailsHtml += createDetailRow('수익률', `${fields['융자제외수익률(%)']}%`);
+            }
+            break;
+            
+        case '저가단독주택':
+            if (fields['사용승인일']) {
+                const year = fields['사용승인일'].substring(0, 4);
+                detailsHtml += createDetailRow('사용승인년도', `${year}년`);
+            }
+            break;
+    }
+    
+    return detailsHtml;
+}
+
+// ===== 헬퍼 함수들 =====
+function createDetailRow(label, value) {
+    return `
+        <div class="detail-row">
+            <div class="detail-label">${label}</div>
+            <div class="detail-value">${value}</div>
+        </div>
     `;
-    document.head.appendChild(styleElement);
-  }
 }
 
-function registerImageClickListeners() {
-  ['click', 'touchstart'].forEach(evt => {
-    document.body.addEventListener(evt, function(e) {
-      const el = e.target.closest('.modal-image.clickable');
-      if (el?.dataset.recordUrl) {
-        window.open(el.dataset.recordUrl, '_blank');
-      }
+function formatPrice(priceInWon) {
+    if (!priceInWon) return '가격 정보 없음';
+    
+    const price = parseFloat(priceInWon);
+    if (price >= 10000) {
+        const billions = (price / 10000).toFixed(1);
+        return `${billions.replace('.0', '')}억원`;
+    } else {
+        return `${price.toLocaleString()}만원`;
+    }
+}
+
+// ===== 모달 관리 함수들 =====
+function closeCategoryModal() {
+    const modal = document.getElementById('categoryModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        currentCategoryModal = null;
+    }
+}
+
+// 기존 매물 모달 닫기 함수 (기존 기능 유지)
+function closeModal() {
+    const modal = document.getElementById('modalBackground');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) {
+            document.querySelectorAll('.price-bubble').forEach(el => el.style.display = 'block');
+        }
+    }
+}
+
+// ===== 스타일 주입 함수 =====
+function injectCategoryStyles() {
+    if (!document.getElementById('category-modal-styles')) {
+        const styleElement = document.createElement('style');
+        styleElement.id = 'category-modal-styles';
+        styleElement.textContent = `
+            /* 카테고리 모달 전용 스타일 (CSS 파일에 없는 경우 백업) */
+            .category-modal {
+                position: relative;
+                width: 100%;
+                max-width: 600px;
+                background: #fff;
+                border-radius: 12px;
+                overflow-y: auto;
+                max-height: 90vh;
+                box-sizing: border-box;
+            }
+
+            .category-modal .modal-close {
+                color: #666;
+                background: rgba(255, 255, 255, 0.8);
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .category-modal .modal-close:hover {
+                background: rgba(255, 255, 255, 1);
+                color: #333;
+            }
+
+            .modal-image.error {
+                background-image: url('/images/default-thumb.jpg');
+                background-color: #f0f0f0;
+            }
+
+            .modal-image.error::after {
+                content: '이미지를 불러올 수 없습니다';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #999;
+                font-size: 14px;
+                text-align: center;
+            }
+
+            /* 모바일 대응 */
+            @media (max-width: 768px) {
+                .category-modal {
+                    margin: 10px;
+                    max-height: 85vh;
+                }
+                
+                .modal-image {
+                    height: 200px;
+                }
+                
+                .detail-row {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 4px;
+                }
+                
+                .detail-label {
+                    flex: none;
+                }
+                
+                .detail-value {
+                    text-align: left;
+                }
+
+                .modal-image .image-overlay {
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(styleElement);
+    }
+}
+
+// ===== 이벤트 리스너 등록 함수 =====
+function registerCategoryEventListeners() {
+    console.log('카테고리 이벤트 리스너 등록 중...');
+    
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && currentCategoryModal) {
+            closeCategoryModal();
+        }
     });
-  });
+
+    // 모달 배경 클릭으로 닫기
+    const categoryModal = document.getElementById('categoryModal');
+    if (categoryModal) {
+        categoryModal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCategoryModal();
+            }
+        });
+    }
+
+    // 카테고리 카드 클릭 이벤트 등록
+    document.querySelectorAll('.category-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const viewId = this.dataset.viewId;
+            const category = this.dataset.category;
+            console.log(`카테고리 클릭: ${category} (${viewId})`);
+            
+            loadCategoryProperty(viewId, category);
+        });
+    });
+    
+    console.log('카테고리 이벤트 리스너 등록 완료');
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-  const section = document.getElementById('properties');
-  if (!section) return;
+// ===== 초기화 함수 =====
+function initializeCategorySystem() {
+    console.log('카테고리 매물 시스템 초기화');
+    
+    // 스타일 주입 (CSS 파일이 로드되지 않은 경우 백업)
+    injectCategoryStyles();
+    
+    // 이벤트 리스너 등록
+    registerCategoryEventListeners();
+    
+    console.log('카테고리 시스템 초기화 완료');
+}
 
-  let propertiesGrid = section.querySelector('.properties-grid');
-  if (!propertiesGrid) {
-    propertiesGrid = document.createElement('div');
-    propertiesGrid.className = 'properties-grid';
-    const container = section.querySelector('.container');
-    container?.appendChild(propertiesGrid);
-  }
-
-  propertiesGrid.innerHTML = '<div class="loading-message">매물 정보를 불러오는 중입니다...</div>';
-
-  const properties = await fetchPropertiesFromAirtable();
-  renderProperties(properties);
-  injectStyles();
-  registerImageClickListeners();
+// ===== DOM 로드 완료 시 실행 =====
+document.addEventListener('DOMContentLoaded', function() {
+    // 카테고리 시스템 초기화
+    initializeCategorySystem();
 });
 
-window.closeModal = closeModal;
+// ===== 전역 함수로 내보내기 =====
+window.loadCategoryProperty = loadCategoryProperty;
+window.showCategoryModal = showCategoryModal;
+window.closeCategoryModal = closeCategoryModal;
+window.closeModal = closeModal; // 기존 매물 모달 지원
+
+// 기존 매물 관련 함수들 (기존 기능 유지를 위해)
 window.openRecordDetail = (url) => window.open(url, '_blank');
 
+// 브라우저 뒤로가기 처리
 window.addEventListener('popstate', function(event) {
-  if (event.state?.modalOpen) {
-    closeModal();
-  }
+    if (currentCategoryModal && currentCategoryModal.style.display === 'flex') {
+        closeCategoryModal();
+    } else if (event.state?.modalOpen) {
+        closeModal();
+    }
 });
+
+// ===== 기존 추천 매물 시스템 제거됨 =====
+// fetchPropertiesFromAirtable, renderProperties, showPropertyDetails 등의 
+// 기존 함수들은 카테고리 시스템으로 완전 교체되었습니다.
+
+console.log('Property API v2.0 (카테고리 시스템) 로드 완료');

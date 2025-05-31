@@ -498,6 +498,257 @@ nav ul li a:hover {
     color: #777;
 }
 
+/* 
+기존 매물 섹션 CSS 다음에 추가
+(라인 475 근처, .feature 스타일 뒤)
+*/
+
+/* ===== 카테고리 시스템 스타일 ===== */
+
+/* 카테고리 그리드 */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.category-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.category-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-image img {
+    transform: scale(1.05);
+}
+
+.category-content {
+    padding: 25px;
+    text-align: center;
+}
+
+.category-content h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.category-content p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.category-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.category-card:hover .category-button {
+    background-color: var(--dark-accent-color);
+}
+
+/* 카테고리 모달 */
+.category-modal {
+    max-width: 600px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.category-modal .modal-header {
+    text-align: center;
+    padding: 20px 20px 10px 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.category-modal .modal-title {
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 8px;
+}
+
+.category-modal .modal-description {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.category-modal .modal-close {
+    color: #666;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-modal .modal-close:hover {
+    background: rgba(255, 255, 255, 1);
+    color: #333;
+}
+
+.modal-image-container {
+    padding: 20px;
+    text-align: center;
+}
+
+.modal-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: #f5f5f5;
+    background-image: url('/images/default-thumb.jpg');
+}
+
+.modal-image .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-image:hover .image-overlay {
+    opacity: 1;
+}
+
+.modal-property-info {
+    padding: 0 20px 20px 20px;
+}
+
+.property-details {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    font-weight: bold;
+    color: #555;
+    flex: 0 0 120px;
+}
+
+.detail-value {
+    color: #333;
+    text-align: right;
+    flex: 1;
+    word-break: break-all;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-buttons .btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-contact { 
+    background-color: #009688; 
+}
+
+.btn-contact:hover { 
+    background-color: #00796b; 
+}
+
+.btn-detail { 
+    background-color: #2962FF; 
+}
+
+.btn-detail:hover { 
+    background-color: #1e4ed8; 
+}
+
+.btn-recomm { 
+    background-color: #4CAF50; 
+}
+
+.btn-recomm:hover { 
+    background-color: #388e3c; 
+}
+
+/* 이미지 로딩 실패 시 스타일 */
+.modal-image.error {
+    background-image: url('/images/default-thumb.jpg');
+    background-color: #f0f0f0;
+}
+
+.modal-image.error::after {
+    content: '이미지를 불러올 수 없습니다';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #999;
+    font-size: 14px;
+    text-align: center;
+}
+
 /* 모달 스타일 */
 .modal-background {
     display: none;
@@ -1294,5 +1545,50 @@ footer {
         padding: 10px 20px;
         width: 100%;
         text-align: center;
+    }
+
+    /* 카테고리 시스템 모바일 스타일 */
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .category-card {
+        margin: 0 10px;
+    }
+    
+    .category-modal {
+        margin: 10px;
+        max-height: 85vh;
+    }
+    
+    .modal-image {
+        height: 200px;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    
+    .detail-label {
+        flex: none;
+    }
+    
+    .detail-value {
+        text-align: left;
+    }
+    
+    .modal-image .image-overlay {
+        opacity: 1;
+    }
+    
+    .category-content h3 {
+        font-size: 18px;
+    }
+    
+    .category-content p {
+        font-size: 16px;
     }
 }
