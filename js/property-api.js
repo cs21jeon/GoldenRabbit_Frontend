@@ -100,6 +100,16 @@ function showCategoryModal(property, categoryName, viewId) {
             photoUrl = photoLinks[0].trim();
         }
     }
+
+        // 1. 개별 매물 상세보기 링크 (사진 클릭, 상세내용보기 버튼용)
+    const recordDetailUrl = `https://airtable.com/appGSg5QfDNKgFf73/tblnR438TK52Gr0HB/${recordId}`;
+    
+    // 2. 카테고리 뷰 전체보기 링크 (추천매물 모아보기 버튼용)  
+    const categoryViewUrl = `https://airtable.com/appGSg5QfDNKgFf73/tblnR438TK52Gr0HB/${viewId}`;
+    
+    console.log('생성된 링크들:');
+    console.log('- 개별 매물:', recordDetailUrl);
+    console.log('- 카테고리 뷰:', categoryViewUrl);
     
     if (imageElement) {
         // 이미지 설정
@@ -115,15 +125,22 @@ function showCategoryModal(property, categoryName, viewId) {
             imageElement.style.backgroundImage = `url('/images/default-thumb.jpg')`;
         };
         img.src = photoUrl;
+
+        // 🔧 사진 클릭 시 개별 매물 상세보기로 이동
+        imageElement.onclick = function() {
+            console.log('사진 클릭, 링크:', recordDetailUrl);
+            window.open(recordDetailUrl, '_blank');
+        };
         
-        // 에어테이블 상세보기 링크 설정
-        const detailUrl = `https://airtable.com/appGSg5QfDNKgFf73/shrMoyiS143vdYbYS/tblnR438TK52Gr0HB/${viewId}/${recordId}`;
-        imageElement.onclick = () => window.open(detailUrl, '_blank');
-        
-        // 상세보기 버튼 링크 설정
+        // 🔧 상세내용보기 버튼 링크 설정
         const detailBtn = document.getElementById('modalDetailBtn');
         if (detailBtn) {
-            detailBtn.href = detailUrl;
+            detailBtn.href = recordDetailUrl;
+            detailBtn.onclick = function(e) {
+                e.preventDefault();
+                console.log('상세내용보기 클릭, 링크:', recordDetailUrl);
+                window.open(recordDetailUrl, '_blank');
+            };
         }
     }
     
@@ -141,6 +158,25 @@ function showCategoryModal(property, categoryName, viewId) {
                 console.warn('openConsultModal 함수를 찾을 수 없습니다.');
             }
         };
+    }
+
+    // 🔧 카테고리 전체 매물 보기 버튼 설정
+    const categoryViewBtn = document.getElementById('modalCategoryViewBtn');
+    if (categoryViewBtn) {
+        categoryViewBtn.href = categoryViewUrl;
+        categoryViewBtn.onclick = function(e) {
+            e.preventDefault();
+            console.log('카테고리 전체 매물 보기 클릭, 링크:', categoryViewUrl);
+            window.open(categoryViewUrl, '_blank');
+        };
+        
+        // 버튼 텍스트도 카테고리에 맞게 변경
+        const categoryTexts = {
+            '재건축용 토지': '재건축용 토지 전체 보기',
+            '고수익률 건물': '고수익률 건물 전체 보기',
+            '저가단독주택': '저가단독주택 전체 보기'
+        };
+        categoryViewBtn.textContent = categoryTexts[categoryName] || '이 카테고리 전체 매물 보기';
     }
     
     // 매물 상세 정보 생성
