@@ -1,4 +1,4 @@
-// 상담 문의 폼 제출 처리 스크립트 - 모든 문제 수정 버전
+// 상담 문의 폼 제출 처리 스크립트 - 모든 문제 수정 버전 (통합 ID 지원)
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM이 로드되었습니다. 상담 폼 초기화를 시작합니다.');
     
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         #consultModal {
             z-index: 10050 !important; /* 추천매물 모달보다 높고, 개인정보/완료 모달보다 낮은 z-index */
         }
-        #modalBackground {
+        #modalBackground, #categoryModal {
             z-index: 9900 !important; /* 추천매물 모달 */
         }
     `;
@@ -23,28 +23,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 필수 DOM 요소 참조
     const consultForm = document.getElementById('consultForm');
-    const formStatus = document.getElementById('formStatus');
     const submitButton = document.getElementById('submitConsult');
-    
-    // 모달 내 폼 요소 참조
-    const modalPropertyType = document.getElementById('modalpropertyType');
-    const modalPhone = document.getElementById('modalphone');
-    const modalEmail = document.getElementById('modalemail');
-    const modalMessage = document.getElementById('modalmessage');
-    
-    // 메인 폼 요소 참조
-    const mainPropertyType = document.getElementById('propertyType');
-    const mainPhone = document.getElementById('phone');
-    const mainEmail = document.getElementById('email');
-    const mainMessage = document.getElementById('message');
     
     // DOM 요소 존재 확인
     console.log('consultForm 존재 여부:', !!consultForm);
-    console.log('formStatus 존재 여부:', !!formStatus);
     console.log('submitButton 존재 여부:', !!submitButton);
     
-    if (!consultForm || !formStatus || !submitButton) {
+    if (!consultForm || !submitButton) {
         console.error('필요한 HTML 요소를 찾을 수 없습니다.');
+        console.log('현재 페이지에는 상담 폼이 없습니다.');
+        
+        // 전역 함수는 여전히 등록 (다른 페이지에서 호출될 수 있음)
+        registerGlobalFunctions();
         return;
     }
     
@@ -84,25 +74,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // 폼 유효성 검사 함수 - 수정됨
+    // 폼 유효성 검사 함수 - 수정됨 (통합 ID 지원)
     function validateForm() {
+        console.log('폼 유효성 검사 시작');
+        
         // 현재 활성화된 상담 폼이 메인인지 모달인지 확인
         const consultModal = document.getElementById('consultModal');
         const isMainForm = (!consultModal || getComputedStyle(consultModal).display === 'none');
         
         let propertyType, phone, message;
+        let targetFormStatus;
         
         if (isMainForm) {
-            // 메인 폼 검사
-            propertyType = mainPropertyType?.value?.trim();
-            phone = mainPhone?.value?.trim();
-            message = mainMessage?.value?.trim();
+            // 메인 폼 검사 - 통합 ID 사용
+            propertyType = getElementValue('propertyType');
+            phone = getElementValue('phone');
+            message = getElementValue('message');
+            targetFormStatus = document.getElementById('formStatus');
             console.log('메인 폼 유효성 검사 중...');
         } else {
-            // 모달 폼 검사
-            propertyType = modalPropertyType?.value?.trim();
-            phone = modalPhone?.value?.trim();
-            message = modalMessage?.value?.trim();
+            // 모달 폼 검사 - 기존 modal 접두사 ID와 통합 ID 모두 지원
+            propertyType = getElementValue('modalpropertyType') || getElementValue('propertyType');
+            phone = getElementValue('modalphone') || getElementValue('phone');
+            message = getElementValue('modalmessage') || getElementValue('message');
+            
+            // 모달 내 formStatus 찾기
+            targetFormStatus = consultModal?.querySelector('#formStatus') || document.getElementById('formStatus');
             console.log('모달 폼 유효성 검사 중...');
         }
         
@@ -114,26 +111,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         if (!propertyType || !phone || !message) {
-            // 상태 메시지를 해당 폼의 formStatus에 표시
-            let targetFormStatus = formStatus;
-            
-            // 모달폼인 경우 모달 내 formStatus 찾기
-            if (!isMainForm) {
-                const modalFormStatus = consultModal.querySelector('#formStatus');
-                if (modalFormStatus) {
-                    targetFormStatus = modalFormStatus;
-                }
-            }
-            
             if (targetFormStatus) {
                 targetFormStatus.style.display = 'block';
                 targetFormStatus.textContent = '필수 입력 항목을 모두 입력해 주세요.';
                 targetFormStatus.style.color = 'red';
+            } else {
+                alert('필수 입력 항목을 모두 입력해 주세요.');
             }
             return false;
         }
         
         return true;
+    }
+    
+    // 요소 값 가져오기 헬퍼 함수
+    function getElementValue(id) {
+        const element = document.getElementById(id);
+        return element ? element.value.trim() : '';
     }
     
     // 모달 준비 함수
@@ -249,17 +243,9 @@ document.addEventListener('DOMContentLoaded', function() {
         cancelBtn.addEventListener('click', function() {
             console.log('취소 버튼이 클릭되었습니다.');
             privacyModal.style.display = 'none';
-            // 상태 메시지 숨기기
-            formStatus.style.display = 'none';
             
-            // 모달 내 formStatus도 숨기기
-            const consultModal = document.getElementById('consultModal');
-            if (consultModal) {
-                const modalFormStatus = consultModal.querySelector('#formStatus');
-                if (modalFormStatus) {
-                    modalFormStatus.style.display = 'none';
-                }
-            }
+            // 모든 상태 메시지 숨기기
+            hideAllFormStatus();
         });
         
         // 완료 모달의 닫기 버튼 클릭 시 모달 닫기 및 성공 메시지 표시 - 수정됨
@@ -269,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 1. 완료 모달 닫기
             completionModal.style.display = 'none';
             
-            // 2. 개인정보 동의 모달도 확실히 닫기 (문제 2 해결)
+            // 2. 개인정보 동의 모달도 확실히 닫기
             privacyModal.style.display = 'none';
             
             // 3. 상담 모달 닫기 (추천매물 모달은 유지)
@@ -279,21 +265,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 추천매물 모달이 열려있는 경우 body의 overflow는 hidden 유지
                 const modalBackground = document.getElementById('modalBackground');
-                if (!modalBackground || modalBackground.style.display === 'none') {
-                    document.body.style.overflow = 'auto'; // 추천매물 모달이 없을 때만 스크롤 복원
+                const categoryModal = document.getElementById('categoryModal');
+                if ((!modalBackground || modalBackground.style.display === 'none') && 
+                    (!categoryModal || categoryModal.style.display === 'none')) {
+                    document.body.style.overflow = 'auto'; // 다른 모달이 없을 때만 스크롤 복원
                 }
             }
             
             // 4. 메인 폼의 성공 메시지 표시 (문제 1 해결 - 위치 이동 방지)
-            // 현재 위치에 따라 적절한 곳에 메시지 표시
-            const isOnContactSection = window.location.hash === '#contact' || 
-                                     document.querySelector('#contact').getBoundingClientRect().top < window.innerHeight;
+            const isOnContactSection = window.location.pathname.includes('inquiry.html') || 
+                                     window.location.hash === '#contact' || 
+                                     document.querySelector('#contact')?.getBoundingClientRect().top < window.innerHeight;
             
             if (isOnContactSection) {
-                // 상담신청 섹션에 있는 경우에만 성공 메시지 표시
-                formStatus.style.display = 'block';
-                formStatus.textContent = '상담신청이 정상적으로 처리되었습니다.';
-                formStatus.style.color = 'green';
+                const formStatus = document.getElementById('formStatus');
+                if (formStatus) {
+                    formStatus.style.display = 'block';
+                    formStatus.textContent = '상담신청이 정상적으로 처리되었습니다.';
+                    formStatus.style.color = 'green';
+                }
             }
             
             // 5. 모든 폼 초기화
@@ -302,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('모든 모달이 정리되고 폼이 초기화되었습니다.');
         });
         
-        // 동의하기 버튼 클릭 시 실제 폼 제출 처리 - 수정됨
+        // 동의하기 버튼 클릭 시 실제 폼 제출 처리 - 수정됨 (통합 ID 지원)
         agreeBtn.addEventListener('click', async function() {
             console.log('동의하기 버튼이 클릭되었습니다.');
             privacyModal.style.display = 'none'; // 동의 모달 닫기
@@ -313,32 +303,35 @@ document.addEventListener('DOMContentLoaded', function() {
             submitButton.textContent = '접수 중...';
             
             // 상태 메시지 표시
-            formStatus.style.display = 'block';
-            formStatus.textContent = '상담 문의를 접수 중입니다...';
-            formStatus.style.color = '#666';
+            const formStatus = getActiveFormStatus();
+            if (formStatus) {
+                formStatus.style.display = 'block';
+                formStatus.textContent = '상담 문의를 접수 중입니다...';
+                formStatus.style.color = '#666';
+            }
             
             // 현재 활성화된 폼 확인 (메인 폼인지 모달 폼인지)
             const consultModal = document.getElementById('consultModal');
             const isMainForm = (!consultModal || getComputedStyle(consultModal).display === 'none');
             
-            // 폼 데이터 수집
+            // 폼 데이터 수집 - 통합 ID 지원
             let propertyType, phone, email, message;
             
             if (isMainForm) {
-                // 메인 폼에서 데이터 수집
-                propertyType = mainPropertyType?.value?.trim() || '';
-                phone = mainPhone?.value?.trim() || '';
-                email = mainEmail?.value?.trim() || '';
-                message = mainMessage?.value?.trim() || '';
+                // 메인 폼에서 데이터 수집 - 통합 ID 사용
+                propertyType = getElementValue('propertyType');
+                phone = getElementValue('phone');
+                email = getElementValue('email');
+                message = getElementValue('message');
             } else {
-                // 모달 폼에서 데이터 수집
-                propertyType = modalPropertyType?.value?.trim() || '';
-                phone = modalPhone?.value?.trim() || '';
-                email = modalEmail?.value?.trim() || '';
-                message = modalMessage?.value?.trim() || '';
+                // 모달 폼에서 데이터 수집 - 기존 modal 접두사 ID와 통합 ID 모두 지원
+                propertyType = getElementValue('modalpropertyType') || getElementValue('propertyType');
+                phone = getElementValue('modalphone') || getElementValue('phone');
+                email = getElementValue('modalemail') || getElementValue('email');
+                message = getElementValue('modalmessage') || getElementValue('message');
             }
             
-            // 서버에 보낼 데이터 - 수정됨 (문제 3 해결)
+            // 서버에 보낼 데이터
             const data = {
                 propertyType: propertyType,
                 phone: phone,
@@ -375,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('폼이 초기화되었습니다.');
                 
                 // 상태 메시지 숨기기 (팝업으로 대체)
-                formStatus.style.display = 'none';
+                hideAllFormStatus();
                 
                 // 완료 모달 표시
                 completionModal.style.display = 'block';
@@ -384,8 +377,10 @@ document.addEventListener('DOMContentLoaded', function() {
             } catch (error) {
                 console.error('상담 접수 실패:', error);
                 // 오류 메시지
-                formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
-                formStatus.style.color = 'red';
+                if (formStatus) {
+                    formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
+                    formStatus.style.color = 'red';
+                }
             } finally {
                 // 버튼 상태 복원
                 submitButton.disabled = false;
@@ -395,24 +390,47 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // 모든 폼 초기화 함수
+    // 활성화된 폼의 상태 메시지 요소 가져오기
+    function getActiveFormStatus() {
+        const consultModal = document.getElementById('consultModal');
+        const isMainForm = (!consultModal || getComputedStyle(consultModal).display === 'none');
+        
+        if (isMainForm) {
+            return document.getElementById('formStatus');
+        } else {
+            return consultModal?.querySelector('#formStatus') || document.getElementById('formStatus');
+        }
+    }
+    
+    // 모든 상태 메시지 숨기기
+    function hideAllFormStatus() {
+        const allFormStatus = document.querySelectorAll('#formStatus');
+        allFormStatus.forEach(status => {
+            if (status) status.style.display = 'none';
+        });
+    }
+    
+    // 모든 폼 초기화 함수 - 통합 ID 지원
     function resetAllForms() {
         // 메인 폼 초기화
         if (consultForm) {
             consultForm.reset();
         }
         
-        // 모달 폼 명시적으로 초기화
-        if (modalPropertyType) modalPropertyType.value = '';
-        if (modalPhone) modalPhone.value = '';
-        if (modalEmail) modalEmail.value = '';
-        if (modalMessage) modalMessage.value = '';
+        // 모든 가능한 ID의 요소들 초기화
+        const idsToReset = [
+            'propertyType', 'modalpropertyType',
+            'phone', 'modalphone', 
+            'email', 'modalemail',
+            'message', 'modalmessage'
+        ];
         
-        // 메인 폼 요소들도 명시적으로 초기화
-        if (mainPropertyType) mainPropertyType.value = '';
-        if (mainPhone) mainPhone.value = '';
-        if (mainEmail) mainEmail.value = '';
-        if (mainMessage) mainMessage.value = '';
+        idsToReset.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.value = '';
+            }
+        });
         
         // 개인정보 동의 체크박스 초기화
         const privacyCheck = document.getElementById('privacyCheck');
@@ -435,14 +453,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (mutation.addedNodes && mutation.addedNodes.length > 0) {
                     for (let i = 0; i < mutation.addedNodes.length; i++) {
                         const node = mutation.addedNodes[i];
-                        if (node.id === 'modalBackground' || 
-                            (node.nodeType === 1 && node.querySelector('#modalBackground'))) {
+                        if (node.id === 'modalBackground' || node.id === 'categoryModal' ||
+                            (node.nodeType === 1 && (node.querySelector('#modalBackground') || node.querySelector('#categoryModal')))) {
                             console.log('추천매물 모달이 추가되었습니다.');
                             
                             // 모달이 추가된 후 약간의 지연시간을 두고 처리
                             setTimeout(function() {
                                 // 새로 추가된 모달에서 상담신청 버튼 찾기
-                                const btns = document.querySelectorAll('#modalBackground .btn-contact');
+                                const btns = document.querySelectorAll('#modalBackground .btn-contact, #categoryModal .btn-contact');
                                 console.log('찾은 상담신청 버튼 수:', btns.length);
                                 
                                 btns.forEach(function(btn) {
@@ -457,7 +475,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         
                                         console.log('추천매물 모달에서 상담신청 버튼 클릭됨');
                                         
-                                        // 주소 추출 (이미 a 태그의 onclick에 담겨있음)
+                                        // 주소 추출
                                         let address = '';
                                         try {
                                             // 모달 제목에서 주소 추출
@@ -487,7 +505,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 추천매물 모달 속성 변경 감지 (display 변경)
                 if (mutation.type === 'attributes' && 
                     mutation.attributeName === 'style' && 
-                    mutation.target.id === 'modalBackground') {
+                    (mutation.target.id === 'modalBackground' || mutation.target.id === 'categoryModal')) {
                     
                     const style = window.getComputedStyle(mutation.target);
                     if (style.display === 'flex' || style.display === 'block') {
@@ -518,78 +536,90 @@ document.addEventListener('DOMContentLoaded', function() {
     // 추천매물 모달 감시 시작
     observePropertyModal();
     
-    // 외부에서 상담 모달을 열 수 있도록 전역 함수 수정
-    window.openConsultModal = function(address) {
-        console.log('openConsultModal 호출됨:', address);
-        
-        // 콘설트 모달 열기
-        const consultModal = document.getElementById('consultModal');
-        if (consultModal) {
-            // z-index 설정 확인 및 조정 
-            const currentZIndex = parseInt(window.getComputedStyle(consultModal).zIndex);
-            if (currentZIndex < 10050 || isNaN(currentZIndex)) {
-                consultModal.style.zIndex = "10050";
-                console.log('consultModal z-index 설정: 10050');
-            }
-            
-            // 모달 폼 요소들 가져오기
-            const modalPropertyType = document.getElementById('modalpropertyType');
-            const modalMessage = document.getElementById('modalmessage');
-            
-            // 메세지 필드에 매물 주소 설정 (모달용 메시지 필드 사용)
-            if (modalMessage && address) {
-                modalMessage.value = `${address} 매물에 관심있습니다.`;
-            }
-            
-            // 모달 표시
-            consultModal.style.display = 'block';
-            
-            // 추천매물 모달이 이미 열려있으면 body의 overflow는 그대로 유지
-            // 그렇지 않으면 overflow를 hidden으로 설정
-            const modalBackground = document.getElementById('modalBackground');
-            if (!modalBackground || modalBackground.style.display === 'none') {
-                document.body.style.overflow = 'hidden'; // 스크롤 방지
-            }
-            
-            console.log('consultModal이 표시되었습니다.');
-            
-            // 상태 메시지 초기화
-            const formStatus = document.getElementById('formStatus');
-            if (formStatus) {
-                formStatus.style.display = 'none';
-            }
-            
-            // 모달 내 formStatus도 초기화
-            const modalFormStatus = consultModal.querySelector('#formStatus');
-            if (modalFormStatus) {
-                modalFormStatus.style.display = 'none';
-            }
-        } else {
-            console.error('consultModal을 찾을 수 없습니다.');
-        }
-        
-        // 기본 이벤트 방지 (페이지 상단으로 스크롤 방지)
-        return false;
-    };
-    
-    // 외부에서 상담 모달을 닫을 수 있도록 전역 함수 추가
-    window.closeConsultModal = function() {
-        console.log('closeConsultModal 호출됨');
-        const consultModal = document.getElementById('consultModal');
-        if (consultModal) {
-            consultModal.style.display = 'none';
-            
-            // 추천매물 모달이 열려있는 경우 body의 overflow는 hidden 유지
-            const modalBackground = document.getElementById('modalBackground');
-            if (!modalBackground || modalBackground.style.display === 'none') {
-                document.body.style.overflow = 'auto'; // 추천매물 모달이 없을 때만 스크롤 복원
-            }
-            
-            console.log('consultModal이 닫혔습니다.');
-        } else {
-            console.log('consultModal을 찾을 수 없습니다.');
-        }
-    };
+    // 전역 함수 등록
+    registerGlobalFunctions();
     
     console.log('상담 폼 초기화가 완료되었습니다.');
+    
+    // 전역 함수 등록 함수
+    function registerGlobalFunctions() {
+        // 외부에서 상담 모달을 열 수 있도록 전역 함수 수정
+        window.openConsultModal = function(address) {
+            console.log('openConsultModal 호출됨:', address);
+            
+            // 콘설트 모달 열기
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                // z-index 설정 확인 및 조정 
+                const currentZIndex = parseInt(window.getComputedStyle(consultModal).zIndex);
+                if (currentZIndex < 10050 || isNaN(currentZIndex)) {
+                    consultModal.style.zIndex = "10050";
+                    console.log('consultModal z-index 설정: 10050');
+                }
+                
+                // 메시지 필드에 매물 주소 설정 - 통합 ID 지원
+                if (address) {
+                    const messageText = `${address} 매물에 관심있습니다.`;
+                    
+                    // 모달용 메시지 필드 (기존 ID)
+                    const modalMessage = document.getElementById('modalmessage');
+                    if (modalMessage) {
+                        modalMessage.value = messageText;
+                    }
+                    
+                    // 통합 ID 메시지 필드
+                    const unifiedMessage = document.getElementById('message');
+                    if (unifiedMessage && !modalMessage) {
+                        unifiedMessage.value = messageText;
+                    }
+                }
+                
+                // 모달 표시
+                consultModal.style.display = 'flex';
+                
+                // 추천매물 모달이 이미 열려있으면 body의 overflow는 그대로 유지
+                // 그렇지 않으면 overflow를 hidden으로 설정
+                const modalBackground = document.getElementById('modalBackground');
+                const categoryModal = document.getElementById('categoryModal');
+                if ((!modalBackground || modalBackground.style.display === 'none') && 
+                    (!categoryModal || categoryModal.style.display === 'none')) {
+                    document.body.style.overflow = 'hidden'; // 스크롤 방지
+                }
+                
+                console.log('consultModal이 표시되었습니다.');
+                
+                // 상태 메시지 초기화
+                hideAllFormStatus();
+                
+            } else {
+                console.error('consultModal을 찾을 수 없습니다.');
+            }
+            
+            // 기본 이벤트 방지 (페이지 상단으로 스크롤 방지)
+            return false;
+        };
+        
+        // 외부에서 상담 모달을 닫을 수 있도록 전역 함수 추가
+        window.closeConsultModal = function() {
+            console.log('closeConsultModal 호출됨');
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                consultModal.style.display = 'none';
+                
+                // 추천매물 모달이 열려있는 경우 body의 overflow는 hidden 유지
+                const modalBackground = document.getElementById('modalBackground');
+                const categoryModal = document.getElementById('categoryModal');
+                if ((!modalBackground || modalBackground.style.display === 'none') && 
+                    (!categoryModal || categoryModal.style.display === 'none')) {
+                    document.body.style.overflow = 'auto'; // 다른 모달이 없을 때만 스크롤 복원
+                }
+                
+                console.log('consultModal이 닫혔습니다.');
+            } else {
+                console.log('consultModal을 찾을 수 없습니다.');
+            }
+        };
+        
+        console.log('전역 함수들이 등록되었습니다.');
+    }
 });
