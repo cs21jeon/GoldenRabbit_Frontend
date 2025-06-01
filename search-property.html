@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon_goldenrabbit_01.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e38000">
+    <title>매물검색 - 금토끼부동산중개</title>
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header id="top">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고">
+                <div>
+                    <h1>금토끼부동산중개</h1>
+                    <div class="logo-sub">Golden Rabbit Real Estate</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 매물검색 섹션 -->
+    <section id="property-search">
+        <div class="container">
+            <div class="section-title">
+                <h2>조건 검색</h2>
+                <p>원하는 조건을 입력하면<br>조건에 맞는 매물이 지도에 표시됩니다</p>
+            </div>
+            
+            <div class="search-form" style="background: #f8f9fa; padding: 20px; border-radius: 8px;">
+                <form id="mapSearchForm">
+                    <div class="search-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+                        
+                        <!-- 매가 조건 -->
+                        <div class="search-item">
+                            <label>매가</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="priceValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                <select id="priceCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 실투자금 조건 -->
+                        <div class="search-item">
+                            <label>실투자금</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="investmentValue" placeholder="만원" class="form-control" style="flex: 1;">
+                                <select id="investmentCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 수익률 조건 -->
+                        <div class="search-item">
+                            <label>수익률</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="yieldValue" placeholder="%" class="form-control" style="flex: 1;">
+                                <select id="yieldCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 토지면적 조건 -->
+                        <div class="search-item">
+                            <label>토지면적</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="number" id="areaValue" placeholder="㎡" class="form-control" style="flex: 1;">
+                                <select id="areaCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="above">이상</option>
+                                    <option value="below">이하</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- 사용승인일 조건 -->
+                        <div class="search-item">
+                            <label>사용승인일</label>
+                            <div style="display: flex; gap: 10px;">
+                                <input type="date" id="approvalDate" class="form-control" style="flex: 1;">
+                                <select id="approvalCondition" class="form-control" style="width: 80px;">
+                                    <option value="all">전체</option>
+                                    <option value="before">이전</option>
+                                    <option value="after">이후</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="search-buttons" style="text-align: center; margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                        <button type="submit" class="btn search-button">조건에 맞는 매물 검색하기</button>
+                        <button type="button" id="resetSearch" class="btn reset-button" style="background-color: #6c757d;">검색 초기화</button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- 검색 결과 표시 영역 -->
+            <div id="searchResults" style="margin-top: 20px; display: none;">
+                <div id="searchStatus" style="background: #f0f0f0; padding: 10px; border-radius: 4px; text-align: center; margin-bottom: 20px;">
+                    <strong id="searchStatusText">조건에 맞는 매물을 검색중입니다...</strong>
+                </div>
+                
+                <!-- 검색 결과 지도 컨테이너 -->
+                <div id="searchMapContainer" class="search-map-container" style="width: 100%; height: 500px; position: relative; border-radius: 8px; overflow: hidden; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                    <div class="loading-message" style="text-align: center; padding: 150px 20px;">
+                        지도를 불러오는 중입니다...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI 매물 검색 섹션 -->
+    <section id="ai-search">
+        <div class="container">
+            <div class="section-title">
+                <h2>AI 맞춤 매물 검색</h2>
+                <p>원하는 조건을 입력하시면<br>인공지능이 최적의 매물을 추천해 드립니다</p>
+            </div>
+            
+            <div class="ai-search-container">
+                <div class="ai-search-form">
+                    <form id="aiSearchForm">
+                        <div class="form-group">
+                            <label for="ai_location">희망 지역</label>
+                            <input type="text" id="ai_location" class="form-control" placeholder="예: 사당동, 신림동, 동작구 등등" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="priceRange">희망 매매가</label>
+                            <select id="priceRange" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="15억 이하">15억 이하</option>
+                                <option value="15억-30억">15억-30억</option>
+                                <option value="30억 이상">30억 이상</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investment">실투자금</label>
+                            <select id="investment" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="10억 이하">10억 이하</option>
+                                <option value="10억-20억">10억-20억</option>
+                                <option value="20억 이상">20억 이상</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expectedYield">희망 투자수익률</label>
+                            <select id="expectedYield" class="form-control" required>
+                                <option value="">-- 선택하세요 --</option>
+                                <option value="수익률 무관">수익률 무관</option>
+                                <option value="3% 이상">3% 이상</option>
+                                <option value="5% 이상">5% 이상</option>
+                                <option value="7% 이상">7% 이상</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-block">AI 매물 추천받기</button>
+                    </form>
+                </div>
+                
+                <div class="ai-search-results" id="aiSearchResults" style="display: none;">
+                    <h3>맞춤 추천 매물</h3>
+                    <div class="ai-loading" id="aiLoading">
+                        <div class="loading-spinner"></div>
+                        <p>AI가 최적의 매물을 찾고 있습니다...</p>
+                    </div>
+                    <div id="aiRecommendations"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 영역 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                        금토끼부동산중개
+                    </div>
+                    <div class="footer-description">
+                        전문가와 함께하는 금토끼부동산중개입니다.<br>
+                        수익형 건물 매매, 임대 전문 부동산입니다.
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://open.kakao.com/o/sW37rY9g" class="social-icon" target="_blank" title="카카오톡 채널">
+                            <img src="/images/카카오톡.png" alt="카카오톡" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.disco.re/hvzt1qow?share" class="social-icon" target="_blank" title="디스코">
+                            <img src="/images/디스코로고.png" alt="디스코" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://blog.naver.com/goldenrabbit7377" class="social-icon" target="_blank" title="네이버 블로그">
+                            <img src="/images/블로그.png" alt="네이버 블로그" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.youtube.com/@goldenrabbit_realestate" class="social-icon" target="_blank" title="유튜브 채널">
+                            <img src="/images/유튜브.png" alt="유튜브" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 금토끼부동산중개. All rights reserved. <br> 대표: 전창성 | 사업자등록번호: 520-41-01170 <br> 중개사무소등록번호: 11590-2024-00048
+            </div>
+        </div>
+    </footer>
+
+    <!-- 하단 네비게이션 바 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">홈</div>
+        </a>
+        <a href="introduction.html" class="nav-item">
+            <div class="nav-icon">👋</div>
+            <div class="nav-text">회사소개</div>
+        </a>
+        <a href="map-property.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">매물지도</div>
+        </a>
+        <a href="recomm-property.html" class="nav-item">
+            <div class="nav-icon">⭐</div>
+            <div class="nav-text">추천매물</div>
+        </a>
+        <a href="search-property.html" class="nav-item active">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">매물검색</div>
+        </a>
+        <a href="inquiry.html" class="nav-item">
+            <div class="nav-icon">📞</div>
+            <div class="nav-text">상담문의</div>
+        </a>
+    </nav>
+
+    <!-- 자바스크립트 -->
+    <script src="/js/ai-property-search.js"></script>
+    <script src="/js/navigation.js"></script>
+
+    <!-- 조건 검색 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapSearchForm = document.getElementById('mapSearchForm');
+            const resetButton = document.getElementById('resetSearch');
+            const searchResults = document.getElementById('searchResults');
+            const searchStatus = document.getElementById('searchStatus');
+            const searchStatusText = document.getElementById('searchStatusText');
+            const searchMapContainer = document.getElementById('searchMapContainer');
+            
+            console.log('검색 폼 초기화');
+            
+            if (!mapSearchForm) {
+                console.error('검색 폼을 찾을 수 없습니다!');
+                return;
+            }
+            
+            // 검색 폼 제출 처리
+            mapSearchForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                console.log('검색 폼 제출됨');
+                
+                // 검색 조건 수집
+                const searchData = {
+                    price_value: document.getElementById('priceValue').value,
+                    price_condition: document.getElementById('priceCondition').value,
+                    investment_value: document.getElementById('investmentValue').value,
+                    investment_condition: document.getElementById('investmentCondition').value,
+                    yield_value: document.getElementById('yieldValue').value,
+                    yield_condition: document.getElementById('yieldCondition').value,
+                    area_value: document.getElementById('areaValue').value,
+                    area_condition: document.getElementById('areaCondition').value,
+                    approval_date: document.getElementById('approvalDate').value,
+                    approval_condition: document.getElementById('approvalCondition').value
+                };
+                
+                console.log('검색 조건:', searchData);
+                
+                // 검색 시작 - 로딩 메시지 표시
+                searchResults.style.display = 'block';
+                searchStatusText.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 조건에 맞는 매물을 검색중입니다...';
+                searchMapContainer.innerHTML = '<div class="loading-message" style="text-align: center; padding: 150px 20px;">지도를 불러오는 중입니다...</div>';
+                
+                let response;
+                
+                try {
+                    console.log('API 호출 시작');
+                    
+                    // API 호출
+                    response = await fetch('/api/search-map', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(searchData)
+                    });
+                    
+                    console.log('API 응답 상태:', response.status);
+                    
+                    if (!response.ok) {
+                        throw new Error(`검색 요청 실패: ${response.status}`);
+                    }
+                    
+                    const result = await response.json();
+                    console.log('API 응답 데이터:', result);
+                    
+                    // 지도 업데이트
+                    if (result.map_html) {
+                        // 지도 HTML 삽입
+                        searchMapContainer.innerHTML = result.map_html;
+                        
+                        // 지도 렌더링 후 크기 강제 조정
+                        setTimeout(() => {
+                            // 모든 하위 div와 iframe 찾기
+                            const innerDivs = searchMapContainer.querySelectorAll('div[style*="width"]');
+                            const iframes = searchMapContainer.querySelectorAll('iframe');
+                            
+                            // 컨테이너 자체 높이 설정
+                            if (window.innerWidth <= 768) {
+                                searchMapContainer.style.height = '400px';
+                                searchMapContainer.style.minHeight = '350px';
+                                
+                                // 모든 하위 요소 크기 조정
+                                innerDivs.forEach(div => {
+                                    div.style.width = '100%';
+                                    div.style.height = '100%';
+                                    if (div.style.position === 'relative') {
+                                        div.style.position = 'relative';
+                                    }
+                                });
+                                
+                                iframes.forEach(iframe => {
+                                    iframe.style.width = '100%';
+                                    iframe.style.height = '100%';
+                                    iframe.style.position = 'absolute';
+                                    iframe.style.top = '0';
+                                    iframe.style.left = '0';
+                                });
+                            }
+                        }, 100);
+                    }
+                    
+                    // 검색 완료 - 결과 표시
+                    searchStatusText.innerHTML = `검색 결과: <span id="resultCount">${result.count}</span>개의 매물을 찾았습니다.`;
+                    
+                    // 통계 정보 표시 (있을 경우)
+                    if (result.statistics) {
+                        const stats = result.statistics;
+                        console.log('검색 통계:', stats);
+                        
+                        // 기존 통계 제거
+                        const existingStats = document.querySelector('.search-stats');
+                        if (existingStats) {
+                            existingStats.remove();
+                        }
+                        
+                        const statsHtml = `
+                            <div class="search-stats" style="background: #e3f2fd; padding: 10px; border-radius: 4px; margin-top: 10px; font-size: 14px;">
+                                <strong>검색 통계:</strong><br>
+                                - 전체 매물: ${stats.total_records}개<br>
+                                - 상태 필터링: ${stats.status_filtered}개 제외<br>
+                                - 조건 필터링: ${stats.condition_filtered}개 제외<br>
+                                - 필터 통과: ${stats.passed_filter}개<br>
+                                - 지오코딩 실패: ${stats.geocoding_failed}개<br>
+                                - 지도에 표시: ${stats.markers_added}개
+                            </div>
+                        `;
+                        searchResults.insertAdjacentHTML('beforeend', statsHtml);
+                    }
+                    
+                    // 검색 결과로 스크롤
+                    searchResults.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                } catch (error) {
+                    console.error('검색 오류:', error);
+                    
+                    searchStatusText.innerHTML = '<i class="fas fa-exclamation-circle"></i> 검색 중 오류가 발생했습니다.';
+                    
+                    if (response) {
+                        try {
+                            const errorData = await response.json();
+                            console.error('서버 응답:', errorData);
+                            searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                검색 중 오류가 발생했습니다.<br>
+                                에러: ${errorData.error || '알 수 없는 오류'}<br>
+                                <small>${errorData.details || ''}</small>
+                            </div>`;
+                        } catch (e) {
+                            const errorText = await response.text();
+                            console.error('서버 응답 텍스트:', errorText);
+                            searchMapContainer.innerHTML = `<div style="text-align: center; padding: 50px; color: red;">
+                                검색 중 오류가 발생했습니다.<br>
+                                ${errorText}
+                            </div>`;
+                        }
+                    } else {
+                        searchMapContainer.innerHTML = '<div style="text-align: center; padding: 50px; color: red;">검색 중 오류가 발생했습니다. 다시 시도해주세요.</div>';
+                    }
+                }
+            });
+            
+            // 검색 초기화
+            resetButton.addEventListener('click', function() {
+                mapSearchForm.reset();
+                searchResults.style.display = 'none';
+                searchMapContainer.innerHTML = '';
+                
+                // 통계 정보도 제거
+                const existingStats = document.querySelector('.search-stats');
+                if (existingStats) {
+                    existingStats.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

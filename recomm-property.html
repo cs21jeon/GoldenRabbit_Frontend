@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon_goldenrabbit_01.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e38000">
+    <title>추천매물 - 금토끼부동산중개</title>
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header id="top">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고">
+                <div>
+                    <h1>금토끼부동산중개</h1>
+                    <div class="logo-sub">Golden Rabbit Real Estate</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 추천 매물 섹션 -->
+    <section id="properties">
+        <div class="container">    
+            <div class="section-title">
+                <h2>추천 매물</h2>
+                <p>금토끼부동산중개에서 엄선한<br>카테고리별 우수 매물을 소개합니다</p>
+            </div>        
+            
+            <!-- 카테고리 카드 그리드 -->
+            <div class="category-grid">
+                <!-- 재건축용 토지 카드 -->
+                <div class="category-card" data-view-id="viwzEVzrr47fCbDNU" data-category="재건축용 토지">
+                    <div class="category-image">
+                        <img src="/images/category_land.jpg" alt="재건축용 토지" onerror="this.src='/images/default-thumb.jpg'">
+                    </div>
+                    <div class="category-content">
+                        <h3>재건축용 토지</h3>
+                        <p>대지 80평 이상 재건축용 매물</p>
+                        <div class="category-button">
+                            <span>대표 매물 보기</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 고수익률 건물 카드 -->
+                <div class="category-card" data-view-id="viwxS4dKAcQWmB0Be" data-category="고수익률 건물">
+                    <div class="category-image">
+                        <img src="/images/category_building.jpg" alt="고수익률 건물" onerror="this.src='/images/default-thumb.jpg'">
+                    </div>
+                    <div class="category-content">
+                        <h3>고수익률 건물</h3>
+                        <p>수익률 6% 이상 (비용 배제)</p>
+                        <div class="category-button">
+                            <span>대표 매물 보기</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 저가단독주택 카드 -->
+                <div class="category-card" data-view-id="viwUKnawSP8SkV9Sx" data-category="저가단독주택">
+                    <div class="category-image">
+                        <img src="/images/category_house.jpg" alt="저가단독주택" onerror="this.src='/images/default-thumb.jpg'">
+                    </div>
+                    <div class="category-content">
+                        <h3>저가단독주택</h3>
+                        <p>단독의 꿈. 20억 이하 저가 단독주택</p>
+                        <div class="category-button">
+                            <span>대표 매물 보기</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 로딩 메시지 -->
+            <div class="loading-message" id="categoryLoading" style="display: none;">
+                대표 매물 정보를 불러오는 중입니다...
+            </div>
+        </div>
+    </section>
+
+    <!-- 카테고리별 매물 모달 -->
+    <div id="categoryModal" class="modal-background" style="display: none;">
+        <div class="modal-content category-modal">
+            <div class="modal-close" onclick="closeCategoryModal()">&times;</div>
+            <div class="modal-header">
+                <h2 id="modalCategoryTitle" class="modal-title"></h2>
+                <p id="modalCategoryDescription" class="modal-description"></p>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <div id="modalPropertyImage" class="modal-image clickable">
+                        <div class="image-overlay">
+                            <span>사진 클릭 시 상세보기</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-property-info">
+                    <div id="modalPropertyDetails" class="property-details">
+                        <!-- 동적으로 생성될 내용 -->
+                    </div>
+                    <div class="modal-buttons">
+                        <a href="javascript:void(0);" id="modalInquiryBtn" class="btn btn-contact">문의하기</a>
+                        <a href="#" id="modalDetailBtn" class="btn btn-detail" target="_blank">상세내용 보기</a>
+                        <a href="#" id="modalCategoryViewBtn" class="btn btn-recomm" target="_blank">이 카테고리 전체 매물 보기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal-background" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-close" onclick="closeConsultModal()">&times;</div>
+          <div class="modal-body">
+            <h2 class="modal-title">상담 문의</h2>
+            <div class="contact-form">
+              <form id="consultForm">
+                <div class="form-group">
+                  <label for="propertyType">매물종류</label>
+                  <select id="modalpropertyType" name="propertyType" class="form-control" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="house">단독/다가구</option>
+                    <option value="mixed">상가주택</option>
+                    <option value="commercial">상업용건물</option>
+                    <option value="land">재건축/토지</option>
+                    <option value="sell">매물접수</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="phone">연락처</label>
+                  <input type="tel" id="modalphone" name="phone" class="form-control" placeholder="010-0000-0000" required>
+                </div>
+      
+                <div class="form-group">
+                  <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
+                  <input type="email" id="modalemail" name="email" class="form-control" placeholder="abc@abc.com">
+                </div>
+      
+                <div class="form-group">
+                  <label for="message">문의사항</label>
+                  <textarea id="modalmessage" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                </div>
+      
+                <button type="submit" class="btn btn-contact btn-block">상담 신청하기</button>
+                <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- 푸터 영역 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                        금토끼부동산중개
+                    </div>
+                    <div class="footer-description">
+                        전문가와 함께하는 금토끼부동산중개입니다.<br>
+                        수익형 건물 매매, 임대 전문 부동산입니다.
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://open.kakao.com/o/sW37rY9g" class="social-icon" target="_blank" title="카카오톡 채널">
+                            <img src="/images/카카오톡.png" alt="카카오톡" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.disco.re/hvzt1qow?share" class="social-icon" target="_blank" title="디스코">
+                            <img src="/images/디스코로고.png" alt="디스코" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://blog.naver.com/goldenrabbit7377" class="social-icon" target="_blank" title="네이버 블로그">
+                            <img src="/images/블로그.png" alt="네이버 블로그" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.youtube.com/@goldenrabbit_realestate" class="social-icon" target="_blank" title="유튜브 채널">
+                            <img src="/images/유튜브.png" alt="유튜브" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 금토끼부동산중개. All rights reserved. <br> 대표: 전창성 | 사업자등록번호: 520-41-01170 <br> 중개사무소등록번호: 11590-2024-00048
+            </div>
+        </div>
+    </footer>
+
+    <!-- 하단 네비게이션 바 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">홈</div>
+        </a>
+        <a href="introduction.html" class="nav-item">
+            <div class="nav-icon">👋</div>
+            <div class="nav-text">회사소개</div>
+        </a>
+        <a href="map-property.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">매물지도</div>
+        </a>
+        <a href="recomm-property.html" class="nav-item active">
+            <div class="nav-icon">⭐</div>
+            <div class="nav-text">추천매물</div>
+        </a>
+        <a href="search-property.html" class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">매물검색</div>
+        </a>
+        <a href="inquiry.html" class="nav-item">
+            <div class="nav-icon">📞</div>
+            <div class="nav-text">상담문의</div>
+        </a>
+    </nav>
+
+    <!-- 자바스크립트 -->
+    <script src="/js/property-api.js"></script>
+    <script src="/js/inquiry-form.js?v=2"></script>
+    <script src="/js/navigation.js"></script>
+
+    <script>
+        function openConsultModal(address) {
+            const consultModal = document.getElementById('consultModal');
+            consultModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            const messageField = document.getElementById('modalmessage');
+            messageField.value = `${address}에 대해 상담 문의합니다.`;
+        }
+
+        function closeConsultModal() {
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                consultModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

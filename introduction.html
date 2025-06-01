@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon_goldenrabbit_01.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e38000">
+    <title>회사소개 - 금토끼부동산중개</title>
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header id="top">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고">
+                <div>
+                    <h1>금토끼부동산중개</h1>
+                    <div class="logo-sub">Golden Rabbit Real Estate</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 인사말 섹션 -->
+    <section id="greeting">
+        <div class="container">
+            <div class="section-title">
+                <h2>인사말</h2>
+                <p>금토끼부동산의<br>대표와 철학을 소개합니다</p>
+            </div>
+            <div class="greeting-content">
+                <div class="profile-image">
+                    <img src="/images/profile_jeonchangseong.jpg" alt="전창성 대표 프로필">
+                </div>
+                <div class="profile-info">
+                    <h3>대표 <span class="highlight">전창성</span></h3>
+                    
+                    <div class="career-item">
+                        <h4>이력</h4>
+                        <ul class="list-bullet">
+                            <li><span class="year">2024.</span> [민간]상업용부동산분석사 취득</li>
+                            <li><span class="year">2023.</span> 제33회 공인중개사자격증 취득</li>
+                            <li><span class="year">2006-2022.</span> 삼성전자 반도체 공정개발 (수석연구원)</li>
+                            <li><span class="year">2006.</span> 연세대학교 전기전자공학과 석사</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="career-item">
+                        <h4>금토끼부동산만의 특별함</h4>
+                        <ul class="list-bullet">
+                            <li><span class="year"></span> 홈페이지 직접 제작</li>
+                            <li><span class="year"></span> 조건 직접 입력 매물 검색 [조건 검색]</li>
+                            <li><span class="year"></span> AI 활용 매물 검색 [AI 맞춤 매물 검색]</li>
+                        </ul>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 블로그 섹션 -->
+    <section id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>금토끼부동산중개 블로그</h2>
+                <p>최신 부동산 정보를 둘러보세요</p>
+            </div>
+            <div class="blog-container" id="blogContainer"></div>
+            <div class="text-center mt-20">
+                <button id="loadMoreBtn" style="display: none;" class="btn-load-more">더보기</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 부동산 관련 사이트 섹션 -->
+    <section id="real-estate-links">
+        <div class="container">
+            <div class="section-title">
+                <h2>부동산 관련 사이트</h2>
+                <p>부동산 정보 확인에<br>유용한 공식 사이트 모음</p>
+            </div>
+            
+            <div class="links-container">
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>토지정보</h3>
+                        <p>토지면적, 지목, 용도지역, 규제현황 등</p>
+                        <a href="https://www.eum.go.kr/web/am/amMain.jsp#" target="_blank" class="link-button">토지이음</a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>건축물정보</h3>
+                        <p>건축물대장/건축물현황도 열람 및 출력</p>
+                        <a href="https://www.eais.go.kr/" target="_blank" class="link-button">세움터</a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>공적장부발급</h3>
+                        <p>건축물/토지 대장, 주민등록등/초본 등 각종 서류</p>
+                        <a href="https://www.gov.kr/portal/main/nologin" target="_blank" class="link-button">정부24</a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>부동산공시가격</h3>
+                        <p>토지공시가격, 주택공시가격 열람</p>
+                        <a href="https://www.realtyprice.kr/notice/main/mainBody.htm" target="_blank" class="link-button">부동산공시가격</a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>부동산실거래가</h3>
+                        <p>아파트, 주택, 오피스텔, 토지 등 실거래가 확인</p>
+                        <a href="https://rt.molit.go.kr/" target="_blank" class="link-button">실거래가공개시스템</a>
+                    </div>
+                </div>
+                
+                <div class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="link-content">
+                        <h3>부동산비용</h3>
+                        <p>부동산 거래 및 보유 세금/비용 확인</p>
+                        <a href="https://xn--989a00af8jnslv3dba.com/" target="_blank" class="link-button">부동산계산기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 영역 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                        금토끼부동산중개
+                    </div>
+                    <div class="footer-description">
+                        전문가와 함께하는 금토끼부동산중개입니다.<br>
+                        수익형 건물 매매, 임대 전문 부동산입니다.
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://open.kakao.com/o/sW37rY9g" class="social-icon" target="_blank" title="카카오톡 채널">
+                            <img src="/images/카카오톡.png" alt="카카오톡" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.disco.re/hvzt1qow?share" class="social-icon" target="_blank" title="디스코">
+                            <img src="/images/디스코로고.png" alt="디스코" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://blog.naver.com/goldenrabbit7377" class="social-icon" target="_blank" title="네이버 블로그">
+                            <img src="/images/블로그.png" alt="네이버 블로그" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.youtube.com/@goldenrabbit_realestate" class="social-icon" target="_blank" title="유튜브 채널">
+                            <img src="/images/유튜브.png" alt="유튜브" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 금토끼부동산중개. All rights reserved. <br> 대표: 전창성 | 사업자등록번호: 520-41-01170 <br> 중개사무소등록번호: 11590-2024-00048
+            </div>
+        </div>
+    </footer>
+
+    <!-- 하단 네비게이션 바 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">홈</div>
+        </a>
+        <a href="introduction.html" class="nav-item active">
+            <div class="nav-icon">👋</div>
+            <div class="nav-text">회사소개</div>
+        </a>
+        <a href="map-property.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">매물지도</div>
+        </a>
+        <a href="recomm-property.html" class="nav-item">
+            <div class="nav-icon">⭐</div>
+            <div class="nav-text">추천매물</div>
+        </a>
+        <a href="search-property.html" class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">매물검색</div>
+        </a>
+        <a href="inquiry.html" class="nav-item">
+            <div class="nav-icon">📞</div>
+            <div class="nav-text">상담문의</div>
+        </a>
+    </nav>
+
+    <!-- FontAwesome 추가 -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- 자바스크립트 -->
+    <script src="/js/navigation.js"></script>
+
+    <!-- 블로그 스크립트 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', async function () {
+            const blogContainer = document.getElementById('blogContainer');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            let posts = [];
+            let initialPostsToShow = 2;
+            let morePostsToShow = 4;
+            let currentCount = 0;
+
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                const year = date.getFullYear();
+                const month = ('0' + (date.getMonth() + 1)).slice(-2);
+                const day = ('0' + date.getDate()).slice(-2);
+                return `${year}.${month}.${day}`;
+            }
+
+            function stripImgTags(html) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+                const imgElements = tempDiv.querySelectorAll('img');
+                imgElements.forEach(img => img.remove());
+                let text = tempDiv.textContent.trim();
+                if (text.length > 150) {
+                    text = text.substring(0, 147) + '...';
+                }
+                return text;
+            }
+
+            try {
+                const response = await fetch('/api/blog-feed');
+                posts = await response.json();
+                
+                if (posts && posts.length > 0) {
+                    renderPosts(initialPostsToShow);
+                    if (posts.length > initialPostsToShow) {
+                        loadMoreBtn.style.display = 'inline-block';
+                    }
+                } else {
+                    blogContainer.innerHTML = '<p>최근 블로그 글이 없습니다.</p>';
+                }
+            } catch (error) {
+                console.error('블로그 글 불러오기 실패:', error);
+                blogContainer.innerHTML = '<p>블로그 글을 불러올 수 없습니다.</p>';
+            }
+
+            function renderPosts(count) {
+                for (let i = currentCount; i < Math.min(currentCount + count, posts.length); i++) {
+                    const post = posts[i];
+                    const localImagePath = `/blog_thumbs/${post.id}.jpg`;
+                    const defaultImagePath = '/images/default-thumb.jpg';
+                    
+                    const div = document.createElement('div');
+                    div.className = 'blog-summary';
+                    
+                    const imageElement = document.createElement('img');
+                    imageElement.className = 'blog-thumb';
+                    imageElement.alt = post.title;
+                    
+                    if (post.has_thumbnail === true) {
+                        imageElement.src = localImagePath;
+                    } else {
+                        imageElement.src = defaultImagePath;
+                    }
+                    
+                    imageElement.onerror = function() {
+                        this.onerror = null;
+                        this.src = defaultImagePath;
+                    };
+                    
+                    const cleanSummary = stripImgTags(post.summary || '');
+                    const titleElement = document.createElement('h3');
+                    titleElement.textContent = post.title;
+                    
+                    const dateElement = document.createElement('div');
+                    dateElement.className = 'blog-date';
+                    dateElement.textContent = formatDate(post.published);
+                    
+                    const summaryElement = document.createElement('p');
+                    summaryElement.textContent = cleanSummary;
+                    
+                    const linkElement = document.createElement('a');
+                    linkElement.href = post.link;
+                    linkElement.target = '_blank';
+                    linkElement.rel = 'noopener noreferrer';
+                    linkElement.textContent = '본문 보기';
+                    
+                    div.appendChild(imageElement);
+                    div.appendChild(titleElement);
+                    div.appendChild(dateElement);
+                    div.appendChild(summaryElement);
+                    div.appendChild(linkElement);
+                    
+                    blogContainer.appendChild(div);
+                }
+
+                currentCount += count;
+
+                if (currentCount >= posts.length) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            loadMoreBtn.addEventListener('click', function () {
+                renderPosts(morePostsToShow);
+            });
+        });
+    </script>
+</body>
+</html>

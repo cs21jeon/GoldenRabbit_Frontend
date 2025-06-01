@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon_goldenrabbit_01.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e38000">
+    <title>매물지도 - 금토끼부동산중개</title>
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header id="top">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고">
+                <div>
+                    <h1>금토끼부동산중개</h1>
+                    <div class="logo-sub">Golden Rabbit Real Estate</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 지도보기 섹션 -->
+    <section id="map-view">
+        <div class="container">
+            <div class="section-title">
+                <h2>매물 지도</h2>
+                <p>금토끼부동산의 전체 매물을<br>한눈에 확인하세요</p>
+                <p>매물을 누르면 상세조건을 볼 수 있습니다</p>
+            </div>
+            <div class="map-container" style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 30px; box-shadow: 0 3px 15px rgba(0,0,0,0.1); position: relative;">
+                <!-- 전체 화면 버튼 (텍스트 포함) -->
+                <button id="fullscreen-btn" class="map-control-btn right-top" aria-label="전체 화면">
+                    <span class="expand-icon">⛶</span>
+                    <span class="collapse-icon" style="display:none;">✕</span>
+                    <span class="btn-text expand-text">전체화면보기</span>
+                    <span class="btn-text collapse-text" style="display:none;">전체화면닫기</span>
+                </button>
+        
+                <iframe id="map-iframe" src="airtable_map.html" width="100%" height="100%" style="border: none;"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 영역 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                        금토끼부동산중개
+                    </div>
+                    <div class="footer-description">
+                        전문가와 함께하는 금토끼부동산중개입니다.<br>
+                        수익형 건물 매매, 임대 전문 부동산입니다.
+                    </div>
+                    <div class="social-icons">
+                        <a href="https://open.kakao.com/o/sW37rY9g" class="social-icon" target="_blank" title="카카오톡 채널">
+                            <img src="/images/카카오톡.png" alt="카카오톡" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.disco.re/hvzt1qow?share" class="social-icon" target="_blank" title="디스코">
+                            <img src="/images/디스코로고.png" alt="디스코" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://blog.naver.com/goldenrabbit7377" class="social-icon" target="_blank" title="네이버 블로그">
+                            <img src="/images/블로그.png" alt="네이버 블로그" style="width: 20px; height: 20px;">
+                        </a>
+                        <a href="https://www.youtube.com/@goldenrabbit_realestate" class="social-icon" target="_blank" title="유튜브 채널">
+                            <img src="/images/유튜브.png" alt="유튜브" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 금토끼부동산중개. All rights reserved. <br> 대표: 전창성 | 사업자등록번호: 520-41-01170 <br> 중개사무소등록번호: 11590-2024-00048
+            </div>
+        </div>
+    </footer>
+
+    <!-- 하단 네비게이션 바 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">홈</div>
+        </a>
+        <a href="introduction.html" class="nav-item">
+            <div class="nav-icon">👋</div>
+            <div class="nav-text">회사소개</div>
+        </a>
+        <a href="map-property.html" class="nav-item active">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">매물지도</div>
+        </a>
+        <a href="recomm-property.html" class="nav-item">
+            <div class="nav-icon">⭐</div>
+            <div class="nav-text">추천매물</div>
+        </a>
+        <a href="search-property.html" class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">매물검색</div>
+        </a>
+        <a href="inquiry.html" class="nav-item">
+            <div class="nav-icon">📞</div>
+            <div class="nav-text">상담문의</div>
+        </a>
+    </nav>
+
+    <!-- 자바스크립트 -->
+    <script src="/js/navigation.js"></script>
+    
+    <!-- 지도 전체화면 기능 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mapContainer = document.querySelector('.map-container');
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const expandIcon = fullscreenBtn.querySelector('.expand-icon');
+            const collapseIcon = fullscreenBtn.querySelector('.collapse-icon');
+            const expandText = fullscreenBtn.querySelector('.expand-text');
+            const collapseText = fullscreenBtn.querySelector('.collapse-text');
+            const mapIframe = document.getElementById('map-iframe');
+            
+            function toggleFullscreen() {
+                if (mapContainer.classList.contains('fullscreen')) {
+                    mapContainer.classList.remove('fullscreen');
+                    document.body.classList.remove('map-fullscreen');
+                    expandIcon.style.display = 'block';
+                    collapseIcon.style.display = 'none';
+                    expandText.style.display = 'block';
+                    collapseText.style.display = 'none';
+                } else {
+                    mapContainer.classList.add('fullscreen');
+                    document.body.classList.add('map-fullscreen');
+                    expandIcon.style.display = 'none';
+                    collapseIcon.style.display = 'block';
+                    expandText.style.display = 'none';
+                    collapseText.style.display = 'block';
+                    window.scrollTo(0, 0);
+                }
+                
+                setTimeout(function() {
+                    try {
+                        mapIframe.contentWindow.postMessage('resize', '*');
+                        const currSrc = mapIframe.src;
+                        mapIframe.src = currSrc;
+                    } catch(e) {
+                        console.log('iframe 처리 중 오류:', e);
+                    }
+                }, 500);
+            }
+            
+            fullscreenBtn.addEventListener('click', toggleFullscreen);
+            
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && mapContainer.classList.contains('fullscreen')) {
+                    toggleFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
