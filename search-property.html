@@ -188,6 +188,49 @@
         </div>
     </section>
 
+    <!-- 상담 모달 추가 -->
+    <div id="consultModal" class="modal-background" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-close" onclick="closeConsultModal()">&times;</div>
+          <div class="modal-body">
+            <h2 class="modal-title">상담 문의</h2>
+            <div class="contact-form">
+              <form id="consultForm">
+                <div class="form-group">
+                  <label for="propertyType">매물종류</label>
+                  <select id="propertyType" name="propertyType" class="form-control" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="house">단독/다가구</option>
+                    <option value="mixed">상가주택</option>
+                    <option value="commercial">상업용건물</option>
+                    <option value="land">재건축/토지</option>
+                    <option value="sell">매물접수</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="phone">연락처</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="010-0000-0000" required>
+                </div>
+      
+                <div class="form-group">
+                  <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="abc@abc.com">
+                </div>
+      
+                <div class="form-group">
+                  <label for="message">문의사항</label>
+                  <textarea id="message" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                </div>
+      
+                <button type="button" id="submitConsult" class="btn btn-contact btn-block">상담 신청하기</button>
+                <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
     <!-- 푸터 영역 -->
     <footer>
         <div class="container">
@@ -254,7 +297,34 @@
 
     <!-- 자바스크립트 -->
     <script src="/js/ai-property-search.js"></script>
+    <script src="/js/inquiry-form.js?v=2"></script>
     <script src="/js/navigation.js"></script>
+
+    <!-- 상담 모달 관련 스크립트 -->
+    <script>
+        function openConsultModal(address) {
+            const consultModal = document.getElementById('consultModal');
+            consultModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            const messageField = document.getElementById('message');
+            if (messageField && address) {
+                messageField.value = `${address}에 대해 상담 문의합니다.`;
+            }
+        }
+
+        function closeConsultModal() {
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                consultModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // 전역 함수로 등록
+        window.openConsultModal = openConsultModal;
+        window.closeConsultModal = closeConsultModal;
+    </script>
 
     <!-- 조건 검색 스크립트 -->
     <script>
