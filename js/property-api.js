@@ -101,8 +101,7 @@ function showCategoryModal(property, categoryName, viewId) {
         }
     }
 
-    // 에어테이블 직접 링크 대신 서버 내부 상세 페이지로 변경
-    const recordDetailUrl = `/property-detail.html?id=${recordId}`;
+    const recordDetailUrl = recordId;  // URL 대신 recordId만 저장
     
     // 2. 카테고리 뷰 전체보기 링크 (추천매물 모아보기 버튼용)
     const categoryViewUrl = `/category-view.html?view=${viewId}&category=${encodeURIComponent(categoryName)}`;
@@ -126,20 +125,46 @@ function showCategoryModal(property, categoryName, viewId) {
         };
         img.src = photoUrl;
 
-        // 🔧 사진 클릭 시 개별 매물 상세보기로 이동
+        // 사진 클릭 시 내부 모달로 상세보기
         imageElement.onclick = function() {
-            console.log('사진 클릭, 링크:', recordDetailUrl);
-            window.open(recordDetailUrl, '_blank');
+            console.log('사진 클릭, 레코드 ID:', recordId);
+            
+            // 카테고리 모달 닫기
+            closeCategoryModal();
+            
+            // 상세 모달 열기
+            if (typeof openPropertyDetailModal === 'function') {
+                openPropertyDetailModal(recordId);
+            } else if (typeof window.openPropertyDetailModal === 'function') {
+                window.openPropertyDetailModal(recordId);
+            } else {
+                console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                // 폴백: 페이지 이동
+                window.location.href = `/property-detail.html?id=${recordId}`;
+            }
         };
         
-        // 🔧 상세내용보기 버튼 링크 설정
+        //수정: 상세내용보기 버튼 설정
         const detailBtn = document.getElementById('modalDetailBtn');
         if (detailBtn) {
-            detailBtn.href = recordDetailUrl;
+            detailBtn.href = "javascript:void(0);";  // 링크 비활성화
             detailBtn.onclick = function(e) {
                 e.preventDefault();
-                console.log('상세내용보기 클릭, 링크:', recordDetailUrl);
-                window.open(recordDetailUrl, '_blank');
+                console.log('상세내용보기 클릭, 레코드 ID:', recordId);
+                
+                // 카테고리 모달 닫기
+                closeCategoryModal();
+                
+                // 상세 모달 열기
+                if (typeof openPropertyDetailModal === 'function') {
+                    openPropertyDetailModal(recordId);
+                } else if (typeof window.openPropertyDetailModal === 'function') {
+                    window.openPropertyDetailModal(recordId);
+                } else {
+                    console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                    // 폴백: 페이지 이동
+                    window.location.href = `/property-detail.html?id=${recordId}`;
+                }
             };
         }
     }
