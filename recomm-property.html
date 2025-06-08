@@ -93,7 +93,7 @@
             </div>
             <div class="modal-body">
                 <div class="modal-image-container">
-                    <div id="modalPropertyImage" class="modal-image clickable">
+                    <div id="modalPropertyImage" class="modal-image clickable" style="cursor: pointer;">
                         <div class="image-overlay">
                             <span>사진 클릭 시 상세보기</span>
                         </div>
@@ -439,9 +439,9 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/property-api.js?v=2"></script>
-    <script src="/js/inquiry-form.js?v=2"></script>
-    <script src="/js/navigation.js?v=2"></script>
+    <script src="/js/property-api.js?v=3"></script>
+    <script src="/js/inquiry-form.js?v=3"></script>
+    <script src="/js/navigation.js?v=3"></script>
 
     <script>
         function openConsultModal(address) {
@@ -471,6 +471,530 @@
         // 전역 함수로 등록
         window.openConsultModal = openConsultModal;
         window.closeConsultModal = closeConsultModal;
+    </script>
+    <script>
+    // 모달 클릭 문제 해결 스크립트
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('모달 클릭 문제 해결 스크립트 로드됨');
+        
+        // 모달 요소 확인
+        const categoryModal = document.getElementById('categoryModal');
+        const propertyDetailModal = document.getElementById('propertyDetailModal');
+        const consultModal = document.getElementById('consultModal');
+        
+        console.log('모달 요소 확인:',
+            '카테고리 모달:', categoryModal ? '있음' : '없음',
+            '상세 모달:', propertyDetailModal ? '있음' : '없음',
+            '상담 모달:', consultModal ? '있음' : '없음'
+        );
+        
+        // 이미지 클릭 이벤트 직접 바인딩
+        const attachImageClickEvent = function() {
+            const imageElement = document.getElementById('modalPropertyImage');
+            if (imageElement) {
+                console.log('이미지 요소에 클릭 이벤트 직접 바인딩');
+                
+                // 기존 이벤트 제거 (중복 방지)
+                imageElement.removeEventListener('click', imageClickHandler);
+                
+                // 새 이벤트 추가
+                imageElement.addEventListener('click', imageClickHandler);
+            }
+        };
+        
+        // 이미지 클릭 핸들러 함수
+        const imageClickHandler = function() {
+            const recordId = this.getAttribute('data-record-id');
+            console.log('이미지 클릭됨, 레코드 ID:', recordId);
+            
+            if (!recordId) {
+                console.error('이미지 요소에 data-record-id 속성이 없습니다.');
+                return;
+            }
+            
+            // 카테고리 모달 닫기
+            if (typeof closeCategoryModal === 'function') {
+                closeCategoryModal();
+            }
+            
+            // 상세 모달 열기
+            if (typeof openPropertyDetailModal === 'function') {
+                openPropertyDetailModal(recordId);
+            } else {
+                console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                // 폴백: 페이지 이동
+                window.location.href = `/property-detail.html?id=${recordId}`;
+            }
+        };
+        
+        // 상세보기 버튼 클릭 이벤트 직접 바인딩
+        const attachDetailButtonEvent = function() {
+            const detailBtn = document.getElementById('modalDetailBtn');
+            if (detailBtn) {
+                console.log('상세보기 버튼에 클릭 이벤트 직접 바인딩');
+                
+                // 기존 이벤트 제거 (중복 방지)
+                detailBtn.removeEventListener('click', detailButtonClickHandler);
+                
+                // 새 이벤트 추가
+                detailBtn.addEventListener('click', detailButtonClickHandler);
+            }
+        };
+        
+        // 상세보기 버튼 클릭 핸들러 함수
+        const detailButtonClickHandler = function(e) {
+            e.preventDefault();
+            const recordId = this.getAttribute('data-record-id');
+            console.log('상세보기 버튼 클릭됨, 레코드 ID:', recordId);
+            
+            if (!recordId) {
+                console.error('버튼에 data-record-id 속성이 없습니다.');
+                return;
+            }
+            
+            // 카테고리 모달 닫기
+            if (typeof closeCategoryModal === 'function') {
+                closeCategoryModal();
+            }
+            
+            // 상세 모달 열기
+            if (typeof openPropertyDetailModal === 'function') {
+                openPropertyDetailModal(recordId);
+            } else {
+                console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                // 폴백: 페이지 이동
+                window.location.href = `/property-detail.html?id=${recordId}`;
+            }
+        };
+        
+        // 원본 showCategoryModal 함수 보존 및 확장
+        if (typeof window.originalShowCategoryModal !== 'function') {
+            window.originalShowCategoryModal = window.showCategoryModal;
+            
+            // 원본 함수를 대체하는 확장 버전
+            window.showCategoryModal = function(property, categoryName, viewId) {
+                console.log('확장된 showCategoryModal 함수 호출됨');
+                
+                // 원본 함수 호출
+                window.originalShowCategoryModal(property, categoryName, viewId);
+                
+                // 레코드 ID 저장
+                const recordId = property.id;
+                console.log('레코드 ID:', recordId);
+                
+                // 이미지와 버튼에 data-record-id 속성 추가
+                setTimeout(function() {
+                    const imageElement = document.getElementById('modalPropertyImage');
+                    const detailBtn = document.getElementById('modalDetailBtn');
+                    
+                    if (imageElement) {
+                        imageElement.setAttribute('data-record-id', recordId);
+                    }
+                    
+                    if (detailBtn) {
+                        detailBtn.setAttribute('data-record-id', recordId);
+                    }
+                    
+                    // 이벤트 바인딩
+                    attachImageClickEvent();
+                    attachDetailButtonEvent();
+                }, 100); // 약간의 지연을 주어 DOM 업데이트 후 실행되도록 함
+            };
+        }
+        
+        // 모달 배경 클릭 이벤트 처리 (닫기 기능 유지)
+        if (categoryModal) {
+            categoryModal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    console.log('모달 배경 클릭됨, 모달 닫기');
+                    if (typeof closeCategoryModal === 'function') {
+                        closeCategoryModal();
+                    }
+                }
+            });
+        }
+        
+        // 모달 내부 클릭 이벤트 전파 방지
+        const modalContent = document.querySelector('.category-modal');
+        if (modalContent) {
+            modalContent.addEventListener('click', function(e) {
+                // 이벤트 전파 방지하지 않음 (필요한 경우 주석 해제)
+                // e.stopPropagation();
+            });
+        }
+        
+        // 기존 이벤트 핸들러 등록 여부 확인
+        console.log('이벤트 핸들러 함수 확인:',
+            'openPropertyDetailModal:', typeof openPropertyDetailModal === 'function' ? '정의됨' : '정의되지 않음',
+            'closePropertyDetailModal:', typeof closePropertyDetailModal === 'function' ? '정의됨' : '정의되지 않음',
+            'closeCategoryModal:', typeof closeCategoryModal === 'function' ? '정의됨' : '정의되지 않음'
+        );
+        
+        // openPropertyDetailModal 함수가 없으면 백업 함수 생성
+        if (typeof openPropertyDetailModal !== 'function') {
+            console.log('openPropertyDetailModal 함수 백업 생성');
+            window.openPropertyDetailModal = async function(recordId) {
+                console.log('백업 openPropertyDetailModal 함수 호출됨, ID:', recordId);
+                
+                try {
+                    // 모달 표시
+                    const modal = document.getElementById('propertyDetailModal');
+                    const container = document.getElementById('propertyDetailContainer');
+                    
+                    if (!modal || !container) {
+                        console.error('모달 요소를 찾을 수 없습니다.');
+                        return;
+                    }
+                    
+                    // 로딩 메시지 표시
+                    container.innerHTML = `
+                        <div style="text-align:center; padding:40px;">
+                            <div style="margin-bottom:15px;">
+                                <div class="loading-spinner" style="width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #e38000; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto;"></div>
+                            </div>
+                            <div>매물 정보를 불러오는 중입니다...</div>
+                        </div>
+                    `;
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                    
+                    // API에서 데이터 가져오기
+                    console.log('매물 상세 API 호출:', `/api/property-detail-backup?id=${recordId}`);
+                    const response = await fetch(`/api/property-detail-backup?id=${recordId}`);
+                    
+                    if (!response.ok) {
+                        throw new Error(`API 요청 실패: ${response.status} - ${response.statusText}`);
+                    }
+                    
+                    const data = await response.json();
+                    console.log('매물 상세 API 응답:', data);
+                    
+                    const property = data.property;
+                    
+                    if (!property) {
+                        throw new Error('매물 정보를 찾을 수 없습니다.');
+                    }
+                    
+                    // 매물 정보 렌더링
+                    // renderPropertyDetail 함수가 있으면 사용, 없으면 백업 함수 호출
+                    if (typeof renderPropertyDetail === 'function') {
+                        container.innerHTML = await renderPropertyDetail(property);
+                    } else {
+                        container.innerHTML = await backupRenderPropertyDetail(property);
+                    }
+                    
+                } catch (error) {
+                    console.error('매물 상세 정보 로드 실패:', error);
+                    const container = document.getElementById('propertyDetailContainer');
+                    if (container) {
+                        container.innerHTML = `<div style="color:red; text-align:center; padding:20px;">${error.message || '매물 정보를 불러오지 못했습니다.'}</div>`;
+                    }
+                }
+            };
+        }
+        
+        // renderPropertyDetail 함수가 없으면 백업 함수 생성
+        if (typeof renderPropertyDetail !== 'function') {
+            console.log('renderPropertyDetail 함수 백업 생성');
+            window.backupRenderPropertyDetail = async function(property) {
+                console.log('백업 renderPropertyDetail 함수 호출됨');
+                
+                const fields = property.fields;
+                const recordId = property.id;
+                const address = fields['지번 주소'] || '주소 정보 없음';
+                
+                // 이미지 로드 처리 - 백업 이미지 먼저 확인
+                let photoUrl = '/images/default-thumb.jpg';
+                
+                try {
+                    // 백업 이미지 확인 API 호출
+                    console.log('이미지 확인 API 호출:', `/api/check-image?record_id=${recordId}`);
+                    const imageResponse = await fetch(`/api/check-image?record_id=${recordId}`);
+                    const imageData = await imageResponse.json();
+                    console.log('이미지 확인 API 응답:', imageData);
+                    
+                    if (imageData.hasImage) {
+                        // 백업된 이미지 사용 - API에서 반환한 path 속성 사용
+                        photoUrl = `/airtable_backup/${imageData.path}`;
+                        console.log('백업 이미지 경로:', photoUrl);
+                    } else {
+                        // 백업 이미지가 없는 경우 원본 URL 시도
+                        if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+                            photoUrl = fields['대표사진'][0].url;
+                            console.log('에어테이블 이미지 URL 사용:', photoUrl);
+                        } else if (fields['사진링크']) {
+                            const photoLinks = fields['사진링크'].split(',');
+                            if (photoLinks[0]) {
+                                photoUrl = photoLinks[0].trim();
+                                console.log('사진링크 이미지 URL 사용:', photoUrl);
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('이미지 확인 중 오류:', error);
+                    // 오류 발생 시 기본 이미지 유지
+                }
+                
+                // HTML 생성 (간단한 상세 정보)
+                let html = `
+                <div style="padding: 20px;">
+                    <h2 style="margin-bottom: 20px;">${address}</h2>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div style="background-image: url('${photoUrl}'); background-size: cover; background-position: center; height: 300px; border-radius: 8px;"></div>
+                        
+                        <div style="background: #f8f9fa; border-radius: 8px; padding: 20px;">
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                `;
+                
+                // 기본 필드 추가
+                for (const [key, value] of Object.entries(fields)) {
+                    if (value && key !== '대표사진' && key !== '사진링크') {
+                        html += `
+                                <div class="detail-row">
+                                    <div class="detail-label">${key}</div>
+                                    <div class="detail-value">${value}</div>
+                                </div>
+                        `;
+                    }
+                }
+                
+                // 마무리 태그
+                html += `
+                            </div>
+                            
+                            <div style="margin-top: 20px; display: flex; gap: 10px;">
+                                <button onclick="openConsultModal('${address}')" class="btn btn-contact" style="flex: 1;">문의하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+                
+                return html;
+            };
+        }
+        
+        // closePropertyDetailModal 함수가 없으면 백업 함수 생성
+        if (typeof closePropertyDetailModal !== 'function') {
+            console.log('closePropertyDetailModal 함수 백업 생성');
+            window.closePropertyDetailModal = function() {
+                console.log('백업 closePropertyDetailModal 함수 호출됨');
+                const modal = document.getElementById('propertyDetailModal');
+                if (modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            };
+        }
+        
+        console.log('모달 클릭 문제 해결 스크립트 초기화 완료');
+    });
+    </script>
+    <style>
+    /* 모달 클릭 영역 개선 */
+    .modal-image {
+        cursor: pointer !important;
+        position: relative;
+    }
+
+    .modal-image .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.3);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .modal-image:hover .image-overlay {
+        opacity: 1;
+    }
+
+    /* 모바일에서는 항상 오버레이 표시 */
+    @media (max-width: 768px) {
+        .modal-image .image-overlay {
+            opacity: 0.8;
+        }
+    }
+
+    /* 버튼 스타일 개선 */
+    .btn-detail, .btn-contact {
+        cursor: pointer !important;
+    }
+
+    /* z-index 조정 */
+    .modal-background {
+        z-index: 10000;
+    }
+
+    #propertyDetailModal {
+        z-index: 10001; /* 카테고리 모달보다 위에 표시 */
+    }
+
+    #consultModal {
+        z-index: 10002; /* 모든 모달보다 위에 표시 */
+    }
+    </style>
+
+    <!-- 모달 클릭 문제 디버깅 스크립트 -->
+    <script>
+    // 페이지 로드 완료 후 실행
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('추천매물 페이지 로드 완료 - 모달 클릭 문제 해결 스크립트 실행');
+        
+        // 모달 요소 확인
+        setTimeout(function() {
+            checkModalElements();
+        }, 1000);
+        
+        // 이미지 클릭 이벤트 보강
+        document.addEventListener('click', function(e) {
+            // 이미지 클릭 처리
+            if (e.target.closest('#modalPropertyImage')) {
+                console.log('이미지 영역 클릭 감지 (이벤트 위임)');
+                
+                const imageElement = document.getElementById('modalPropertyImage');
+                const recordId = imageElement.getAttribute('data-record-id');
+                
+                if (recordId) {
+                    console.log('레코드 ID:', recordId);
+                    
+                    // 카테고리 모달 닫기
+                    if (typeof closeCategoryModal === 'function') {
+                        closeCategoryModal();
+                    }
+                    
+                    // 상세 모달 열기
+                    if (typeof openPropertyDetailModal === 'function') {
+                        openPropertyDetailModal(recordId);
+                    }
+                } else {
+                    console.error('이미지 요소에 data-record-id 속성이 없습니다');
+                }
+            }
+            
+            // 상세보기 버튼 클릭 처리
+            if (e.target.closest('#modalDetailBtn')) {
+                console.log('상세보기 버튼 클릭 감지 (이벤트 위임)');
+                
+                const detailBtn = document.getElementById('modalDetailBtn');
+                const recordId = detailBtn.getAttribute('data-record-id');
+                
+                if (recordId) {
+                    console.log('레코드 ID:', recordId);
+                    
+                    // 카테고리 모달 닫기
+                    if (typeof closeCategoryModal === 'function') {
+                        closeCategoryModal();
+                    }
+                    
+                    // 상세 모달 열기
+                    if (typeof openPropertyDetailModal === 'function') {
+                        openPropertyDetailModal(recordId);
+                    }
+                } else {
+                    console.error('버튼에 data-record-id 속성이 없습니다');
+                }
+            }
+        });
+    });
+
+    // 모달 요소 확인 함수
+    function checkModalElements() {
+        const imageElement = document.getElementById('modalPropertyImage');
+        const detailBtn = document.getElementById('modalDetailBtn');
+        
+        console.log('모달 요소 확인:',
+            '이미지 요소:', imageElement ? '있음' : '없음',
+            '상세보기 버튼:', detailBtn ? '있음' : '없음'
+        );
+        
+        // 이미지 요소에 클릭 이벤트 명시적 추가
+        if (imageElement) {
+            console.log('이미지 요소에 명시적 클릭 이벤트 추가');
+            
+            // style 속성 추가
+            imageElement.style.cursor = 'pointer';
+            
+            // 기존 이벤트 제거 후 다시 추가
+            const oldClick = imageElement.onclick;
+            imageElement.onclick = function(e) {
+                console.log('이미지 요소 클릭됨 (명시적 핸들러)');
+                
+                const recordId = this.getAttribute('data-record-id');
+                if (!recordId) {
+                    console.error('이미지 요소에 data-record-id 속성이 없습니다');
+                    return;
+                }
+                
+                // 카테고리 모달 닫기
+                if (typeof closeCategoryModal === 'function') {
+                    closeCategoryModal();
+                }
+                
+                // 상세 모달 열기
+                if (typeof openPropertyDetailModal === 'function') {
+                    openPropertyDetailModal(recordId);
+                }
+            };
+        }
+        
+        // 상세보기 버튼에 클릭 이벤트 명시적 추가
+        if (detailBtn) {
+            console.log('상세보기 버튼에 명시적 클릭 이벤트 추가');
+            
+            // style 속성 추가
+            detailBtn.style.cursor = 'pointer';
+            
+            // 기존 이벤트 제거 후 다시 추가
+            const oldClick = detailBtn.onclick;
+            detailBtn.onclick = function(e) {
+                e.preventDefault();
+                console.log('상세보기 버튼 클릭됨 (명시적 핸들러)');
+                
+                const recordId = this.getAttribute('data-record-id');
+                if (!recordId) {
+                    console.error('버튼에 data-record-id 속성이 없습니다');
+                    return;
+                }
+                
+                // 카테고리 모달 닫기
+                if (typeof closeCategoryModal === 'function') {
+                    closeCategoryModal();
+                }
+                
+                // 상세 모달 열기
+                if (typeof openPropertyDetailModal === 'function') {
+                    openPropertyDetailModal(recordId);
+                }
+            };
+        }
+    }
+
+    // 글로벌 함수로 클릭 테스트 등록
+    window.testModalClicks = function() {
+        console.log('모달 클릭 테스트 함수 호출됨');
+        
+        const imageElement = document.getElementById('modalPropertyImage');
+        const detailBtn = document.getElementById('modalDetailBtn');
+        
+        if (imageElement) {
+            console.log('이미지 요소 클릭 테스트');
+            imageElement.click();
+        }
+        
+        if (detailBtn) {
+            console.log('상세보기 버튼 클릭 테스트');
+            detailBtn.click();
+        }
+    };
     </script>
 </body>
 </html>
