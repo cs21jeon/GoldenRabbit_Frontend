@@ -1,3 +1,4 @@
+<!-- /home/sftpuser/www/property-detail.html -->
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -8,6 +9,91 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#e38000">
     <title>매물 상세 - 금토끼부동산중개</title>
+    <style>
+        .property-detail-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        @media (min-width: 768px) {
+            .property-detail-container {
+                flex-direction: row;
+            }
+        }
+        
+        .property-images {
+            flex: 1;
+        }
+        
+        .main-property-image {
+            width: 100%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .property-info {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .property-details {
+            margin-bottom: 20px;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 12px;
+        }
+        
+        .detail-label {
+            flex: 0 0 100px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        .detail-value {
+            flex: 1;
+        }
+        
+        .property-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        @media (min-width: 480px) {
+            .property-actions {
+                flex-direction: row;
+            }
+        }
+        
+        .loading-message, .error-message {
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .loading-message {
+            background: #f5f5f5;
+            color: #666;
+        }
+        
+        .error-message {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+        }
+    </style>
 </head>
 <body>
     <!-- 헤더 영역 -->
@@ -120,19 +206,15 @@
                         수익형 건물 매매, 임대 전문 부동산입니다.
                     </div>
                     <div class="social-icons">
-                        <!-- 카카오톡 -->
                         <a href="https://open.kakao.com/o/sW37rY9g" class="social-icon" target="_blank" title="카카오톡 채널">
                             <img src="/images/카카오톡.png" alt="카카오톡" style="width: 20px; height: 20px;">
                         </a>
-                        <!-- 디스코 -->
                         <a href="https://www.disco.re/hvzt1qow?share" class="social-icon" target="_blank" title="디스코">
                             <img src="/images/디스코로고.png" alt="디스코" style="width: 20px; height: 20px;">
                         </a>
-                        <!-- 네이버 블로그 -->
                         <a href="https://blog.naver.com/goldenrabbit7377" class="social-icon" target="_blank" title="네이버 블로그">
                             <img src="/images/블로그.png" alt="네이버 블로그" style="width: 20px; height: 20px;">
                         </a>
-                        <!-- 유튜브 -->
                         <a href="https://www.youtube.com/@goldenrabbit_realestate" class="social-icon" target="_blank" title="유튜브 채널">
                             <img src="/images/유튜브.png" alt="유튜브" style="width: 20px; height: 20px;">
                         </a>
@@ -148,7 +230,7 @@
 
     <!-- 하단 네비게이션 바 -->
     <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active">
+        <a href="index.html" class="nav-item">
             <div class="nav-icon">🏠</div>
             <div class="nav-text">홈</div>
         </a>
@@ -175,8 +257,8 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/navigation.js?v=4"></script>
-    <script src="/js/inquiry-form.js?v=4"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/inquiry-form.js"></script>
     <script>
         // 상담 모달 관련 스크립트
         function openConsultModal(address) {
@@ -239,7 +321,7 @@
                 
                 // 로딩 메시지 숨기고 컨테이너 표시
                 detailLoading.style.display = 'none';
-                propertyDetailContainer.style.display = 'block';
+                propertyDetailContainer.style.display = 'flex';
                 
             } catch (error) {
                 console.error('매물 상세 정보 로드 실패:', error);
@@ -272,9 +354,6 @@
             }
             
             mainPropertyImage.style.backgroundImage = `url('${photoUrl}')`;
-            mainPropertyImage.style.backgroundSize = 'cover';
-            mainPropertyImage.style.backgroundPosition = 'center';
-            mainPropertyImage.style.height = '300px';
             
             // 매물 상세 정보 생성
             let detailsHtml = '';
