@@ -1,4 +1,4 @@
-// property-api.js - 카테고리 시스템 버전 2.1
+// property-api.js - 카테고리 시스템 버전 2.2
 
 // ===== 전역 변수 및 설정 =====
 let currentCategoryModal = null;
@@ -195,7 +195,7 @@ function showCategoryModal(property, categoryName, viewId) {
     console.log('카테고리 모달 표시 완료');
 }
 
-// 백업 이미지 로드 함수 추가
+// 백업 이미지 로드 함수
 async function updatePropertyImage(recordId, fields) {
     const imageElement = document.getElementById('modalPropertyImage');
     if (!imageElement) return;
@@ -208,10 +208,11 @@ async function updatePropertyImage(recordId, fields) {
         // 백업 이미지 존재 여부 확인 (새로운 API 호출)
         const response = await fetch(`/api/check-image?record_id=${recordId}`);
         const data = await response.json();
+        console.log('이미지 확인 API 응답:', data);
         
         if (data.hasImage) {
-            // 백업 이미지 경로
-            const backupImagePath = `/airtable_backup/images/${recordId}/${data.filename}`;
+            // 백업 이미지 경로 - API가 반환한 path 속성 사용
+            const backupImagePath = `/airtable_backup/${data.path}`;
             console.log('백업 이미지 경로:', backupImagePath);
             
             // 이미지 요소 업데이트
@@ -330,6 +331,213 @@ function closeModal() {
     }
 }
 
+// 매물 상세 모달 열기 함수
+async function openPropertyDetailModal(recordId) {
+    console.log('매물 상세 모달 열기:', recordId);
+    
+    try {
+        // 모달 표시
+        const modal = document.getElementById('propertyDetailModal');
+        const container = document.getElementById('propertyDetailContainer');
+        
+        // 로딩 메시지 표시
+        container.innerHTML = `
+            <div style="text-align:center; padding:40px;">
+                <div style="margin-bottom:15px;">
+                    <div class="loading-spinner" style="width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #e38000; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto;"></div>
+                </div>
+                <div>매물 정보를 불러오는 중입니다...</div>
+            </div>
+        `;
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // API에서 데이터 가져오기
+        console.log('매물 상세 API 호출:', `/api/property-detail-backup?id=${recordId}`);
+        const response = await fetch(`/api/property-detail-backup?id=${recordId}`);
+        
+        if (!response.ok) {
+            throw new Error(`API 요청 실패: ${response.status} - ${response.statusText}`);
+        }
+        
+        const data = await response.json();
+        console.log('매물 상세 API 응답:', data);
+        
+        const property = data.property;
+        
+        if (!property) {
+            throw new Error('매물 정보를 찾을 수 없습니다.');
+        }
+        
+        // 매물 정보 렌더링
+        container.innerHTML = await renderPropertyDetail(property);
+        
+    } catch (error) {
+        console.error('매물 상세 정보 로드 실패:', error);
+        const container = document.getElementById('propertyDetailContainer');
+        container.innerHTML = `<div style="color:red; text-align:center; padding:20px;">${error.message || '매물 정보를 불러오지 못했습니다.'}</div>`;
+    }
+}
+
+// 매물 상세 모달 닫기 함수
+function closePropertyDetailModal() {
+    const modal = document.getElementById('propertyDetailModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// 매물 정보 HTML 렌더링 함수
+async function renderPropertyDetail(property) {
+    const fields = property.fields;
+    const recordId = property.id;
+    const address = fields['지번 주소'] || '주소 정보 없음';
+    
+    // 이미지 로드 처리 - 백업 이미지 먼저 확인
+    let photoUrl = '/images/default-thumb.jpg';
+    
+    try {
+        // 백업 이미지 확인 API 호출
+        console.log('이미지 확인 API 호출:', `/api/check-image?record_id=${recordId}`);
+        const imageResponse = await fetch(`/api/check-image?record_id=${recordId}`);
+        const imageData = await imageResponse.json();
+        console.log('이미지 확인 API 응답:', imageData);
+        
+        if (imageData.hasImage) {
+            // 백업된 이미지 사용 - API에서 반환한 path 속성 사용
+            photoUrl = `/airtable_backup/${imageData.path}`;
+            console.log('백업 이미지 경로:', photoUrl);
+        } else {
+            // 백업 이미지가 없는 경우 원본 URL 시도
+            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+                photoUrl = fields['대표사진'][0].url;
+                console.log('에어테이블 이미지 URL 사용:', photoUrl);
+            } else if (fields['사진링크']) {
+                const photoLinks = fields['사진링크'].split(',');
+                if (photoLinks[0]) {
+                    photoUrl = photoLinks[0].trim();
+                    console.log('사진링크 이미지 URL 사용:', photoUrl);
+                }
+            }
+        }
+    } catch (error) {
+        console.error('이미지 확인 중 오류:', error);
+        // 오류 발생 시 기본 이미지 유지
+    }
+    
+    // 가격 형식화
+    let priceDisplay = '가격 정보 없음';
+    if (fields['매가(만원)']) {
+        const price = parseFloat(fields['매가(만원)']);
+        priceDisplay = price >= 10000 ? 
+            `${(price / 10000).toFixed(1).replace('.0', '')}억원` : 
+            `${price.toLocaleString()}만원`;
+    }
+    
+    // HTML 생성
+    let html = `
+    <div style="padding: 20px;">
+        <h2 style="margin-bottom: 20px;">${address}</h2>
+        
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+            <div style="background-image: url('${photoUrl}'); background-size: cover; background-position: center; height: 300px; border-radius: 8px;"></div>
+            
+            <div style="background: #f8f9fa; border-radius: 8px; padding: 20px;">
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div class="detail-row">
+                        <div class="detail-label">매가</div>
+                        <div class="detail-value">${priceDisplay}</div>
+                    </div>
+    `;
+    
+    // 토지면적
+    if (fields['토지면적(㎡)']) {
+        const sqm = parseFloat(fields['토지면적(㎡)']);
+        const pyeong = Math.round(sqm / 3.3058);
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">토지면적</div>
+                        <div class="detail-value">${pyeong}평 (${sqm.toLocaleString()}㎡)</div>
+                    </div>
+        `;
+    }
+    
+    // 건물면적
+    if (fields['건물면적(㎡)']) {
+        const sqm = parseFloat(fields['건물면적(㎡)']);
+        const pyeong = Math.round(sqm / 3.3058);
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">건물면적</div>
+                        <div class="detail-value">${pyeong}평 (${sqm.toLocaleString()}㎡)</div>
+                    </div>
+        `;
+    }
+    
+    // 수익률
+    if (fields['융자제외수익률(%)']) {
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">수익률</div>
+                        <div class="detail-value">${fields['융자제외수익률(%)']}%</div>
+                    </div>
+        `;
+    }
+    
+    // 층수
+    if (fields['층수']) {
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">층수</div>
+                        <div class="detail-value">${fields['층수']}</div>
+                    </div>
+        `;
+    }
+    
+    // 주용도
+    if (fields['주용도']) {
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">주용도</div>
+                        <div class="detail-value">${fields['주용도']}</div>
+                    </div>
+        `;
+    }
+    
+    // 사용승인일
+    if (fields['사용승인일']) {
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">사용승인일</div>
+                        <div class="detail-value">${fields['사용승인일']}</div>
+                    </div>
+        `;
+    }
+    
+    // 특이사항
+    if (fields['특이사항']) {
+        html += `
+                    <div class="detail-row">
+                        <div class="detail-label">특이사항</div>
+                        <div class="detail-value">${fields['특이사항']}</div>
+                    </div>
+        `;
+    }
+    
+    // 마무리 태그
+    html += `
+                </div>
+                
+                <div style="margin-top: 20px; display: flex; gap: 10px;">
+                    <button onclick="openConsultModal('${address}')" class="btn btn-contact" style="flex: 1;">문의하기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `;
+    
+    return html;
+}
+
 // ===== 스타일 주입 함수 =====
 function injectCategoryStyles() {
     if (!document.getElementById('category-modal-styles')) {
@@ -378,6 +586,22 @@ function injectCategoryStyles() {
                 color: #999;
                 font-size: 14px;
                 text-align: center;
+            }
+            
+            /* 애니메이션 */
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+            
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            /* 모달 스타일 */
+            .modal-content {
+                animation: fadeIn 0.3s ease;
             }
 
             /* 반응형 개선 - 모바일에서 항목과 데이터 간격 줄이기 */
@@ -453,8 +677,23 @@ function registerCategoryEventListeners() {
     
     // ESC 키로 모달 닫기
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && currentCategoryModal) {
-            closeCategoryModal();
+        if (e.key === 'Escape') {
+            const propertyModal = document.getElementById('propertyDetailModal');
+            if (propertyModal && propertyModal.style.display === 'flex') {
+                closePropertyDetailModal();
+                return;
+            }
+            
+            if (currentCategoryModal) {
+                closeCategoryModal();
+                return;
+            }
+            
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal && consultModal.style.display === 'flex') {
+                closeConsultModal();
+                return;
+            }
         }
     });
 
@@ -494,29 +733,3 @@ function initializeCategorySystem() {
     
     console.log('카테고리 시스템 초기화 완료');
 }
-
-// ===== DOM 로드 완료 시 실행 =====
-document.addEventListener('DOMContentLoaded', function() {
-    // 카테고리 시스템 초기화
-    initializeCategorySystem();
-});
-
-// ===== 전역 함수로 내보내기 =====
-window.loadCategoryProperty = loadCategoryProperty;
-window.showCategoryModal = showCategoryModal;
-window.closeCategoryModal = closeCategoryModal;
-window.closeModal = closeModal; // 기존 매물 모달 지원
-
-// 기존 매물 관련 함수들 (기존 기능 유지를 위해)
-window.openRecordDetail = (url) => window.open(url, '_blank');
-
-// 브라우저 뒤로가기 처리
-window.addEventListener('popstate', function(event) {
-    if (currentCategoryModal && currentCategoryModal.style.display === 'flex') {
-        closeCategoryModal();
-    } else if (event.state?.modalOpen) {
-        closeModal();
-    }
-});
-
-console.log('Property API v2.1 (카테고리 시스템) 로드 완료');
