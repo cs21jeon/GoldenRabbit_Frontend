@@ -510,6 +510,25 @@
                 }
             });
         });
+        
+        // iframe과의 메시지 통신 설정
+        window.addEventListener('message', function(event) {
+            console.log('메시지 수신:', event.data);
+            
+            // openPropertyDetail 메시지 처리
+            if (event.data && event.data.action === 'openPropertyDetail') {
+                const recordId = event.data.recordId;
+                console.log('iframe으로부터 매물 상세 요청 수신:', recordId);
+                openPropertyDetailModal(recordId);
+            }
+            
+            // openConsultModal 메시지 처리
+            if (event.data && event.data.action === 'openConsultModal') {
+                const address = event.data.address;
+                console.log('iframe으로부터 상담 모달 요청 수신:', address);
+                openConsultModal(address);
+            }
+        });
     </script>
     <script>
     // 매물 상세 모달 열기
