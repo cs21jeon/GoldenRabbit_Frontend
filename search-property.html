@@ -188,6 +188,16 @@
         </div>
     </section>
 
+    <!-- 매물 상세 모달 추가 (상담 모달 위에 추가) -->
+    <div id="propertyDetailModal" class="modal-background" style="display: none;">
+        <div class="modal-content" style="width: 90%; max-width: 800px; max-height: 90vh; overflow-y: auto;">
+            <div class="modal-close" onclick="closePropertyDetailModal()">&times;</div>
+            <div class="modal-body">
+                <div id="propertyDetailContainer"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- 상담 모달 추가 -->
     <div id="consultModal" class="modal-background" style="display: none;">
         <div class="modal-content">
@@ -501,5 +511,214 @@
             });
         });
     </script>
+    <script>
+    // 매물 상세 모달 열기
+    async function openPropertyDetailModal(recordId) {
+        console.log('매물 상세 모달 열기:', recordId);
+        
+        try {
+            // 모달 표시
+            const modal = document.getElementById('propertyDetailModal');
+            const container = document.getElementById('propertyDetailContainer');
+            
+            // 로딩 메시지 표시
+            container.innerHTML = `
+                <div style="text-align:center; padding:40px;">
+                    <div style="margin-bottom:15px;">
+                        <div class="loading-spinner" style="width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #e38000; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto;"></div>
+                    </div>
+                    <div>매물 정보를 불러오는 중입니다...</div>
+                </div>
+            `;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // API에서 데이터 가져오기
+            const response = await fetch(`/api/property-detail-backup?id=${recordId}`);
+            
+            if (!response.ok) {
+                throw new Error('매물 정보를 불러오지 못했습니다.');
+            }
+            
+            const data = await response.json();
+            const property = data.property;
+            
+            if (!property) {
+                throw new Error('매물 정보를 찾을 수 없습니다.');
+            }
+            
+            // 매물 정보 렌더링
+            container.innerHTML = renderPropertyDetail(property);
+            
+        } catch (error) {
+            console.error('매물 상세 정보 로드 실패:', error);
+            const container = document.getElementById('propertyDetailContainer');
+            container.innerHTML = `<div style="color:red; text-align:center; padding:20px;">${error.message || '매물 정보를 불러오지 못했습니다.'}</div>`;
+        }
+    }
+
+    // 매물 상세 모달 닫기
+    function closePropertyDetailModal() {
+        const modal = document.getElementById('propertyDetailModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // 매물 정보 HTML 렌더링
+    function renderPropertyDetail(property) {
+        const fields = property.fields;
+        const address = fields['지번 주소'] || '주소 정보 없음';
+        
+        // 대표 이미지 URL 설정
+        let photoUrl = '/images/default-thumb.jpg';
+        if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+            photoUrl = fields['대표사진'][0].url;
+        } else if (fields['사진링크']) {
+            const photoLinks = fields['사진링크'].split(',');
+            if (photoLinks[0]) {
+                photoUrl = photoLinks[0].trim();
+            }
+        }
+        
+        // 가격 형식화
+        let priceDisplay = '가격 정보 없음';
+        if (fields['매가(만원)']) {
+            const price = parseFloat(fields['매가(만원)']);
+            priceDisplay = price >= 10000 ? 
+                `${(price / 10000).toFixed(1).replace('.0', '')}억원` : 
+                `${price.toLocaleString()}만원`;
+        }
+        
+        // HTML 생성
+        let html = `
+        <div style="padding: 20px;">
+            <h2 style="margin-bottom: 20px;">${address}</h2>
+            
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <div style="background-image: url('${photoUrl}'); background-size: cover; background-position: center; height: 300px; border-radius: 8px;"></div>
+                
+                <div style="background: #f8f9fa; border-radius: 8px; padding: 20px;">
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            <div style="font-weight: bold; width: 100px;">매가</div>
+                            <div>${priceDisplay}</div>
+                        </div>
+        `;
+        
+        // 토지면적
+        if (fields['토지면적(㎡)']) {
+            const sqm = parseFloat(fields['토지면적(㎡)']);
+            const pyeong = Math.round(sqm / 3.3058);
+            html += `
+                        <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            <div style="font-weight: bold; width: 100px;">토지면적</div>
+                            <div>${pyeong}평 (${sqm.toLocaleString()}㎡)</div>
+                        </div>
+            `;
+        }
+        
+        // 수익률
+        if (fields['융자제외수익률(%)']) {
+            html += `
+                        <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            <div style="font-weight: bold; width: 100px;">수익률</div>
+                            <div>${fields['융자제외수익률(%)']}%</div>
+                        </div>
+            `;
+        }
+        
+        // 층수
+        if (fields['층수']) {
+            html += `
+                        <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            <div style="font-weight: bold; width: 100px;">층수</div>
+                            <div>${fields['층수']}</div>
+                        </div>
+            `;
+        }
+        
+        // 주용도
+        if (fields['주용도']) {
+            html += `
+                        <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            <div style="font-weight: bold; width: 100px;">주용도</div>
+                            <div>${fields['주용도']}</div>
+                        </div>
+            `;
+        }
+        
+        // 마무리 태그
+        html += `
+                    </div>
+                    
+                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                        <button onclick="openConsultModal('${address}')" class="btn btn-contact" style="flex: 1;">문의하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+        
+        return html;
+    }
+
+    // 매물 상세 페이지 열기 함수 (iframe에서 호출됨)
+    function openPropertyDetail(recordId) {
+        console.log('매물 상세 정보 열기:', recordId);
+        openPropertyDetailModal(recordId);
+    }
+
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const propertyModal = document.getElementById('propertyDetailModal');
+            if (propertyModal && propertyModal.style.display === 'flex') {
+                closePropertyDetailModal();
+                return;
+            }
+            
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal && consultModal.style.display === 'flex') {
+                closeConsultModal();
+                return;
+            }
+        }
+    });
+
+    // 전역 스코프에 함수 노출
+    window.openPropertyDetailModal = openPropertyDetailModal;
+    window.closePropertyDetailModal = closePropertyDetailModal;
+    window.openPropertyDetail = openPropertyDetail;
+    </script>
+
+    <!-- 스타일 추가 -->
+    <style>
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* 모달 스타일 개선 */
+    .modal-background {
+        z-index: 10000; /* 가장 위에 표시되도록 */
+    }
+
+    .modal-content {
+        animation: fadeIn 0.3s ease; /* 부드러운 등장 효과 */
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 반응형 개선 */
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 95%;
+            max-width: none;
+        }
+    }
+    </style>
 </body>
 </html>
