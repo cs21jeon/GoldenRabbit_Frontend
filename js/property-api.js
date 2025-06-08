@@ -1,4 +1,4 @@
-// property-api.js - 카테고리 시스템 버전 2.0
+// property-api.js - 카테고리 시스템 버전 2.1
 
 // ===== 전역 변수 및 설정 =====
 let currentCategoryModal = null;
@@ -88,19 +88,9 @@ function showCategoryModal(property, categoryName, viewId) {
     if (titleElement) titleElement.textContent = title;
     if (descriptionElement) descriptionElement.textContent = description;
     
-    // 대표사진 설정
-    const imageElement = document.getElementById('modalPropertyImage');
-    let photoUrl = '/images/default-thumb.jpg';
+    // 이미지 업데이트 - 백업 이미지 경로 사용
+    updatePropertyImage(recordId, fields);
     
-    if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
-        photoUrl = fields['대표사진'][0].url;
-    } else if (fields['사진링크']) {
-        const photoLinks = fields['사진링크'].split(',');
-        if (photoLinks[0]) {
-            photoUrl = photoLinks[0].trim();
-        }
-    }
-
     const recordDetailUrl = recordId;  // URL 대신 recordId만 저장
     
     // 2. 카테고리 뷰 전체보기 링크 (추천매물 모아보기 버튼용)
@@ -110,21 +100,8 @@ function showCategoryModal(property, categoryName, viewId) {
     console.log('- 개별 매물:', recordDetailUrl);
     console.log('- 카테고리 뷰:', categoryViewUrl);
     
+    const imageElement = document.getElementById('modalPropertyImage');
     if (imageElement) {
-        // 이미지 설정
-        imageElement.style.backgroundImage = `url('${photoUrl}')`;
-        
-        // 이미지 로딩 실패 시 기본 이미지로 대체
-        const img = new Image();
-        img.onload = function() {
-            imageElement.style.backgroundImage = `url('${photoUrl}')`;
-        };
-        img.onerror = function() {
-            console.warn('이미지 로딩 실패, 기본 이미지 사용:', photoUrl);
-            imageElement.style.backgroundImage = `url('/images/default-thumb.jpg')`;
-        };
-        img.src = photoUrl;
-
         // 사진 클릭 시 내부 모달로 상세보기
         imageElement.onclick = function() {
             console.log('사진 클릭, 레코드 ID:', recordId);
@@ -143,30 +120,30 @@ function showCategoryModal(property, categoryName, viewId) {
                 window.location.href = `/property-detail.html?id=${recordId}`;
             }
         };
-        
-        //수정: 상세내용보기 버튼 설정
-        const detailBtn = document.getElementById('modalDetailBtn');
-        if (detailBtn) {
-            detailBtn.href = "javascript:void(0);";  // 링크 비활성화
-            detailBtn.onclick = function(e) {
-                e.preventDefault();
-                console.log('상세내용보기 클릭, 레코드 ID:', recordId);
-                
-                // 카테고리 모달 닫기
-                closeCategoryModal();
-                
-                // 상세 모달 열기
-                if (typeof openPropertyDetailModal === 'function') {
-                    openPropertyDetailModal(recordId);
-                } else if (typeof window.openPropertyDetailModal === 'function') {
-                    window.openPropertyDetailModal(recordId);
-                } else {
-                    console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
-                    // 폴백: 페이지 이동
-                    window.location.href = `/property-detail.html?id=${recordId}`;
-                }
-            };
-        }
+    }
+    
+    // 수정: 상세내용보기 버튼 설정
+    const detailBtn = document.getElementById('modalDetailBtn');
+    if (detailBtn) {
+        detailBtn.href = "javascript:void(0);";  // 링크 비활성화
+        detailBtn.onclick = function(e) {
+            e.preventDefault();
+            console.log('상세내용보기 클릭, 레코드 ID:', recordId);
+            
+            // 카테고리 모달 닫기
+            closeCategoryModal();
+            
+            // 상세 모달 열기
+            if (typeof openPropertyDetailModal === 'function') {
+                openPropertyDetailModal(recordId);
+            } else if (typeof window.openPropertyDetailModal === 'function') {
+                window.openPropertyDetailModal(recordId);
+            } else {
+                console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                // 폴백: 페이지 이동
+                window.location.href = `/property-detail.html?id=${recordId}`;
+            }
+        };
     }
     
     // 문의하기 버튼 설정
@@ -216,6 +193,55 @@ function showCategoryModal(property, categoryName, viewId) {
     currentCategoryModal = modal;
     
     console.log('카테고리 모달 표시 완료');
+}
+
+// 백업 이미지 로드 함수 추가
+async function updatePropertyImage(recordId, fields) {
+    const imageElement = document.getElementById('modalPropertyImage');
+    if (!imageElement) return;
+    
+    // 기본 이미지 먼저 설정
+    let defaultPhotoUrl = '/images/default-thumb.jpg';
+    imageElement.style.backgroundImage = `url('${defaultPhotoUrl}')`;
+    
+    try {
+        // 백업 이미지 존재 여부 확인 (새로운 API 호출)
+        const response = await fetch(`/api/check-image?record_id=${recordId}`);
+        const data = await response.json();
+        
+        if (data.hasImage) {
+            // 백업 이미지 경로
+            const backupImagePath = `/airtable_backup/images/${recordId}/${data.filename}`;
+            console.log('백업 이미지 경로:', backupImagePath);
+            
+            // 이미지 요소 업데이트
+            imageElement.style.backgroundImage = `url('${backupImagePath}')`;
+        } else {
+            // 백업 이미지가 없는 경우 에어테이블 원본 URL 시도
+            let photoUrl = defaultPhotoUrl;
+            
+            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+                photoUrl = fields['대표사진'][0].url;
+            } else if (fields['사진링크']) {
+                const photoLinks = fields['사진링크'].split(',');
+                if (photoLinks[0]) {
+                    photoUrl = photoLinks[0].trim();
+                }
+            }
+            
+            // 이미지 로딩 시도
+            const img = new Image();
+            img.onload = function() {
+                imageElement.style.backgroundImage = `url('${photoUrl}')`;
+            };
+            img.onerror = function() {
+                console.warn('이미지 로딩 실패, 기본 이미지 유지:', photoUrl);
+            };
+            img.src = photoUrl;
+        }
+    } catch (error) {
+        console.error('이미지 확인 중 오류:', error);
+    }
 }
 
 // ===== 매물 상세 정보 생성 함수 =====
@@ -354,7 +380,28 @@ function injectCategoryStyles() {
                 text-align: center;
             }
 
-            /* 모바일 대응 */
+            /* 반응형 개선 - 모바일에서 항목과 데이터 간격 줄이기 */
+            .detail-row {
+                display: flex;
+                margin-bottom: 12px;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 12px;
+                flex-wrap: wrap; /* 필요시 줄바꿈 허용 */
+                row-gap: 4px; /* 줄 간격 */
+            }
+            
+            .detail-label {
+                flex: 0 0 100px;
+                font-weight: bold;
+                color: #555;
+            }
+            
+            .detail-value {
+                flex: 1;
+                min-width: 0; /* 텍스트 오버플로우 방지 */
+            }
+
+            /* 모바일 대응 개선 */
             @media (max-width: 768px) {
                 .category-modal {
                     margin: 10px;
@@ -366,21 +413,33 @@ function injectCategoryStyles() {
                 }
                 
                 .detail-row {
+                    margin-bottom: 8px;
+                    padding-bottom: 8px;
+                }
+                
+                .detail-label {
+                    flex: 0 0 80px; /* 모바일에서 라벨 너비 줄이기 */
+                }
+                
+                .modal-image .image-overlay {
+                    opacity: 1;
+                }
+            }
+            
+            /* 매우 좁은 화면에서는 라벨과 값을 세로로 배치 */
+            @media (max-width: 380px) {
+                .detail-row {
                     flex-direction: column;
-                    align-items: flex-start;
-                    gap: 4px;
+                    gap: 2px;
                 }
                 
                 .detail-label {
                     flex: none;
+                    width: 100%;
                 }
                 
                 .detail-value {
-                    text-align: left;
-                }
-
-                .modal-image .image-overlay {
-                    opacity: 1;
+                    width: 100%;
                 }
             }
         `;
@@ -460,4 +519,4 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
-console.log('Property API v2.0 (카테고리 시스템) 로드 완료');
+console.log('Property API v2.1 (카테고리 시스템) 로드 완료');
