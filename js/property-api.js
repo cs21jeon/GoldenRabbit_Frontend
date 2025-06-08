@@ -34,8 +34,8 @@ async function loadCategoryProperty(viewId, categoryName) {
         
         console.log(`대표 매물 로딩: ${categoryName} (뷰: ${viewId})`);
         
-        // API 호출
-        const response = await fetch(`/api/category-property?view=${viewId}`);
+        // API 호출 - 백업 데이터 API로 변경
+        const response = await fetch(`/api/category-property-backup?view=${viewId}`);
         
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
@@ -101,11 +101,11 @@ function showCategoryModal(property, categoryName, viewId) {
         }
     }
 
-        // 1. 개별 매물 상세보기 링크 (사진 클릭, 상세내용보기 버튼용)
-    const recordDetailUrl = `https://airtable.com/appGSg5QfDNKgFf73/tblnR438TK52Gr0HB/${recordId}`;
+    // 에어테이블 직접 링크 대신 서버 내부 상세 페이지로 변경
+    const recordDetailUrl = `/property-detail.html?id=${recordId}`;
     
-    // 2. 카테고리 뷰 전체보기 링크 (추천매물 모아보기 버튼용)  
-    const categoryViewUrl = `https://airtable.com/appGSg5QfDNKgFf73/tblnR438TK52Gr0HB/${viewId}`;
+    // 2. 카테고리 뷰 전체보기 링크 (추천매물 모아보기 버튼용)
+    const categoryViewUrl = `/category-view.html?view=${viewId}&category=${encodeURIComponent(categoryName)}`;
     
     console.log('생성된 링크들:');
     console.log('- 개별 매물:', recordDetailUrl);
@@ -434,9 +434,5 @@ window.addEventListener('popstate', function(event) {
         closeModal();
     }
 });
-
-// ===== 기존 추천 매물 시스템 제거됨 =====
-// fetchPropertiesFromAirtable, renderProperties, showPropertyDetails 등의 
-// 기존 함수들은 카테고리 시스템으로 완전 교체되었습니다.
 
 console.log('Property API v2.0 (카테고리 시스템) 로드 완료');

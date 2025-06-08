@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/favicon_goldenrabbit_01.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#e38000">
+    <title>매물 상세 - 금토끼부동산중개</title>
+</head>
+<body>
+    <!-- 헤더 영역 -->
+    <header id="top">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고">
+                <div>
+                    <h1>금토끼부동산중개</h1>
+                    <div class="logo-sub">Golden Rabbit Real Estate</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 매물 상세 섹션 -->
+    <section id="property-detail">
+        <div class="container">
+            <div class="section-title">
+                <h2>매물 상세 정보</h2>
+                <p id="property-address">데이터를 불러오는 중입니다...</p>
+            </div>
+            
+            <!-- 로딩 메시지 -->
+            <div id="detailLoading" class="loading-message">
+                매물 정보를 불러오는 중입니다...
+            </div>
+            
+            <!-- 매물 정보 컨테이너 -->
+            <div id="propertyDetailContainer" class="property-detail-container" style="display: none;">
+                <!-- 이미지 영역 -->
+                <div class="property-images">
+                    <div id="mainPropertyImage" class="main-property-image"></div>
+                </div>
+                
+                <!-- 정보 영역 -->
+                <div class="property-info">
+                    <div id="propertyDetails" class="property-details">
+                        <!-- 동적으로 생성될 내용 -->
+                    </div>
+                    
+                    <div class="property-actions">
+                        <button id="inquiryBtn" class="btn btn-contact">문의하기</button>
+                        <a href="javascript:history.back()" class="btn btn-secondary">이전으로 돌아가기</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 오류 메시지 -->
+            <div id="errorMessage" class="error-message" style="display: none;">
+                매물 정보를 불러오지 못했습니다. 다시 시도해주세요.
+            </div>
+        </div>
+    </section>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal-background" style="display: none;">
+        <div class="modal-content">
+          <div class="modal-close" onclick="closeConsultModal()">&times;</div>
+          <div class="modal-body">
+            <h2 class="modal-title">상담 문의</h2>
+            <div class="contact-form">
+              <form id="consultForm">
+                <div class="form-group">
+                  <label for="propertyType">매물종류</label>
+                  <select id="propertyType" name="propertyType" class="form-control" required>
+                    <option value="">-- 선택하세요 --</option>
+                    <option value="house">단독/다가구</option>
+                    <option value="mixed">상가주택</option>
+                    <option value="commercial">상업용건물</option>
+                    <option value="land">재건축/토지</option>
+                    <option value="sell">매물접수</option>
+                  </select>
+                </div>
+      
+                <div class="form-group">
+                  <label for="phone">연락처</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="010-0000-0000" required>
+                </div>
+      
+                <div class="form-group">
+                  <label for="email">이메일 <span style="font-size: 12px; color: #888; font-weight: normal;">(선택사항)</span></label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="abc@abc.com">
+                </div>
+      
+                <div class="form-group">
+                  <label for="message">문의사항</label>
+                  <textarea id="message" name="message" class="form-control" placeholder="관심지역, 평형, 희망수익률 등을 작성해 주세요!" required></textarea>
+                </div>
+      
+                <button type="button" id="submitConsult" class="btn btn-contact btn-block">상담 신청하기</button>
+                <div id="formStatus" style="margin-top: 15px; text-align: center; display: none;"></div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- 푸터 영역 -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="/images/logo_goldenrabbit.jpg" alt="금토끼부동산 로고" style="height: 40px; margin-right: 10px; vertical-align: middle;">
+                        금토끼부동산중개
+                    </div>
+                    <div class="footer-description">
+                        전문가와 함께하는 금토끼부동산중개입니다.<br>
+                        수익형 건물 매매, 임대 전문 부동산입니다.
+                    </div>
+                    <div class="social-icons">
+                        <!-- 카카오톡 -->
+                        <a href="https://open.kakao.com/o/sW37rY9g" class="social-icon" target="_blank" title="카카오톡 채널">
+                            <img src="/images/카카오톡.png" alt="카카오톡" style="width: 20px; height: 20px;">
+                        </a>
+                        <!-- 디스코 -->
+                        <a href="https://www.disco.re/hvzt1qow?share" class="social-icon" target="_blank" title="디스코">
+                            <img src="/images/디스코로고.png" alt="디스코" style="width: 20px; height: 20px;">
+                        </a>
+                        <!-- 네이버 블로그 -->
+                        <a href="https://blog.naver.com/goldenrabbit7377" class="social-icon" target="_blank" title="네이버 블로그">
+                            <img src="/images/블로그.png" alt="네이버 블로그" style="width: 20px; height: 20px;">
+                        </a>
+                        <!-- 유튜브 -->
+                        <a href="https://www.youtube.com/@goldenrabbit_realestate" class="social-icon" target="_blank" title="유튜브 채널">
+                            <img src="/images/유튜브.png" alt="유튜브" style="width: 20px; height: 20px;">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2024 금토끼부동산중개. All rights reserved. <br> 대표: 전창성 | 사업자등록번호: 520-41-01170 <br> 중개사무소등록번호: 11590-2024-00048
+            </div>
+        </div>
+    </footer>
+
+    <!-- 하단 네비게이션 바 -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <div class="nav-icon">🏠</div>
+            <div class="nav-text">홈</div>
+        </a>
+        <a href="introduction.html" class="nav-item">
+            <div class="nav-icon">👋</div>
+            <div class="nav-text">회사소개</div>
+        </a>
+        <a href="map-property.html" class="nav-item">
+            <div class="nav-icon">🗺️</div>
+            <div class="nav-text">매물지도</div>
+        </a>
+        <a href="recomm-property.html" class="nav-item">
+            <div class="nav-icon">⭐</div>
+            <div class="nav-text">추천매물</div>
+        </a>
+        <a href="search-property.html" class="nav-item">
+            <div class="nav-icon">🔍</div>
+            <div class="nav-text">매물검색</div>
+        </a>
+        <a href="inquiry.html" class="nav-item">
+            <div class="nav-icon">📞</div>
+            <div class="nav-text">상담문의</div>
+        </a>
+    </nav>
+
+    <!-- 자바스크립트 -->
+    <script src="/js/navigation.js?v=4"></script>
+    <script src="/js/inquiry-form.js?v=4"></script>
+    <script>
+        // 상담 모달 관련 스크립트
+        function openConsultModal(address) {
+            const consultModal = document.getElementById('consultModal');
+            consultModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+
+            const messageField = document.getElementById('message');
+            if (messageField && address) {
+                messageField.value = `${address}에 대해 상담 문의합니다.`;
+            }
+        }
+
+        function closeConsultModal() {
+            const consultModal = document.getElementById('consultModal');
+            if (consultModal) {
+                consultModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // URL에서 매물 ID 가져오기
+        function getPropertyIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        // 매물 상세 정보 로드
+        async function loadPropertyDetail() {
+            const propertyId = getPropertyIdFromUrl();
+            const detailLoading = document.getElementById('detailLoading');
+            const propertyDetailContainer = document.getElementById('propertyDetailContainer');
+            const errorMessage = document.getElementById('errorMessage');
+            const propertyAddress = document.getElementById('property-address');
+            
+            if (!propertyId) {
+                detailLoading.style.display = 'none';
+                errorMessage.textContent = '매물 ID가 없습니다.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            try {
+                // 백업된 매물 데이터 요청
+                const response = await fetch('/api/property-detail-backup?id=' + propertyId);
+                
+                if (!response.ok) {
+                    throw new Error(`API 요청 실패: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                const property = data.property;
+                
+                if (!property) {
+                    throw new Error('매물 정보를 찾을 수 없습니다.');
+                }
+                
+                // 매물 정보 표시
+                renderPropertyDetail(property);
+                
+                // 로딩 메시지 숨기고 컨테이너 표시
+                detailLoading.style.display = 'none';
+                propertyDetailContainer.style.display = 'block';
+                
+            } catch (error) {
+                console.error('매물 상세 정보 로드 실패:', error);
+                detailLoading.style.display = 'none';
+                errorMessage.textContent = error.message || '매물 정보를 불러오지 못했습니다.';
+                errorMessage.style.display = 'block';
+            }
+        }
+        
+        // 매물 상세 정보 렌더링
+        function renderPropertyDetail(property) {
+            const fields = property.fields;
+            const propertyAddress = document.getElementById('property-address');
+            const mainPropertyImage = document.getElementById('mainPropertyImage');
+            const propertyDetails = document.getElementById('propertyDetails');
+            const inquiryBtn = document.getElementById('inquiryBtn');
+            
+            // 주소 표시
+            propertyAddress.textContent = fields['지번 주소'] || '주소 정보 없음';
+            
+            // 대표 이미지 설정
+            let photoUrl = '/images/default-thumb.jpg';
+            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+                photoUrl = fields['대표사진'][0].url;
+            } else if (fields['사진링크']) {
+                const photoLinks = fields['사진링크'].split(',');
+                if (photoLinks[0]) {
+                    photoUrl = photoLinks[0].trim();
+                }
+            }
+            
+            mainPropertyImage.style.backgroundImage = `url('${photoUrl}')`;
+            mainPropertyImage.style.backgroundSize = 'cover';
+            mainPropertyImage.style.backgroundPosition = 'center';
+            mainPropertyImage.style.height = '300px';
+            
+            // 매물 상세 정보 생성
+            let detailsHtml = '';
+            
+            // 지번 주소
+            if (fields['지번 주소']) {
+                detailsHtml += createDetailRow('위치', fields['지번 주소']);
+            }
+            
+            // 매가
+            if (fields['매가(만원)']) {
+                const price = parseFloat(fields['매가(만원)']);
+                const priceDisplay = price >= 10000 ? 
+                    `${(price / 10000).toFixed(1).replace('.0', '')}억원` : 
+                    `${price.toLocaleString()}만원`;
+                detailsHtml += createDetailRow('매가', priceDisplay);
+            }
+            
+            // 토지면적
+            if (fields['토지면적(㎡)']) {
+                const sqm = parseFloat(fields['토지면적(㎡)']);
+                const pyeong = Math.round(sqm / 3.3058);
+                detailsHtml += createDetailRow('토지면적', `${pyeong}평 (${sqm.toLocaleString()}㎡)`);
+            }
+            
+            // 건물면적
+            if (fields['건물면적(㎡)']) {
+                const sqm = parseFloat(fields['건물면적(㎡)']);
+                const pyeong = Math.round(sqm / 3.3058);
+                detailsHtml += createDetailRow('건물면적', `${pyeong}평 (${sqm.toLocaleString()}㎡)`);
+            }
+            
+            // 수익률
+            if (fields['융자제외수익률(%)']) {
+                detailsHtml += createDetailRow('수익률', `${fields['융자제외수익률(%)']}%`);
+            }
+            
+            // 사용승인일
+            if (fields['사용승인일']) {
+                detailsHtml += createDetailRow('사용승인일', fields['사용승인일']);
+            }
+            
+            // 층수
+            if (fields['층수']) {
+                detailsHtml += createDetailRow('층수', fields['층수']);
+            }
+            
+            // 주용도
+            if (fields['주용도']) {
+                detailsHtml += createDetailRow('주용도', fields['주용도']);
+            }
+            
+            // 특이사항
+            if (fields['특이사항']) {
+                detailsHtml += createDetailRow('특이사항', fields['특이사항']);
+            }
+            
+            // 상세정보 업데이트
+            propertyDetails.innerHTML = detailsHtml;
+            
+            // 문의하기 버튼 이벤트 설정
+            inquiryBtn.addEventListener('click', function() {
+                openConsultModal(fields['지번 주소'] || '해당 매물');
+            });
+        }
+        
+        // 상세 정보 행 생성 함수
+        function createDetailRow(label, value) {
+            return `
+                <div class="detail-row">
+                    <div class="detail-label">${label}</div>
+                    <div class="detail-value">${value}</div>
+                </div>
+            `;
+        }
+        
+        // 페이지 로드 시 매물 상세 정보 로드
+        document.addEventListener('DOMContentLoaded', loadPropertyDetail);
+    </script>
+</body>
+</html>
