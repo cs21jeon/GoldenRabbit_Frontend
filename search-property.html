@@ -510,7 +510,7 @@
                 }
             });
         });
-        
+
         // iframe과의 메시지 통신 설정
         window.addEventListener('message', function(event) {
             console.log('메시지 수신:', event.data);
@@ -739,5 +739,26 @@
         }
     }
     </style>
+    // search-property.html의 </body> 태그 바로 앞에 추가
+    <script>
+    // 전역 함수 설정 (모든 iframe에서 접근 가능)
+    function openPropertyDetailGlobal(recordId) {
+        console.log('전역 함수에서 매물 상세 열기:', recordId);
+        if (typeof openPropertyDetailModal === 'function') {
+            openPropertyDetailModal(recordId);
+        }
+    }
+
+    function openConsultModalGlobal(address) {
+        console.log('전역 함수에서 상담 모달 열기:', address);
+        if (typeof openConsultModal === 'function') {
+            openConsultModal(address);
+        }
+    }
+
+    // 전역 객체에 등록
+    window.openPropertyDetailGlobal = openPropertyDetailGlobal;
+    window.openConsultModalGlobal = openConsultModalGlobal;
+    </script>
 </body>
 </html>
