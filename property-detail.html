@@ -257,8 +257,8 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/navigation.js"></script>
-    <script src="/js/inquiry-form.js"></script>
+    <script src="/js/navigation.js?v=0"></script>
+    <script src="/js/inquiry-form.js?v=0"></script>
     <script>
         // 상담 모달 관련 스크립트
         function openConsultModal(address) {
@@ -344,14 +344,27 @@
             
             // 대표 이미지 설정
             let photoUrl = '/images/default-thumb.jpg';
-            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
-                photoUrl = fields['대표사진'][0].url;
-            } else if (fields['사진링크']) {
-                const photoLinks = fields['사진링크'].split(',');
-                if (photoLinks[0]) {
-                    photoUrl = photoLinks[0].trim();
-                }
-            }
+            const recordId = property.id;
+
+            // 로컬 저장된 이미지 경로 확인
+            const localImagePath = `/airtable_backup/images/${recordId}/`;
+
+            // 이미지 존재 여부 확인하는 함수 (별도 API 필요)
+            fetch(`/api/check-image?record_id=${recordId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.hasImage) {
+                        photoUrl = `${localImagePath}${data.filename}`;
+                        // 이미지 요소 업데이트
+                        const imageElement = document.getElementById('propertyImage');
+                        if (imageElement) {
+                            imageElement.style.backgroundImage = `url('${photoUrl}')`;
+                        }
+                    }
+                })
+                .catch(err => {
+                    console.error('이미지 확인 실패:', err);
+                });
             
             mainPropertyImage.style.backgroundImage = `url('${photoUrl}')`;
             
