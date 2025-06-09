@@ -1,13 +1,24 @@
 {
-  "backup_date": "2025-06-09",
+  "last_backup_date": "2025-06-09",
+  "last_backup_time": "2025-06-09T16:41:04.672799",
   "total_records": 275,
-  "views_backed_up": 4,
+  "views_processed": 4,
   "total_views": 4,
-  "timestamp": "2025-06-09T03:07:15.839170",
+  "updated_views": [
+    "all",
+    "reconstruction",
+    "high_yield",
+    "low_cost"
+  ],
+  "total_changes": 275,
   "image_stats": {
-    "new_images": 363,
+    "new_images": 0,
     "updated_images": 0,
-    "skipped_images": 182,
-    "total_processed": 545
-  }
+    "skipped_images": 184,
+    "error_images": 0,
+    "duplicates_cleaned": 179,
+    "total_processed": 184,
+    "optimization_enabled": true
+  },
+  "backup_type": "incremental"
 }
