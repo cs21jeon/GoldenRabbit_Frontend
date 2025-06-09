@@ -34,8 +34,8 @@ async function loadCategoryProperty(viewId, categoryName) {
         
         console.log(`대표 매물 로딩: ${categoryName} (뷰: ${viewId})`);
         
-        // API 호출 - 백업 데이터 API로 변경
-        const response = await fetch(`/api/category-property-backup?view=${viewId}`);
+        // API 호출 - 기본 API 사용 (백업에서 자동으로 가져옴)
+        const response = await fetch(`/api/category-property?view=${viewId}`);
         
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));

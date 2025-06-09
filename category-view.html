@@ -245,8 +245,8 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/navigation.js?v=0"></script>
-    <script src="/js/inquiry-form.js?v=0"></script>
+    <script src="/js/navigation.js?v=1"></script>
+    <script src="/js/inquiry-form.js?v=1"></script>
     <script>
         // 상담 모달 관련 스크립트
         function openConsultModal(address) {
@@ -321,8 +321,8 @@
             categoryDescription.textContent = category.description;
             
             try {
-                // 백업된 카테고리 매물 데이터 요청
-                const response = await fetch(`/api/category-properties-backup?view=${viewId}`);
+                // 기본 API 사용 (백업에서 자동으로 가져옴)
+                const response = await fetch(`/api/category-properties?view=${viewId}`);
                 
                 if (!response.ok) {
                     throw new Error(`API 요청 실패: ${response.status}`);
@@ -365,6 +365,22 @@
             }
         }
         
+        // 기존 이미지 확인 API 호출도 업데이트 (추가)
+        async function checkPropertyImage(recordId) {
+            try {
+                const response = await fetch(`/api/check-image?record_id=${recordId}`);
+                const data = await response.json();
+                
+                if (data.hasImage) {
+                    return `/airtable_backup/images/${recordId}/${data.filename}`;
+                }
+                return '/images/default-thumb.jpg';
+            } catch (error) {
+                console.error('이미지 확인 실패:', error);
+                return '/images/default-thumb.jpg';
+            }
+        }
+
         // 매물 카드 HTML 생성
         function createPropertyCard(property) {
             const fields = property.fields;
@@ -380,7 +396,7 @@
                     photoUrl = photoLinks[0].trim();
                 }
             }
-            
+
             // 가격 표시 형식
             let priceDisplay = '가격 정보 없음';
             if (fields['매가(만원)']) {

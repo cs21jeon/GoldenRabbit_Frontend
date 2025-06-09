@@ -144,8 +144,8 @@
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
             
-            // API에서 데이터 가져오기
-            const response = await fetch(`/api/property-detail-backup?id=${recordId}`);
+            // 기본 API 사용 (백업에서 자동으로 가져옴)
+            const response = await fetch(`/api/property-detail?id=${recordId}`);
             
             if (!response.ok) {
                 throw new Error('매물 정보를 불러오지 못했습니다.');
@@ -165,6 +165,22 @@
             console.error('매물 상세 정보 로드 실패:', error);
             const container = document.getElementById('propertyDetailContainer');
             container.innerHTML = `<div style="color:red; text-align:center; padding:20px;">${error.message || '매물 정보를 불러오지 못했습니다.'}</div>`;
+        }
+    }
+
+    // 기존 이미지 확인 API 호출도 업데이트 (추가)
+    async function checkPropertyImage(recordId) {
+        try {
+            const response = await fetch(`/api/check-image?record_id=${recordId}`);
+            const data = await response.json();
+            
+            if (data.hasImage) {
+                return `/airtable_backup/images/${recordId}/${data.filename}`;
+            }
+            return '/images/default-thumb.jpg';
+        } catch (error) {
+            console.error('이미지 확인 실패:', error);
+            return '/images/default-thumb.jpg';
         }
     }
 
@@ -439,9 +455,9 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/property-api.js?v=0"></script>
-    <script src="/js/inquiry-form.js?v=0"></script>
-    <script src="/js/navigation.js?v=0"></script>
+    <script src="/js/property-api.js?v=1"></script>
+    <script src="/js/inquiry-form.js?v=1"></script>
+    <script src="/js/navigation.js?v=1"></script>
 
     <script>
         function openConsultModal(address) {

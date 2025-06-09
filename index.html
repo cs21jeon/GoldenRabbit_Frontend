@@ -191,8 +191,40 @@
             });
         }
     </script>
+    <script>
+    // 백업 상태 확인 API도 업데이트 (추가)
+    async function checkBackupStatus() {
+        try {
+            const response = await fetch('/api/backup-status');
+            const data = await response.json();
+            
+            if (data.status === 'success') {
+                console.log('백업 상태:', data.metadata);
+                return data;
+            } else {
+                console.warn('백업 상태 확인 실패:', data.message);
+                return null;
+            }
+        } catch (error) {
+            console.error('백업 상태 확인 오류:', error);
+            return null;
+        }
+    }
+
+    // 페이지 로드 시 백업 상태 확인 (선택사항)
+    document.addEventListener('DOMContentLoaded', function() {
+        // 백업 상태 확인 (디버깅 또는 모니터링용)
+        checkBackupStatus().then(status => {
+            if (status) {
+                console.log('백업 시스템 정상 작동 중');
+            } else {
+                console.warn('백업 시스템 확인 필요');
+            }
+        });
+    });
+    </script>
     <!-- 자바스크립트 -->
-    <script src="/js/navigation.js?v=0"></script>
-    <script src="/js/pwa-install.js?v=0"></script>
+    <script src="/js/navigation.js?v=1"></script>
+    <script src="/js/pwa-install.js?v=1"></script>
 </body>
 </html>

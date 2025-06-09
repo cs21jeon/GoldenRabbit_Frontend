@@ -1,5 +1,5 @@
 // 캐시 이름 정의
-const CACHE_NAME = 'goldenrabbit-v0';
+const CACHE_NAME = 'goldenrabbit-v1';
 // 캐시할 파일 목록 - 새로운 페이지들 추가
 const urlsToCache = [
   '/',

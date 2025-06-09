@@ -257,8 +257,8 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/navigation.js?v=0"></script>
-    <script src="/js/inquiry-form.js?v=0"></script>
+    <script src="/js/navigation.js?v=1"></script>
+    <script src="/js/inquiry-form.js?v=1"></script>
     <script>
         // 상담 모달 관련 스크립트
         function openConsultModal(address) {
@@ -286,6 +286,22 @@
             return urlParams.get('id');
         }
 
+        // 기존 이미지 확인 API 호출도 업데이트 (추가)
+        async function checkPropertyImage(recordId) {
+            try {
+                const response = await fetch(`/api/check-image?record_id=${recordId}`);
+                const data = await response.json();
+                
+                if (data.hasImage) {
+                    return `/airtable_backup/images/${recordId}/${data.filename}`;
+                }
+                return '/images/default-thumb.jpg';
+            } catch (error) {
+                console.error('이미지 확인 실패:', error);
+                return '/images/default-thumb.jpg';
+            }
+        }
+
         // 매물 상세 정보 로드
         async function loadPropertyDetail() {
             const propertyId = getPropertyIdFromUrl();
@@ -302,8 +318,8 @@
             }
             
             try {
-                // 백업된 매물 데이터 요청
-                const response = await fetch('/api/property-detail-backup?id=' + propertyId);
+                // 기본 API 사용 (백업에서 자동으로 가져옴)
+                const response = await fetch('/api/property-detail?id=' + propertyId);
                 
                 if (!response.ok) {
                     throw new Error(`API 요청 실패: ${response.status}`);
@@ -343,30 +359,19 @@
             propertyAddress.textContent = fields['지번 주소'] || '주소 정보 없음';
             
             // 대표 이미지 설정
-            let photoUrl = '/images/default-thumb.jpg';
             const recordId = property.id;
 
-            // 로컬 저장된 이미지 경로 확인
-            const localImagePath = `/airtable_backup/images/${recordId}/`;
+            // 초기 기본 이미지 설정
+            if (mainPropertyImage) {
+                mainPropertyImage.style.backgroundImage = `url('/images/default-thumb.jpg')`;
+            }
 
-            // 이미지 존재 여부 확인하는 함수 (별도 API 필요)
-            fetch(`/api/check-image?record_id=${recordId}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.hasImage) {
-                        photoUrl = `${localImagePath}${data.filename}`;
-                        // 이미지 요소 업데이트
-                        const imageElement = document.getElementById('propertyImage');
-                        if (imageElement) {
-                            imageElement.style.backgroundImage = `url('${photoUrl}')`;
-                        }
-                    }
-                })
-                .catch(err => {
-                    console.error('이미지 확인 실패:', err);
-                });
-            
-            mainPropertyImage.style.backgroundImage = `url('${photoUrl}')`;
+            // 로컬 저장된 이미지 확인 및 업데이트
+            checkPropertyImage(recordId).then(imageUrl => {
+                if (mainPropertyImage) {
+                    mainPropertyImage.style.backgroundImage = `url('${imageUrl}')`;
+                }
+            });
             
             // 매물 상세 정보 생성
             let detailsHtml = '';
