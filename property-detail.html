@@ -48,22 +48,45 @@
         }
         
         .detail-row {
-            display: flex;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #eee;
+            display: block !important; /* 모바일에서 세로 배치 */
+            margin-bottom: 15px;
             padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
         }
-        
+
         .detail-label {
-            flex: 0 0 100px;
+            display: block;
             font-weight: bold;
-            color: #555;
+            color: #666;
+            margin-bottom: 5px;
+            font-size: 14px;
+            width: auto !important; /* 고정 width 제거 */
         }
-        
+
         .detail-value {
-            flex: 1;
+            display: block;
+            color: #333;
+            font-size: 16px;
         }
         
+        /* 태블릿 이상에서만 가로 배치 */
+        @media (min-width: 600px) {
+            .detail-row {
+                display: flex !important;
+                align-items: center;
+            }
+            
+            .detail-label {
+                flex: 0 0 25%; /* 화면 비율에 따라 조정 */
+                margin-bottom: 0;
+                margin-right: 15px;
+            }
+            
+            .detail-value {
+                flex: 1;
+            }
+        }
+
         .property-actions {
             display: flex;
             flex-direction: column;
