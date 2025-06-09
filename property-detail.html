@@ -257,8 +257,8 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/navigation.js?v=1"></script>
-    <script src="/js/inquiry-form.js?v=1"></script>
+    <script src="/js/navigation.js?v=2"></script>
+    <script src="/js/inquiry-form.js?v=2"></script>
     <script>
         // 상담 모달 관련 스크립트
         function openConsultModal(address) {
@@ -348,94 +348,176 @@
         }
         
         // 매물 상세 정보 렌더링
-        function renderPropertyDetail(property) {
+        async function renderPropertyDetail(property) {
             const fields = property.fields;
-            const propertyAddress = document.getElementById('property-address');
-            const mainPropertyImage = document.getElementById('mainPropertyImage');
-            const propertyDetails = document.getElementById('propertyDetails');
-            const inquiryBtn = document.getElementById('inquiryBtn');
-            
-            // 주소 표시
-            propertyAddress.textContent = fields['지번 주소'] || '주소 정보 없음';
-            
-            // 대표 이미지 설정
+            const address = fields['지번 주소'] || '주소 정보 없음';
             const recordId = property.id;
-
-            // 초기 기본 이미지 설정
-            if (mainPropertyImage) {
-                mainPropertyImage.style.backgroundImage = `url('/images/default-thumb.jpg')`;
-            }
-
-            // 로컬 저장된 이미지 확인 및 업데이트
-            checkPropertyImage(recordId).then(imageUrl => {
-                if (mainPropertyImage) {
-                    mainPropertyImage.style.backgroundImage = `url('${imageUrl}')`;
+            
+            // 백업 이미지 우선 로딩
+            let photoUrl = '/images/default-thumb.jpg';
+            
+            try {
+                // 백업 이미지 API 호출
+                console.log(`매물 상세 - 백업 이미지 확인: ${recordId}`);
+                const response = await fetch(`/api/check-image?record_id=${recordId}`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('매물 상세 - 이미지 확인 응답:', data);
+                    
+                    if (data.hasImage && data.filename) {
+                        const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
+                        console.log(`매물 상세 - 백업 이미지 URL: ${backupImageUrl}`);
+                        
+                        // 이미지 로드 테스트
+                        const img = new Image();
+                        img.onload = function() {
+                            console.log(`매물 상세 - 백업 이미지 로드 성공: ${backupImageUrl}`);
+                            photoUrl = backupImageUrl;
+                            updateImageInModal(backupImageUrl);
+                        };
+                        img.onerror = function() {
+                            console.log('매물 상세 - 백업 이미지 실패, 에어테이블 시도');
+                            tryAirtableImageForDetail(fields);
+                        };
+                        img.src = backupImageUrl;
+                    } else {
+                        console.log('매물 상세 - 백업 이미지 없음, 에어테이블 시도');
+                        tryAirtableImageForDetail(fields);
+                    }
+                } else {
+                    console.log('매물 상세 - 이미지 API 실패, 에어테이블 시도');
+                    tryAirtableImageForDetail(fields);
                 }
-            });
-            
-            // 매물 상세 정보 생성
-            let detailsHtml = '';
-            
-            // 지번 주소
-            if (fields['지번 주소']) {
-                detailsHtml += createDetailRow('위치', fields['지번 주소']);
+            } catch (error) {
+                console.error('매물 상세 - 백업 이미지 확인 오류:', error);
+                tryAirtableImageForDetail(fields);
             }
             
-            // 매가
+            // 가격 형식화
+            let priceDisplay = '가격 정보 없음';
             if (fields['매가(만원)']) {
                 const price = parseFloat(fields['매가(만원)']);
-                const priceDisplay = price >= 10000 ? 
+                priceDisplay = price >= 10000 ? 
                     `${(price / 10000).toFixed(1).replace('.0', '')}억원` : 
                     `${price.toLocaleString()}만원`;
-                detailsHtml += createDetailRow('매가', priceDisplay);
             }
+            
+            // HTML 생성 (이미지는 나중에 업데이트)
+            let html = `
+            <div style="padding: 20px;">
+                <h2 style="margin-bottom: 20px;">${address}</h2>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div id="modalPropertyImageDetail" style="background-image: url('${photoUrl}'); background-size: cover; background-position: center; height: 300px; border-radius: 8px;"></div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 8px; padding: 20px;">
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                <div style="font-weight: bold; width: 100px;">매가</div>
+                                <div>${priceDisplay}</div>
+                            </div>
+            `;
             
             // 토지면적
             if (fields['토지면적(㎡)']) {
                 const sqm = parseFloat(fields['토지면적(㎡)']);
                 const pyeong = Math.round(sqm / 3.3058);
-                detailsHtml += createDetailRow('토지면적', `${pyeong}평 (${sqm.toLocaleString()}㎡)`);
-            }
-            
-            // 건물면적
-            if (fields['건물면적(㎡)']) {
-                const sqm = parseFloat(fields['건물면적(㎡)']);
-                const pyeong = Math.round(sqm / 3.3058);
-                detailsHtml += createDetailRow('건물면적', `${pyeong}평 (${sqm.toLocaleString()}㎡)`);
+                html += `
+                            <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                <div style="font-weight: bold; width: 100px;">토지면적</div>
+                                <div>${pyeong}평 (${sqm.toLocaleString()}㎡)</div>
+                            </div>
+                `;
             }
             
             // 수익률
             if (fields['융자제외수익률(%)']) {
-                detailsHtml += createDetailRow('수익률', `${fields['융자제외수익률(%)']}%`);
-            }
-            
-            // 사용승인일
-            if (fields['사용승인일']) {
-                detailsHtml += createDetailRow('사용승인일', fields['사용승인일']);
+                html += `
+                            <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                <div style="font-weight: bold; width: 100px;">수익률</div>
+                                <div>${fields['융자제외수익률(%)']}%</div>
+                            </div>
+                `;
             }
             
             // 층수
             if (fields['층수']) {
-                detailsHtml += createDetailRow('층수', fields['층수']);
+                html += `
+                            <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                <div style="font-weight: bold; width: 100px;">층수</div>
+                                <div>${fields['층수']}</div>
+                            </div>
+                `;
             }
             
             // 주용도
             if (fields['주용도']) {
-                detailsHtml += createDetailRow('주용도', fields['주용도']);
+                html += `
+                            <div style="display: flex; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                <div style="font-weight: bold; width: 100px;">주용도</div>
+                                <div>${fields['주용도']}</div>
+                            </div>
+                `;
             }
             
-            // 특이사항
-            if (fields['특이사항']) {
-                detailsHtml += createDetailRow('특이사항', fields['특이사항']);
+            // 마무리 태그
+            html += `
+                        </div>
+                        
+                        <div style="margin-top: 20px; display: flex; gap: 10px;">
+                            <button onclick="openConsultModal('${address}')" class="btn btn-contact" style="flex: 1;">문의하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            `;
+            
+            return html;
+        }
+
+        // 이미지 업데이트 함수
+        function updateImageInModal(imageUrl) {
+            const imageElement = document.getElementById('modalPropertyImageDetail');
+            if (imageElement) {
+                imageElement.style.backgroundImage = `url('${imageUrl}')`;
+                console.log(`매물 상세 모달 이미지 업데이트: ${imageUrl}`);
+            }
+        }
+
+        // 에어테이블 이미지 폴백 (매물 상세용)
+        function tryAirtableImageForDetail(fields) {
+            let photoUrl = null;
+            
+            // 대표사진 필드 확인
+            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+                photoUrl = fields['대표사진'][0].url;
+            } 
+            // 사진링크 필드 확인
+            else if (fields['사진링크']) {
+                const photoLinks = fields['사진링크'].split(',');
+                if (photoLinks[0]) {
+                    photoUrl = photoLinks[0].trim();
+                }
             }
             
-            // 상세정보 업데이트
-            propertyDetails.innerHTML = detailsHtml;
-            
-            // 문의하기 버튼 이벤트 설정
-            inquiryBtn.addEventListener('click', function() {
-                openConsultModal(fields['지번 주소'] || '해당 매물');
-            });
+            if (photoUrl) {
+                console.log(`매물 상세 - 에어테이블 이미지 시도: ${photoUrl}`);
+                
+                const img = new Image();
+                img.onload = function() {
+                    console.log('매물 상세 - 에어테이블 이미지 성공');
+                    updateImageInModal(photoUrl);
+                };
+                img.onerror = function() {
+                    console.log('매물 상세 - 에어테이블 이미지도 실패, 기본 이미지 유지');
+                    updateImageInModal('/images/default-thumb.jpg');
+                };
+                img.src = photoUrl;
+            } else {
+                console.log('매물 상세 - 에어테이블 이미지 URL 없음');
+                updateImageInModal('/images/default-thumb.jpg');
+            }
         }
         
         // 상세 정보 행 생성 함수

@@ -306,9 +306,9 @@
     </nav>
 
     <!-- 자바스크립트 -->
-    <script src="/js/ai-property-search.js?v=1"></script>
-    <script src="/js/inquiry-form.js?v=1"></script>
-    <script src="/js/navigation.js?v=1"></script>
+    <script src="/js/ai-property-search.js?v=2"></script>
+    <script src="/js/inquiry-form.js?v=2"></script>
+    <script src="/js/navigation.js?v=2"></script>
 
     <!-- 상담 모달 관련 스크립트 -->
     <script>
@@ -576,21 +576,52 @@
     }
 
     // 매물 정보 HTML 렌더링
-    function renderPropertyDetail(property) {
+    async function renderPropertyDetail(property) {
         const fields = property.fields;
         const address = fields['지번 주소'] || '주소 정보 없음';
+        const recordId = property.id;
         
-        // 대표 이미지 URL 설정
+        // 백업 이미지 우선 로딩
         let photoUrl = '/images/default-thumb.jpg';
-        if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
-            photoUrl = fields['대표사진'][0].url;
-        } else if (fields['사진링크']) {
-            const photoLinks = fields['사진링크'].split(',');
-            if (photoLinks[0]) {
-                photoUrl = photoLinks[0].trim();
+        
+        try {
+            // 백업 이미지 API 호출
+            console.log(`매물 상세 - 백업 이미지 확인: ${recordId}`);
+            const response = await fetch(`/api/check-image?record_id=${recordId}`);
+            
+            if (response.ok) {
+                const data = await response.json();
+                console.log('매물 상세 - 이미지 확인 응답:', data);
+                
+                if (data.hasImage && data.filename) {
+                    const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
+                    console.log(`매물 상세 - 백업 이미지 URL: ${backupImageUrl}`);
+                    
+                    // 이미지 로드 테스트
+                    const img = new Image();
+                    img.onload = function() {
+                        console.log(`매물 상세 - 백업 이미지 로드 성공: ${backupImageUrl}`);
+                        photoUrl = backupImageUrl;
+                        updateImageInModal(backupImageUrl);
+                    };
+                    img.onerror = function() {
+                        console.log('매물 상세 - 백업 이미지 실패, 에어테이블 시도');
+                        tryAirtableImageForDetail(fields);
+                    };
+                    img.src = backupImageUrl;
+                } else {
+                    console.log('매물 상세 - 백업 이미지 없음, 에어테이블 시도');
+                    tryAirtableImageForDetail(fields);
+                }
+            } else {
+                console.log('매물 상세 - 이미지 API 실패, 에어테이블 시도');
+                tryAirtableImageForDetail(fields);
             }
+        } catch (error) {
+            console.error('매물 상세 - 백업 이미지 확인 오류:', error);
+            tryAirtableImageForDetail(fields);
         }
-
+        
         // 가격 형식화
         let priceDisplay = '가격 정보 없음';
         if (fields['매가(만원)']) {
@@ -600,13 +631,13 @@
                 `${price.toLocaleString()}만원`;
         }
         
-        // HTML 생성
+        // HTML 생성 (이미지는 나중에 업데이트)
         let html = `
         <div style="padding: 20px;">
             <h2 style="margin-bottom: 20px;">${address}</h2>
             
             <div style="display: flex; flex-direction: column; gap: 20px;">
-                <div style="background-image: url('${photoUrl}'); background-size: cover; background-position: center; height: 300px; border-radius: 8px;"></div>
+                <div id="modalPropertyImageDetail" style="background-image: url('${photoUrl}'); background-size: cover; background-position: center; height: 300px; border-radius: 8px;"></div>
                 
                 <div style="background: #f8f9fa; border-radius: 8px; padding: 20px;">
                     <div style="display: flex; flex-direction: column; gap: 10px;">
@@ -673,11 +704,117 @@
         return html;
     }
 
-    // 매물 상세 페이지 열기 함수 (iframe에서 호출됨)
-    function openPropertyDetail(recordId) {
-        console.log('매물 상세 정보 열기:', recordId);
-        openPropertyDetailModal(recordId);
+    // 이미지 업데이트 함수
+    function updateImageInModal(imageUrl) {
+        const imageElement = document.getElementById('modalPropertyImageDetail');
+        if (imageElement) {
+            imageElement.style.backgroundImage = `url('${imageUrl}')`;
+            console.log(`매물 상세 모달 이미지 업데이트: ${imageUrl}`);
+        }
     }
+
+    // 에어테이블 이미지 폴백 (매물 상세용)
+    function tryAirtableImageForDetail(fields) {
+        let photoUrl = null;
+        
+        // 대표사진 필드 확인
+        if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+            photoUrl = fields['대표사진'][0].url;
+        } 
+        // 사진링크 필드 확인
+        else if (fields['사진링크']) {
+            const photoLinks = fields['사진링크'].split(',');
+            if (photoLinks[0]) {
+                photoUrl = photoLinks[0].trim();
+            }
+        }
+        
+        if (photoUrl) {
+            console.log(`매물 상세 - 에어테이블 이미지 시도: ${photoUrl}`);
+            
+            const img = new Image();
+            img.onload = function() {
+                console.log('매물 상세 - 에어테이블 이미지 성공');
+                updateImageInModal(photoUrl);
+            };
+            img.onerror = function() {
+                console.log('매물 상세 - 에어테이블 이미지도 실패, 기본 이미지 유지');
+                updateImageInModal('/images/default-thumb.jpg');
+            };
+            img.src = photoUrl;
+        } else {
+            console.log('매물 상세 - 에어테이블 이미지 URL 없음');
+            updateImageInModal('/images/default-thumb.jpg');
+        }
+    }
+
+    // 매물 상세 페이지 열기 함수 (iframe에서 호출됨)
+    async function openPropertyDetailModal(recordId) {
+        console.log('매물 상세 모달 열기:', recordId);
+        
+        try {
+            // 모달 표시
+            const modal = document.getElementById('propertyDetailModal');
+            const container = document.getElementById('propertyDetailContainer');
+            
+            if (!modal || !container) {
+                console.error('매물 상세 모달 요소를 찾을 수 없습니다.');
+                alert('모달을 표시할 수 없습니다.');
+                return;
+            }
+            
+            // 로딩 메시지 표시
+            container.innerHTML = `
+                <div style="text-align:center; padding:40px;">
+                    <div style="margin-bottom:15px;">
+                        <div class="loading-spinner" style="width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #e38000; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto;"></div>
+                    </div>
+                    <div>매물 정보를 불러오는 중입니다...</div>
+                </div>
+            `;
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            
+            // API에서 데이터 가져오기
+            const response = await fetch(`/api/property-detail?id=${recordId}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: 매물 정보를 불러오지 못했습니다.`);
+            }
+            
+            const data = await response.json();
+            console.log('매물 상세 API 응답:', data);
+            
+            if (data.error) {
+                throw new Error(data.error);
+            }
+            
+            const property = data.property;
+            
+            if (!property) {
+                throw new Error('매물 정보를 찾을 수 없습니다.');
+            }
+            
+            // 매물 정보 렌더링 (비동기)
+            const html = await renderPropertyDetail(property);
+            container.innerHTML = html;
+            
+        } catch (error) {
+            console.error('매물 상세 정보 로드 실패:', error);
+            const container = document.getElementById('propertyDetailContainer');
+            if (container) {
+                container.innerHTML = `
+                    <div style="color:red; text-align:center; padding:20px;">
+                        <h3>오류 발생</h3>
+                        <p>${error.message || '매물 정보를 불러오지 못했습니다.'}</p>
+                        <button onclick="closePropertyDetailModal()" class="btn btn-secondary" style="margin-top:10px;">닫기</button>
+                    </div>
+                `;
+            }
+        }
+    }
+
+    console.log('매물 상세 모달 이미지 로딩 최적화 v1.0 적용 완료');
 
     // ESC 키로 모달 닫기
     document.addEventListener('keydown', function(e) {
