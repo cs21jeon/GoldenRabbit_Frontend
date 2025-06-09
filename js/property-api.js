@@ -1,5 +1,3 @@
-// property-api.js - 카테고리 시스템 버전 2.0
-
 // ===== 전역 변수 및 설정 =====
 let currentCategoryModal = null;
 
@@ -45,12 +43,20 @@ async function loadCategoryProperty(viewId, categoryName) {
         const data = await response.json();
         console.log('API 응답:', data);
         
-        if (data && data.records && data.records.length > 0) {
-            // 대표 매물 표시
-            showCategoryModal(data.records[0], categoryName, viewId);
+        // 응답 구조 확인 개선
+        if (data && data.success !== false) {
+            if (data.records && data.records.length > 0) {
+                // 대표 매물 표시
+                showCategoryModal(data.records[0], categoryName, viewId);
+            } else if (data.error) {
+                console.warn('API 오류:', data.error);
+                alert(`오류: ${data.message || data.error}`);
+            } else {
+                console.warn('대표 매물을 찾을 수 없습니다.');
+                alert('현재 해당 카테고리의 대표 매물이 없습니다.');
+            }
         } else {
-            console.warn('대표 매물을 찾을 수 없습니다.');
-            alert('현재 해당 카테고리의 대표 매물이 없습니다.');
+            throw new Error(data.message || '알 수 없는 오류가 발생했습니다.');
         }
         
     } catch (error) {
@@ -88,42 +94,22 @@ function showCategoryModal(property, categoryName, viewId) {
     if (titleElement) titleElement.textContent = title;
     if (descriptionElement) descriptionElement.textContent = description;
     
-    // 대표사진 설정
+    // 이미지 설정 - 백업 이미지 우선 사용
     const imageElement = document.getElementById('modalPropertyImage');
-    let photoUrl = '/images/default-thumb.jpg';
-    
-    if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
-        photoUrl = fields['대표사진'][0].url;
-    } else if (fields['사진링크']) {
-        const photoLinks = fields['사진링크'].split(',');
-        if (photoLinks[0]) {
-            photoUrl = photoLinks[0].trim();
-        }
-    }
-
-    const recordDetailUrl = recordId;  // URL 대신 recordId만 저장
-    
-    // 2. 카테고리 뷰 전체보기 링크 (추천매물 모아보기 버튼용)
-    const categoryViewUrl = `/category-view.html?view=${viewId}&category=${encodeURIComponent(categoryName)}`;
-    
-    console.log('생성된 링크들:');
-    console.log('- 개별 매물:', recordDetailUrl);
-    console.log('- 카테고리 뷰:', categoryViewUrl);
     
     if (imageElement) {
-        // 이미지 설정
-        imageElement.style.backgroundImage = `url('${photoUrl}')`;
+        // 먼저 기본 이미지로 설정
+        imageElement.style.backgroundImage = `url('/images/default-thumb.jpg')`;
         
-        // 이미지 로딩 실패 시 기본 이미지로 대체
-        const img = new Image();
-        img.onload = function() {
-            imageElement.style.backgroundImage = `url('${photoUrl}')`;
-        };
-        img.onerror = function() {
-            console.warn('이미지 로딩 실패, 기본 이미지 사용:', photoUrl);
-            imageElement.style.backgroundImage = `url('/images/default-thumb.jpg')`;
-        };
-        img.src = photoUrl;
+        // 백업 이미지 확인 후 업데이트
+        loadBackupImage(recordId).then(imageUrl => {
+            console.log(`백업 이미지 로드 결과: ${imageUrl}`);
+            imageElement.style.backgroundImage = `url('${imageUrl}')`;
+        }).catch(error => {
+            console.error('백업 이미지 로드 실패:', error);
+            // 에어테이블 이미지 시도 (폴백)
+            tryAirtableImage(fields, imageElement);
+        });
 
         // 사진 클릭 시 내부 모달로 상세보기
         imageElement.onclick = function() {
@@ -144,10 +130,10 @@ function showCategoryModal(property, categoryName, viewId) {
             }
         };
         
-        //수정: 상세내용보기 버튼 설정
+        // 상세내용보기 버튼 설정
         const detailBtn = document.getElementById('modalDetailBtn');
         if (detailBtn) {
-            detailBtn.href = "javascript:void(0);";  // 링크 비활성화
+            detailBtn.href = "javascript:void(0);";
             detailBtn.onclick = function(e) {
                 e.preventDefault();
                 console.log('상세내용보기 클릭, 레코드 ID:', recordId);
@@ -185,9 +171,10 @@ function showCategoryModal(property, categoryName, viewId) {
         };
     }
 
-    // 🔧 카테고리 전체 매물 보기 버튼 설정
+    // 카테고리 전체 매물 보기 버튼 설정
     const categoryViewBtn = document.getElementById('modalCategoryViewBtn');
     if (categoryViewBtn) {
+        const categoryViewUrl = `/category-view.html?view=${viewId}&category=${encodeURIComponent(categoryName)}`;
         categoryViewBtn.href = categoryViewUrl;
         categoryViewBtn.onclick = function(e) {
             e.preventDefault();
@@ -216,6 +203,94 @@ function showCategoryModal(property, categoryName, viewId) {
     currentCategoryModal = modal;
     
     console.log('카테고리 모달 표시 완료');
+}
+
+// ===== 백업 이미지 로딩 함수 =====
+async function loadBackupImage(recordId) {
+    try {
+        console.log(`백업 이미지 확인 중: ${recordId}`);
+        
+        // 백업 이미지 API 호출
+        const response = await fetch(`/api/check-image?record_id=${recordId}`);
+        
+        if (!response.ok) {
+            throw new Error(`이미지 확인 API 실패: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('이미지 확인 응답:', data);
+        
+        if (data.hasImage && data.filename) {
+            const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
+            console.log(`백업 이미지 URL: ${backupImageUrl}`);
+            
+            // 이미지가 실제로 로드 가능한지 확인
+            return await testImageLoad(backupImageUrl);
+        } else {
+            throw new Error('백업 이미지 없음');
+        }
+        
+    } catch (error) {
+        console.error('백업 이미지 로드 실패:', error);
+        throw error;
+    }
+}
+
+// ===== 이미지 로드 테스트 함수 =====
+function testImageLoad(imageUrl) {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        
+        img.onload = function() {
+            console.log(`이미지 로드 성공: ${imageUrl}`);
+            resolve(imageUrl);
+        };
+        
+        img.onerror = function() {
+            console.error(`이미지 로드 실패: ${imageUrl}`);
+            reject(new Error(`이미지 로드 실패: ${imageUrl}`));
+        };
+        
+        // 타임아웃 설정 (5초)
+        setTimeout(() => {
+            reject(new Error(`이미지 로드 타임아웃: ${imageUrl}`));
+        }, 5000);
+        
+        img.src = imageUrl;
+    });
+}
+
+// ===== 에어테이블 이미지 시도 함수 (폴백) =====
+function tryAirtableImage(fields, imageElement) {
+    console.log('에어테이블 이미지 시도 중...');
+    
+    let photoUrl = null;
+    
+    // 대표사진 필드 확인
+    if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+        photoUrl = fields['대표사진'][0].url;
+    } 
+    // 사진링크 필드 확인
+    else if (fields['사진링크']) {
+        const photoLinks = fields['사진링크'].split(',');
+        if (photoLinks[0]) {
+            photoUrl = photoLinks[0].trim();
+        }
+    }
+    
+    if (photoUrl) {
+        console.log(`에어테이블 이미지 URL 시도: ${photoUrl}`);
+        
+        testImageLoad(photoUrl).then(validUrl => {
+            console.log('에어테이블 이미지 로드 성공');
+            imageElement.style.backgroundImage = `url('${validUrl}')`;
+        }).catch(error => {
+            console.warn('에어테이블 이미지도 실패, 기본 이미지 유지:', error);
+            // 이미 기본 이미지로 설정되어 있으므로 추가 작업 불필요
+        });
+    } else {
+        console.log('에어테이블 이미지 URL 없음, 기본 이미지 유지');
+    }
 }
 
 // ===== 매물 상세 정보 생성 함수 =====
@@ -451,6 +526,27 @@ window.closeModal = closeModal; // 기존 매물 모달 지원
 // 기존 매물 관련 함수들 (기존 기능 유지를 위해)
 window.openRecordDetail = (url) => window.open(url, '_blank');
 
+// ===== 전역 스코프에 함수 노출 =====
+window.loadBackupImage = loadBackupImage;
+window.testImageLoad = testImageLoad;
+
+// ===== 디버깅용 함수 =====
+window.debugImageFunctions = {
+    loadBackupImage: loadBackupImage,
+    testImageLoad: testImageLoad,
+    checkImage: async (recordId) => {
+        try {
+            const response = await fetch(`/api/check-image?record_id=${recordId}`);
+            const data = await response.json();
+            console.log('이미지 확인 결과:', data);
+            return data;
+        } catch (error) {
+            console.error('이미지 확인 오류:', error);
+            return null;
+        }
+    }
+};
+
 // 브라우저 뒤로가기 처리
 window.addEventListener('popstate', function(event) {
     if (currentCategoryModal && currentCategoryModal.style.display === 'flex') {
@@ -460,4 +556,5 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
+console.log('이미지 로딩 시스템 v2.0 로드 완료');
 console.log('Property API v2.0 (카테고리 시스템) 로드 완료');
