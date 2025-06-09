@@ -476,6 +476,73 @@
             return html;
         }
 
+        async function openPropertyDetailModal(recordId) {
+            console.log('매물 상세 모달 열기:', recordId);
+            
+            try {
+                // 모달 표시
+                const modal = document.getElementById('propertyDetailModal');
+                const container = document.getElementById('propertyDetailContainer');
+                
+                if (!modal || !container) {
+                    console.error('매물 상세 모달 요소를 찾을 수 없습니다.');
+                    alert('모달을 표시할 수 없습니다.');
+                    return;
+                }
+                
+                // 로딩 메시지 표시
+                container.innerHTML = `
+                    <div style="text-align:center; padding:40px;">
+                        <div style="margin-bottom:15px;">
+                            <div class="loading-spinner" style="width:40px; height:40px; border:4px solid #f3f3f3; border-top:4px solid #e38000; border-radius:50%; animation:spin 1s linear infinite; margin:0 auto;"></div>
+                        </div>
+                        <div>매물 정보를 불러오는 중입니다...</div>
+                    </div>
+                `;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+                
+                // API에서 데이터 가져오기
+                const response = await fetch(`/api/property-detail?id=${recordId}`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: 매물 정보를 불러오지 못했습니다.`);
+                }
+                
+                const data = await response.json();
+                console.log('매물 상세 API 응답:', data);
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                const property = data.property;
+                
+                if (!property) {
+                    throw new Error('매물 정보를 찾을 수 없습니다.');
+                }
+                
+                // 매물 정보 렌더링 (비동기)
+                const html = await renderPropertyDetail(property);
+                container.innerHTML = html;
+                
+            } catch (error) {
+                console.error('매물 상세 정보 로드 실패:', error);
+                const container = document.getElementById('propertyDetailContainer');
+                if (container) {
+                    container.innerHTML = `
+                        <div style="color:red; text-align:center; padding:20px;">
+                            <h3>오류 발생</h3>
+                            <p>${error.message || '매물 정보를 불러오지 못했습니다.'}</p>
+                            <button onclick="closePropertyDetailModal()" class="btn btn-secondary" style="margin-top:10px;">닫기</button>
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        console.log('매물 상세 모달 이미지 로딩 최적화 v1.0 적용 완료');
+
         // 이미지 업데이트 함수
         function updateImageInModal(imageUrl) {
             const imageElement = document.getElementById('modalPropertyImageDetail');
