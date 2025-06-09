@@ -293,6 +293,79 @@
             }
         };
 
+        // 백업 이미지 로딩 함수
+        async function loadBackupImage(recordId) {
+            try {
+                console.log(`백업 이미지 확인 중: ${recordId}`);
+                
+                const response = await fetch(`/api/check-image?record_id=${recordId}`);
+                
+                if (!response.ok) {
+                    throw new Error(`이미지 확인 API 실패: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                console.log('이미지 확인 응답:', data);
+                
+                if (data.hasImage && data.filename) {
+                    const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
+                    console.log(`백업 이미지 URL: ${backupImageUrl}`);
+                    
+                    // 이미지가 실제로 로드 가능한지 확인
+                    return await testImageLoad(backupImageUrl);
+                } else {
+                    throw new Error('백업 이미지 없음');
+                }
+                
+            } catch (error) {
+                console.error('백업 이미지 로드 실패:', error);
+                throw error;
+            }
+        }
+
+        // 이미지 로드 테스트 함수
+        function testImageLoad(imageUrl) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                
+                img.onload = function() {
+                    console.log(`이미지 로드 성공: ${imageUrl}`);
+                    resolve(imageUrl);
+                };
+                
+                img.onerror = function() {
+                    console.error(`이미지 로드 실패: ${imageUrl}`);
+                    reject(new Error(`이미지 로드 실패: ${imageUrl}`));
+                };
+                
+                // 타임아웃 설정 (5초)
+                setTimeout(() => {
+                    reject(new Error(`이미지 로드 타임아웃: ${imageUrl}`));
+                }, 5000);
+                
+                img.src = imageUrl;
+            });
+        }
+
+        // 에어테이블 이미지 폴백 시도
+        function tryAirtableImage(fields) {
+            let photoUrl = null;
+            
+            // 대표사진 필드 확인
+            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
+                photoUrl = fields['대표사진'][0].url;
+            } 
+            // 사진링크 필드 확인
+            else if (fields['사진링크']) {
+                const photoLinks = fields['사진링크'].split(',');
+                if (photoLinks[0]) {
+                    photoUrl = photoLinks[0].trim();
+                }
+            }
+            
+            return photoUrl;
+        }
+
         // 매물 목록 로드
         async function loadCategoryProperties() {
             const viewId = getUrlParam('view');
@@ -340,9 +413,9 @@
                 
                 // 매물 카드 생성
                 let cardsHtml = '';
-                properties.forEach(property => {
-                    cardsHtml += createPropertyCard(property);
-                });
+                for (const property of properties) {
+                    cardsHtml += await createPropertyCard(property);
+                }
                 
                 propertyGrid.innerHTML = cardsHtml;
                 
@@ -364,36 +437,32 @@
                 errorMessage.style.display = 'block';
             }
         }
-        
-        // 기존 이미지 확인 API 호출도 업데이트 (추가)
-        async function checkPropertyImage(recordId) {
-            try {
-                const response = await fetch(`/api/check-image?record_id=${recordId}`);
-                const data = await response.json();
-                
-                if (data.hasImage) {
-                    return `/airtable_backup/images/${recordId}/${data.filename}`;
-                }
-                return '/images/default-thumb.jpg';
-            } catch (error) {
-                console.error('이미지 확인 실패:', error);
-                return '/images/default-thumb.jpg';
-            }
-        }
 
-        // 매물 카드 HTML 생성
-        function createPropertyCard(property) {
+        // 매물 카드 HTML 생성 (비동기로 변경)
+        async function createPropertyCard(property) {
             const fields = property.fields;
             const propertyId = property.id;
             
-            // 대표 이미지 설정
+            // 백업 이미지 우선 시도
             let photoUrl = '/images/default-thumb.jpg';
-            if (Array.isArray(fields['대표사진']) && fields['대표사진'][0]?.url) {
-                photoUrl = fields['대표사진'][0].url;
-            } else if (fields['사진링크']) {
-                const photoLinks = fields['사진링크'].split(',');
-                if (photoLinks[0]) {
-                    photoUrl = photoLinks[0].trim();
+            
+            try {
+                // 백업 이미지 확인
+                photoUrl = await loadBackupImage(propertyId);
+                console.log(`백업 이미지 사용: ${photoUrl}`);
+            } catch (error) {
+                console.log('백업 이미지 실패, 에어테이블 이미지 시도');
+                
+                // 에어테이블 이미지 시도
+                const airtableUrl = tryAirtableImage(fields);
+                if (airtableUrl) {
+                    try {
+                        photoUrl = await testImageLoad(airtableUrl);
+                        console.log(`에어테이블 이미지 사용: ${photoUrl}`);
+                    } catch (airtableError) {
+                        console.log('에어테이블 이미지도 실패, 기본 이미지 사용');
+                        // photoUrl은 이미 기본값으로 설정됨
+                    }
                 }
             }
 
@@ -451,6 +520,15 @@
         
         // 페이지 로드 시 카테고리 매물 로드
         document.addEventListener('DOMContentLoaded', loadCategoryProperties);
+        
+        // 디버깅용 함수 추가
+        window.debugImageFunctions = {
+            loadBackupImage: loadBackupImage,
+            testImageLoad: testImageLoad,
+            tryAirtableImage: tryAirtableImage
+        };
+        
+        console.log('Category View 이미지 로딩 시스템 v2.0 로드 완료');
     </script>
 </body>
 </html>
