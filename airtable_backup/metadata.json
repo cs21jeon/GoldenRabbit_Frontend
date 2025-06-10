@@ -1,6 +1,6 @@
 {
-  "last_backup_date": "2025-06-09",
-  "last_backup_time": "2025-06-09T16:41:04.672799",
+  "last_backup_date": "2025-06-10",
+  "last_backup_time": "2025-06-10T03:00:09.057824",
   "total_records": 275,
   "views_processed": 4,
   "total_views": 4,
@@ -16,7 +16,7 @@
     "updated_images": 0,
     "skipped_images": 184,
     "error_images": 0,
-    "duplicates_cleaned": 179,
+    "duplicates_cleaned": 0,
     "total_processed": 184,
     "optimization_enabled": true
   },
