@@ -1,6 +1,29 @@
-// 캐시 이름 정의
-const CACHE_NAME = 'goldenrabbit-v3';
-// 캐시할 파일 목록 - 새로운 페이지들 추가
+// 동적 캐시 이름 생성
+let CACHE_NAME = 'goldenrabbit-v1';
+
+// 버전 정보를 가져와서 캐시 이름 업데이트
+async function updateCacheName() {
+    try {
+        const response = await fetch('/api/version.php', { 
+            cache: 'no-cache',
+            headers: {
+                'Cache-Control': 'no-cache'
+            }
+        });
+        
+        if (response.ok) {
+            const data = await response.json();
+            CACHE_NAME = `goldenrabbit-v${data.version}`;
+            console.log('캐시 이름 업데이트:', CACHE_NAME);
+        }
+    } catch (error) {
+        console.warn('캐시 버전 업데이트 실패:', error);
+        // 폴백으로 현재 시간 사용
+        CACHE_NAME = `goldenrabbit-v${Date.now()}`;
+    }
+}
+
+// 캐시할 파일 목록 - auto-update.js 추가
 const urlsToCache = [
   '/',
   '/index.html',
@@ -11,12 +34,14 @@ const urlsToCache = [
   '/property-detail.html',
   '/search-property.html',
   '/inquiry.html',
+  '/airtable_map.html',
   '/css/styles.css',
   '/js/navigation.js',
   '/js/inquiry-form.js',
   '/js/property-api.js',
   '/js/ai-property-search.js',
   '/js/pwa-install.js',
+  '/js/auto-update.js',                    // 새로 추가
   '/images/favicon_goldenrabbit_01.png',
   '/images/logo_goldenrabbit.jpg',
   '/images/building_image.png',
@@ -29,18 +54,27 @@ const urlsToCache = [
 ];
 
 // 서비스 워커 설치 시 캐시 저장
-self.addEventListener('install', event => {
-  console.log('Service Worker installing with cache version:', CACHE_NAME);
+self.addEventListener('install', async event => {
+  console.log('Service Worker installing...');
+  
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('캐시 생성 완료');
-        return cache.addAll(urlsToCache);
-      })
-      .catch(error => {
+    (async () => {
+      // 버전 정보 가져오기
+      await updateCacheName();
+      
+      console.log('Service Worker installing with cache version:', CACHE_NAME);
+      
+      try {
+        const cache = await caches.open(CACHE_NAME);
+        console.log('캐시 생성 완료:', CACHE_NAME);
+        await cache.addAll(urlsToCache);
+        console.log('모든 파일 캐시 완료');
+      } catch (error) {
         console.error('캐시 생성 실패:', error);
-      })
+      }
+    })()
   );
+  
   self.skipWaiting(); // 대기 단계 건너뛰기
 });
 
@@ -53,12 +87,18 @@ self.addEventListener('fetch', event => {
   
   const url = new URL(event.request.url);
   
-  // API 요청은 캐시하지 않음
+  // API 요청은 항상 네트워크에서 가져오기 (캐시하지 않음)
   if (url.pathname.startsWith('/api/')) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        // API 요청 실패 시에도 캐시 사용하지 않음
+        return new Response('API 요청 실패', { status: 503 });
+      })
+    );
     return;
   }
   
-  // HTML, CSS, JS 파일은 네트워크 우선 전략
+  // HTML, CSS, JS 파일은 네트워크 우선 전략 (최신 버전 우선)
   if (event.request.url.includes('.html') || 
       event.request.url.includes('.css') || 
       event.request.url.includes('.js')) {
@@ -70,12 +110,15 @@ self.addEventListener('fetch', event => {
             const responseClone = response.clone();
             caches.open(CACHE_NAME).then(cache => {
               cache.put(event.request, responseClone);
+            }).catch(error => {
+              console.warn('캐시 저장 실패:', error);
             });
           }
           return response;
         })
         .catch(() => {
           // 네트워크 실패 시 캐시에서 반환
+          console.log('네트워크 실패, 캐시에서 반환:', event.request.url);
           return caches.match(event.request);
         })
     );
@@ -96,6 +139,9 @@ self.addEventListener('fetch', event => {
               caches.open(CACHE_NAME)
                 .then(cache => {
                   cache.put(event.request, responseToCache);
+                })
+                .catch(error => {
+                  console.warn('이미지 캐시 저장 실패:', error);
                 });
               return response;
             });
@@ -107,18 +153,61 @@ self.addEventListener('fetch', event => {
 // 새 버전의 서비스 워커가 활성화될 때 이전 캐시 삭제
 self.addEventListener('activate', event => {
   console.log('Service Worker activating with cache version:', CACHE_NAME);
-  const cacheWhitelist = [CACHE_NAME];
+  
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    (async () => {
+      // 현재 캐시만 유지하고 나머지는 삭제
+      const cacheNames = await caches.keys();
+      const deletePromises = cacheNames.map(cacheName => {
+        if (cacheName.startsWith('goldenrabbit-') && cacheName !== CACHE_NAME) {
+          console.log('이전 캐시 삭제:', cacheName);
+          return caches.delete(cacheName);
+        }
+      });
+      
+      await Promise.all(deletePromises);
+      console.log('이전 캐시 정리 완료');
+    })()
   );
-  event.waitUntil(clients.claim()); // 모든 클라이언트에 즉시 제어권 획득
+  
+  // 모든 클라이언트에 즉시 제어권 획득
+  event.waitUntil(clients.claim());
 });
+
+// 주기적으로 업데이트 확인 (1시간마다)
+setInterval(async () => {
+  try {
+    const response = await fetch('/api/version.php', { 
+      cache: 'no-cache',
+      headers: {
+        'Cache-Control': 'no-cache'
+      }
+    });
+    
+    if (response.ok) {
+      const data = await response.json();
+      const newCacheName = `goldenrabbit-v${data.version}`;
+      
+      if (newCacheName !== CACHE_NAME) {
+        console.log('새 버전 감지, Service Worker 업데이트 시작');
+        // 새로운 서비스 워커 등록 트리거
+        self.registration.update();
+      }
+    }
+  } catch (error) {
+    console.warn('정기 업데이트 체크 실패:', error);
+  }
+}, 3600000); // 1시간마다
+
+// 메시지 리스너 (클라이언트와 통신)
+self.addEventListener('message', event => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+  
+  if (event.data && event.data.type === 'GET_VERSION') {
+    event.ports[0].postMessage({ version: CACHE_NAME });
+  }
+});
+
+console.log('Service Worker 로드 완료 - 자동 업데이트 시스템 활성화');
