@@ -1634,15 +1634,21 @@ footer {
 
 /* 모달 닫기 버튼 z-index 최상위 */
 .modal-close {
-    z-index: 1000001 !important;
-    background: rgba(255, 255, 255, 0.9) !important;
-    border-radius: 50% !important;
-    width: 30px !important;
-    height: 30px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    line-height: 1 !important;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666 !important;              /* 변경: white → #666 */
+    background-color: rgba(255, 255, 255, 0.9) !important;  /* 변경: 반투명 검은색 → 흰색 */
+    width: 30px !important;              /* 추가 */
+    height: 30px !important;             /* 추가 */
+    border-radius: 50% !important;       /* 변경 */
+    display: flex !important;            /* 변경 */
+    justify-content: center !important;  /* 추가 */
+    align-items: center !important;      /* 추가 */
+    line-height: 1 !important;           /* 추가 */
+    z-index: 10000;
 }
 
 .modal-close:hover {
