@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
             z-index: 10100 !important; /* 최상위 z-index */
         }
         #consultModal {
-            z-index: 10050 !important; /* 추천매물 모달보다 높고, 개인정보/완료 모달보다 낮은 z-index */
+            z-index: 300000 !important; /* 추천매물 모달보다 높고, 개인정보/완료 모달보다 낮은 z-index */
         }
         #modalBackground, #categoryModal {
             z-index: 9900 !important; /* 추천매물 모달 */
@@ -155,8 +155,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // 상담 모달의 z-index도 수정
             const consultModal = document.getElementById('consultModal');
             if (consultModal) {
-                consultModal.style.zIndex = "10050";
-                console.log('consultModal z-index 수정: 10050');
+                consultModal.style.zIndex = "300000";
+                console.log('consultModal z-index 수정: 300000');
             }
             
             setupExistingModals();
@@ -552,9 +552,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (consultModal) {
                 // z-index 설정 확인 및 조정 
                 const currentZIndex = parseInt(window.getComputedStyle(consultModal).zIndex);
-                if (currentZIndex < 10050 || isNaN(currentZIndex)) {
-                    consultModal.style.zIndex = "10050";
-                    console.log('consultModal z-index 설정: 10050');
+                if (currentZIndex < 300000 || isNaN(currentZIndex)) {
+                    consultModal.style.zIndex = "300000";
+                    console.log('consultModal z-index 설정: 300000');
                 }
                 
                 // 메시지 필드에 매물 주소 설정 - 통합 ID 지원
