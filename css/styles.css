@@ -1597,3 +1597,147 @@ footer {
         font-size: 16px;
     }
 }
+
+/* ===== 전체화면 모드에서 모달 표시 개선 ===== */
+
+/* 기존 모달 z-index 대폭 상승 */
+.modal-background {
+    z-index: 999999 !important; /* 가장 높은 우선순위 */
+}
+
+/* 매물 상세 모달과 상담 모달 z-index 보장 */
+#propertyDetailModal,
+#consultModal {
+    z-index: 999999 !important;
+}
+
+/* 전체화면 컨테이너 z-index 조정 */
+.map-container.fullscreen {
+    z-index: 9999 !important; /* 모달보다 낮게 */
+}
+
+/* 전체화면 버튼 z-index 조정 */
+.map-control-btn {
+    z-index: 10001 !important; /* 전체화면과 모달 사이 */
+}
+
+/* 전체화면 모드에서 iframe z-index 조정 */
+.map-container.fullscreen iframe {
+    z-index: 9998 !important; /* 모달보다 낮게 */
+}
+
+/* 모달 내용 z-index 최고 우선순위 보장 */
+.modal-content {
+    z-index: 1000000 !important;
+    position: relative;
+}
+
+/* 모달 닫기 버튼 z-index 최상위 */
+.modal-close {
+    z-index: 1000001 !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    border-radius: 50% !important;
+    width: 30px !important;
+    height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    color: #000 !important;
+}
+
+/* ===== 반응형 매물 상세 정보 스타일 ===== */
+
+/* 매물 상세 정보 반응형 스타일 */
+.detail-row-responsive {
+    display: block;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-label-responsive {
+    display: block;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.detail-value-responsive {
+    display: block;
+    color: #333;
+    font-size: 16px;
+}
+
+/* 태블릿 이상에서만 가로 배치 */
+@media (min-width: 600px) {
+    .detail-row-responsive {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+    
+    .detail-label-responsive {
+        flex: 0 0 25%;
+        margin-bottom: 0;
+        margin-right: 15px;
+    }
+    
+    .detail-value-responsive {
+        flex: 1;
+    }
+}
+
+/* ===== 추가 애니메이션 및 개선 ===== */
+
+/* 모달 등장 애니메이션 개선 */
+@keyframes modalFadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-30px) scale(0.95); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0) scale(1); 
+    }
+}
+
+.modal-content {
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* 전체화면 버튼 hover 효과 개선 */
+.map-control-btn:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    transform: translateY(-1px);
+}
+
+/* 전체화면 모드 진입/퇴장 애니메이션 */
+.map-container {
+    transition: all 0.3s ease-in-out;
+}
+
+/* 모바일에서 전체화면 버튼 개선 */
+@media (max-width: 768px) {
+    .map-control-btn {
+        padding: 10px 14px !important;
+        font-size: 12px !important;
+    }
+    
+    .map-control-btn .btn-text {
+        display: none; /* 모바일에서는 텍스트 숨김 */
+    }
+    
+    /* 모바일 모달 크기 조정 */
+    .modal-content {
+        width: 95% !important;
+        max-width: none !important;
+        margin: 10px !important;
+    }
+}
