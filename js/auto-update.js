@@ -4,25 +4,31 @@ class AutoUpdater {
         this.currentVersion = null;
         this.checkInterval = 10 * 60 * 1000; // 10분마다 체크
         this.isChecking = false;
+        this.isInitialized = false;
         this.init();
     }
     
-    init() {
-        // 페이지 로드 시 초기 버전 설정
-        this.getCurrentVersion();
-        
-        // 주기적 체크 시작
-        this.startPeriodicCheck();
-        
-        // 페이지 포커스 시 체크
-        window.addEventListener('focus', () => {
-            this.checkForUpdates();
-        });
-        
-        // 온라인 상태 복구 시 체크
-        window.addEventListener('online', () => {
-            this.checkForUpdates();
-        });
+    async init() {
+        try {
+            // 페이지 로드 시 초기 버전 설정
+            await this.getCurrentVersion();
+            this.isInitialized = true;
+            
+            // 주기적 체크 시작
+            this.startPeriodicCheck();
+            
+            // 페이지 포커스 시 체크
+            window.addEventListener('focus', () => {
+                this.checkForUpdates();
+            });
+            
+            // 온라인 상태 복구 시 체크
+            window.addEventListener('online', () => {
+                this.checkForUpdates();
+            });
+        } catch (error) {
+            console.warn('AutoUpdater 초기화 실패:', error);
+        }
     }
     
     async getCurrentVersion() {
@@ -38,14 +44,18 @@ class AutoUpdater {
                 const data = await response.json();
                 this.currentVersion = data.version;
                 console.log('현재 버전:', data.formatted_time);
+                return data;
+            } else {
+                throw new Error(`HTTP ${response.status}`);
             }
         } catch (error) {
             console.warn('버전 확인 실패:', error);
+            throw error;
         }
     }
     
     async checkForUpdates() {
-        if (this.isChecking) return;
+        if (this.isChecking || !this.isInitialized) return;
         
         this.isChecking = true;
         
@@ -115,10 +125,10 @@ class AutoUpdater {
                 </div>
                 <div style="color: #555; margin-bottom: 15px; line-height: 1.5;">
                     새로운 업데이트가 있습니다.<br>
-                    최신 버전을 사용하시겠습니까?
+                    <strong>모든 캐시를 지우고</strong> 최신 버전을 사용하시겠습니까?
                 </div>
                 <div style="display: flex; gap: 10px;">
-                    <button onclick="window.location.reload()" style="
+                    <button onclick="forceUpdateAndReload()" style="
                         flex: 1;
                         padding: 10px;
                         background: #e38000;
@@ -145,8 +155,9 @@ class AutoUpdater {
         
         // 30초 후 자동 제거
         setTimeout(() => {
-            if (document.getElementById('update-notification')) {
-                notification.remove();
+            const element = document.getElementById('update-notification');
+            if (element) {
+                element.remove();
             }
         }, 30000);
     }
@@ -162,3 +173,51 @@ class AutoUpdater {
 document.addEventListener('DOMContentLoaded', () => {
     window.autoUpdater = new AutoUpdater();
 });
+
+// 강제 업데이트 함수
+async function forceUpdateAndReload() {
+    console.log('강제 업데이트 시작...');
+    
+    try {
+        // Service Worker 해제
+        if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            for (const registration of registrations) {
+                await registration.unregister();
+                console.log('Service Worker 해제됨');
+            }
+        }
+        
+        // 캐시 삭제
+        if ('caches' in window) {
+            const cacheNames = await caches.keys();
+            await Promise.all(
+                cacheNames.map(cacheName => {
+                    console.log('캐시 삭제됨:', cacheName);
+                    return caches.delete(cacheName);
+                })
+            );
+        }
+        
+        // 알림 제거
+        const notification = document.getElementById('update-notification');
+        if (notification) {
+            notification.remove();
+        }
+        
+        // 잠시 대기 후 새로고침
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
+        
+    } catch (error) {
+        console.error('업데이트 처리 중 오류:', error);
+        // 오류가 발생해도 새로고침은 진행
+        window.location.reload();
+    }
+}
+
+// 전역 함수로 등록
+window.forceUpdateAndReload = forceUpdateAndReload;
+
+console.log('자동 업데이터 시작');
