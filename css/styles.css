@@ -786,8 +786,8 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.7);
-    z-index: 999;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 100000;  /* ← 변경: 999 → 100000 */
     justify-content: center;
     align-items: center;
 }
@@ -808,8 +808,8 @@ header {
     right: 15px;
     font-size: 24px;
     cursor: pointer;
-    color: white;
-    background-color: rgba(0,0,0,0.3);
+    color: #666;                                    /* ← 변경: white → #666 */
+    background-color: rgba(255, 255, 255, 0.9);   /* ← 변경: 검은색 → 흰색 */
     width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -817,7 +817,7 @@ header {
     justify-content: center;
     align-items: center;
     line-height: 1;
-    z-index: 10000;
+    z-index: 999;                                  /* ← 변경: 10000 → 999 (상대적) */
 }
 
 .modal-header {
@@ -1598,67 +1598,70 @@ footer {
     }
 }
 
-/* ===== 전체화면 모드에서 모달 표시 개선 ===== */
+/* ===== 통합 모달 z-index 시스템 ===== */
 
-/* 기존 모달 z-index 대폭 상승 */
-.modal-background {
-    z-index: 999999 !important; /* 가장 높은 우선순위 */
+/* 매물 상세 모달 */
+#propertyDetailModal {
+    z-index: 200000 !important;
+}
+#propertyDetailModal .modal-background {
+    z-index: 200000 !important;
+}
+#propertyDetailModal .modal-content {
+    z-index: 200001 !important;
+    position: relative !important;
+}
+#propertyDetailModal .modal-close {
+    z-index: 200002 !important;
 }
 
-/* 매물 상세 모달과 상담 모달 z-index 보장 */
-#propertyDetailModal,
+/* 상담 모달 - 최상위 */
 #consultModal {
-    z-index: 999999 !important;
+    z-index: 300000 !important;
+}
+#consultModal .modal-background {
+    z-index: 300000 !important;
+}
+#consultModal .modal-content {
+    z-index: 300001 !important;
+    position: relative !important;
+}
+#consultModal .modal-close {
+    z-index: 300002 !important;
 }
 
-/* 전체화면 컨테이너 z-index 조정 */
+/* 카테고리 모달 */
+#categoryModal {
+    z-index: 150000 !important;
+}
+#categoryModal .modal-background {
+    z-index: 150000 !important;
+}
+#categoryModal .modal-content {
+    z-index: 150001 !important;
+    position: relative !important;
+}
+#categoryModal .modal-close {
+    z-index: 150002 !important;
+}
+
+/* 전체화면 관련 - 모달보다 낮게 */
 .map-container.fullscreen {
-    z-index: 9999 !important; /* 모달보다 낮게 */
+    z-index: 50000 !important;
 }
-
-/* 전체화면 버튼 z-index 조정 */
-.map-control-btn {
-    z-index: 10001 !important; /* 전체화면과 모달 사이 */
-}
-
-/* 전체화면 모드에서 iframe z-index 조정 */
 .map-container.fullscreen iframe {
-    z-index: 9998 !important; /* 모달보다 낮게 */
+    z-index: 50001 !important;
+}
+.map-control-btn {
+    z-index: 50002 !important;
 }
 
-/* 모달 내용 z-index 최고 우선순위 보장 */
-.modal-content {
-    z-index: 1000000 !important;
-    position: relative;
+/* 업데이트 알림 - 최상위 */
+#update-notification {
+    z-index: 500000 !important;
 }
 
-/* 모달 닫기 버튼 z-index 최상위 */
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-    color: #666 !important;              /* 변경: white → #666 */
-    background-color: rgba(255, 255, 255, 0.9) !important;  /* 변경: 반투명 검은색 → 흰색 */
-    width: 30px !important;              /* 추가 */
-    height: 30px !important;             /* 추가 */
-    border-radius: 50% !important;       /* 변경 */
-    display: flex !important;            /* 변경 */
-    justify-content: center !important;  /* 추가 */
-    align-items: center !important;      /* 추가 */
-    line-height: 1 !important;           /* 추가 */
-    z-index: 10000;
-}
-
-.modal-close:hover {
-    background: rgba(255, 255, 255, 1) !important;
-    color: #000 !important;
-}
-
-/* ===== 반응형 매물 상세 정보 스타일 ===== */
-
-/* 매물 상세 정보 반응형 스타일 */
+/* 반응형 매물 상세 정보 스타일 */
 .detail-row-responsive {
     display: block;
     margin-bottom: 15px;
@@ -1699,51 +1702,40 @@ footer {
     }
 }
 
-/* ===== 추가 애니메이션 및 개선 ===== */
+/* 모달 애니메이션 */
+.modal-content {
+    animation: modalSlideIn 0.3s ease-out;
+}
 
-/* 모달 등장 애니메이션 개선 */
-@keyframes modalFadeIn {
+@keyframes modalSlideIn {
     from { 
-        opacity: 0; 
-        transform: translateY(-30px) scale(0.95); 
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
     }
     to { 
-        opacity: 1; 
-        transform: translateY(0) scale(1); 
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
-.modal-content {
-    animation: modalFadeIn 0.3s ease-out;
-}
-
-/* 전체화면 버튼 hover 효과 개선 */
-.map-control-btn:hover {
-    background: rgba(255, 255, 255, 1) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-    transform: translateY(-1px);
-}
-
-/* 전체화면 모드 진입/퇴장 애니메이션 */
-.map-container {
-    transition: all 0.3s ease-in-out;
-}
-
-/* 모바일에서 전체화면 버튼 개선 */
+/* 모바일 대응 */
 @media (max-width: 768px) {
-    .map-control-btn {
-        padding: 10px 14px !important;
-        font-size: 12px !important;
-    }
-    
-    .map-control-btn .btn-text {
-        display: none; /* 모바일에서는 텍스트 숨김 */
-    }
-    
-    /* 모바일 모달 크기 조정 */
     .modal-content {
         width: 95% !important;
         max-width: none !important;
+        margin: 10px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+    
+    #consultModal .modal-content {
+        width: 90% !important;
+        max-width: 400px !important;
+        margin: 20px !important;
+    }
+    
+    #categoryModal .modal-content {
+        width: 95% !important;
         margin: 10px !important;
     }
 }
