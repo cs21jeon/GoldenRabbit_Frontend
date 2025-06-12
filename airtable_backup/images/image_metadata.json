@@ -730,10 +730,14 @@
   "rec6aVpAHq5mtoIY9_filename": "002.jpg",
   "recXc96UFj4nWDT1D_optimized": true,
   "recXc96UFj4nWDT1D_filename": "KakaoTalk_20250217_115414326_02.jpg",
-  "last_optimization": "2025-06-10T03:00:09.054947",
+  "last_optimization": "2025-06-12T03:00:14.402889",
   "optimization_stats": {
     "duplicates_cleaned": 0,
-    "new_images": 0,
+    "new_images": 1,
     "updated_images": 0
-  }
+  },
+  "recDm9mSX3i4i7yDz_hash": "b5fbf4ba2832fb6451ca343c31c3c180",
+  "recDm9mSX3i4i7yDz_filename": "KakaoTalk_20250611_173910744_04.jpg",
+  "recDm9mSX3i4i7yDz_type": "representative",
+  "recDm9mSX3i4i7yDz_optimized": true
 }

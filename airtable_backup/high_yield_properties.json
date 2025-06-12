@@ -1,186 +1,65 @@
 [
   {
-    "id": "recQGTF7xNXjAS17u",
-    "createdTime": "2024-07-19T05:25:28.000Z",
+    "id": "recXIOIb8zNhTIPvZ",
+    "createdTime": "2025-05-07T04:22:48.000Z",
     "fields": {
-      "지번 주소": "동작구 상도1동 471-1",
-      "도로명주소": "서울특별시 동작구 상도로41다길 11-3 (상도1동)",
-      "토지면적(㎡)": 206.4,
-      "연면적(㎡)": 539.23,
+      "지번 주소": "관악구 봉천동 1535-1",
+      "도로명주소": "서울특별시 관악구 장군봉7길 26 (봉천동)",
+      "토지면적(㎡)": 116.7,
+      "연면적(㎡)": 291.76,
       "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 123.3,
-      "용적률산정용연면적(㎡)": 412.27,
+      "건축면적(㎡)": 69.5,
+      "용적률산정용연면적(㎡)": 227.54,
       "주구조": "철근콘크리트구조",
       "주용도": "단독주택",
       "층수": "-1/4",
-      "건폐율(%)": 59.74,
-      "용적률(%)": 199.74,
-      "높이(m)": 12.5,
+      "건폐율(%)": 59.55,
+      "용적률(%)": 194.98,
+      "높이(m)": 14.3,
       "지붕": "(철근)콘크리트",
-      "소유자명": "이미애",
-      "소유자주소": "인천광역시 남동구 장아산로128번길 22 105동 1105호 (서창동 태평아파트)",
-      "소유자생년월일": 660825,
-      "세대/가구/호": "0/1/3",
-      "현황": [
-        "디스코",
-        "경매진행중"
-      ],
-      "매가(만원)": 380000,
-      "감정가(만원,랜드북)": 281000,
-      "감정가율(%)": 135.3,
-      "인접역": "상도역",
-      "거리(m)": 352,
-      "융자(만원)": 220000,
-      "보증금(만원)": 299650,
-      "월세(만원)": 405,
-      "사용승인일": "2019-02-20",
-      "주차대수": 4,
-      "승강기수": 1,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-2771-5124",
-      "건물구성": "지하1층 1.5룸형 원룸, 1-4층 원룸 6개씩",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 7호선 상도역 도보 7분 강남접근성 좋은 높은 수익률 다중주택 급매\n- 역세권 준신축 다중주택 수익률 5%이상\n- 상도권역 재개발에 따른 이주수요 지속 발생 가능\n- 연결된 주택과 동시 매입 시 할인 가능\n- 매매금액 : 38억\n- 보증금 : 약 29억9,6500만원/약 405만(관리비포함)\n- 대지 : 206.4m²(약62.5평) / 539.23m²(약163.4평) \n- 건물구성 : 원룸 25\n- 지상4층 / 지하1층\n- 엘리베이터 있음\n- 주용도 : 근린 및 다중주택\n- 지역 : 제2종일반주거지역\n- 방향 : 남향 (호실별 상이함)\n- 사용승인일 : 2019.2.20\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1r-9qHmvYpfR38CXfNKEnVsmHG0_v_c2b&usp=drive_fs",
-      "비공개메모": "연락은 소유주 남편 010-3339-7845\n소유주 (이미애)010-2771-5124(KT)\n공동사용 도로인 상도동 471-2번지는 50% 지분 함께",
-      "융자제외수익률(%)": 6,
-      "지도": "https://map.kakao.com/link/search/동작구상도1동471-1",
-      "건축물대장": [
-        {
-          "id": "att9ILYBOeDBSIEak",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/ja4bqSOKhb7DnOL_i4OZMQ/63Gic6zdIwattSdR_2LK8jaJ8Yf1a21HJRycko2Rs0kRX2VlY-DmqGqdRm1hzjKnvlN-wIw0ok1fY94kxwKyfYoqhXoXe-H3viwibDaUj1050sowW3pwW5IMEWOSvdfK3DBbnYaAmbEzW_lRwBUrA0z4V3Lugo44rLq6NGMHw64/khmg-ZwfKg5xmYURpNtCc5WnWd_PWM5AVj-RszFfIf8",
-          "filename": "건축물대장_상도1동 471-1.pdf",
-          "size": 363461,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/5_YyiWYyhXyO05_SbKRGxw/1kAlvEBezapXku3ytd0-U9G5QsMiqQPsGv3mMs73uj4D0ScCZBcdhVpti5e2Nm9pNPBef1lGwnFQoA5iLbeJvHfIr7wyXfym1ErWu1iDMcoUUjhutS3xNXdJ_w3ZmO5LufZCYVTxhZvWlEHepYTgGA/ZlG6myEN8uJa6WpYwg3z78WDXSGrhc0piXUYip58ShM",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/mEpycLhev3kRRVxwI__ejA/VIEpgjgtdCF9ZgVUHx258F9XlMs9AfzHQaxOjPbPx3EGikwjwPPF_jez4r-DWm10Hvice90G7WC0O72UoEvxPJHJ0hNhN3gvyeOnAbzDcuDfsmQT3ImPEndHv4Odm41CVKoZ-JgYk0vS9irM6xKfzw/Rv3EjUo904InqJsT0htO7QRJpVMzpR_RWCtcRjVay6I",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/7sbkqoxl",
-      "실투자금": 80350,
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 4.4,
-      "건물명": "푸른주택II",
-      "기타용도": "다중주택 및 근린생활시설",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 206.4,
-      "레코드생성일자": "2024-07-19T05:25:28.000Z",
-      "공시지가(원/㎡)": 3771000,
-      "대표사진": [
-        {
-          "id": "attrvdHTxJ5vLocxD",
-          "width": 1058,
-          "height": 1411,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/lpMyksLagaxAWEXKgAI5Yw/uDHSK9cBFIIPgcLtkb8OvtlJzUEwIGxWrVuHveAV5Tsez42FRsQAMgnihVZm5HSZHOB8Nlbey_SsRnis6sUmnl2tfCdQhecujPVhLw2W0iTSy7yCDiEr8h6cekaMYT4_uS9c1bUCyfTCPkggJv4GuW260B1jprtWiCpuCXteF9eM1p8P6xZSxBekLYNf83MW/Xfl_lmh0hAUYPCc9hdvqxh00fNtTBG8lODidNrl2W_I",
-          "filename": "KakaoTalk_20240719_161116044_05.jpg",
-          "size": 504958,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/8vWvV-62d_re3bXpHdPc6Q/s3x2-Hhg4mP_EkfcbWtwscgblb3J-jWDnyfxTsSPCKYNqjj-JDXwAKTnaU89BzRrpxEeKVdYvY8kn3Z2rAJPayh38uPfBmWyBX1CruHDEyg7hf9H7h0ew-bpn2EciEGUBlEAb6qj30iWDXUwlbddeg/g6HB-Uc_3JJMCu9cUaUXnunKQ4ALVEnO0Tc2psyC3XA",
-              "width": 27,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/EoUr4NqGlBqyxRsQP57UTQ/fT-TphRRE1j7bgVdzY0ljqgAl5yY98qUBtpoidust_PXF6f31pe5ChjEam_X_35MfXvlsarSNq0XxgSl5gcTiCu2mNCGMKR3B1SqXzA4C1JXFpnjDbXD-ILL4oVdNHUSv-wCN9IfY8mCpAeBQbOP3A/zAzNeekw3JakXMiH9I7kbPg5EtGouVfD_4GExnxoLXY",
-              "width": 512,
-              "height": 683
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/gJ2WWkXiACc1rzPG3adAOg/ErHMQRHhxI9WgG_9fL1-d5whLOHvj6k14I5bFf1X-BkWR_Uu_n4dywUI0xmjsw_9bDlgoVeJpAnog7osHD9ZP3TEyoErKeeFtnNvxAxLc-QtFP0HY5DUM1CrgwNJ1oO7sx6vg0qNSuSBwkwmDeeyzA/mWSyfyo6KxbVKLSJz_YOSqIcBoRpX2fIgQEAvc_Uc2I",
-              "width": 1058,
-              "height": 1411
-            }
-          }
-        }
-      ],
-      "레코드ID": "recQGTF7xNXjAS17u",
-      "실투자금(융자포함)": -139650,
-      "주구조값": 50,
-      "연식값": 6,
-      "현재가치지수(%)": 60,
-      "건물가치(만원)": 71178,
-      "토지가치(만원)": 155667,
-      "10년간수익(만원)": 48600,
-      "감정비교": 1.32,
-      "10년후건물가치(만원)": 55001,
-      "10년후토지가치(만원)": 201219,
-      "10년가치지수(%)": 80
-    }
-  },
-  {
-    "id": "reccsFOp3I0eEUSD6",
-    "createdTime": "2024-08-07T04:23:03.000Z",
-    "fields": {
-      "지번 주소": "관악구 신림동 94-170",
-      "도로명주소": "서울특별시 관악구 쑥고개로1나길 17 (신림동)",
-      "토지면적(㎡)": 175,
-      "연면적(㎡)": 317.39,
-      "용도지역": "제1종일반주거지역",
-      "건축면적(㎡)": 94.32,
-      "용적률산정용연면적(㎡)": 231.71,
-      "주구조": "철근콘크리트구조",
-      "주용도": "단독주택",
-      "층수": "-1/3",
-      "건폐율(%)": 59.81,
-      "용적률(%)": 146.93,
-      "높이(m)": 9.45,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "이지원,최순기",
-      "소유자주소": "서울특별시 관악구 서원길 27-12, 401",
-      "소유자생년월일": 730906,
+      "소유자명": "이수민",
+      "소유자주소": "경기도 광명시 소하로 162,712동501호",
+      "소유자생년월일": 850726,
       "세대/가구/호": "0/1/0",
       "현황": [
         "네이버",
         "디스코",
         "당근"
       ],
-      "매가(만원)": 185000,
-      "감정가(만원,랜드북)": 145000,
-      "감정가율(%)": 127.6,
-      "인접역": "서원역",
-      "거리(m)": 520,
-      "보증금(만원)": 37500,
-      "월세(만원)": 980,
-      "사용승인일": "2019-05-20",
+      "매가(만원)": 190000,
+      "감정가(만원,랜드북)": 150000,
+      "감정가율(%)": 126.7,
+      "인접역": "봉천역",
+      "거리(m)": 383,
+      "보증금(만원)": 116900,
+      "월세(만원)": 570,
+      "사용승인일": "2019-01-11",
       "주차대수": 2,
       "승강기수": 0,
-      "주인세대": "O",
+      "주인세대": "X",
       "주인거주": "X",
-      "소유주연락처": "010-9999-6973",
-      "건물구성": "지1~2층  원룸 15일 / 옥탑:원룸5실 / 3층  주인세대 방3/화2 1억8천에 35만 ",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n     금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 주인세대 있어 거주하면서 관리하기 좋은 수익형 분리형 원룸건물매매\n- 신림선 서원역 도보6분 공실없이 관리하기 좋은 준신축 건물\n- 매매금액 : 18억5,000만\n- 대지 : 175㎡(약53평) / 연면적 : 317.39㎡(약96평)\n- 보증금 : 3억7,500만 /월세 약980만(관리비포함)\n- 융자금  4억\n- 세대현황 : 총 방23개/욕실22개 (각층 원룸20실, 주인세대 방3층 넓은 2룸)\n- 지상3층~지1층\n- 주용도 : 다중주택\n- 지역 : 제1종일반주거지역\n- 방향 : 북동\n- 주차 : 2대\n- 사용승인일 : 2019.05.20\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1M0JAbeH_C-EQB2zcb-j9BufizipvP16Z&usp=drive_fs",
-      "비공개메모": "소유주 예다유사모님 이지원 010-9999-6973.skt/ 신림동 94-170 / 24.07.26~\n/지1~2층  원룸 15일 / 옥탑:원룸5실 / 3층  주인세대 방3/화2 1억8천에 35만 /토지대장상대지 : 175㎡/\n지1 사무소 및 다중주택  /옥탑 원룸5실 위반으로 년 300만정도 벌금\n",
-      "융자제외수익률(%)": 8,
-      "지도": "https://map.kakao.com/link/search/관악구신림동94-170",
+      "소유주연락처": "010-9995-5185",
+      "건물구성": "원룸 21호실, 위반",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n    금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 봉천역 도보 8분 주택가 초고수익률 원룸 건물 매매\n- 2호선 접근성 좋아 강남 등 출퇴근 좋은 지역\n- 장군봉공원 등 인근으로 환경 및 거주여건 우수\n- 매매금액 : 19억원\n- 대지 : 116.9㎡(약35평) / 연면적 : 291.76㎡(약88평)\n- 지하 1층 ~ 지상 4층, 근생 및 다중주택\n- 용도지역 : 제2종일반주거지역\n- 방향 : 북서향 (주출입구 기준, 호실별 상이)\n- 주차 : 2대\n- 사용승인일 : 2019-01-11\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보 2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1VtEtLU2BBmoPgTiNtD-PLAPrdGxlBav1&usp=drive_fs",
+      "비공개메모": "010-9995-5185, 원룸 21호실, 위반",
+      "융자제외수익률(%)": 9.4,
+      "지도": "https://map.kakao.com/link/search/관악구봉천동1535-1",
       "건축물대장": [
         {
-          "id": "attDkPmTY5a83iXu0",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/HWynUSP8rGtAKbg1f_X0OA/IJXH1UpqGa4r5omRmwP7pOqQBKGh8OOhKMsnDURtm249kCzNkzvfNAAzjXBJLaPCX5OiQLysQpZPsRVTv6vaAPPruX5h2JBJF_yRQTK9mAJOxVZYVof8xxK7vZQvlBvJ3DSdLVclz8YYXdGzSdPnrp97dhqhjcgKz1yoh38AHqg/VeeUOe3m17WDshcHaw0AIi5x-3EgnMCTlKOO0s6JjVM",
-          "filename": "신림동 94-170_건축물대장.pdf",
-          "size": 364227,
+          "id": "attxSK7F9J0syjSrI",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/nPSbU6Nt9fh4c2DG1k2snA/F56JUvmhX1NAAXuZhqiZ5Bd8RYVAUZeMhg21IKbeHZkUfom6NY0rjBs5u5HybhkorNkusArRiFves4YZnGKqhMbwK85up5f31JNrGJ4IYN2wXjA5vV1H4SV2EI5cT8MuakJMLv8hUh0fh3YIbZ2MQ42U1MYeQgnakpMSGsm05SI/mJPTeipFBwEXzpYCCx7nPFhb2RA6A5n3KeOgrLIl6sQ",
+          "filename": "건축물대장_봉천동 1535-1(위반).pdf",
+          "size": 366437,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/SkEBW0oMTfbbE6nmdh2R2g/Yw_uT4AxMvslno-7XrnwCZ9xJshd3ef7l18h7wi3ro9Q-Vsfm5iT7QumJSXu8p0F27gvQlhormhXfH3lG_jV2ObIbW0Un2jUUCVMPk480ijsQQwgKQtkZuQFZfXMngiPDdEF0EsJ_ZkOCThrZTGG3A/ijtJFL_gLah3_HL9xI3IV90t_kY-p4RHs119bCcV370",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/yqwdRmIHIEYVWIrmFpbmQg/iwzJ4S1oTn9UCm0SaEdJHAjIqKmjHvEPR8H1NiZE8d0ltCkzCt5p459H6CvwKR2ZInxRLna1J2-_DV8i7m7iTW4MWy-Obcr7mJW0GXwb8BuiDuicuhPa5pM8vNeeArnsG3cmvqSbaw8w6OlKS7m2kQ/hZiIby0BCf2co8eN_VSrDKkjL4KC4VlY6BDFtj-J0rM",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/um7cs6GvG-ECXofG3uqepg/pFWi97_GaHb5rnj6fN9CfMZGDnw6N21ysZm_-FS8gK0JwoB1uEl5vHWWS2rKXxQJ3BqkaioKJl48smwCASSAvSMyGF6Wuc1EY2N3BRkbmaCJHwJva_H3dK7YxV3VUXHsw1iV76m9U9KejKfunnAMrw/XHhpAJ2a3yZKijZ_JyiBLUzdADgJepFB1OxEsYdYzzE",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/aM7JWWg8LMZTTMroKGAn_Q/zEKqi-bQMN4RFAIB7I0kyfsCpCc9fBz52rzhsu-2FX88Jz35Bl-vnHetXskpsd6wTzzgJuJSDq4vLno96cwxmwgcttqDDxmR7qzd5yawQceT1GkW4ibr00QqnzZnq8aAD8x48SIgt_Ag6gqyZibD3A/8j-L1YxZaDM8T98TyCPhI6aR9Tf09DHUYXiFMocjZCc",
               "width": 724,
               "height": 512
             }
@@ -188,673 +67,58 @@
         }
       ],
       "위반건축물": "O",
-      "디스코광고": "https://www.disco.re/m/d7wicyo8",
-      "실투자금": 147500,
+      "디스코광고": "https://www.disco.re/m/a1nobb0e",
+      "실투자금": 73100,
       "사진필요": "X",
       "SH가능": "X",
-      "융자포함수익률": 8,
-      "건물명": "예다유",
+      "융자포함수익률": 9.4,
+      "건물명": "스카이빌 ",
       "기타용도": "단독주택 외 1",
       "생성일자": "2022-08-13",
-      "대지면적(㎡)": 157.7,
-      "레코드생성일자": "2024-08-07T04:23:03.000Z",
-      "공시지가(원/㎡)": 2432000,
+      "대지면적(㎡)": 116.7,
+      "레코드생성일자": "2025-05-07T04:22:48.000Z",
+      "공시지가(원/㎡)": 4728000,
       "대표사진": [
         {
-          "id": "attf5pwPcL2n1q00v",
-          "width": 1058,
-          "height": 1411,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/JSOjOULhg4iQKh2E8pUvFQ/3IVBSaS1dsvpG2d1YtKpfVNIolksWOPjnKy_pR9hOmQ3-Ms7HG8HW9ONY-fEM8fW_nZCHlKKEQZZ9JHXFNqWv7Z64Phz6kSQ8wzIlhcHTq0vQbMCf1U_iUUracxuUjwFJjuBA8E3i4nwAwKY1m7Z5ZK9B9AVOeg48TTM1kIganJxsYEessrvxfv7X1_v7rda/BWa6pSTv_5M356S_UdNBtT6upPqtIcP1iZNKKVSOJY4",
-          "filename": "KakaoTalk_20240730_151038405_06.jpg",
-          "size": 675303,
+          "id": "attfooakTFDWpuxDZ",
+          "width": 4000,
+          "height": 3000,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/YYu548af7p_R49SPCL1KvA/AlVlxjzaoQUyJf6o0P-djVPqTMpaqf6EnZ-6yTIuoXVuwIPsP2mj3ReUHZqInp-NMsv-pzA7jNuFy7YIplqDGwMkarzkFf66i78IMgmiHxWaNxJ-GA0rc5XUN7daKO5xL0eErDK0gUGoLYhsaginnL-uZT70pSENm92e6nUxfSY/mKnZBO7jW6o-9B0c5vcy_RsDXCRAwNKFyb4lvNNzDSQ",
+          "filename": "20250513_155321.jpg",
+          "size": 3698769,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/eRFvvxOhkvQ2N3rRUuR4Wg/nU569Cih5HpPVkQeJhnbKlUF1IQ7eD2zIPquPbsxaXcpYycSLT5bgMnf6ZFslvRwAo9Y7IFFThMJBfPRzxz_GuQfDHphNPKTaw6mIeOo2T7V3AuNcmV2BofBdeAALVADjgchYKPfg18e3-A2x_sq5g/bqsg9PNu8K4b_npKHGKdb6vnIKZ_xHBK-b3k15dJsKM",
-              "width": 27,
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/13FSrLrGgjez6K4HT2lhaA/B8EzbFTdIqvSwaX5j_xhT3g1mdwc1wHkMKA98hbRQpJL-0vkDzd7_gZv9e8tuaZ90qTlIO8gAVol4my8x5CDGgv2ibDwS3CeuXr0JrtRfO1A8CwLXagGhi9cdK5fcsAHiQ2Jj_NQPP5cSxpQDTrmpQ/V_lbycvcIN3eY7mZwoL2kUELABEBtijncJQVBVx0-kE",
+              "width": 48,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/rYwzOIwSnwjPCthaV9xiCw/4LbmIX67uD84yFvOH27ZjyLrAtJxKeGO4EBTTiEXcYxo57cFH8kZVivGxBZroQQzTqS6LvuOgFkztqW_aosbodNRkkuNraGxIlP41auvjfAT_CwJlkb1GNddMkvxH4j6WC4C65ASD5geOAlgWNVOcA/KYAyK3PcAFLl4DKxdty1JJ4R7VaJCFaCTA0CrwSG9JY",
-              "width": 512,
-              "height": 683
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/ttGdqcxFtQ46OuknG_-Weg/bWuO9k8kYCnMIlXukT52H6o8Q83Xv17K1h1uGxQ15OuPheEhsYvazq16z4QCo2Dl67n-8go7msxuNf3HppsddoX8_r9jKkCVA94qZ5-ePOjmS8oN43JljFhewPPHHn4c_-AB2O09mKvAJY_evAjoTQ/xKIRoENGv6qETnr6UxevAqO4-bBef0kmdCBlg5jb5h8",
+              "width": 683,
+              "height": 512
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/vyFxS1SMAj_5asJhSKXqUw/FgayhLZR-gZ2JgUbneNtsw2Vp_Xc_YD7_hHEURcw3UUBgD6YXsP38TvUVjEYWmSyh94Z2d1OR-nUd-JN79RctSQlhqtcf8ZyWG3xiyzv0feN6DZn3Plpl2Dco31JN3Yq5HvsJ-horhBTnbb7ZMwSTA/UreMPim0-ANbwKLteWkbmyzqYusNA_hAOjVltgui_4k",
-              "width": 1058,
-              "height": 1411
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/XB_rRdRA5tfMFEetTLeQxA/A4i3fsmb7Ew6hG4EP4P8iv8UDWgVFT4pG6l6REoZw5shRfWCYCGCpHjXrm2hl9uVy_HmzATdXJDva9BilH6A4JMZYDmhoo4sW0_im-HInC7Rd31i-yc-TNeK9D7U6y5-ClJ-9Hz4YLHNB0j5hAjIQg/4EetetjijTp6Nb8nyv_6B6MGcdtpd_DbfBZX4sFkKfo",
+              "width": 3000,
+              "height": 2250
             }
           }
         }
       ],
-      "레코드ID": "reccsFOp3I0eEUSD6",
+      "레코드ID": "recXIOIb8zNhTIPvZ",
       "네이버": "완료",
-      "실투자금(융자포함)": 147500,
+      "실투자금(융자포함)": 73100,
       "주구조값": 50,
       "연식값": 6,
-      "현재가치지수(%)": 69,
-      "건물가치(만원)": 41895,
-      "토지가치(만원)": 85120,
-      "10년간수익(만원)": 117600,
-      "감정비교": 0.77,
-      "10년후건물가치(만원)": 32374,
-      "10년후토지가치(만원)": 110029,
-      "10년가치지수(%)": 141
-    }
-  },
-  {
-    "id": "recnU7ZIxcJDbtX4R",
-    "createdTime": "2024-10-01T09:19:15.000Z",
-    "fields": {
-      "지번 주소": "동작구 사당동 1025-41",
-      "도로명주소": "서울특별시 동작구 동작대로9길 67 (사당동)",
-      "토지면적(㎡)": 120.4,
-      "연면적(㎡)": 284.49,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 71.46,
-      "용적률산정용연면적(㎡)": 214.38,
-      "주구조": "철근콘크리트구조",
-      "주용도": "단독주택",
-      "층수": "-1/3",
-      "건폐율(%)": 59.35,
-      "용적률(%)": 178.06,
-      "높이(m)": 10.8,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "이진웅",
-      "소유자주소": "서울특별시 성북구 오패산로16가길 40,104동 903호 (하월곡동,꿈의숲푸르지오)",
-      "소유자생년월일": 830908,
-      "세대/가구/호": "0/1/0",
-      "현황": [
-        "네이버",
-        "디스코",
-        "당근"
-      ],
-      "매가(만원)": 220000,
-      "감정가(만원,랜드북)": 152000,
-      "감정가율(%)": 144.8,
-      "인접역": "사당역",
-      "거리(m)": 610,
-      "융자(만원)": 57700,
-      "보증금(만원)": 105700,
-      "월세(만원)": 617,
-      "사용승인일": "2016-02-05",
-      "주차대수": 2,
-      "승강기수": 0,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-3811-1280",
-      "건물구성": "원룸 20호 (4층은 복층으로 보임)",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 사당역 도보 약 9분 조용한 주택가 원룸 건물 매매\n- 2/4호선 사당역 역세권으로 직장인 임대 수요 넘치는 지역\n- 4/7호선 이수역도 10분 이내 이동 가능하여 강남접근성 매우 우수\n- 매매금액 : 22억\n- 임대내역 : 보증금 약 10억5천만원/월수입 약 617만원 (관리비포함)\n- 수익률 : 약 6.5%\n- 대지 : 120.4m²(약36.4평) / 284.49m²(약86.2평)\n- 건물구성 : 지하1층/지상3층, 원룸 20호\n- 주용도 : 다중주택\n- 지역 : 제2종일반주거지역\n- 방향 : 서향 (주출입구 기준, 호실별 상이함)\n- 사용승인일 : 2016.2.5\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1Bvf90YPTSenyIMAdyvT_b41ok-BVFclB&usp=drive_fs",
-      "비공개메모": "소유주 이진웅 010-3811-1280\n10/2 통화함. 내용 보내주기로 함\n25.02.27. 임대내역 변경, 금액 21->22억으로 상향",
-      "융자제외수익률(%)": 6.5,
-      "지도": "https://map.kakao.com/link/search/동작구사당동1025-41",
-      "건축물대장": [
-        {
-          "id": "att2n0XFSRrD1uANm",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/9fR_laTn29csOL7Qen6MFQ/NshWamKo2rBfw9j4yxPLpFKYzfbOrhGKtZO2XDMHhMKauvLzCiM6nvARbMo7a5ypFNfidSM2jy2KFSO5ndN5-TiOt2R_JUsv7pUhkeT3xX4c-EP1VpHz1UAmA16VjgKfG4RC1lqSchXz5GTDpXelkikDYlrdkXJeT-fYw1VQmtE/qlEQtOK6eUVFOgopeERGT6dzdmkqgJd5QBLuE640z50",
-          "filename": "건축물대장_사당동 1025-41.pdf",
-          "size": 365129,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/k-Q_7d4UNZg0PraeaO00cA/6hiv9y4T4ItjC82rrjNsOXutYScvOYknFSu7CkbJmGomR0mMOGagG3Z7FYgWZliLud-YT5X58-J5Yuwh_1bsliEJViFB7wtMJs8W_iZki2_JS30XjX1V7scgUIKOY5IoOHM_I23Gp-vqU1edgDifCg/0a3bvYUNvfuLjT3JEpD2yvpLQaoe-mt_HROoJxl3E5A",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/IejiivlydZuqBllAztQD2A/fpJpu8tcxp471QA-RXobHt-VW7DisMp924V6vCRch1OUUW9IopiXCT9F_DTiIKEhjIu45bcnS-Ufg_Ao9WP1_HZ1o2F7jkUX4SPiNCpeXYj0qrPaK5EVA9SynK5cm6UILb8pj4YuMdXLpgFfgUZ5_g/jJOihLYlghMWx3ujJe2HHBuTZE5WxC_HekwXYqxqfeY",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/ilidlw3a",
-      "실투자금": 114300,
-      "문의": "25.02.27. 010-4661-1019 문의 (2.28 방문 303호 예정이었으나 취소함)\n25.03.07. 010-4569-0960 방문 (278-22 봤던 손님)\n25.05.24. 010-3716-2800 방배동 부동산에서 문의",
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 8,
-      "건물명": "IL MARE",
-      "기타용도": "다중주택",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 120.4,
-      "레코드생성일자": "2024-10-01T09:19:15.000Z",
-      "공시지가(원/㎡)": 4819000,
-      "대표사진": [
-        {
-          "id": "attwxjFnVDahpS0CM",
-          "width": 4000,
-          "height": 2252,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/NZdOtZ1imRkqV_5GJA6o1A/rpM-Lq0AIBf5qXE8XFbiIN11J_5NSOEXF85FWTvAmthIxajOjM23sUpb7Ld6VaikTIMYf2qkVV83Ex_dvCGZWyOPxgNseDxRX_TMUUfpZPH31O5SrcnAPfZRjeYuyLgojLtilr2ht8P9On8eqZU5klq8MZZcr9n6QSkPNQvP_2o/rMAx2aVddFtkshh8q2HdnlY1NxkVFOXov4uRmM4TIk0",
-          "filename": "20241003_093615.jpg",
-          "size": 2903715,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/tnZDZhrW2JxjivCD58S7OQ/lNyInQuMbYFdjEiz53817x7ipwrRfansEwUENDNQ4Tc-htrE2I-FYzpRKr8NAqEpuyxjxSpFDz9w1gAaGBW9J3yErV7MO738nJRV9aDyNbz393UyqZIbW69oNg5mRD3hVltXhhSkRpxD9wy2Do3eAA/dEXJJNd0KdJN8qfh_O-A9YYXPPQSvEQyuBo8DruatjA",
-              "width": 64,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/t0L6vUMO9WzOod1G9XfpDQ/I7TQ8OpKeoKwqtG7V_67C121o3_BWFCiqazIRj99WqG2CiGOx80-WkzdNHq7J39Tn0n4h4gKrjX9daf3HvnY11Mm6Xn_BjsMouGTx-I9H3b-YsIElDz9pF6c5_wfG0Hv6zEvHoL6vV9BUKZ11SB1uw/X_GsAfWxfF2oFzGLEu3Bouh7qqmeocYCXvQoPn09ftk",
-              "width": 909,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/lYkeBQJA6lyEgW6M2zNnjg/Lm8uu9C1tfvkvR4A9U0O1w213mrYgjDphZQ1PX6KFtRM0yG8rE0sihuLpbkTcyqFF2PQ3MYYyAAcT3wENG-taykb8xoXdzGd7NO318-WS_f3PzKZ_jHI3q-PuR4AbZW3QxjV0vySDtop7_SQuGIu0g/cYNhju2vQdK3x0WU7OQdGnA5EXSv8jFZcC0ivFPSiPs",
-              "width": 3000,
-              "height": 1689
-            }
-          }
-        }
-      ],
-      "레코드ID": "recnU7ZIxcJDbtX4R",
-      "네이버": "완료",
-      "실투자금(융자포함)": 56600,
-      "주구조값": 50,
-      "연식값": 9,
-      "현재가치지수(%)": 69,
-      "건물가치(만원)": 34992,
-      "토지가치(만원)": 116042,
-      "10년간수익(만원)": 74040,
-      "감정비교": 0.87,
-      "10년후건물가치(만원)": 26458,
-      "10년후토지가치(만원)": 149999,
-      "10년가치지수(%)": 114
-    }
-  },
-  {
-    "id": "recZqfvWvdmHnYBMH",
-    "createdTime": "2024-10-01T09:19:15.000Z",
-    "fields": {
-      "지번 주소": "동작구 사당동 314-22",
-      "도로명주소": "서울특별시 동작구 사당로20나길 58-3 (사당동)",
-      "토지면적(㎡)": 208,
-      "연면적(㎡)": 415.74,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 124.36,
-      "용적률산정용연면적(㎡)": 415.74,
-      "주구조": "철근콘크리트구조",
-      "주용도": "단독주택",
-      "층수": "-0/5",
-      "건폐율(%)": 59.79,
-      "용적률(%)": 199.88,
-      "높이(m)": 16,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "주식회사탑스페이스개발",
-      "소유자주소": "서울특별시 동작구 사당로30길 25, 비101-1호 (사당동,메종슈에뜨이수)",
-      "소유자생년월일": 110111,
-      "세대/가구/호": "0/1/0",
-      "현황": [
-        "디스코",
-        "당근"
-      ],
-      "매가(만원)": 430000,
-      "감정가(만원,랜드북)": 384000,
-      "감정가율(%)": 112,
-      "인접역": "남성역",
-      "거리(m)": 543,
-      "융자(만원)": 120000,
-      "보증금(만원)": 162000,
-      "월세(만원)": 1606,
-      "사용승인일": "2022-01-17",
-      "주차대수": 3,
-      "승강기수": 1,
-      "주인세대": "O",
-      "주인거주": "X",
-      "소유주연락처": "010-3950-7201",
-      "건물구성": "원룸 15, 1.5룸 7, 주인세대 방4,화2(복층, 넓음테라스) 주인세대 임대중",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 베란다 엘베 있고 넓은 주인세대 있는 고수익률 원룸 건물\n- 7호선 남성역 도보 8분 3년차된 신축 건물\n- 거주와 수익을 동시에 누릴 수 있는 최고의 매물\n- 매매금액 : 43억\n- 대지 : 208m²(약63평) / 415.74m²(약126평) \n- 세대현황 : 원룸 22호, 방4/화2 베란다 있는 복층형 넓은 주인세대\n- 지하 없는 지상5층\n- 주용도 : 근린 및 단독(다중)주택\n- 지역 : 제2종일반주거지역\n- 방향 : 북동향 (주출입구 기준, 호실별 상이)\n- 주차 : 3대\n- 사용승인일 : 2022-01-17\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1ExI29iygz8fAB3PbEQL55Ui2ocxtaJru&usp=drive_fs",
-      "비공개메모": "25.04.28. 수익률 전달 받아 광고 시작\n24.10.2 연락함 타 건물까지 내용 전달 받음 (사당동 1044-23, 314-22, 314-27, 노량진 56-26)",
-      "융자제외수익률(%)": 7.2,
-      "지도": "https://map.kakao.com/link/search/동작구사당동314-22",
-      "건축물대장": [
-        {
-          "id": "attCK6ayqpaxCjB1L",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/9FwGRJsus2Rlj6QFDpckqw/SXf24CgJOkP9ThFEftrlyGmnw-6WG3tfHIbPKt7mQ_WuXRcS0L2f6hBFQfmAO9kugECyya3JVR9B4KDNVcDWngQ99YcXdkMUH4qHB0wc7F6WTSZjOBDRh7Ye0EOeJ0esmx5LOSSNrgInJQM06Vemj39ChE1zqXiNY5KASDJc2Xk/e7XTsu48VAGDTYTU8m1OeEdF4sNj1aqM-AG5nP6oIEE",
-          "filename": "건축물대장_사당동 314-22.pdf",
-          "size": 361499,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/t0cJErhEUEA2wWxXFtIQaw/YPO8Z6JXD7yjBucp4_jcPYVXBkkXVrI0MwN7paipzEwlfdveOJrqDRqUI0nI-tXIFl-CX5I55rpRL2XFXuMf8_MxafKGp9xsoKgkKHskEkFrXlHwuRKuCrBv6ynfMPY9ryy-dQktoMWKwYAaxkxFPQ/JZeFBYKnu8-jXlytZDbp_zNs1aeogvsuANFx-bzRyUU",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/htN2lADwQO1m0bvUDQIXqA/PM6oYK8ZudMutBJB2hl5e4FteTcjoVajvWFoDfMp8xC-SQ2AXD7Ta_yBsSyoiTaXSzf7i2j8nk9Vwcoh5uMCMeHA5BJhvDsZ170NvxG9wfht4mJO617k1fc9RF3Lr1EzjqVqo8NHi_WNNchQ5waftQ/on_d5eyFKQFfjQyd8ERv6vgEgNTsq1Pjyx6Z1oyPtiw",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/93vewnfv",
-      "실투자금": 268000,
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 9,
-      "건물명": "메종슈에뜨22",
-      "기타용도": "근생및다중주택",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 208,
-      "레코드생성일자": "2024-10-01T09:19:15.000Z",
-      "공시지가(원/㎡)": 5634000,
-      "대표사진": [
-        {
-          "id": "attoCk8T4JStnxj0z",
-          "width": 4000,
-          "height": 2252,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/QV3mOl7Q85GaN5IbM9m9Yw/YTNIDCiczCILv7aZhqFxf3zvjuo8TXfWZlSg6Jd6tvvD834Y2PK04eXvyBwQOIIdrrHcCH-IwMivxEweN5AiW2bfx0r7wFNcnrssHHB-YX0v8q1LC8UkjwF3MU4WSc6kfpgfg6qygVd3CsW0aVpxnjJ2jsTD73jH9teiL4hdvm4/-i_ntf4PBWqmjijloL0uMrtG1N9sloK1qY_azT-IBBI",
-          "filename": "20241003_102058.jpg",
-          "size": 3329761,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/76qdG-Mo-PHviY42GFQ7bQ/LBMgDJxWBKv21SGM77mI-fynRQO1IhzRQghS8du8P_AMoSzgEZdJcUAJoc3Ag4aqPd11pzFzr2yUna_CvwpPHUNObB0Yug7TGTbb08L2BvBW0oshDHRc07vthT8qDeQg_6gtDLuoeeyugRzJFcKcrQ/o1u6xaU9D0YYPfodya0Fye2TFfpXP_yBCpCBlMSfI_I",
-              "width": 64,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/RojD6nW9MmdYXJbu-SJO0w/uHbCR-lxnWMXPSbhl34N60dRFtC3A_WyPN4XWfHkfrA-veYx6MZ1ElEt2Vxs_zvwniIiPrMaMem0ARAcNwunh89cewS2IQz8eR-X3UyIij3wyhf9BJ4f4oPEPJJm6_-FtEwX5HI7TYpSn1ivWVqO7w/yRXu0tYz-59VitCj3Sn_UhYQnVvF-6nUyjIAWUbJOzM",
-              "width": 909,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/VoV-2INCR63C-10B-GJ3JQ/Er2R8hEV9vE1SNe7EKlCIYWG-FqiOos-_bqOooyly8Sji-mhmjFjN0ofFWLVfWuCySwMFSxAdVDorBaKVx73DAn4U4EJewkfc1yYda854qexKJJf4sTeEPOQW7ypWCKqFV_AW9k8XwN1Rx-PYNr_CA/uzbIHcCwQj0YatWhkmwKlcfJhrf6LXnlaQ5M_-GBAoU",
-              "width": 3000,
-              "height": 1689
-            }
-          }
-        }
-      ],
-      "레코드ID": "recZqfvWvdmHnYBMH",
-      "네이버": "완료",
-      "실투자금(융자포함)": 148000,
-      "주구조값": 50,
-      "연식값": 3,
-      "현재가치지수(%)": 68,
-      "건물가치(만원)": 58619,
-      "토지가치(만원)": 234374,
-      "10년간수익(만원)": 192720,
-      "감정비교": 1.02,
-      "10년후건물가치(만원)": 46147,
-      "10년후토지가치(만원)": 302959,
-      "10년가치지수(%)": 126
-    }
-  },
-  {
-    "id": "recE1QISd9dB1JF6m",
-    "createdTime": "2024-10-01T09:19:15.000Z",
-    "fields": {
-      "지번 주소": "동작구 사당동 306-3",
-      "도로명주소": "서울특별시 동작구 사당로16길 85 (사당동)",
-      "토지면적(㎡)": 126,
-      "연면적(㎡)": 225.2,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 75.27,
-      "용적률산정용연면적(㎡)": 225.2,
-      "주구조": "철근콘크리트구조",
-      "주용도": "단독주택",
-      "층수": "-0/4",
-      "건폐율(%)": 59.74,
-      "용적률(%)": 178.73,
-      "높이(m)": 13.6,
-      "지붕": "기타지붕",
-      "소유자명": "강동주 임미자",
-      "소유자주소": "서울특별시 강서구 곰달래로19나길 40,502호(화곡동,동원데쟈뷰)",
-      "소유자생년월일": 630526,
-      "세대/가구/호": "1/0/0",
-      "현황": [
-        "디스코",
-        "경매진행중"
-      ],
-      "매가(만원)": 240000,
-      "감정가(만원,랜드북)": 217000,
-      "감정가율(%)": 110.6,
-      "인접역": "남성역",
-      "거리(m)": 623,
-      "융자(만원)": 57000,
-      "보증금(만원)": 170000,
-      "월세(만원)": 374,
-      "사용승인일": "2020-02-24",
-      "주차대수": 1,
-      "승강기수": 1,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-2533-1506",
-      "건물구성": "1층 상가1, 1.5룸1\n2-4층 1.5룸 (약 6.5평) 3세대씩\n총 방 10, 화 10",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n     금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n▶7호선 남성역 도보 약 10분 유동인구 많은 아파트 앞 상가주택\n▶재개발 추진지역으로 향후 지가 상승 유력\n\n▶매매금액 : 24억\n▶대지 : 126㎡(약38.2평) / 연면적 : 225.20㎡(약68.2평)\n▶보증금 : 약 17억원/월세 약 374만 \n▶수익률 : 약 9%\n▶세대현황 : 상가 1실, 1.5룸 10호\n▶지상 4층\n\n★주용도 : 근린생활시설 및 다중주택\n★지역 : 제2종일반주거지역\n★방향 : 남서향 (주출입구 기준, 호실별 상이함)\n★주차 : 1대, 승강기 : 有\n★사용승인일 : 2020.2.24\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1GnBxwwFqK2ecf3WbIDDuCM7ctQYZLPwR&usp=drive_fs",
-      "비공개메모": "25.03.14 경매 진행중 확인\n12.05 확인 /소유주 친절/ 4층 일부 3평 위반사항으로 년 180만원 / 매가 24억5천에서 24억으로 변경\n010-2533-1506 통신사 KT\n소유주 강동주, 임미자, 10/2 연락함",
-      "융자제외수익률(%)": 6.4,
-      "지도": "https://map.kakao.com/link/search/동작구사당동306-3",
-      "건축물대장": [
-        {
-          "id": "att7EzvcE2cj0TULZ",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/bJVfzwwrZ4I8V39iTSxUsg/QuyoU9PfXrWQywM0rjv6TSoG9WCHxs9jhwEXXabFl99PRCE5jXPrem7BssqlmaRBVAQSR8Tb5n3DZRur1ehUQ3NsAMmm8QoyFb8dUXEnCPqsNqUOmWjXMOOamy4tYYJdiuwUGaAcfxHPpIcdm7D40s_O-0nWCHqoskZJ2KqdGQY/DMbc_1ZPpqj1Pbpu16CXxutxgBMW58u3oR_OfcMW3II",
-          "filename": "건축물대장_사당동 306-3.pdf",
-          "size": 367904,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/mNyjcECELfijf_Cxqyi8Xg/yGACQz6bR228t2IPoLHsp6WfkSdYJsSiZSAcz-eNndfySBVyBZvuzo6dU7lSnAg4vFX2QxhpHuMvka17N7IypT5IRMG2cznTLJoo8GehOHXLcoqsGdizx13eJ2wewenKGNCVKQgXeCLom20HFnmDOw/AZqylUUrdhnYSRz5XQCLYzrZELc_VQvlUMdvM3ftEDo",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/UoImr8RUXHIf9dNG-ifeZQ/AZTtoNKhwiHyyDfylFyvGvQH9KnTnz4yehMg3NH90QcKmBSB81XJbu4jo73P5Cj1WdRT5eTwqiToJ4t8cq4SyAwVagB0C25I0dWj7-8BeG0aknaWjSl1_ZiWtrIj-XmQw9O1W7bSiv03h71tTEakQA/_bPxUB4TgcB_6XYWZQjWqef25pWa0ZNqZCcCwhgvMOY",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "O",
-      "디스코광고": "https://www.disco.re/m/3ks3etvo",
-      "실투자금": 70000,
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 12.6,
-      "건물명": " ",
-      "기타용도": "단독(다중)주택",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 126,
-      "레코드생성일자": "2024-10-01T09:19:15.000Z",
-      "공시지가(원/㎡)": 5813000,
-      "대표사진": [
-        {
-          "id": "attenpVgiebmuHpto",
-          "width": 4000,
-          "height": 2252,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/ckAcJodJJan7HEqTFUv-NQ/UxBTuO0r-AyCMtoMcBfK49feJWshe5iCZ6O1dFA_wA_rHzLNqd3Wg7VpzUyqqKpAlbEhlPgMsqucUBSjDPClgnt5aaTm5IaCjGLk9teuLyWCTJ7XyatP1LuytsLaWsKgHy-RqN62cMdo1GOMkdxXnW39sySwSfSZQL3ZqJbAEs4/m3eOF8idTFDwnWeTH3W6lp65ug5GrBZqVz9ZrFRxJrU",
-          "filename": "20241003_104744.jpg",
-          "size": 3183095,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/9SEPlwdGDLWAZWy1Q5FruQ/r5dapjFExxkfvq_mh6wnykT0OldnilLc5d9zxcE1E5d2u-9iM65otDkY1ImAq7b3_e6DUeiSo9aCBTUYuZ7Kc3QAM9Q8Vmzcj7J4jyzEKjlTKpWERZVN_YKsjAtNieva42lmqYDVdHz02hMNCXngnw/LoPtM0kyxo4iKtex3Las3IdvMuCquO8-NBOQCJKwwXo",
-              "width": 64,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/NAI2_i0RIvpPDTHve58e7A/vUtyTM5eBHyfNI8RVfDnaP5v_AJLVS_Nb2slmMuPOP-Z8G3-FCA0qJP3pT0W6vqJ6GswW5NGM6MmJLYLi1tCUnzBoRUann4kIrERiDBd43NAEgULraBggD1zi7-c43IJuWg4p7g2rjcSiflaUwz85A/u80ACwua9EKlNAY9gwwlA3j1MTWRfYlIuqu3QST5YS0",
-              "width": 909,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/hJtHakk09eyg5lU4OlwwiQ/ItRBsLNj0SATawEosc6M4RWsjqRvBhz7geHgNE7tslO8PVS5Rei9j6XvGLgnqVkgUKHqHW31mAeftSbgmdUOj7NqcRqyv5_DQuSYKxsEaOrYB-74O0IPRXI9fqzzxoYD1S6aa6SV27lLtAjAFf15Dg/Byceao_ZKBYBVMhEtVIrsjAs4MOK0Yrq6CD0INqlA9Y",
-              "width": 3000,
-              "height": 1689
-            }
-          }
-        }
-      ],
-      "레코드ID": "recE1QISd9dB1JF6m",
-      "실투자금(융자포함)": 13000,
-      "주구조값": 50,
-      "연식값": 5,
-      "현재가치지수(%)": 74,
-      "건물가치(만원)": 30402,
-      "토지가치(만원)": 146488,
-      "10년간수익(만원)": 44880,
-      "감정비교": 1.26,
-      "10년후건물가치(만원)": 23646,
-      "10년후토지가치(만원)": 189354,
-      "10년가치지수(%)": 107
-    }
-  },
-  {
-    "id": "recuJha44xS5frS1h",
-    "createdTime": "2025-02-14T05:50:53.000Z",
-    "fields": {
-      "지번 주소": "관악구 신림동 528-18",
-      "도로명주소": "서울특별시 관악구 난곡로66길 17-5 (신림동)",
-      "토지면적(㎡)": 171.9,
-      "연면적(㎡)": 438.07,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 102.6,
-      "용적률산정용연면적(㎡)": 342.82,
-      "주구조": "철근콘크리트구조",
-      "주용도": "제2종근린생활시설",
-      "층수": "-1/5",
-      "건폐율(%)": 59.85,
-      "용적률(%)": 199.98,
-      "높이(m)": 14.64,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "박동현",
-      "소유자주소": "860102-1",
-      "소유자생년월일": 860102,
-      "세대/가구/호": "0/1/0",
-      "현황": [
-        "네이버",
-        "디스코",
-        "당근"
-      ],
-      "매가(만원)": 330000,
-      "감정가(만원,랜드북)": 294000,
-      "감정가율(%)": 112.3,
-      "인접역": "신대방역",
-      "거리(m)": 670,
-      "융자(만원)": 115000,
-      "보증금(만원)": 139300,
-      "월세(만원)": 1298,
-      "사용승인일": "2024-05-30",
-      "주차대수": 3,
-      "승강기수": 0,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-3030-3669",
-      "건물구성": "반지층(근생) 원룸5실\n1층(근생) 원룸 5실\n2층 (다중) 원룸 6실\n3층 (다중) 원룸 6실\n4층(다중) 원룸 4실\n5층(근생) 원룸 2실\n\n총 원룸 28실",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 2호선 신대방역 7분 수익률 높은 신축 원룸 건물 매매\n- 대출 승계시 수익률 약 12%\n- 신대방역 상업지, 도림천, 생태공원 보라매공원 등 생활편의시설 인접\n- 건물 내.외부, 고급자재 사용, 풀옵션 분리형 원룸 구조\n- 남부순환로에서 60m 이면도로에 있어 임대 수요 놓음\n- 넓은 대지, 평지 위치, 현재 및 향후 가치 상승 기대 지역\n- 매매금액 : 33억원\n- 보증금액 : 약13억9,300만 / 월세 1,041만 (관리비 257만)\n- 대지 : 171.9m²(약52평) / 437.82m²(약133평) \n- 임대현황 : 총 분리형 원룸 28실\n- 주용도 : 주택 및 근린생활시설\n- 지역 : 제2종일반주거지역\n- 사용승인일 : 2024.05.30\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1PhUYSyFe4W4n3YnCWssSXKF9TRveTeNH&usp=drive_fs",
-      "비공개메모": "25.04.04 광고가 33억으로 수정 요청 (010-2676-3970)\n25.03.28 금액 수정 (매매가 32.5억)\n25.02.14 ~ 소유주 직접 매물신청, 010-3030-3669 / 입금가 32억2천\n/ 이자비용 새마을 금고, 5.5% 527만원 / 투자금 6억7,700만 / 수익률 연11.78%\n대표님, 새해 복 많이 받으십시오.\n관악구 신림동 신대방역 인근에 신축한 원룸주택과 다세대주택에 대한 매매자료를 첨부하오니 매매중개 부탁드립니다.",
-      "융자제외수익률(%)": 8.2,
-      "지도": "https://map.kakao.com/link/search/관악구신림동528-18",
-      "건축물대장": [
-        {
-          "id": "att8hL6r6YUQuq0LS",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/02t1yioEl8Vl-ZY7gdpKuQ/7DUDlq49ZkqKHDqDesESicz958e0YyLcW7aTAhVB3v_YsXarbOmGLnbWFQMHj2yXEo-lWZ_Ug0-Cxj6sIbiBtyL8DPLMLDa61GeLuKyz1uzhXNTQGJzuwNjhm0AtFhKXnfZ65_PZN-L6y6SlidWRZ9Tl4t65fyCLXX9AnP48VLg/QQ6v_2CBeNmKGLjfy0SzndhnEQR8Jfi2co3hY8o23qU",
-          "filename": "신림동 528-18_건축물대장.pdf",
-          "size": 398916,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/fKXl6gdmPiQGSDHDJVsiGw/3Ogqf6gasriFSC_or4HGF7U-a1DdMtyDuNpVFHVWr2UfXJ2J9yW_VeRQmgUs6DBwEhsT0OZ8KYZJqL6l5frGMOtzTZHb9vxswp2Qu7ExISla28qRQJwkxhiLANJEkr19ILYENa1UKBLfvO1ITY3SuQ/DyXtzcothjMZfMg1DXQ235JFccEknfrLBMyX7Gh7Fmg",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/BP1fasbWtzFOBoO862Ubpg/O1CKR0uS-WhSbnSIegVoTJX6dsFCrK2pG3FjmuBhIeWGJ6D7Ps9rjFJsC3JkhCm2358qsVnhl_jc3HfPm9StCJnrwTr1ew-YYE1lQGOf0pMQY2Aba4T62Ouoq9OkbrUdewVe_msmn7UnjyT9cstCgw/YlS63g7M40rbcxn6EnFWx-ytwCkVpqc2usc6bcfrWdI",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/777wimnm",
-      "실투자금": 190700,
-      "문의": "25.04.10. 당근 보고 지번, 융자 등 문의 010-9004-1659",
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 13,
-      "건물명": " ",
-      "기타용도": "제2종근린생활시설 외 1",
-      "생성일자": "2024-10-28",
-      "대지면적(㎡)": 171.43,
-      "레코드생성일자": "2025-02-14T05:50:53.000Z",
-      "공시지가(원/㎡)": 4594000,
-      "대표사진": [
-        {
-          "id": "attogkV4aQmZE6RQ9",
-          "width": 1400,
-          "height": 1050,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/LFn1F9XSLUC0tm9bAbSpEg/dKCPUkV3A0cB5HRiGQb7kpK9_g2i8HuDIp0pycgn2QnM8vxiWRWi9U_GExdKtWioqLRAAcdNWChL1jfn-WVKnaC_Lp_LjSayzB3dud7Ks8J49X7wMWL_gzWqW8vsc4XJ9x4Pnzz85CqbpxBaYlnm5Pt90JXhFXm--UQ2YM-BveZ3h8ZnUUAUjgjSb7kzR8Y2/_N2z_eM7JBImMal3vp5QhS8S_xG0B3Ap82JtXJh1rDA",
-          "filename": "KakaoTalk_20250224_152921466_01.jpg",
-          "size": 486586,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/2rlPTN5xH13cKYFkCORUaQ/cTOhaKbdYdLz2Ep4wnsqtbxnlttagfvBBj9Y7ZwLhYkmZZyZoBhtX_hxaL-IxFErG-SyulhR-EgrUdMYcIa7018MuEAoWSreuhdmjjnbO8Xix60qV0dpTR43Zjq2QhJEZ9Rh7OlxTEF8Q2teAE2A4Q/m9nA71IOao53JCMYEZkDrMLNbY4c1_KJAEd78qv_fOw",
-              "width": 48,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/gJ5W5poUnyd3asWBd7t01w/sVtxkxR9lGVgh-AhtlYBWEtxGtqQCs0JXyfg0EXIe_rIf4LV9ku1ldkxXeyzbTKAzP98MRNsrk6QktKccyijjB9uL5_Rx4HPJxEG4AWb10uf0qyzEdBVLEcaezQCj2vXGh8x3LEdlcgoKJvSYPlhTA/-wXKximTgxHkeGPq_XRdwz55aVM3gUr6-tFlE5xIFQ8",
-              "width": 683,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/i8y3QyvCQR2CnEzw4U9shA/nTyiq5S3rshaTDaJ4qrHnaNhAPYj3xf7bX48G1KLGitq-KJGYfqzIRT68TApp3CraLycUZ4_xuIBn5muW1m5wPKjzVi6fzVGH7YPMo7UzSze3ZCmTYJiL-ZhZdeURoLRR76Z6rz7r56u-8rM6VRrwg/MCJv-aOzF7qKv0Q4A1iYNeG9OwU_kybrPIedLdmg9m4",
-              "width": 1400,
-              "height": 1050
-            }
-          }
-        }
-      ],
-      "레코드ID": "recuJha44xS5frS1h",
-      "네이버": "완료",
-      "실투자금(융자포함)": 75700,
-      "주구조값": 50,
-      "연식값": 1,
-      "현재가치지수(%)": 67,
-      "건물가치(만원)": 64396,
-      "토지가치(만원)": 157942,
-      "10년간수익(만원)": 155760,
-      "감정비교": 1.01,
-      "10년후건물가치(만원)": 51254,
-      "10년후토지가치(만원)": 204160,
-      "10년가치지수(%)": 125
-    }
-  },
-  {
-    "id": "rec1XjobiQdRFnyHz",
-    "createdTime": "2025-03-28T07:07:43.000Z",
-    "fields": {
-      "지번 주소": "동작구 상도동 294-4",
-      "도로명주소": "서울특별시 동작구 국사봉길 109-2 (상도동)",
-      "토지면적(㎡)": 126,
-      "연면적(㎡)": 291.66,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 68.73,
-      "용적률산정용연면적(㎡)": 231.33,
-      "주구조": "철근콘크리트구조",
-      "주용도": "단독주택",
-      "층수": "-1/4",
-      "건폐율(%)": 59.42,
-      "용적률(%)": 199.99,
-      "높이(m)": 14.35,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "전상보",
-      "소유자주소": "서울특별시 동작구 사당로26가길17,101호(사당동)",
-      "소유자생년월일": 900208,
-      "세대/가구/호": "0/1/0",
-      "현황": [
-        "네이버",
-        "디스코",
-        "당근"
-      ],
-      "매가(만원)": 210000,
-      "감정가(만원,랜드북)": 177000,
-      "감정가율(%)": 118.7,
-      "인접역": "신대방삼거리역",
-      "거리(m)": 635,
-      "융자(만원)": 71000,
-      "보증금(만원)": 153900,
-      "월세(만원)": 300,
-      "사용승인일": "2022-11-09",
-      "주차대수": 2,
-      "승강기수": 0,
-      "주인세대": "O",
-      "주인거주": "X",
-      "소유주연락처": "010-9167-3979",
-      "건물구성": "지층 원룸 1, 1.5룸 1\n1층 101호 주인세대 1.5룸, 102호 분리형 원룸\n2층/3층 각 201/203호 원룸, 202호 1.5룸\n4층 401호 1.5룸, 402, 403호 복층 원룸",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n    금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 7호선 신대방삼거리역 도보 9분 고수익률 원룸건물 매매\n- 마을버스 정류장 바로 앞, 넓은 도로변으로 가시성 좋은 건물\n- 1.5룸/원룸/복층형 등 다양한 구성으로 선호도 높은 구조\n- 매매금액 : 21억원\n- 보증금액 : 약15억3천/약 300만(관리비포함)\n- 대지 : 126m²(약38평) / 291.66m²(약88평) \n- 세대현황 : 원룸 9호(복층 2호), 1.5룸 5호\n- 지상4층~지하1층\n- 주용도 : 다중 및 근린\n- 지역 : 제2종일반주거지역\n- 방향 : 북서향 (주출입구 기준, 호실별 상이)\n- 승강기 : 없음\n- 주차 : 2대\n- 사용승인일 : 2022-11-09\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1sgDCttMS9xh52CVtzCux9EecPkXo5Q8V&usp=drive_fs",
-      "비공개메모": "25.05.20 벨류최고 18.2억\n25.04.28. 타 부동산 21억으로 광고 중으로 수정 반영\n010-9167-3979 (전상보)\n융자 7.1억 (승계가능)\n지층 원룸 1, 1.5룸 1\n1층 101호 주인세대 1.5룸, 102호 분리형 원룸\n2층/3층 각 201/203호 원룸, 202호 1.5룸\n4층 401호 1.5룸, 402, 403호 복층 원룸\n총 1.5룸 5호, 원룸 9호 (복층 2호 포함)\n임차권등기 설정되어 있으나 아직 경매까지 안 간 상태 (11월 쯤 추정)",
-      "융자제외수익률(%)": 6.4,
-      "지도": "https://map.kakao.com/link/search/동작구상도동294-4",
-      "건축물대장": [
-        {
-          "id": "att6rReEKT196MRPC",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/Yqzzb3VMK66sACNNdESI2g/WvOCbC1n7WLua8I9tiJqWx9SdrK_uqSI0g7ouxuyEVTETkTnWqE27r8BpScIjff13zLuwHXHnXCOI6bFZWoo74ZVn1StSCzKd0ZdYx_2Nh-CK4kbRPWNqPgGR-XsM4dd-f6susWhDydcScEy4KbG9jghj-NkCLVW9l5MuTtHIwk/d58FGjMW7SP4yxsH-wHA8EJsgeIcdRa_8wEmTmP62qo",
-          "filename": "건축물대장_상도동 294-4(위반).pdf",
-          "size": 370109,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/W13Z9m4TID8GsM7gKz4xRQ/y7b_TZX_aguEaqnj516f-Xkf3KN-EA3beqMo8q0HyfaZ4wbmqosfZQ3mOIZlwAWCHp0YUrIlbkqN4wtQqC7hPueP2FXqcjJKLQcZELPeJZUlDPnHCthAM_OZa1y4qAkF9-EkGtmtW6dJee7qJG70CA/xG5uzfSSSNA1NWE2RaQRADJgNuAd-TpnSJ6PqUpUL7A",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/y--JD-WfgkL0zntN9YjqwA/lhN58eHzmYFcLywuJryjjBok4mVo98kheT2QiiKA5EXjF3R5TPpto5c0Fte7hbHdCTWf4js9iwqumYoQvXWN7dZWjGpmFX2KuNRS8M3hFx0o0Vgw7Mv8JWAKiX5uMNn0lPtpgdTtt9RvuEVULAwXrQ/JDY0TLCe2qTOnFHA1LsYbPGrur6wBu4-xIFYXquRObE",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "O",
-      "디스코광고": "https://www.disco.re/m/nzfclv2z",
-      "실투자금": 56100,
-      "문의": "25.05.20. 010-7103-4508 금액 문의함. 20억도 비싸다.",
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": -0.3,
-      "건물명": "제이.파크",
-      "기타용도": "단독주택(제2종근린생활시설[사무소],단독[다중]주택)",
-      "생성일자": "2022-11-10",
-      "대지면적(㎡)": 115.67,
-      "레코드생성일자": "2025-03-28T07:07:43.000Z",
-      "공시지가(원/㎡)": 4228000,
-      "대표사진": [
-        {
-          "id": "att5PUQeeVaDp6v4a",
-          "width": 1400,
-          "height": 1050,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/1N8h7bL2xQbxisyjPsq6yg/IFv7qGHHMSxHZ5DLKpjbOt9ewsHCedgNWw3pvOkafVWqVBgs9fRWCc7MVUCyin8NRvLyz3C58XjUgncMpZidg33cWMyTaJRcvg7GynSdpITA9rSPS8fcgDF31HnBMkBuAYf6iqWTnV8UOduywm73YKUsxsraYBqUUc1tTUse7L34S-MeMle7g2y5-d52Ane0/vpl7IwBJlFic7T7GZ8Jp4GuWynT9ReOouhkfdVzjAzg",
-          "filename": "KakaoTalk_20250527_150407326_01.jpg",
-          "size": 622101,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/Q-w4hG5zAtObenXd7xjIcQ/A_86rCe9So2XDOgj3dewCbM-cgWbkV3ubv5Lst8KoQTr-3rcOkopHQ78lnxAnkX65bwuW1eW2ENsoGUHfZql3Q1C3Z0p0bhlIgW5cgK8xjLV6BddsMvHUlzmyHMgYNlAUEYjItgRYMwqfAwC7Qddxw/p2LEHSDwQ_aMMyIJyoPjtKJd6afNLuZJInXsfDC2TcU",
-              "width": 48,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/YRbNCPCYSNWIXDNmLxiceg/PIyId-4R5JiItXUDIdQK54yHyUUlJISr4v7A5GEdB0yijjmuPaC5oYaXFPHNx7Aho3_U2UBbmTvhctqL7aM11-tXocVzik2GY0E6F5LsCwmYImyCvx4n9m8tpeMuVL1Z9dXhVPK0pqn6UmeH1RQ6DQ/Ywq_ErsnfLDd0r_NgJymjxbYE41tGFTd6rqwGs_EQu8",
-              "width": 683,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/ptm5zntZv9TM9OHw6QF-bw/y3oUqsz3S99pGFZrZEI4_nNqrJd30Y54jLdLDyQAQ0Xd9RczzkI7rEsUwgK44If12hlt71lLMpCAvHjS74RRgK1X7KLjw4SMpbmpuIQlBFaaUFuiuokChGOTY3naAGowAbZjxFdm8jZk6w58UF1IaQ/Pow3E9HJ09OABF4mvnf6UDit4AGXhWYNo9JI5C7YY68",
-              "width": 1400,
-              "height": 1050
-            }
-          }
-        }
-      ],
-      "레코드ID": "rec1XjobiQdRFnyHz",
-      "네이버": "완료",
-      "실투자금(융자포함)": -14900,
-      "주구조값": 50,
-      "연식값": 2,
-      "현재가치지수(%)": 71,
-      "건물가치(만원)": 41999,
-      "토지가치(만원)": 106546,
-      "10년간수익(만원)": 36000,
-      "감정비교": 1.24,
-      "10년후건물가치(만원)": 33249,
-      "10년후토지가치(만원)": 137724,
-      "10년가치지수(%)": 99
+      "현재가치지수(%)": 78,
+      "건물가치(만원)": 38512,
+      "토지가치(만원)": 110352,
+      "10년간수익(만원)": 68400,
+      "감정비교": 0.89,
+      "10년후건물가치(만원)": 29760,
+      "10년후토지가치(만원)": 142643,
+      "10년가치지수(%)": 127
     }
   },
   {
@@ -907,18 +171,18 @@
       "건축물대장": [
         {
           "id": "attg0fArRCK2noLgM",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/_G34hU-wsA27AbaRNSe3bA/JV7f2-V2_bfo-AGcHrWdD4wNDm86-l-7Q5a5dr-9719jHega2OloAiSMxNB6j_s2XNDtr5MLBdS_yvwBT9-95mY8kiv9wW7Ry0pVoAHUGWOl7FbMcjCCbUDZmZn7SQE7vzV6fOB05dEBGZ7nAkIpD6Pbe8U2-qD9ufCNprNjanM/uc6dRX2-Ts8RAMSfqsVl4gDVqOnRWqJfs1rBcQ-TIV8",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/-eIrfBuNwTgJzdqgG2iSaQ/nJ8ziwIHFPdAq4lcu-RggjQCQi3zUPMjc-geMBzYuj_IeSXnUk6GeXr371C7jJvLmxhTQv2GFI4JnYNUlx7nxAUnW5l-pSkFudxsirsViMLn6QQK5KVlYdkj7KpL2I5PYB4psGIDMBF3QaA0o5_0tKX0mRRzWthaD0zSXHygixk/mj8sDmfTNkYYrxV4E7FJ8-os7qrDLbNxmIKmKXcVE_U",
           "filename": "건축물대장_전유부_가산동 151-52_3호.pdf",
           "size": 205421,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/rYL5uB5XK1f6VG9KSirBWQ/HB8LvSgj7miKrJx7ai7Ob7hVM0jXiLKw16ejuym23d4Gf9AjOe0LB1TGFE3N7nLXFz_-I_xe3fykHbQUblRDxYu5cVFtWz5RfyfkpNK3hFOjRqtaLHc8Igwefb_WbkUpcZirY70EIVSANxteBS7N3g/Io7lx_qy3nsBUpfJKswDl4Mtun95qiK6C-xTIwVqelI",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/h0lseAu64hOcQjGTQy3I5g/5QZWf_VZlgfxQCEf62iBTB5BFns18E1e-Biu_FCgnersirc0dXfuAmraB5o3bqfqEV0UgxlLCfRs1kwVLXCzkhwUTdm665tS_9e3rm58T0wnmqPAG5sqkAbmB2r-G5cL9XHT4R2G3EbMkJzZMehEaw/fv2TpjLtD3ewaSoexAOkDoN8BnxdzFIw3_Fi6n2WIpw",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/TKw-0T7D48Xyw2MdUOiFIQ/6M1iX8RNbFbMPunO0czMjzoJCrHQL2dafyT9XHNl1M9p_1AbdnLgPPCPJFQy7QSncGfykDUkpQr0bgwzJ5Y89fFvI4iRhsCzA9uyAmC0MlNAe-o3w8v03_YFJn4vF0i9EuwV_DmkU2hFznNhgDIyFg/4MkoP0olWiMF0dmMOMx4UyPVDDPZRPtZmAOyA1G252I",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/VTjvFXT7exUY42BBzEhnoA/UPq7bUUfNUSIcgONcEUjidlZk0OI6311wn9834kN2LTbE7_hI4LNevsEAet4AjE3XBgzu1N4-f5dha8eED-0785eJR9llNA5aMIEkXyTKlEkqE2FFU0Hk98zijgjzdqWmoB1FZjYxqHyZXoJwxI6dg/SN1CAk3iDJgIRL7i6EiypNOBsKZZje_WOJF-0flwD0c",
               "width": 724,
               "height": 512
             }
@@ -926,18 +190,18 @@
         },
         {
           "id": "attnDOrGADFAaPnGl",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/dn5EneR6h3rLLgiZxrat-g/yFoaqm13sKU_NriGRWg1PtudZ8wPEk6sWEDBJNNNzSpsQJCX2wa5LDbZ_ahlRIenMJNt7BtqZu70WfuXruHEFwKPRuHftzTbn-ODa5-vEyAUASrnT_v4h8_eDNrRHMFGEkjyTPMpdiVREFQa8ZC_77h4cBvG-uu4qL8R9RF2sfI/3aBh6cw5EkOMllMLipy4sVkSd9zk7oeKp65itAU6M1g",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/eOXzJDp1iYSGIBakSUX4jQ/2YUEVifP-7ZXEIYy9zEx4VYCLtHk_IB5tzKu3GMZXue_qFRr3Ro3MZQ90XXJ7-PoiYOocBgpweMHlYKGghSLWIEL8WXQa5vZeAIvJgxImot4nXk645occLqaIHX6ZCxXHjGEa4v_gz8KbhLCbwxOZ3Dc4vHmlIjZGieCn3BlNHE/uaWUpxIU_NEBl1Sus0pKevhh59wWK2jgVH0Qq9fM-Us",
           "filename": "건축물대장_표제부_가산동 151-52.pdf",
           "size": 349293,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/EvB9ehZYs_ymiRPGOQI5xg/jeDzAOZPII6UAYjCDVlPcOcvv1iiBimIuxMvGS09gDxxxv9lEkvdMPcVhK5ftL0hTj8H1kLTkgCSEhywdMQhmmNWJ_SvaId6R7z5GGg_dqCBBaGxw4vhBR3YCxFidaLrsqPLnf3cH0Ccwpq4-1QeWQ/_wlCYRPefpENeFOc7zpTmXU3CTWjXbn7XEOZD44CVEk",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/4TZRLlfzY-WqsAwvTASBRQ/2P3FNFFVUbjA2xhQ6lO8KeqvGaRWWJD0uUhhKk3K0mEw6E7viTzhSVT92V9KGwEqcMFU0Gf371Au2r3r3JAwfkNgxqBryHHcGkYGFDpiQrqN5fS8ax-EIAdPq1o3F5zQGx-UtWL7VhRWx4l_eVvliQ/CFXgSHc0xG5Pty_MRfOG--KKcwx3d9MxLCdYTOfvXS0",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/q8A79hbuHFgRX_lDTghd-w/TMd2fqsfrM9fizdYRdisiEmFdHX8Z7ooLUVbWbTig2uvHqyPOvE4teDZtqmgn3Atl2RbQNATgspN43hw2liq53BsJmdzCzOIFekHOFeWlMeoi-ZE7OYBD6REO5SeT66ehBGvzKiqq43m52RAgPJwZA/iBUkL4SBXgk22-t_APHZTmtNxUwvy5wIZ3H-rMraPlM",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/lutbZ7-jsAMqCEfo93I-ng/o2Ace9GcxO8hngUbuuq-Ohq6B4S36hc-VMFAFuHsraMBpIx5HJirEpA2RBLwI_pzxjBQ2LdejCj4TjrnXkq95sJ-HY2TzYzCRy406EzXKmCEf088b8kscdr_lFGoYIoMLTisp4NiZctcN4-KR5kFOw/OhODe4bP0_CGsufwWRjbUrOvpeeOYQeF5mshS8mn6ts",
               "width": 724,
               "height": 512
             }
@@ -961,23 +225,23 @@
           "id": "attMPgSRiQt26oygY",
           "width": 1400,
           "height": 1050,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/ydV1MXKh3Z9i0OAoESB1Fg/OXxJ9iHWuz7k5a9kRHw2HT47jU3Wm-ThlyJwqjTbaxHeIoesM4HGId7VgZlBF8iJzM676JBfx7bob0-G2LZfcB1DkGIriuRStp1gi5Vj1HDftivQ-b9X456hEB8_4CPcz0imovn5yRASgq1y_qzTYjqr1HW6FuR-Tjzw96eCAauqP_pd6oEuKutU7QE2jN6V/iy7c_BtVP194Bw9_8vCA0zJCeNSEcA13RZiLAQ6SR5c",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/2LG_Kk_Nr8ABriPY2CZkkQ/LXHmStYYkwZXmOkW_OePbekCLBfSaWRfW_VaXKlQNLjcc0JWSU1qkzdszBOPoMtLwcYhz-MlhlHsxmKLZ45sjg59kJo6sZHSmbvhM4FsBEEKKmjLR5wNoyXSDwAaWYti-w8QVvS92B2JIu3IssvDSDHJjRi0D6Gn8u-YXRWTQ_MfCGAEliGimMcd5dPsDr3C/97H1-JV_5yfZfyXG01yh1Hx9DNgeOla47RVuVWke6BQ",
           "filename": "KakaoTalk_20250605_144612593.jpg",
           "size": 627239,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/J5Br91kLfk7FBoLC-UdVag/OcaLmyvkyWiPa_xtghkqkTeSIZrf9up83Up-8pGT00kNuVFzls60n9GgQic50Dr83V1S5KSQANVHjz3IfGZUA3p7MhlJBKEge1rncaCoj7jnJL3tQcQHXkEgFq-nXV7_Y-TcTjqOx-ksToFPJnDAMg/RvEUYqSK-PTx6ZumN-Os8wLehvRaEyTDsI_sMt_BBGQ",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/KYYgvrzUJYI4PlXDbGctAA/bMl2jpik19u7tkamhqx2RKbAVXc7T-grlPWqYLzhzGgdPrLO1oDtsSz5Mafb5MW87fZbM8xwT85udaQyN_suVDsJQAG_yoz5kHaUxs6lIpx_aUr4EHwL0WvmItJkkrrjLbp9qYWYKnXWy-DMPJsqvw/KNNre4M3IoPtTDdF8mcP9SGAWK7XN9qh536OVRmDLGg",
               "width": 48,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/K2GWA7R7rblsnQaKPTmCrQ/pl4ei-R1MPfmzDwndIeRWVOpNKoZSBQaB9qqLcwDjCACcLMiy9Zb6wSQZL5rvYsnPfVtMLlI8WisLth2ggwUbemsKUsPYacmNRBbB5pN9mVk8i9wV3cpOrTndFgjC5MKlgr_MpX5yEEvRUL1VvXUKQ/KNCCjaaEUjmQsOCoMfhFldmj1QDBMW1Byvdbf1t1PVc",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/c1Y-AKIpPI7PA_iuhT4MJg/SmZjvkBiC13zRC8gEnPslMpPrGYojccgDvVzP0BOaKN_k0XszzM4dorkzFOUzm_nDmjyUSRVNazMTcVId-CYvjPM3JyBCOhwKkZs8z8xjt4lgw3VjnZRji0SQ0oUTJCXOX4vnP1eoUxfM9nGFvqfFg/KmFAVQuNL-DDWqhB1bKjJQOFlMzi7oUog8R1BfqXirc",
               "width": 683,
               "height": 512
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/PmYdRnmFHHzDzHg0IpAnaw/wro0hCkwcR92eC6Xg-FFYG108CsUeXBowrRp7o_f2ma8dCxZAheQRiOxGSve4v1BHnj0rwlNbf9s_QxSVD4pkQvQTEe01ku_6TTwxrauUerIdXyok9NDrEoq_5d--Sslk6bFoSNaCujU9wKKOIckzg/VmhXVsb-n1CqIfSlCUlYKqIF4k8Wgf9i9VxUfLvCpy4",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/TqFGEo7favHV2nY0sQLzkA/lxaCRb1YcagxHI0UKuWQd7f1-q7IlH-5DUGVioXtk_4ry13QVJN7oOn9nDpfBKODtdnUkHqYp6HyyP6QRJR03HIrMWFObG0DAQoBs4FRXYPkM5xeh_hn-OvKh8rrfGiOuNv-aF0tWEyNs9C2V1AOKw/E5FnfMUBglu4H6T7Q-qsMqRjlcNJka6TJ2JPjuPLC8A",
               "width": 1400,
               "height": 1050
             }
@@ -997,6 +261,130 @@
       "10년후건물가치(만원)": 0,
       "10년후토지가치(만원)": 103044,
       "10년가치지수(%)": 157
+    }
+  },
+  {
+    "id": "recuJha44xS5frS1h",
+    "createdTime": "2025-02-14T05:50:53.000Z",
+    "fields": {
+      "지번 주소": "관악구 신림동 528-18",
+      "도로명주소": "서울특별시 관악구 난곡로66길 17-5 (신림동)",
+      "토지면적(㎡)": 171.9,
+      "연면적(㎡)": 438.07,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 102.6,
+      "용적률산정용연면적(㎡)": 342.82,
+      "주구조": "철근콘크리트구조",
+      "주용도": "제2종근린생활시설",
+      "층수": "-1/5",
+      "건폐율(%)": 59.85,
+      "용적률(%)": 199.98,
+      "높이(m)": 14.64,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "박동현",
+      "소유자주소": "860102-1",
+      "소유자생년월일": 860102,
+      "세대/가구/호": "0/1/0",
+      "현황": [
+        "네이버",
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 330000,
+      "감정가(만원,랜드북)": 294000,
+      "감정가율(%)": 112.3,
+      "인접역": "신대방역",
+      "거리(m)": 670,
+      "융자(만원)": 115000,
+      "보증금(만원)": 139300,
+      "월세(만원)": 1298,
+      "사용승인일": "2024-05-30",
+      "주차대수": 3,
+      "승강기수": 0,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-3030-3669",
+      "건물구성": "반지층(근생) 원룸5실\n1층(근생) 원룸 5실\n2층 (다중) 원룸 6실\n3층 (다중) 원룸 6실\n4층(다중) 원룸 4실\n5층(근생) 원룸 2실\n\n총 원룸 28실",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 2호선 신대방역 7분 수익률 높은 신축 원룸 건물 매매\n- 대출 승계시 수익률 약 12%\n- 신대방역 상업지, 도림천, 생태공원 보라매공원 등 생활편의시설 인접\n- 건물 내.외부, 고급자재 사용, 풀옵션 분리형 원룸 구조\n- 남부순환로에서 60m 이면도로에 있어 임대 수요 놓음\n- 넓은 대지, 평지 위치, 현재 및 향후 가치 상승 기대 지역\n- 매매금액 : 33억원\n- 보증금액 : 약13억9,300만 / 월세 1,041만 (관리비 257만)\n- 대지 : 171.9m²(약52평) / 437.82m²(약133평) \n- 임대현황 : 총 분리형 원룸 28실\n- 주용도 : 주택 및 근린생활시설\n- 지역 : 제2종일반주거지역\n- 사용승인일 : 2024.05.30\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1PhUYSyFe4W4n3YnCWssSXKF9TRveTeNH&usp=drive_fs",
+      "비공개메모": "25.04.04 광고가 33억으로 수정 요청 (010-2676-3970)\n25.03.28 금액 수정 (매매가 32.5억)\n25.02.14 ~ 소유주 직접 매물신청, 010-3030-3669 / 입금가 32억2천\n/ 이자비용 새마을 금고, 5.5% 527만원 / 투자금 6억7,700만 / 수익률 연11.78%\n대표님, 새해 복 많이 받으십시오.\n관악구 신림동 신대방역 인근에 신축한 원룸주택과 다세대주택에 대한 매매자료를 첨부하오니 매매중개 부탁드립니다.",
+      "융자제외수익률(%)": 8.2,
+      "지도": "https://map.kakao.com/link/search/관악구신림동528-18",
+      "건축물대장": [
+        {
+          "id": "att8hL6r6YUQuq0LS",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/p9DLijTCp59Xu27oH2a9GA/0Sk2dLlZ-vtNwPdQLzKvEK7XfMd-pREkwMvmsTh3XwmpzX0yJwZhHd6xlLjiMhjZcjiRyLsM24QlHtz4RL8tRRoefxaSYt0cnolQvMtrusP_CdipaZao2rtADgjs5mUYSMBwybaUUrWisjfTmwcPVXtuF5y2w4Nmq2xtsW0odY8/71sG3djW_A7SOs5tjMjc9kzeCyRkUbJJNG7cnvu6ts4",
+          "filename": "신림동 528-18_건축물대장.pdf",
+          "size": 398916,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/mXpMiu4Gug4h3u3JVvlN1A/OEvR_CA7-_WBOdIYvPHse7ly0aa1_jLgDtSHmxeMk4Xt2_XMmYIWzXfIBdTVI6QiWyr54lEGWBiE9ptr6f1CRxfl_3zMZHFYvnuJ1JcKxW9w2CJlOkESt2kNL5OXor_JXS70cwR6_fUxutw05QbqgQ/MqSQVpIWLik7dW1actX_fSfH_JG3yqRoBCPUPJzQHb0",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/bztF3IyYlsbmQ3-zuGbA9w/WdgLLSiKMGUWa6ZAeDzRdnV4PmX3juhWHuRD6Rg9-bqwTKnOTrA7vU_ANbiwelUoCDKnZKVNxFet4bHklqYAM8xy3ZxQaibYaXmpJsUUWUc14DVQWRb8fo__wdkvPDD9kqtFTifdS39rlNY9LBiF6Q/lQ6yJ-Cr34CByVuNZ5ZUib3rlykQhwiTGfSof3Untgo",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/777wimnm",
+      "실투자금": 190700,
+      "문의": "25.04.10. 당근 보고 지번, 융자 등 문의 010-9004-1659",
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 13,
+      "건물명": " ",
+      "기타용도": "제2종근린생활시설 외 1",
+      "생성일자": "2024-10-28",
+      "대지면적(㎡)": 171.43,
+      "레코드생성일자": "2025-02-14T05:50:53.000Z",
+      "공시지가(원/㎡)": 4594000,
+      "대표사진": [
+        {
+          "id": "attogkV4aQmZE6RQ9",
+          "width": 1400,
+          "height": 1050,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/ZYJOjb-KQOOfaUgV8tw9qA/9h9TxcZD1N_H8whGz0UoYsQdQWHij6QmgMB1YOJyp8HhCnFEq92_oAJo0jf0whfWza3ifthyVwV2jeBrHS9dJerseTTr_ErqkiLpedLPuPyzggcTkngTeyvDbE28MfSAImOSQPFeSRpTFRC1yVtlj01r41IA2hRXtTTP0kizVKDwR9F_aRjZxbXNwOMV91WM/u2La7HpNEEr12I2DOZLaKKtx90t8KdqmR_Ge3VcB25I",
+          "filename": "KakaoTalk_20250224_152921466_01.jpg",
+          "size": 486586,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/NjdOmzxZAVuaYuF9KL0p1Q/nKefqsP2sLSShqwekOJ9A-vuLbFwrQ8rYLOzV0bU-rX6_exTL0nKUvmplToWSwh2_yFABYY5xsS0EQ_KsurUOxKAGQ7JkdajpbXnydJkQeBHuU65lg5Ej7J2H__Au9lHCduL32zRmqTA2RirggVLtg/ikO4YYEck0HBCvKTG1e0ZZtC_g3n18QpqJFk_1Bv5RI",
+              "width": 48,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/YnINFczlaYQ86-z4QdDVwg/XczTAOcfJM76HZrPSCF_R7e1EaMpkp43x1iKenqe-waA-2f2Zmk-AIakeLth6UooO63WCQrXatZ04uK1r43gWwETioIxjWDCY3HI-sqjQJlJFhA-PKmF_UulepFvyJGiWm4-fdVxPl7ENpmC8QsL8Q/JCoCQSnTCiV4gIrJz2KRaK_2JW88bwWVhUvMM-5XZcw",
+              "width": 683,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/TGVLAA4SLD0PDffpru8kxQ/1_4PUzus4z1WMWdbsEkMRT6lBMO0eb8Su1V2YSWjs-bVT5nEkTr1QYxmE772QPXnswkxuI-stDN3yT-lclWVsMOfEUJdYic7UYjjMTa09ZZHwWJKfnJnrIw53D6mHRxRzGedKoxUbASixRXeEIbcyQ/bQWsn60ZR6YRgWlmqtYDzwO0_G8JpdXErSGeaL_KglM",
+              "width": 1400,
+              "height": 1050
+            }
+          }
+        }
+      ],
+      "레코드ID": "recuJha44xS5frS1h",
+      "네이버": "완료",
+      "실투자금(융자포함)": 75700,
+      "주구조값": 50,
+      "연식값": 1,
+      "현재가치지수(%)": 67,
+      "건물가치(만원)": 64396,
+      "토지가치(만원)": 157942,
+      "10년간수익(만원)": 155760,
+      "감정비교": 1.01,
+      "10년후건물가치(만원)": 51254,
+      "10년후토지가치(만원)": 204160,
+      "10년가치지수(%)": 125
     }
   },
   {
@@ -1048,18 +436,18 @@
       "건축물대장": [
         {
           "id": "att6hRDtoFgfyc0tZ",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/2W0bl_8Y5FsQN878NaMFnA/IkpFS16-Yz_u0F2VMnXdmnt2csc0VmoQ456Jndo6dF2vKH6Pzha70bv-AKClarVs8WUWHboIQiuILFN8x0_ASvmtnbdBD6XhaK-kRGo37_KdTXVYr741iNigYdkTFYUges199jePqarlFRBnrAQzo5nMBeX8pg6eTiMfH-gK8l0/SSl-1cwrmA4eQMg8-i7T-rhhABx_0s9a3h6BJ4WG1uM",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/qt-0f-8QW6Vlt2CqLcERyg/6A8y5E1KXyPfkQRpQpGQipqUVDIESqF8N2f4rwPLICLfpm9zKQwS2AlQX8tsFklrtaYpWD5pH6bWjK4xalYmEgShwJtlgogOUkNA8wO5JT0sblT_9bmy2b0WzJMlTMuN8hxM4JxzsCpMdvVrDQSUKTvBkFP24j79dfRJZk7P9Gw/DBTwNzuFzRZ4sm2-5jmbnoj06xkx1GZV0DvlYZNMe0w",
           "filename": "건축물대장_상도동 17-51.pdf",
           "size": 395693,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/OYF-xmVyiGtVkdG67x4jwQ/V8ESQUIsT-MbtSPjkRI5QQl1Mu1rENwivZR69ZxhWjRUhRk9_gAXs7kxnuHTysUkgBgZPkuXoed8rWjMWP7YDABZms3cCLgimJ8qLPr3EVXwAwPiTJFXOp7aPhGjaGR4l3l2vzpb-zKmeYibSiesFQ/OvEcxuZdbBu1GZGD7JDcHEKF0jobEHUAxVnU4vE-8Bk",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/8WL98pcUuqZGgE6XAvRbdw/jJrcJFpYiQEZRym5fNrC-UzJxrq515qtVy_ocV9zCZ6BltMe4pRoxNN1iJHUbJ3Yc9nZK3bMfSFCpk-uXtJleRPv5zoMh7xir1qlw4p2komYM2vr8RZpwOQ8jDZkzBHXg6nS7ddtx8c6CaAn9Rrpzw/us7t1k-XV83RzuSQrSxZoZs2MsbIg6asqv3LYLz-VqA",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/z0WoaxA-97AqW0jGiOpaqA/U0wTVfnb1Bg8BauQSla2TMBVBxPf0Eujqf5lDn2hebcI1BuAId6kiIBVtSHH1cR8uKZvFIQQ4zDUqDK0aGyl96u3lej3DjXwOr_G4gcbHw2AJj4RyXftahAGyPVwqcj64T37ntgJpumiVasGgvwhNw/_VWtowP6cg80MYKLNhRKLmRLq5R7DOw-vmq8V4NyIQg",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/c-6IuugKXT0EAm0Y7p8A2w/R8wBicJE4oTSHeQOjWb-InEtZjOs-jjk_vmCplv-LPZvkxhkkLu_XwVnzErYkHZR_4VdOl7u-meR1BjdTnwTIcfict8SAYlrIxsy4IFE4gRsT_MtPAiRgDMzxgXcXYFNDYNZeqiknOCmC9W5sO1QTA/7H7OrQvAv93o8fiTtuk97fNU4swJNYgIoRtDvnm39sU",
               "width": 724,
               "height": 512
             }
@@ -1083,23 +471,23 @@
           "id": "attty9m7rUbW2AVWV",
           "width": 1400,
           "height": 1050,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/IvGVaZf9RLgVOmzD9HdeJw/FlqMphZ7Q8XLPvsc4vCJfj4KqU_X2HaAi2z7paLLTWJRazhpL2E5B2UgOILxPe3Nx375kT_IdLCCZ9ARiJQLgXxwpb9xSszF9QDj158DmcTS5yVGscQAU8PYN7ec29AyMSBHj89ad_Rurv8o6-ArpDYU5DUaIAIGauaMwARTDBV4-XluaE_iDKDIT2HEGnwL/mOwYQpqOb7LAnV2WqpTJME5jQHwYqmrtWzdnCBCEyvA",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/XYlw1BTrc3LR5hBUf4Fl8Q/mOHTAHYTy1ix1AFB6m5hyO-oS2mQklBKajOjlBDItzA4NwjVyCVk4bcle0nwYWu4MYitbfYEyYIoyLBiydpWSQjST0qTMVKZsymS591AtdclhhGKeAYU-Tr_X9c1r4FOLAMTINP6hjEdCMw32vHXuXxvNyDrQXkbxAAE5u3UEKxRoWdChefe0tfFViHOGykp/C8JMdKm8CerIJarsxUcMLAnhPsGf9EQ5w8XtQtDwCuY",
           "filename": "KakaoTalk_20250527_143317195_03.jpg",
           "size": 712725,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/2fAuwu4QLejJQAy17NC06Q/Vu7vkHr9ZCqRz1Ph09nrVgKigywOX938kAn96l9IYYzRSoXWVITXF23ck8kfklnnMh6pZrYJ9yDMfjx8VkgwFSnTFWPs-zjlqvl_h0Y5t4FvdmNyLfPrCE-FaXf1hlnV8alZ90hmhzPzJBEkHvN-3A/2YWlmCmCDCLVTrMH9audzbPZG1ymp7J5AmhIs906xEI",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/BTGn5DqrLgUQ27uAymJJTA/9iFtpl0kxfpZ7bVdCi81-2b--LiaaezLeaqZrnzHqO8Ylyn3txmKqBfrflv0lQC8yqOKb7aHOPEhA2yoRLnWEWvWDzq7G3Hff51CRmsO1540kN-K-FV97GQIs8EfjZR5R66suMolp636pQASClpvZw/WG-_68qVVA_Hs1-XSr3B4LGb0pd6uRWqQ6D5Ao9S-rI",
               "width": 48,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/JOUtsmdU6vuiQCOrsGi01Q/_vzB3q1pBIV6mBKb1FItxzH7NZp-xCE0Zro0pdQDHFiiw7jcWznakxTwjdrwoPZuxDqLE-Dh-sxNXoJn4PQ_CPKBQqWHZaf_DYguuuYsmCuQsrp3XR99p0uDfbn9pSBRedHQVnM7mlHtyqfGNzgUqw/wn-O93hiD_N9fuq7czyssAElx2dQ2Rx-bFFJ9IEsPGg",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/MtrSDXhO4_2kNvM4ElxnGg/oyKwtG4l--1qeFhV6YLWwx7Y2S-fTnfleLjgOWMN_Apo8gmM1lc0k7pKrJJDmVSfjygN-eFnwMIDzGX5w_SmrsD1AtWuMuwSHZg6terBzxCdtXkIHFXHSEVCvXipmEXBjdPlLHKJfrNEYsMhYTzKDg/capYi9hrnHHvWhDOHNpdYiiUyvJ4h_1LBh7ccGavBXo",
               "width": 683,
               "height": 512
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/Vk1RhozRMtDcqkwIg4ZtYw/wngV-zzYhwX4g9aY_-5RTes09BxJasgrHp4cPoD4VzyDjh7Efmf3Jnt87B41ezK31JlCSDwn501ilpLK15IWnVNvuANVaThJcNHL53_GubA9hC8MoREsj383nNTCVZBOYewUcUTSvu0H6OUxZDlR-w/Vmp2frjX3fvI1gs7kXTd6gjEsT3cFWa3IKxf6ynNzEc",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/6nnUVTOuwJvkm1kVJP4ZBQ/9srk44UBrdP88igshZpW8KaFKjACi-aEHQPDRr105ZBUu2gNws5F2oJLPn1eE2CZSZDTUWv4WpBndXkEQteMWUqWaVRrP8uU-njQHT1zUOOvORZI_vyt7lxU9dKKjVb2uttQvm7LYnot5pbRyV_i8g/FvNi60vkrCkBj_Dtf2HGAbShH0g9rL_1AaHKSYTKiN4",
               "width": 1400,
               "height": 1050
             }
@@ -1122,311 +510,66 @@
     }
   },
   {
-    "id": "recLXuGvSR4KLCBRK",
-    "createdTime": "2025-04-12T05:54:08.000Z",
+    "id": "reccsFOp3I0eEUSD6",
+    "createdTime": "2024-08-07T04:23:03.000Z",
     "fields": {
-      "지번 주소": "동작구 사당동 219-6",
-      "도로명주소": "서울특별시 동작구 사당로 183-1 (사당동)",
-      "토지면적(㎡)": 212,
-      "연면적(㎡)": 396.98,
-      "용도지역": "제3종일반주거지역",
-      "건축면적(㎡)": 105.57,
-      "용적률산정용연면적(㎡)": 324.12,
+      "지번 주소": "관악구 신림동 94-170",
+      "도로명주소": "서울특별시 관악구 쑥고개로1나길 17 (신림동)",
+      "토지면적(㎡)": 175,
+      "연면적(㎡)": 317.39,
+      "용도지역": "제1종일반주거지역",
+      "건축면적(㎡)": 94.32,
+      "용적률산정용연면적(㎡)": 231.71,
       "주구조": "철근콘크리트구조",
       "주용도": "단독주택",
-      "층수": "-1/4",
-      "건폐율(%)": 49.87,
-      "용적률(%)": 153.1,
-      "높이(m)": 13.89,
-      "지붕": "기타지붕",
-      "소유자명": "문상윤",
-      "소유자주소": "서울특별시 은평구 연서로21길 20-5, 202호",
-      "소유자생년월일": 880508,
-      "세대/가구/호": "0/1/0",
-      "현황": [
-        "디스코",
-        "당근",
-        "네이버"
-      ],
-      "매가(만원)": 330000,
-      "감정가(만원,랜드북)": 270000,
-      "감정가율(%)": 122.3,
-      "인접역": "남성역",
-      "거리(m)": 272,
-      "융자(만원)": 96000,
-      "보증금(만원)": 179300,
-      "월세(만원)": 899,
-      "사용승인일": "2019-09-20",
-      "주차대수": 3,
-      "승강기수": 1,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-2896-6957",
-      "건물구성": "반지층 원룸4세대\n1층 원룸 5세대\n2층~4층까지 각층마다 원룸 6세대씩\n5층 원룸1세대 투룸1세대\n총 원룸28세대 투룸1세대",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 남성역 초역세권 대지넓은 고수익률 건물 매매\n- 7호선 남성역 도보 4분 직장인 학생 수요 많은 지역\n- 실투자금 15억원 대로 7% 이상 고수익률 건물\n- 매매금액 : 33억\n- 대지 : 212m²(약64평) / 396.98m²(약120.3평) \n- 건물구성 : 원룸 28호실, 투룸 1호실\n- 지상4층/지하1층\n- 승강기 : 있음\n- 총주차대수 : 3대\n- 주용도 : 제2종근린생활시설 및 단독(다중)주택\n- 지역 : 제3종일반주거지역\n- 방향 : 서향(주출입구 기준, 호실별 상이함\n- 사용승인일 : 2019-09-20\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1Ihdv1XmlrZBwfCbx5mBHBYj1Wmxl55mR&usp=drive_fs",
-      "비공개메모": "010-2896-6957 (문상윤) 공실번호 052-4537-1923\n반지층 원룸 4\n1층 원룸 5\n2층~4층까지 각층마다 원룸 6씩\n5층 원룸1, 투룸 1\n총 원룸 28호 투룸 1호 (방 30, 화 29)\n보증금 17억9,300만원/월세 899만원\n융자 9억6,000만원",
-      "융자제외수익률(%)": 7.2,
-      "지도": "https://map.kakao.com/link/search/동작구사당동219-6",
-      "건축물대장": [
-        {
-          "id": "attEse4BjJ5VsZNO2",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/aW2cJcE51M0uk5TNY1dY6w/w1kZe11ycMVF4cfP10XGT38NbGcwI48aYH4sQ-higa2RBnebfTlZ75QuBgS0FX_fjQZ1s7GbZN7ejNjhqrZ_xXcKuVey7PO4LPalxJmhWmZf349Ejc6AL7jS4EG7h_PSV7h6y8o2OSrQnmzoobMRH4-vPuYTagnmgiteF6IoH4g/TOMGDKZhbyBYK-mW_BHXJrlmU3LsNuXSYNMYWZusKAY",
-          "filename": "건축물대장_사당동 219-6.pdf",
-          "size": 359769,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/fL4RFVQZ57NsvPBxdjvckA/XJFK2FHRThACDvgzNxTjLaBg8pnW56rF0vu5QnTv3xirZqQvZHALvooA7XxowZMmiwcm29BzcVSg-Dvc4Ky6wRKIqpp2wXjYwAtPqye2KazKI-DwCKsWnpCVJZKqB-nM4OUi-dL9X6AVN2bO9HR26g/LyFzo7waxHSOoe6_AVlyerUOkDOfda_qN9PMvjqPVvY",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/oJMJo4bGu1I6TBKpeo32QA/q0vt84y_RRfkDLHIQRTN1-RkBu8EIT9xiCX7T1t5ec8u3AB_Esjh07Wf8GNTZ-96blobpv-mDkZndLI7Xjm2oAupVN3AXa0IaRorAsLC9NkmCJ4He0dink0AK9GyOr1V2m3JJHcdafO-tz2zZSV50Q/21CwaPmXHLR9juIyQVaJn0ka93bywLQEsmSIo2odYGU",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/tm29y105",
-      "실투자금": 150700,
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 10.9,
-      "건물명": " ",
-      "기타용도": "단독(다중)주택 및 제2종근린생활시설(사무소)",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 211.7,
-      "레코드생성일자": "2025-04-12T05:54:08.000Z",
-      "공시지가(원/㎡)": 3981000,
-      "대표사진": [
-        {
-          "id": "attlTE6bI6GWzK6Wo",
-          "width": 4000,
-          "height": 3000,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/-FghPo5HarmD8KejSN4qiA/gwlur1A8gPALkFvsli-_LqTxNdTIQx2AlucHrYbGIjGRFRj61CMny8eAlcyw_gQB_dqjM_SU9NGN2z5BVlCqdnidDAneYyqMvXyqvO_0pN1KCSiRin0dAalpwo0qwFcPh7IZU6nEj__MaSPHnem-9jybwb2-ajJL3UQ0L1ubrLw/CXOEFyllLc7xs6ItiAtZjErHFj_GIabbWCQENDm160M",
-          "filename": "20250412_153200.jpg",
-          "size": 4946088,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/LYwQgWJ1JeEPnuDcDRcNCw/8u1iyCoNxuV274CTN9gleKV7Biym7E7B_QfxTBMSZhoGa4aYDQb1Kq6I3hTfaRHWN75tHxsp8dCMolbkH88E1VgAaF8FXgR8-wCydqUGMVycW4BIcxL-yKRc4a5_6DOke1wb9oq5BwgZHIYGr90lng/-4RsEw_SlFcbNfMvJCkhSdOYNqf48qrH490QP3nhA2s",
-              "width": 48,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/SUOCxuMe7oChiwcBw3GLlg/JgjEp2dr73tkDt5_ZX3IBVgv6cSD7ioNJMz04YDJqlgatALwkwVeYlJ2pqa5g3VkZMOeyKXmPR2HR2fdqrGXW7kT-8OztGvI1Cdd3vOFYpimHUN7SOaP1zDupQTg_L5qk6ff4YDK4wwjrVxrZkbdgA/BZkvS-Gld7o6wQcfd4ewYMluvQWijranLUqQm16bFzw",
-              "width": 683,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/GwrKSgPufizoBrxRMZIezQ/ptDeCSrn-Aq0MTr9vm5Dkqg0gokVlA6ooiXGISCRH0kjVuQddDwGGYIBdmRhvX9VxZnr0duUc_UPBmsny1k54thxcTY8eU9C0l4XM6gt1QfA99XKXYu41Ijpdr4BR0TjTAv_C2LiHJjdYMIOKwxGBg/GodHDfndJp-tMfGZwtWNh9xtTBCmv1gDdylOXRJpy0k",
-              "width": 3000,
-              "height": 2250
-            }
-          }
-        }
-      ],
-      "레코드ID": "recLXuGvSR4KLCBRK",
-      "네이버": "완료",
-      "실투자금(융자포함)": 54700,
-      "주구조값": 50,
-      "연식값": 4,
-      "현재가치지수(%)": 68,
-      "건물가치(만원)": 54783,
-      "토지가치(만원)": 168794,
-      "10년간수익(만원)": 107880,
-      "감정비교": 1.05,
-      "10년후건물가치(만원)": 42874,
-      "10년후토지가치(만원)": 218188,
-      "10년가치지수(%)": 112
-    }
-  },
-  {
-    "id": "recQ0XlViNU3VSUX1",
-    "createdTime": "2025-04-12T07:05:19.000Z",
-    "fields": {
-      "지번 주소": "동작구 상도1동 325-4",
-      "도로명주소": "서울특별시 동작구 상도로47길 84-15 (상도1동)",
-      "토지면적(㎡)": 244,
-      "연면적(㎡)": 589.44,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 145.2,
-      "용적률산정용연면적(㎡)": 476.04,
-      "주구조": "철근콘크리트구조",
-      "주용도": "제2종근린생활시설",
-      "층수": "-1/4",
-      "건폐율(%)": 59.51,
-      "용적률(%)": 195.1,
-      "높이(m)": 11.5,
+      "층수": "-1/3",
+      "건폐율(%)": 59.81,
+      "용적률(%)": 146.93,
+      "높이(m)": 9.45,
       "지붕": "(철근)콘크리트",
-      "소유자명": "김희인",
-      "소유자주소": "서울특별시 관악구 봉천로 387, 105동 1101호(봉천동, 두산아파트)",
-      "소유자생년월일": 670910,
-      "세대/가구/호": "0/0/0",
-      "현황": [
-        "네이버",
-        "디스코",
-        "당근"
-      ],
-      "매가(만원)": 280000,
-      "감정가(만원,랜드북)": 300000,
-      "감정가율(%)": 93.4,
-      "인접역": "상도역",
-      "거리(m)": 518,
-      "보증금(만원)": 29700,
-      "월세(만원)": 1400,
-      "사용승인일": "2008-08-12",
-      "주차대수": 4,
-      "승강기수": 0,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-8669-7235",
-      "건물구성": "원룸 34실",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 약 1400만원 월세 받는 올근생 건물\n- 7호선 상도역 도보 8분 역세권 원룸건물\n- 중앙대, 숭실대 등 대학생 수요와 7호선 강남 직장인 수요 넘치는 곳\n- 매매금액 : 28억원\n- 보증금액 : 약3억원/약 1,400만원 (수시로 변동함)\n- 대지 : 244m²(약74평) / 589.44m²(약178.6평)\n- 세대현황 : 원룸 총 34호\n- 지상4층~지하1층\n- 주용도 : 근린생활시설\n- 지역 : 제2종일반주거지역\n- 방향 : 동향(주출입구 기준, 호실별 상이함)\n- 주차 : 4대 (거주자우선구역 활용)\n- 사용승인일 : 1991-12-14\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1HnIiGmtw_HqK9uyUOkwSuKPU9BJ2jH0c&usp=drive_fs",
-      "비공개메모": "010-8669-7235 (김희인) 공실번호 0502-4218-2368\n원룸 34실 (지층/1층/2층/3층 : 7호실, 4층 : 6호실)",
-      "융자제외수익률(%)": 6.7,
-      "지도": "https://map.kakao.com/link/search/동작구상도1동325-4",
-      "건축물대장": [
-        {
-          "id": "attCxpmyjJdzQ3kaU",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/FJJMmBN5KkLYBWcCm_1aOg/7jfLvWJR02W14hL8w3KK602GdiSXUV94R7KByl3eOw_GeEo__qs2QJZhpk4-E4z9TecdxTMffO6lQJt-oZktTqPmA5V-_MqXOFbS2wxYrP0Pq6Ox1h7M6QYX7M6A9rER_wZzxs5pbKviyHG3hgjqeYK0AYE6oUwdtm2BeCSdiyU/6AVUQI7Yc6Lh2Fyyx9Dxwp_c3v7ic5e6t5W75UBIgdc",
-          "filename": "건축물대장_상도1동 325-4.pdf",
-          "size": 403689,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/xHy_xFSIs17A8-QZJGmKXg/bYaw5HevwCxFD9PBy_9WWsJI2RsJT1UQ9CuSgVSEbB2er1pdtWCWnfJDgNEPRsbQQhe4nnpbqmO4F-Rf4Ceqp78MdA4ajMca_7WxC5jA-KT2Tc7Nmh4FMvM2y3TNk_v-s1___Xc5qcX3g1CHa0ocWw/YKgGZLCgE2cxXQCF-8cPVRRe-Jq8fOBsFpb038yjFzE",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/nbw-U5BiwPU7FCwMTjnCWw/mb0CPRy5NUUWt2dmCiA9TzkAdPZE6IzAh8pHXosPIk20wKW0W1U8LUS6vpA4BEezVciZ1hloZrJek8kjussgCFg36n8NKkv1SzIv0aTFJ1iDTZZvRlIcjHmusaxbbjd_EbGnqX4SZor5C7-uD6A7nw/PMuwQeyS6qow-33HyuMe_E1plVfx6b_d1iws1MgF_BY",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/rq7bmlxp",
-      "실투자금": 250300,
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 6.7,
-      "건물명": " ",
-      "기타용도": "제2종근린생활시설(독서실)",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 244,
-      "레코드생성일자": "2025-04-12T07:05:19.000Z",
-      "공시지가(원/㎡)": 4491000,
-      "대표사진": [
-        {
-          "id": "attmYaMR5SEHjMA7x",
-          "width": 1400,
-          "height": 1050,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/uQPBnQYLQThFuSCw9NGYVw/K-mcBNPyhJXpHUP-Y1NkySGFxfQPCp9Zk2jgAF_n80paPh6jwQLeBXB2HA_VVPgbLX_JaxALLUqyh59dPEkCdYBFeI9ITMknVYnjg3YzpF8oE2wLYDMMqlj1h3LDnNVWAiHS5kTw-4oBYga5X9Xc1Lm12xWxUIN2kEHbkBMk46iizcYQdMztcttM86_SvZ3P/Bzu5_45bCv9Q-oFMc3lNPXZSISDb8RaTlkJP-60aFm4",
-          "filename": "KakaoTalk_20250527_141742740_01.jpg",
-          "size": 589283,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/VLshQIF5oT-KJASqwV675g/xr69lDkArNPhvctl306cujFMCr76qv-4wElvoOcvJAJbNk_z0YGCDXTrICfKgmTT5V5a_-2dEL0hW1jtTrdDuz5HXqhcDXZVI4snHHyQQgdUtujYzKh30KzcnZQrr806ca3XXgz-cd1MOLM3yBDZqQ/jw9-OH99ygiN56S0bB3tgiV9lZzM3XyEOoMKNmn_LnU",
-              "width": 48,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/Hi8kVZOo7XcjT9VumotlGw/36cjq9UCFjL05MkcSA_76y15Fg0r-PS7xKlc4Ij4Sl7-shgg0odEfnp0pklQLwbcYfyONEwY0MhGyvoH0-SxpyDdUhRDBO7lryHwk5qf5DNbj4nnOX9mqOLAAEx5BuFlpuDcGdtJ5dyzh_QI-gl9Xg/8VB4_3G2o2Qhy69ww3zmp5qjc0OGd_6sxM26gfrgwIE",
-              "width": 683,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/efviWpXxR_kqvG4SamaH7g/I8mnNQkZdDtdR4VMP8KfEnTmqan-UPBQYflbAYM_4leWdm0_w80n-EaPccdrZLBSK9SzacMeGFCF9zSS496Tt2c1aA9JvzGiQDfbEDHHnSBNjUK_zvLltN82h5mPSUoGufMu8fHT10eEn7VHjGOkWA/NcQ8Bc0CEm29Doz1uXpIBERlQQ7xRdq_-ULYPfG8Dn0",
-              "width": 1400,
-              "height": 1050
-            }
-          }
-        }
-      ],
-      "레코드ID": "recQ0XlViNU3VSUX1",
-      "네이버": "완료",
-      "실투자금(융자포함)": 250300,
-      "주구조값": 50,
-      "연식값": 15,
-      "현재가치지수(%)": 100,
-      "건물가치(만원)": 61891,
-      "토지가치(만원)": 219161,
-      "10년간수익(만원)": 168000,
-      "감정비교": 0.86,
-      "10년후건물가치(만원)": 44208,
-      "10년후토지가치(만원)": 283293,
-      "10년가치지수(%)": 177
-    }
-  },
-  {
-    "id": "recXIOIb8zNhTIPvZ",
-    "createdTime": "2025-05-07T04:22:48.000Z",
-    "fields": {
-      "지번 주소": "관악구 봉천동 1535-1",
-      "도로명주소": "서울특별시 관악구 장군봉7길 26 (봉천동)",
-      "토지면적(㎡)": 116.7,
-      "연면적(㎡)": 291.76,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 69.5,
-      "용적률산정용연면적(㎡)": 227.54,
-      "주구조": "철근콘크리트구조",
-      "주용도": "단독주택",
-      "층수": "-1/4",
-      "건폐율(%)": 59.55,
-      "용적률(%)": 194.98,
-      "높이(m)": 14.3,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "이수민",
-      "소유자주소": "경기도 광명시 소하로 162,712동501호",
-      "소유자생년월일": 850726,
+      "소유자명": "이지원,최순기",
+      "소유자주소": "서울특별시 관악구 서원길 27-12, 401",
+      "소유자생년월일": 730906,
       "세대/가구/호": "0/1/0",
       "현황": [
         "네이버",
         "디스코",
         "당근"
       ],
-      "매가(만원)": 190000,
-      "감정가(만원,랜드북)": 150000,
-      "감정가율(%)": 126.7,
-      "인접역": "봉천역",
-      "거리(m)": 383,
-      "보증금(만원)": 116900,
-      "월세(만원)": 570,
-      "사용승인일": "2019-01-11",
+      "매가(만원)": 185000,
+      "감정가(만원,랜드북)": 145000,
+      "감정가율(%)": 127.6,
+      "인접역": "서원역",
+      "거리(m)": 520,
+      "보증금(만원)": 37500,
+      "월세(만원)": 980,
+      "사용승인일": "2019-05-20",
       "주차대수": 2,
       "승강기수": 0,
-      "주인세대": "X",
+      "주인세대": "O",
       "주인거주": "X",
-      "소유주연락처": "010-9995-5185",
-      "건물구성": "원룸 21호실, 위반",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n    금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 봉천역 도보 8분 주택가 초고수익률 원룸 건물 매매\n- 2호선 접근성 좋아 강남 등 출퇴근 좋은 지역\n- 장군봉공원 등 인근으로 환경 및 거주여건 우수\n- 매매금액 : 19억원\n- 대지 : 116.9㎡(약35평) / 연면적 : 291.76㎡(약88평)\n- 지하 1층 ~ 지상 4층, 근생 및 다중주택\n- 용도지역 : 제2종일반주거지역\n- 방향 : 북서향 (주출입구 기준, 호실별 상이)\n- 주차 : 2대\n- 사용승인일 : 2019-01-11\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보 2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1VtEtLU2BBmoPgTiNtD-PLAPrdGxlBav1&usp=drive_fs",
-      "비공개메모": "010-9995-5185, 원룸 21호실, 위반",
-      "융자제외수익률(%)": 9.4,
-      "지도": "https://map.kakao.com/link/search/관악구봉천동1535-1",
+      "소유주연락처": "010-9999-6973",
+      "건물구성": "지1~2층  원룸 15일 / 옥탑:원룸5실 / 3층  주인세대 방3/화2 1억8천에 35만 ",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n     금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 주인세대 있어 거주하면서 관리하기 좋은 수익형 분리형 원룸건물매매\n- 신림선 서원역 도보6분 공실없이 관리하기 좋은 준신축 건물\n- 매매금액 : 18억5,000만\n- 대지 : 175㎡(약53평) / 연면적 : 317.39㎡(약96평)\n- 보증금 : 3억7,500만 /월세 약980만(관리비포함)\n- 융자금  4억\n- 세대현황 : 총 방23개/욕실22개 (각층 원룸20실, 주인세대 방3층 넓은 2룸)\n- 지상3층~지1층\n- 주용도 : 다중주택\n- 지역 : 제1종일반주거지역\n- 방향 : 북동\n- 주차 : 2대\n- 사용승인일 : 2019.05.20\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1M0JAbeH_C-EQB2zcb-j9BufizipvP16Z&usp=drive_fs",
+      "비공개메모": "소유주 예다유사모님 이지원 010-9999-6973.skt/ 신림동 94-170 / 24.07.26~\n/지1~2층  원룸 15일 / 옥탑:원룸5실 / 3층  주인세대 방3/화2 1억8천에 35만 /토지대장상대지 : 175㎡/\n지1 사무소 및 다중주택  /옥탑 원룸5실 위반으로 년 300만정도 벌금\n",
+      "융자제외수익률(%)": 8,
+      "지도": "https://map.kakao.com/link/search/관악구신림동94-170",
       "건축물대장": [
         {
-          "id": "attxSK7F9J0syjSrI",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/OxNHPYd6YjFvXFS--J6_LA/BgvylYxc8uIXmHjpaRGrssPDDPF458y50mTBh3Zs_ojuKvoxQMxxHUQI8vsS-l5sAOsr6aq70m21bT2IfoidCwfZowkUDd3DiwTqr8UIIzaMwTTVzK4wlB3Rvo5StFT04_0biv1UpBYok2kmiR5FwNnZuDHGC8awtc8hVW5O_Mk/hypG2g8oHVO9O4NfRiQwACIZm_vYfA4Udm12M-_7rxs",
-          "filename": "건축물대장_봉천동 1535-1(위반).pdf",
-          "size": 366437,
+          "id": "attDkPmTY5a83iXu0",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/ztz0KD7tGldULEZdrfiHYg/vuV-2vedaOoC1_Ou37O43W6NnKtmirD-kOtE-aFYYO7kXgz-vFmhyn0Ar5KpK4Uc7W9sADr7h323lHb_8Y_mnca0IacEG9lzhMVdIB0eQtyVkEZ4s0InWnPptfgiLsVW605YtRqCVTw2d9y8TQivv-Qf_XVvfeo3vNttB188UC4/NOvGPUwzTmcDS2h__Y-EDr0xmB0c7yXG4Vb0jEmMYdE",
+          "filename": "신림동 94-170_건축물대장.pdf",
+          "size": 364227,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/eI7CKEd26_gvdmBOZpaQJA/Yi4pXp7oQXRPHCcgIzWs2FV878Tj1qf7Qdijj_cnsN5qgyYJZyBWKNsMqmJgYgY64C2hmwZkCsIbmoqcE0I3aUCOIHjLhZY1gOu9u6r4gSKVryxtY1hDCOep6rVtljJoTmyWcR3sUGNK4kzZitomlw/G2BAs54r35YXouQp3oJxMhqKpTvmzsQhrCiT2OiKHEI",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/H5CzjhbTazECVuy8-hBwXg/u3n0PExp5kR-ELL96tv_vs3vbf4tGdsIM72VMt7g-crPdM7POJVaWXkQQsOrTMU8q21NqeSET1-d66bpfMF9Mh7sEGDkRPDwUP2LQcgDUWiCeGAbQWvAGXUmm2beuX9KIv_jftJTDlchbADATnhClg/Dfnv3tctdWvsImowjsDeVeRZxXawPcq3ARpDvTIKwms",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/zDyOBuxzHa8gzRBY7DAoTQ/tI1UZwuHOxA-z_Ig8Qt7L2rhfYtF_fugdYcOtbIAmlojZAJdyrhBxlBCyFycA7OdXa8Na3TCj8Jp5KihGmH1jLJk1VrPJ9gSqJQ8X0ujZtwVE1HSFU4XBtBHkIHqNrHA5Fbgm-gLcGHWDsWbRiKWug/YxlA3N5FDrWi4fXw3Al3YOgxOPvAaxpBqCEGkvC2Xd8",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/hY46B_Mv6cP1g1eq1Evy2Q/cHI8yK3G-hiAbQeAY4C9a9MCnEfLzDQoLP0qG67RjYZpsi7dKlzPQ7C6HOD5oH3n6o11Rqazons0U9uyS1_CMcv_SrKfmNQt78ruK_UC7Ewv_3zN6jMib9WBHdk01qPkRdIYZmBqnDeqhI6H4eKKDA/NDDgUlGdHpzMC-cHC7r3uQvAtky07IrXrU1zX8Z_4Yk",
               "width": 724,
               "height": 512
             }
@@ -1434,178 +577,58 @@
         }
       ],
       "위반건축물": "O",
-      "디스코광고": "https://www.disco.re/m/a1nobb0e",
-      "실투자금": 73100,
+      "디스코광고": "https://www.disco.re/m/d7wicyo8",
+      "실투자금": 147500,
       "사진필요": "X",
       "SH가능": "X",
-      "융자포함수익률": 9.4,
-      "건물명": "스카이빌 ",
+      "융자포함수익률": 8,
+      "건물명": "예다유",
       "기타용도": "단독주택 외 1",
       "생성일자": "2022-08-13",
-      "대지면적(㎡)": 116.7,
-      "레코드생성일자": "2025-05-07T04:22:48.000Z",
-      "공시지가(원/㎡)": 4728000,
+      "대지면적(㎡)": 157.7,
+      "레코드생성일자": "2024-08-07T04:23:03.000Z",
+      "공시지가(원/㎡)": 2432000,
       "대표사진": [
         {
-          "id": "attfooakTFDWpuxDZ",
-          "width": 4000,
-          "height": 3000,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/YJwTemIJy2HnMpMYlBPqjA/3J_BkUHKgvVsc0VTVtZG7_K0pbsHRA3jgTPJt3LJ-dsfCTQmzHmBEICVM7YA_OEGXJ2T7LF0-760ys9ITS3qdzcwmSb8xQ2TKBA2X1KntqRb4aOIUHR4XPmScPLskU3b1DT80HnEtvMGphCpvxC4glSeTXLIAUPPDCc54tVaxjM/oDnd8rTdJAmNfcma-z8VN5u4TOH0nrY-TK2rKawgIhw",
-          "filename": "20250513_155321.jpg",
-          "size": 3698769,
+          "id": "attf5pwPcL2n1q00v",
+          "width": 1058,
+          "height": 1411,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/MfgX_9BlGG765xFcPYdMyA/GQBmvSLpKWKHZfdwc2jtG18-jDnAGR-OQCQoceX4DgF5oU0vTs-C1454uqoxCfgo_z0MaVNBS6lz6vrcO-50EeTa_CwYMO3s5CMNPGCjY1ApjQLkv5tJcWGcZnyvBxvRPtDsJr9i3_tXdkSj70pUqqD6Sdh5p5NDbNnB_RlQEGlr3cn5A-02SnhmHF8BQEXQ/a3xN0980JtouTodz7vhwSpRLfNFPgxwB4wBmstjG39U",
+          "filename": "KakaoTalk_20240730_151038405_06.jpg",
+          "size": 675303,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/BzVNrfhRssiPU2K-pz4IZA/oaNJAnymSiBG9OMkmvH3CJOG40kYgFz-R3WYaTUCyCYBIEAe5aTxL46oWb63fEUOHRmFANxd-YYk-RIIBFls-_-2bqpl7SLKMHoD7ZBazz3-weVPFh7qMPkvwkhyRCSQJha-7_ETBFmxRQ6Wwqze5g/bipaOBmrczPqch69-nCW3_i3LAA9c9ZhS_scksVXCJw",
-              "width": 48,
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/7V-Ed6fqJlouunfeJ2zp7w/eyqya93V2BQD5vc1cqIylIzfu26xGCTWr8X9stb6rgYT5atPorS1HLfVWyG6SlFdQmgyfBzpnt_8JwhsqfBlxfbYJPUJ5bzc50bo75LV1b1SCcntWIhfKogNupXujMIGb71SZ_YCvhn3xQnC9oGPwQ/IQ2rdzGNRnm9fagQduJWzukT_nsDcic8fGfvqIDTMBo",
+              "width": 27,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/Y2kM-LDN_3MfckpvvDzmUQ/iL9CKtf6LQvTvh4Shw1IZtdUk1UPxDizSUvk1Pgi1PLrhzG0US2_qWI7zfpN8BARepIxx-zGsdVyJZPWoDrj6f7sUjnF9HFnTEvgV7FeuJv7b_WHGW3PHVJKYndsIrjRCSUrO75y-ZQQ2svEdryhTw/FcpQyGpZjYP90s7syP0OORJ-zn6e8aVOl5wbV2iie-g",
-              "width": 683,
-              "height": 512
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Yd6Pzq7ZGsMVMdeLsg8l6g/40WxlN4hwYcR0JfK8Ttvftwaa8vBuzZLIkUGNl0d4cQStMatNl_OmaKuTfUu5qbo_bkOh4LXyBW0PuAYPKg5xSL7Mk-2Mc_yoHi5_hMkw8OT94BZ0Q-R7LN6Zt5FS0O-vFUjoAdv124bUgx_9yJWVQ/3WtGNAkbxu-F6pi9-XqcIDLnpyqQG44MxgKe1-HG5OM",
+              "width": 512,
+              "height": 683
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/PRpM0d6hlKAdVMBbv1ZWaA/KcvAZ8lG6F3HmuVKW4ImqcI2aOLG2QoxkrVfS6SCX5Os6z5VYbXHN6cMKi09yQuTVeDTSUIqPO8UOgO81ZWdWsxlwHTtIKMGNWa1IO5x0BTzVb3aUSkAX1udDlr4u91cGlVLsDOma6XtP03tycc2gA/8slA3GDO73u8ArlS1s1qN8T6YhNoy6NkjJV67e-IoLQ",
-              "width": 3000,
-              "height": 2250
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Fkgggkq6dw17S2gxGaDogg/iCdmFBmiQ6R2WLuLbUqbCFITEqLlwHtGOgWd1-S5FT-_DIpsskAySL5LA2eFgcVodl9TQ06hmcVUVsVjEniD7kzvASGTYwJbsYZwVTSthdhCiPGsrye1eOdBeJGC6K-jX0orC6vBTuFjZWGIReLaFA/0xx3pWhfKm3B3EPiPRw_TQdn-HBb8P5elw1ayzLBH8o",
+              "width": 1058,
+              "height": 1411
             }
           }
         }
       ],
-      "레코드ID": "recXIOIb8zNhTIPvZ",
+      "레코드ID": "reccsFOp3I0eEUSD6",
       "네이버": "완료",
-      "실투자금(융자포함)": 73100,
+      "실투자금(융자포함)": 147500,
       "주구조값": 50,
       "연식값": 6,
-      "현재가치지수(%)": 78,
-      "건물가치(만원)": 38512,
-      "토지가치(만원)": 110352,
-      "10년간수익(만원)": 68400,
-      "감정비교": 0.89,
-      "10년후건물가치(만원)": 29760,
-      "10년후토지가치(만원)": 142643,
-      "10년가치지수(%)": 127
-    }
-  },
-  {
-    "id": "recy3WeMZEnk36sjv",
-    "createdTime": "2025-05-07T06:52:01.000Z",
-    "fields": {
-      "지번 주소": "관악구 신림동 1546-14",
-      "도로명주소": "서울특별시 관악구 신림로21길 51 (신림동)",
-      "토지면적(㎡)": 172.7,
-      "연면적(㎡)": 589.7,
-      "용도지역": "제2종일반주거지역",
-      "건축면적(㎡)": 102.13,
-      "용적률산정용연면적(㎡)": 487.57,
-      "주구조": "철근콘크리트구조",
-      "주용도": "제2종근린생활시설",
-      "층수": "-1/5",
-      "건폐율(%)": 59.97,
-      "용적률(%)": 286.3,
-      "높이(m)": 15.1,
-      "지붕": "(철근)콘크리트",
-      "소유자명": "안현순",
-      "소유자주소": "서울특별시 강남구 삼성로 151, 10동 1204호",
-      "소유자생년월일": 510811,
-      "세대/가구/호": "0/0/0",
-      "현황": [
-        "디스코",
-        "당근"
-      ],
-      "매가(만원)": 230000,
-      "감정가(만원,랜드북)": 180000,
-      "감정가율(%)": 127.8,
-      "인접역": "서울대벤처타운역",
-      "거리(m)": 531,
-      "월세(만원)": 1400,
-      "사용승인일": "2001-08-03",
-      "주차대수": 4,
-      "승강기수": 0,
-      "주인세대": "X",
-      "주인거주": "X",
-      "소유주연락처": "010-3773-4204",
-      "건물구성": "원룸 36개",
-      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n    금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 서울대벤처타운역 도보 10분 내 고수익률 근생고시원 매매\n- 임대수요 많은 대학동 고시촌 중심부 위치\n- 대학동 평지에 위치하여 이동 및 거주환경 우수\n- 7% 넘는 수익률\n- 매매금액 : 23억원\n- 대지 : 172.7㎡(약52.3평) / 연면적 : 589.7㎡(약178.7평)\n- 지하 1층 ~ 지상 5층 고시원 36호실\n- 용도지역 : 제2종일반주거지역\n- 방향 : 북향 (주출입구 기준, 호실별 상이)\n- 주차 : 4대\n- 사용승인일 : 2001-08-03\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보 2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
-      "사진링크": "https://drive.google.com/open?id=1Yjd9MetHA5MPq2DSHmNoiqQ7IS7XwFW7&usp=drive_fs",
-      "비공개메모": "010-3773-4204 원룸 36개",
-      "융자제외수익률(%)": 7.3,
-      "지도": "https://map.kakao.com/link/search/관악구신림동1546-14",
-      "건축물대장": [
-        {
-          "id": "attQutCO2S5F6I0iq",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/scvbsESgUzfobO27iodZYw/pnVPOZ7B8zQPeXb2c7_VvfYjSRWEPWCUIlgPkTmBZX-DvbkmSld_t18-OdqMxy8yb258vgn8KBvz3WgSySzTqxATPxAjM27MZ_EPAToU1XxkWslM4yNwwca44LUrvaLofeyVFJR5m9bYReHw3zKTlA_ow2X3u5Ku8txOEPCQ9WY/U8OMnkBJc7ts2kTscorn_HQ7K8QQNFamld8GHEb5W14",
-          "filename": "건축물대장_신림동 1546-14.pdf",
-          "size": 398974,
-          "type": "application/pdf",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/WiknUaDNphRe30nR9mNjDA/utWZ-gQ5I7fYMzGkZbWNCRXJyyOs6abY3gizLobmxWavFgXst1M8Qe9W1usfcHM6wzBcJL2hV4Z7Q3UHhcJqlfIH19f0uMApoYzN10DRSn6toBDxYhP09z6mzMcHeXg1bmEkQAn9F_CCE2LYJ47LGw/S0H8HdZqTxNuZrg_bz7SEmIX8qg4F7argI5o0YwaqXQ",
-              "width": 51,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/a187lptrukLIL6f3lZb_bw/fcxVIauUUpa0lefWK-0P8cB4nMN67nYTrh0kx53ajIvJuE23lLcoFfZFhrrpy9BztNz7uyWggJr-EjJzNpoQUg-NUi0Y7JGkwI3ASQpOA4T3bfU5pro3z2ZdDeA1s4sL6h4pjw2n0PgJ18nYWdTTXg/BEkVPurLh_i6sFwo3wFVMiFTtcGkDzCOPqwjn6pg63Y",
-              "width": 724,
-              "height": 512
-            }
-          }
-        }
-      ],
-      "위반건축물": "X",
-      "디스코광고": "https://www.disco.re/m/rgutai3o",
-      "실투자금": 230000,
-      "사진필요": "X",
-      "SH가능": "X",
-      "융자포함수익률": 7.3,
-      "건물명": " ",
-      "기타용도": "제2종근린생활시설",
-      "생성일자": "2022-08-13",
-      "대지면적(㎡)": 170.3,
-      "레코드생성일자": "2025-05-07T06:52:01.000Z",
-      "공시지가(원/㎡)": 4930000,
-      "대표사진": [
-        {
-          "id": "attRAoYvxy1j2ITZQ",
-          "width": 1400,
-          "height": 1050,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/JCGO8dsAQ_tAGCXfCbKyNg/FsCl7bsYuEeA505HEv0xZplZ2TxT3TYpH06SjlEFUuspUa5N1ohYrQImuKplqCcw6lxlOOCB5OVCoNIYP75f3OR9ldMZKryRiz7tCKfuHt7sCwS87xpRiYxPRI0E6RO6iLDuHkXv6K2g9QaIduKo7CtdsGb-jjq8nNWeop6f2za3PL9QYVviAfuodpiyCK5G/RU3MDlczYW1EF0XdBI38bbgRlhmqRbXZqmp3sA-PtmA",
-          "filename": "KakaoTalk_20250605_161051859_01.jpg",
-          "size": 536884,
-          "type": "image/jpeg",
-          "thumbnails": {
-            "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/yHKGuK3tS8aNYgdQBpwAIw/HsT4xSFUpAAb4XZ7ryEUUuduCvlp1knKfKFheNoe63JCXTWqFQ4gpmfOiElvDWvGj-X4Q9oCDjVBTCEubnNmep9WNc_ga2pcvETI9xQJN1sOnwJG33wEIoJV2CfOBHXEbsl4QGZJJF4sZmP5GvPK6g/-GUHt5sEwHNNUYuIBpK_eCd5SELRayFckKxnppdU9Qs",
-              "width": 48,
-              "height": 36
-            },
-            "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/VUAysZ_69M4Nw-Hs404cpg/u2qoYPku2hHBYVp0ewi_YofRArGlmaXB0UzSwyKNDArYvOQ0Vj2_psE98B6pUUqoGKw1Y2CbJHPnQcjDmt6Cpugv9UADPPNchtSZ0jBfgb4U0uvi4oBqgEXsEAOEFsxf6TtdREsyN9JPByKryOzMbg/OrbCBHHypRD5TcsPSgCh1PImN92vI8Y1TXU0HcCckB8",
-              "width": 683,
-              "height": 512
-            },
-            "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/tFLWq1HvjetCtGp9dU7GiA/98TkH90H9MS3rT637yFWli4iCutRx_45tgv9wGkYx5nPVazaDMhvyhwb0pn1g19NOYfXghdKGHvmr72LuDBy8aaVB7oIrJRmCEBeGhwfBh8qzqmLN8CI9MwRYFBFGqrMaNtAdZBCrrU2zFmvM8LU0w/XwPHzX2dMZYXd6BqDOz3fFXSlJ1mXfFef4-clR5FgjY",
-              "width": 1400,
-              "height": 1050
-            }
-          }
-        }
-      ],
-      "레코드ID": "recy3WeMZEnk36sjv",
-      "네이버": "완료",
-      "실투자금(융자포함)": 230000,
-      "주구조값": 50,
-      "연식값": 23,
-      "현재가치지수(%)": 95,
-      "건물가치(만원)": 47766,
-      "토지가치(만원)": 170282,
-      "10년간수익(만원)": 168000,
-      "감정비교": 0.6,
-      "10년후건물가치(만원)": 30075,
-      "10년후토지가치(만원)": 220112,
-      "10년가치지수(%)": 182
+      "현재가치지수(%)": 69,
+      "건물가치(만원)": 41895,
+      "토지가치(만원)": 85120,
+      "10년간수익(만원)": 117600,
+      "감정비교": 0.77,
+      "10년후건물가치(만원)": 32374,
+      "10년후토지가치(만원)": 110029,
+      "10년가치지수(%)": 141
     }
   },
   {
@@ -1656,18 +679,18 @@
       "건축물대장": [
         {
           "id": "attMCuYTgEygAnVWf",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/7gmbzB0TGF9467gYBj7spA/qGDRJOyEfZhENTqgO1mWEOKQEykPcnk5rfOpNASRTZSF0R-42AP6Jv5bKuUjJ7Sm_E-Mu3qIrNugUQa7QOguy4eP-5RhYHRArkw5i3gKo5BVLNvvM9yR22FKp-GSRDseMeuR50bXR6O8H4E2N1g5VlaVfEUIs2XmHEVm8C-oC64/9AHPr6aBBCDLYTVUtYrZJZIDqvOXimhO-iAYTluxN4w",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/VnQLVAxPUj6eXymF7IGgvQ/ZjfM4eP6oFypek6A7-m74j4on3ws0jPEUBsIl2MeIg4QvRIIJWxk5O35mXB8wdY_-MLS4zsTWeVGU5v2n8VLHLpufaCuJTVqy-XYMkEIu8qS1zf95X89BJqBpyC2XHAC1GwlWiuuNNNuOHrA8fvEsid61CcV53C_WpkQzvFASmA/x2ohfFJhIKo5JCIDQKqszsc_kiTT87dXuyQV0UKfQCM",
           "filename": "건축물대장_봉천동 1690-31.pdf",
           "size": 400744,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/PXJOwhA_UtJpGQj1YMG6NA/Ckzlro-1yvaVOnHrJlXiBzfc41NBIzfgKJ0klFEFRoiz5depajmpWiiv1eoVcEFR3vURmDilgplcpFYIC1oSw6iumzrFD5xkObeqKrPZG66RBcL9UNiirkvcjVHyysw4OWG0pITWb8l5fusMOp4FEQ/8ink2QCQbUk8bTVC3KU4P6EpRpVJo4Ji-CVlrEawU9w",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/GsNe-L8S6kKURW4LgJq2gQ/4pK7DXVUvL-zqU2582_ayAj4QV9Cw5Ytqc-XuZmwJT36cska7jY6SzNCRQFHbn0EHuoM9ivesq90PfmHqlKpHVzc8UeNl9-PfRZb5JZiQpeLr2uKMhL0r9hJji57M2I3fcSY0TCQnDAvKl76GqAWaw/NE46_zOeZJ5gh9QwVgHmqquzTKNkqqNi9Z_hZtbT7q8",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/6rtxNcr031Z_CiVF7lvrGA/cgP3HxQGS7uGuGPcLz6BB49qc2NyzSpUKz4Et8jz9tKMf8M_bT2E7nbkynQHRcC5IXUYceMXgHwc5WUlIlZ2ZIG7cSXA7FkHXvcFjx67yRSZEwIk1SMBbi1aNwYDsSSaBm_2RFgAai_1ynXOP7HlvA/y5upFpHaM_BQ-YN3BFzk6hSGuzQKS5gM3O19B6XkqFI",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Z8oeTsTmyvkrX1ZxkNYZ2Q/1B30qc4JgCRq4PkhAD2Lq5Ju7eadqr9KIA0ryuW9_nVpVJG4nSDML_qVrr0Z6jPmFYCfkeWGyuxnDbYP2elSr6JjRFiEeKCyaxNgVG1NUssnx9gdeiI37mR2W9kNFFOCW0zxpp6xrpgV3SyBifYNcg/X2Awc4rj99DSb4pjQiEpCDXb4geYvK1OdQVKYhXoeQQ",
               "width": 724,
               "height": 512
             }
@@ -1692,23 +715,23 @@
           "id": "attxA3iCiXx2S6W28",
           "width": 4000,
           "height": 3000,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/iZ5RalzSi3NC0D_lrRf5Xw/Axu9EBPEAePEmCZ9jWxqm_Dw_2FtA-B-pJ40oO0MijDcFBh8TNkpCTyWtjQemcG4G3b4ncSifk5iJdTn6N_bHnKE8fR4uPRW2T9iCCdxRfyXL1BCI6bzebcrMU_S8tvFE5KwNgYgGpBAXbn8KdFMGtVQy5zwzrKdKF3z_McLdU4/Jc7T-9vKlrjlwfjp3OQLDOsAaCeeGoJ4Uv79MHuJlYE",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/4flkCWY7Lo-_ahG8nesUdQ/yEi6VX8nH1lId8j3TJb6yORGCuH3qKa8sEqlu6VcVI0ul9f4Iig7SW0o119r6QDf2thoDKrl3dSxJi0YoZKeGwg3IGiyO0VBPO5DakkzH2NiQfPeJts3T5n__ZCzXI_mxDxoD5OLMdM7vPEum2B70a0WvcNSQhExQLrmkgGsQ7k/xd9PIKjHHF1h-8iMSOn0dexTlNkY1jnd-5Q3rJHDYJU",
           "filename": "20250513_163315.jpg",
           "size": 3697219,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/ldY3bnqUDIGzE3_AZufW6Q/mNZd8XOV9uFPf6x_ryHy_eTLXEUb2ocw-20iPH6JKNmP-K7Xvmd7gJRyvOc4Tm5BVAevVym06uJJjKcQdZVVCK8Mj1u_-Ie1k8n78w1ou0ebzfaBEIyq-s8PWYNWsuMBU_-r-hzQ_kkc4iMgeasn8g/whSFx7U5mzZFVez0PnLW17GlrUPyiy84J9k3qMXSklw",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/J4qpo8b2-gF-7vzn9DEYLg/tlTqeE8LijnvNpllr8YNQqvmqpiLIIYTPvFMV94JsC7K-OYJAn8rZ_VqOGTHUuX7Xn2wMpeXhKpVdhaz3vCVZFY8FlG-ZSm1b32YPaiUKsiubz2XlVHevP3YSzr3XXg-_Yfu_3RIAhqQKBUzZ54j_Q/bgZGXP_RuBVFwUAUbkjqGJ5JFVA7nWmSC0tS6tGQYus",
               "width": 48,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/opuKFQNNiNspPv3dI59jqQ/6-4j9pFdPXcyKk-n-mSUKHAfixbHC-lX16PzVNZI0Y2E2Qc5JKaVIdOma8FXAbgM6l9weGv-IVekY0PaumcG7UC9wKN3LDF4eV_VK3bBKFXVsLTRSV_LBgodFc8UlBJ1OQKDFjqgf5CeOKyvFgd_yg/ype807YrjEA92PXt3IZJ-jVyl4gh8pannnYBC5g2Shc",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/tvY3wfSHFKOy82l57-1lww/dJurBxrynpazBxqH9Y5J5npkAyZkQr40hn82BAwMTGXjBRjaxqf9xWL9yzpBliyPOAeakmtIrGduCxtVeWEqLkHfyNZCzvp_cRjvjXzoYTtC-worxWLL_BEpWkiVfdl7bL6e7ZEBF-yqOmkRN8JUqw/rLSEUftSjALgiScPnZf6u4OzSklg46r5B2vxv8F5k4s",
               "width": 683,
               "height": 512
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/HzFzpRLmjnp2MaGoHGY-Mw/OmiHcpTP9SKloIsqWYfFscAXjadUJ1isxuEPa8UYbe2yuh1B28tzS-lEAxOaV4tG62g4UhulsZN8kZs4ge9s9UIXjC8fJYHZqPWc1i_ZWQffQwwBllI5Vue1K8f_etKHPqYtQL8aTZlWQY5OjbzBBA/gmuBrfSEVtp0AsN85cCabNXeTrUuV6bYZ6xHVqTKQZE",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/k2K7SIf7GBPAPqmyGQnfGA/fokDFuoHQC7LT5_MuI80I1VmBbF6FizJ7XfT7MT13ISvkiyf_bFYdhONqQvU2oESZC48xoNLu-9gay1IqVNAj-cil0vSxzXUokQ7DA1e-CvQmml8WANR_d0wet0G2dfV16OHZF4z-MVOLW7lQRyrCQ/mbRnaAsUWo3XGVsWdMo4oXqUq3sFR-Mloo1ixXqOnxs",
               "width": 3000,
               "height": 2250
             }
@@ -1780,18 +803,18 @@
       "건축물대장": [
         {
           "id": "attnHlZgAiL7fQs8q",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/M8nFQHe_g1nqr5krtQ5iVw/hb1Lp-YhIUQfGC1zsnf4z8xJy6A_t01LyUQeYgO0yKCDy8vXLMKmdMtlphQn80LQAw5-KTfS4UpXcZIsi7xdQT_uCtBArhp2yQM944ORqQ5SP24HoHvN3em_WnBxhwulTPJOKkhTCZvUokJCY4fCrt3COCvChk-0i8TMOiUOjKM/g34MRx6lu0-ERDX5-6pm8USGANTzXsRoHNMKlAUdI2Q",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/qlUPnSUn7PgqNe8EresTSw/yx40ZrK1wcoTF1G5Wdfxez8FTrUtN-JsB16gtYCLkeV1u85BL9Va2nmUWBLpBeMI3ml9whERttI_dObc73AB_QZAHqPVqgF5ey2DSSFAdwxhyRgVItmNYAupExnvgTK_tcFeLyd88kDOlqqIThIahwTM5XVWBJSKlO_Wmttp-mQ/arYJs4DSid-p8MOJmpPdGyzOpZz9IsF-ttMl0bV9w3M",
           "filename": "봉천동1643-9_건축물대장.pdf",
           "size": 365434,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/iRSa9-INe3bxMhMmx6Rgrw/YAfir6qgWsjKf3VEthBeaAxD4mof43_Gm75raAxa62p1xpF-n1gSW5QOxzohAZrkovOitI2YLV2eZ6r1v6oCgC7vcgzDqMQkR64d7quWGEvVVKqUX8-uP3ogbiXNMGAdB-ZadVBfKsUnJgiEi-AoTQ/4YUlOLSBNORFnUYTfg-3CkUxHDJ7iURRfZeMcZzpoy4",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/5w_2BHmmIU0U2PCI5bnNQA/Tu0soyFqPF1b4oF0vKBgxSfA5JoD5zZCWowr0Og7D9l5eVsgAq5hKmPEB3gsYJDKPhFIFyptN0FiW1SARtiBPrpuFpkypO4NrwmVa-sH0xmNG0ji-CJUGjKh4g4iwssQhpbeLlRzzS7Q2sLrXTE3oQ/x8_90WVBquqcBV6sltoWPnv2hup7END1Ut9WQoPKQ50",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/y6BpstHYD5q6Ze0BiwQSsQ/NVpGhpZHpWJpeZsSI9C5cW5kWwtjmMH3yvNbReMbOE7Otpoiue0JT-ms6xmYPYd8YVAJbLOayL3cx6K-2jjdki5Hx9r6pGfQTux0Le93cpfSKTYSJets--DYWVQBH8h_ERU2AtfO9VL7H3dK8EgevQ/lyFDJrhjMaue2IpHbXLM6LEBsKPjLHXVmODxx1px1v0",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/gBb6pDVCX3S2eMHwaJ-2fA/USLxwlrXQUrgKwOWl-JvNF3RlPIIz9LsKwpRyemNhHd3nz-lSj2C_5Yl9XBn6dngu1Pic94tSab-Yo7GHwj2rkBnyVDqPQaVblPybXvgQKwHVQ2VOaOv18o__I6kgG2dAF2HqhDwACdHIgvlB7d96Q/LZ9WyG8wFOORoJ8Xw3a7OMDF-to9J1RXIv5gEBoqcMs",
               "width": 724,
               "height": 512
             }
@@ -1815,23 +838,23 @@
           "id": "attkuLzoreyYhOabq",
           "width": 1600,
           "height": 901,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/eclb86-Pb0IfklsLMr316Q/GiY_DhKxQ6_x5cz5pP1lfgqs1u04sPz9k7nFEid8nLdb7SZOl9iZH7NSv6kXx8CFQIBAbwWrYur-rlbWjVpNpou9XiEgrM3Xvy6ctt5MuEtxgvfxaiuvpdNi0NcOMEL3vGJ5oPWoq5TKd87Oj4PWYz2xVTY0dgL5yfUSBDJ_Zf8NJPZTqez3Iu1hUtvs7Z2y/-VVQPPkLc79I6VKRyJ4Wo30-w92zWyeZ-90-iCuevUw",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/fePuS2L-JaQ-toR-6IvAJA/mdwlJ8OgnBcVZjJAT9EQcBPwnTUAlVEOjzVfqY85Bq_0XtGmlpUVtFfG45u02g06zgC0ZYJxZrr9n4h3_dz1ND_azyLMH-lK1YLg1kY3c5PowL0yKrFenskcSXtl24OmLQSqlEAbrRgveUBggHUwueML_kUDIlUF4mVGyNXuKij5to43kHNNK0IMcM6TivP3/wsXPl3k8Q-UbOovQc6TO5_NNu4RBoGJyA_Wrfc0vgY8",
           "filename": "KakaoTalk_20250520_155225613_15.jpg",
           "size": 677835,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/fwPvgJ6FpyNzNPA23XkU0g/RK5lHCRGDpAQ5HM4YppDRsa5O00lhNpPrvMPnGJ7TlH5GyqCb47P1fs7PC19EFaa1EqUUQsbyACDJ3gfYySH7XWgUgBNzxZoRn0aftGvhVY0i8dINpiEVtDPIFP81Za2C3BRJ74d2ISgYBcxCWZAcA/NXff0_UK9F8O6QY3IlAv88GvbYNmADvj9OFdoEguudg",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/_9sWNQ-7wELQPKMv-lu2OQ/7jY3kKlP11XzEurgEyDfwnajxPL2_BhztSqtmsCrCooMacRjX75p72KKHtzVs1UXpZtJgijXAesn18iFngCO9WnXr4-OVT3XvKzb7jLi9t7Cox3fOpgNsCcaIbUqdXpD6FpGwPyM8qFDIBcUiZTY6Q/yLM9g5hu4UYqTXYP3261jRBXpZNbdfkBnnI5fpXjfBY",
               "width": 64,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/4El6iJa2PxU_zJ2vmTdhpQ/zCpA0WkNNVy2kQ1Nts7VJQWmnRbQkgAl4AXzMTEkVMBl8N-1TjmLOwjXCT2tq8lC3HuDlZFyFexCqNmU9jtQ4ris4X6CoPzfqvbUxRvnNYm83wmuf4J4ejtaccb6hWQtc0uWbHP7TkMHnMCemY8ffA/Jw193nD4ONtn_M_KpzEXvjPMKyG9d_xMVZ4p1i1q5As",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/4eqWxa05_lqb9TTEM91Z6Q/xFmTutEWdJYfdkuZENU_Osa30ZuV7rG9e8tLy-M2x6jhZTmazANfol9tROSq6We9dkwGtF8a05oQZjeMX0dKZe8e2x-N1wTYsOpZ8vkLIaNvk8_JJauNYtboT_3BRzrRDkZEoZPaJFDO-IgPxGDUYw/zP1TBSQLdjt09SBwd_XlVztJC2QmQwtVwe6u6wUKsXY",
               "width": 909,
               "height": 512
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/HrIWdeEXd0IZBfTTOetLCw/-TbyuCy-98L1cGuYNU4SUhf0YjvuScuQngS4pxZcRwZrC0rSlA6ajLniLbGEME4hU6NbabyfvA-e3zSJ-SCxDLqPjQx_lqELnX1Is4LsArP1yaHEn-Ou33jj7ip-mpcJX3yKKt5tKWS7h-zhwB-13Q/qhrVJ8Bjs63Ok_j15lamIiOUKFs_VBxzgSP_200c888",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/eOiJLIctSDgJQUTanIlzzg/071Ks4R1hProcw-a7Fbuh6_eufKD5EVhpxdt6wWEmJT8YkIVeUuUdCGcVwbZNNE4rlCtCplzZCNAjAvYVxULm3TfdDS0G_Lctp4ZlB1c3JDn9C1jSQHOLFrvBvlsE9OjiUABGi3vMkBMlT2GA5L1yQ/8yeIP6d2ytoG7qq2dDcXuRKdxfOdB-EjNRNJ-tA9ZhM",
               "width": 1600,
               "height": 901
             }
@@ -1851,6 +874,371 @@
       "10년후건물가치(만원)": 19129,
       "10년후토지가치(만원)": 171628,
       "10년가치지수(%)": 198
+    }
+  },
+  {
+    "id": "recy3WeMZEnk36sjv",
+    "createdTime": "2025-05-07T06:52:01.000Z",
+    "fields": {
+      "지번 주소": "관악구 신림동 1546-14",
+      "도로명주소": "서울특별시 관악구 신림로21길 51 (신림동)",
+      "토지면적(㎡)": 172.7,
+      "연면적(㎡)": 589.7,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 102.13,
+      "용적률산정용연면적(㎡)": 487.57,
+      "주구조": "철근콘크리트구조",
+      "주용도": "제2종근린생활시설",
+      "층수": "-1/5",
+      "건폐율(%)": 59.97,
+      "용적률(%)": 286.3,
+      "높이(m)": 15.1,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "안현순",
+      "소유자주소": "서울특별시 강남구 삼성로 151, 10동 1204호",
+      "소유자생년월일": 510811,
+      "세대/가구/호": "0/0/0",
+      "현황": [
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 230000,
+      "감정가(만원,랜드북)": 180000,
+      "감정가율(%)": 127.8,
+      "인접역": "서울대벤처타운역",
+      "거리(m)": 531,
+      "월세(만원)": 1400,
+      "사용승인일": "2001-08-03",
+      "주차대수": 4,
+      "승강기수": 0,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-3773-4204",
+      "건물구성": "원룸 36개",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n    금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 서울대벤처타운역 도보 10분 내 고수익률 근생고시원 매매\n- 임대수요 많은 대학동 고시촌 중심부 위치\n- 대학동 평지에 위치하여 이동 및 거주환경 우수\n- 7% 넘는 수익률\n- 매매금액 : 23억원\n- 대지 : 172.7㎡(약52.3평) / 연면적 : 589.7㎡(약178.7평)\n- 지하 1층 ~ 지상 5층 고시원 36호실\n- 용도지역 : 제2종일반주거지역\n- 방향 : 북향 (주출입구 기준, 호실별 상이)\n- 주차 : 4대\n- 사용승인일 : 2001-08-03\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보 2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1Yjd9MetHA5MPq2DSHmNoiqQ7IS7XwFW7&usp=drive_fs",
+      "비공개메모": "010-3773-4204 원룸 36개",
+      "융자제외수익률(%)": 7.3,
+      "지도": "https://map.kakao.com/link/search/관악구신림동1546-14",
+      "건축물대장": [
+        {
+          "id": "attQutCO2S5F6I0iq",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Ds3EvNgOj6_VZ9oPKkjK4A/K-KXiNSzyQo9S8M8LBEGT_dbUXj5vd0bGsP0QoEQ-44rUdPdlaBc77xN8CLXVYytYx-a3QvVjXhWMBmpnt7o7qQxUNNujcDBL5f9uYYULxDdTsxl1yPyJ6gTL7AfDs0IvV2iXRd3fEokyov5_e2PosW5vKYa9INeV2CIeaIiutw/w_jxvEaEw_KNv3ZmQEFdW1qCxECexrEz9Xpe2VDlGtY",
+          "filename": "건축물대장_신림동 1546-14.pdf",
+          "size": 398974,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/WLsJZgEQCcF2L0NBRqZgiA/GI_mba41jII1DBorxiTCtOuty4gQA-lpxc24izas7OtyQ5udDzB_Y7TF4_LpZfvqO-m6B-KV5RXLQRYLRbFHG95BcLEwIL6S6kx9CMTpU9oE6k0yAU3tRNkaLfIcZNTCF-HqX2aY8EehXdQ-HkTUdA/t1xAYrIKgwuBdAxQ_lOPHb5aTlYFK84eFjHHcFgXdRY",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/fW_5HvdRPP0N3vHGko6tBg/m2XH9BRPOW3CL-RIlOHIvCmM5CmNTBmUzL_NW-isO6sSdXOMJyon7QyRITdLAjh9twFvBQq4wAR4itQFCFi_rwE_WVCuR_CtkAAmHRjUBLUek4TwOhkgnmNW9b3lFDRx_DMWk6Ns55_IptSG_V1orQ/Ec-9PedvcgeEWg4IgKI3G-ai9eWk4ZFPGZ_89uAVuBw",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/rgutai3o",
+      "실투자금": 230000,
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 7.3,
+      "건물명": " ",
+      "기타용도": "제2종근린생활시설",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 170.3,
+      "레코드생성일자": "2025-05-07T06:52:01.000Z",
+      "공시지가(원/㎡)": 4930000,
+      "대표사진": [
+        {
+          "id": "attRAoYvxy1j2ITZQ",
+          "width": 1400,
+          "height": 1050,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Qs32odeK2cz8jDtqMizjKg/pW40og2DgE6Y-uAaAN_sZun8bJQtjg9eUQwUrLBEsXlFyfEi2xASkbrjknc9zaXa5mOwMsZwF00F-9jXKpnXgc2GHBkULsr9LQow-1RJk0eoV5Yx-EEynzOiyX-htFIgXjJjIyYli1W1QQCNaLfwTEKKmYJoILTAABINa32yQS8-2Bg3iUiC0qNR2s-jZS_O/4SQBZqkCBHxbT21oflYGd92Jl3YMu8wLd9_RWtfb13E",
+          "filename": "KakaoTalk_20250605_161051859_01.jpg",
+          "size": 536884,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/fyxCYSGatIseZGNd3Vo_JA/hTISXE7J_UriZQNivMQ6SADeePEGO9Pl9WvbCGS0C4yQ9K863BBxRSk1ANgOtUc8LsKMsnMaccnzvRDZtu7XZEH5ozBairt_NDELgeQZly90jPq0AXRe4xuUx-xoiM7bOQh40qDhOCbbvSD0M8HsBQ/TqGzgOscRKNmybSQ7OfU0-w-y6E4Aw3RM-wnKVtbgXs",
+              "width": 48,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/_LVEb5Nc3lH_iNdlOJvIuA/XfpFAFDCyAVLnGVo1HQA4rNM64hRdNHpVGyytR1_ZPNUz2auV48PH5yudcRn5tHh8XInyO0TAxNSAerYL5-dzU69rq6UFXEo47OLYcExbBAKePofg1HXedTw15TXE3WARbGd5u92AMqWY92z9Yujpg/sdzsbc0iL50AiZT_9oS-3OLXNDceMuwwRh4rUGx7N8Y",
+              "width": 683,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/ikaadJ8-5QFNQw-tN0kxtA/H3wDoXNTs5ORV37jUm1U3QGG79mhWdKpbABB3zR_VIrNSbj3JHVNGHCGQUdmOUclexhxFDG_vr8ujh9-I0bO2xKbtXhe0hWMcDIJFnJQ55oZ0gpp4J8PrgmYAHWY2sjVS5YWlfT3rD4_VEAKQrgTpQ/DN6stgPxQFBcsUNj1XYWvY0DmpSjOOcmthjBJzlcISk",
+              "width": 1400,
+              "height": 1050
+            }
+          }
+        }
+      ],
+      "레코드ID": "recy3WeMZEnk36sjv",
+      "네이버": "완료",
+      "실투자금(융자포함)": 230000,
+      "주구조값": 50,
+      "연식값": 23,
+      "현재가치지수(%)": 95,
+      "건물가치(만원)": 47766,
+      "토지가치(만원)": 170282,
+      "10년간수익(만원)": 168000,
+      "감정비교": 0.6,
+      "10년후건물가치(만원)": 30075,
+      "10년후토지가치(만원)": 220112,
+      "10년가치지수(%)": 182
+    }
+  },
+  {
+    "id": "recZqfvWvdmHnYBMH",
+    "createdTime": "2024-10-01T09:19:15.000Z",
+    "fields": {
+      "지번 주소": "동작구 사당동 314-22",
+      "도로명주소": "서울특별시 동작구 사당로20나길 58-3 (사당동)",
+      "토지면적(㎡)": 208,
+      "연면적(㎡)": 415.74,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 124.36,
+      "용적률산정용연면적(㎡)": 415.74,
+      "주구조": "철근콘크리트구조",
+      "주용도": "단독주택",
+      "층수": "-0/5",
+      "건폐율(%)": 59.79,
+      "용적률(%)": 199.88,
+      "높이(m)": 16,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "주식회사탑스페이스개발",
+      "소유자주소": "서울특별시 동작구 사당로30길 25, 비101-1호 (사당동,메종슈에뜨이수)",
+      "소유자생년월일": 110111,
+      "세대/가구/호": "0/1/0",
+      "현황": [
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 430000,
+      "감정가(만원,랜드북)": 384000,
+      "감정가율(%)": 112,
+      "인접역": "남성역",
+      "거리(m)": 543,
+      "융자(만원)": 120000,
+      "보증금(만원)": 162000,
+      "월세(만원)": 1606,
+      "사용승인일": "2022-01-17",
+      "주차대수": 3,
+      "승강기수": 1,
+      "주인세대": "O",
+      "주인거주": "X",
+      "소유주연락처": "010-3950-7201",
+      "건물구성": "원룸 15, 1.5룸 7, 주인세대 방4,화2(복층, 넓음테라스) 주인세대 임대중",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n- 베란다 엘베 있고 넓은 주인세대 있는 고수익률 원룸 건물\n- 7호선 남성역 도보 8분 3년차된 신축 건물\n- 거주와 수익을 동시에 누릴 수 있는 최고의 매물\n- 매매금액 : 43억\n- 대지 : 208m²(약63평) / 415.74m²(약126평) \n- 세대현황 : 원룸 22호, 방4/화2 베란다 있는 복층형 넓은 주인세대\n- 지하 없는 지상5층\n- 주용도 : 근린 및 단독(다중)주택\n- 지역 : 제2종일반주거지역\n- 방향 : 북동향 (주출입구 기준, 호실별 상이)\n- 주차 : 3대\n- 사용승인일 : 2022-01-17\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1ExI29iygz8fAB3PbEQL55Ui2ocxtaJru&usp=drive_fs",
+      "비공개메모": "25.04.28. 수익률 전달 받아 광고 시작\n24.10.2 연락함 타 건물까지 내용 전달 받음 (사당동 1044-23, 314-22, 314-27, 노량진 56-26)",
+      "융자제외수익률(%)": 7.2,
+      "지도": "https://map.kakao.com/link/search/동작구사당동314-22",
+      "건축물대장": [
+        {
+          "id": "attCK6ayqpaxCjB1L",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/CcIKfAdyTOKIHLXpnA11oA/JAy8RgLvTDuvCCK0uRBR2E6-I8qdaGbWuBIS2pje19EStI714uoxoOg92w1MJZr-Um6pGkXbHQg7wEl7K9oprQbgrvcAAGvKXJCyJGc5LsQBvedir2vLX6O0ewdOylT4a9oZUJl79eDRiCltlpReZH5GUzCZdfVSUvpKLNsiB-Y/Brccr5npZJrjDVGkBltwpJ-7k_CLjHwWmTRABWMRR98",
+          "filename": "건축물대장_사당동 314-22.pdf",
+          "size": 361499,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/_Sc9rgCscBtInRQckP6VXg/kAhSDkDi0NNohgQ9l3CR8WWjxpWS8dcIyy6WVJXZRAto5tdqt7MqT-PLTqt8XRbOR3PPvLhlmcoCmljh7qu_3ziP6qmDFUpCKoWxRwYPgbaAMF3Sygj-crZg9_e6vefbDWU0KNfN3bxXzmJAjiS2SQ/bkIBBoI4Ql4DYswbVP1tClontb4Spk8ogSd7wfQIE5M",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/UQyrRfVhy0YsC9bTdSbJ5A/OOaHz7lGhGMlWA6zl8-oERDD7WDs59gAEWPLfJZW82D2A-xkk4NlLUbDWGt-_pSiW69qQpSqMwQFj4sT4LOdKSAtsjjPfX0VKX8IZtj1_1mQsYue9i-eRNA5l4bP9I1TGMpWwjJ28Cvryik0WBDBXg/g6y0AQJcjVr0C5PRjy7k2s6ih__23LE6FOQl-FXZIZw",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/93vewnfv",
+      "실투자금": 268000,
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 9,
+      "건물명": "메종슈에뜨22",
+      "기타용도": "근생및다중주택",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 208,
+      "레코드생성일자": "2024-10-01T09:19:15.000Z",
+      "공시지가(원/㎡)": 5634000,
+      "대표사진": [
+        {
+          "id": "attoCk8T4JStnxj0z",
+          "width": 4000,
+          "height": 2252,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/U-TxW5sFeJAyKKBxy_ltCA/1CCo04RVcvsMKTzd0DpaSB8rxqnLPjgNfPfzMntpAmQ7RKvoN-Hk76Jq226GrqJOYtF31xwh5zET3z3QdIlfIhXTU7El7c96ib0flGXeRY_rQQE8WVAX4cnA21zZstzyzzJ7-66WcuFjJKLZjEyapkQt5eNEa5WjMuQugS9bun4/andygSJv49YP1QJhgpLGdAfv1tO02uiIMChuE7g55VQ",
+          "filename": "20241003_102058.jpg",
+          "size": 3329761,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Du5IVqs2cqISQ1QTQCiYEA/vngR4Oxdw7_1iKQyRyqJqRRVFfaZriSrzvxP3wGLqSCYcNiQ1ZXdNj2hxZvIhqMxnKMD_i_rI2FUkLK10iTakq4a5Cb07ZtOfnX9siX2qiwMeWHvk51rZOnSrx5zUIKZQ6vgiDIakrerIu7NbPgErA/tR3kilMBBmSQiqr5fAwpaBW2k63lA2W5edNaAGROIyg",
+              "width": 64,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/HPEO8iYnz08dIcdV6pG8vg/LPyWUuWy3dwdNZhrMwMI9hJAmCbbzZ1R0_MSDmUEVC8dfbQFXajmmU7FsoG4nlYcdFioY1b5DtSTt0zFHGagHo2y8Hoxk_dCrIS4FD1-IVDz8L1S41IdyqhYhmoYoebMwe_Yg6yQyA96MqWVmTlYkg/q1BiUDRztNafbHfsi2dOkD0qQIMK6INjnhcf5bxxvfs",
+              "width": 909,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/T4xAD4Edgn6mhhpKalt4ng/f8-TskWO-kCztDqZmXJ20WwD1roPYRMK0RXOAry7AUSLgNh87h7qH87LsPbfKQMF7IYIXiZvmN8BeAilSDbFI0al2GGNkWc4iBU0X0Bo21DgmoYEoN_X1yKgpvSPl4eigShFOwE6CoiApObnjD2epQ/Bi-ZhPR-m4hGOTXvOakE1WMzjrC0Dmb7nupfngx_Zlw",
+              "width": 3000,
+              "height": 1689
+            }
+          }
+        }
+      ],
+      "레코드ID": "recZqfvWvdmHnYBMH",
+      "네이버": "완료",
+      "실투자금(융자포함)": 148000,
+      "주구조값": 50,
+      "연식값": 3,
+      "현재가치지수(%)": 68,
+      "건물가치(만원)": 58619,
+      "토지가치(만원)": 234374,
+      "10년간수익(만원)": 192720,
+      "감정비교": 1.02,
+      "10년후건물가치(만원)": 46147,
+      "10년후토지가치(만원)": 302959,
+      "10년가치지수(%)": 126
+    }
+  },
+  {
+    "id": "recLXuGvSR4KLCBRK",
+    "createdTime": "2025-04-12T05:54:08.000Z",
+    "fields": {
+      "지번 주소": "동작구 사당동 219-6",
+      "도로명주소": "서울특별시 동작구 사당로 183-1 (사당동)",
+      "토지면적(㎡)": 212,
+      "연면적(㎡)": 396.98,
+      "용도지역": "제3종일반주거지역",
+      "건축면적(㎡)": 105.57,
+      "용적률산정용연면적(㎡)": 324.12,
+      "주구조": "철근콘크리트구조",
+      "주용도": "단독주택",
+      "층수": "-1/4",
+      "건폐율(%)": 49.87,
+      "용적률(%)": 153.1,
+      "높이(m)": 13.89,
+      "지붕": "기타지붕",
+      "소유자명": "문상윤",
+      "소유자주소": "서울특별시 은평구 연서로21길 20-5, 202호",
+      "소유자생년월일": 880508,
+      "세대/가구/호": "0/1/0",
+      "현황": [
+        "네이버",
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 330000,
+      "감정가(만원,랜드북)": 270000,
+      "감정가율(%)": 122.3,
+      "인접역": "남성역",
+      "거리(m)": 272,
+      "융자(만원)": 96000,
+      "보증금(만원)": 179300,
+      "월세(만원)": 899,
+      "사용승인일": "2019-09-20",
+      "주차대수": 3,
+      "승강기수": 1,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-2896-6957",
+      "건물구성": "반지층 원룸4세대\n1층 원룸 5세대\n2층~4층까지 각층마다 원룸 6세대씩\n5층 원룸1세대 투룸1세대\n총 원룸28세대 투룸1세대",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 남성역 초역세권 대지넓은 고수익률 건물 매매\n- 7호선 남성역 도보 4분 직장인 학생 수요 많은 지역\n- 실투자금 15억원 대로 7% 이상 고수익률 건물\n- 매매금액 : 33억\n- 대지 : 212m²(약64평) / 396.98m²(약120.3평) \n- 건물구성 : 원룸 28호실, 투룸 1호실\n- 지상4층/지하1층\n- 승강기 : 있음\n- 총주차대수 : 3대\n- 주용도 : 제2종근린생활시설 및 단독(다중)주택\n- 지역 : 제3종일반주거지역\n- 방향 : 서향(주출입구 기준, 호실별 상이함\n- 사용승인일 : 2019-09-20\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1Ihdv1XmlrZBwfCbx5mBHBYj1Wmxl55mR&usp=drive_fs",
+      "비공개메모": "010-2896-6957 (문상윤) 공실번호 052-4537-1923\n반지층 원룸 4\n1층 원룸 5\n2층~4층까지 각층마다 원룸 6씩\n5층 원룸1, 투룸 1\n총 원룸 28호 투룸 1호 (방 30, 화 29)\n보증금 17억9,300만원/월세 899만원\n융자 9억6,000만원",
+      "융자제외수익률(%)": 7.2,
+      "지도": "https://map.kakao.com/link/search/동작구사당동219-6",
+      "건축물대장": [
+        {
+          "id": "attEse4BjJ5VsZNO2",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/zOFFSpafJiISFbkJHY9E-Q/B5PH3DZL_Sys8n9bgd66a2M7Om4vLElBR-2bq_mXVFp3QdbNtRZhlAnH3eKJLfSOgD7KwDKE1qBw8DUCYMn1HbDxWkjeLkcopVm2dv1L7XAlTnyLEF-rs7zkVT66oF1S_TWNmp25OAJRiFoQvA5-ljCNM-OrzIBE0MinEUM2GPc/vXHNUWtnhjQrfv37eU9mjpVZodt1vXVeGvs2pg3VNn8",
+          "filename": "건축물대장_사당동 219-6.pdf",
+          "size": 359769,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/453CzT6RWQfN67ANjrGc8g/Ssa7XVMu5HEUfwHbStv9uBtpp_Gz4rPUk1s785D7SeSS5yJZVlzW0V86BEkD3KSIgUliYrj1xFOxH-mdnXWd0oc62JO9mEpHTpOM0h2NXW5pdDdfdy5g9XSA7L7cr1AUCj2k7gvBPzZ08biIKMa8Ig/84-g4lTcdFpkY27knaUClu_1hFkt-IVdTNR6WOefeBY",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/DTfcxhJxMcgUOQPpv8okHQ/-3x3III2UL1LF0DRPFOLswf3h2ZMIR3p7DrXA5ATm0abLmVPtDGP7mLgk-NPd-zwIch8txnOL64iFdA3cGoBtE_8GjkPGzGrd5q44aIJhWhGa4EXjK96_mSKRRlplcq5z8tAEEF4-Wt8rwPNnAni9w/9zrk8uCwdPbvIJ1pxUo-R6L9heYpi07oZptxOAh5u5E",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/tm29y105",
+      "실투자금": 150700,
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 10.9,
+      "건물명": " ",
+      "기타용도": "단독(다중)주택 및 제2종근린생활시설(사무소)",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 211.7,
+      "레코드생성일자": "2025-04-12T05:54:08.000Z",
+      "공시지가(원/㎡)": 3981000,
+      "대표사진": [
+        {
+          "id": "attlTE6bI6GWzK6Wo",
+          "width": 4000,
+          "height": 3000,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/ksXnG5mQsnWBTvhheNWrgg/VVjMWiBczuNJSeRQUL_AkKRfw02wc0qJ4Xq0I_vF7I-ul8LES_dXaWkifsZfB5MfK-HkoXolvkUxn4U3Esz4xMxbyY-BnWLWZRJIeSDZd3_Uln9P6BUajHu84ByyVA9I1TpPZ_29J7CzMbPGGWmX9hom8E7R7QRW8QMy7xJFQ6w/zAUT69-GTVOuMyFowCFNn0RV6izVtzvcwtY4Pe7ipc4",
+          "filename": "20250412_153200.jpg",
+          "size": 4946088,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/QQbb-jq80K2qhvoX-3pU-g/jHtUj-xgKrUuBcvlB7HYi2rvRZjQhJ7-GINX8y990DgKFvigAbii0jGtqsoGsDbYagPZT-H2V1VxIIpG2LOL7WtRt8woNaPJnfMzg3ylVsKVzQx-8a5jg7ZXKxtlX-4L_bebOO-YwXYBAwLQWeie8Q/KMtSI7pzLXsSIJSdsOE27EN0r6t2eakJawY5kyHzeBo",
+              "width": 48,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/yinrkOxuTecsCetX3sx6DA/FaUxBOKlTQqT-cbdfjstkDezLUXlBUgMhdt58LEx74MCSm9yKZs4ze58fcj7KuoH6M7SvOx4Hvnhv5xcR227VSQroAIwXeGSwIhkUBHMw383gDO9UE5hAfNblXkORU8rDHd7ksadzvNnFpL6OuswWA/M-Mq_wU3bupK_YaTL-N5_7L6pz9tglhiio1vBEK5rYU",
+              "width": 683,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/bD2jq-pGFvvjRuQfIPns9A/_D0XNAAD6HcDXjsvxVqdNVdW1f9BRGsxbeEaha-dRG-xDRrhOpIZTv9EQ5LkSl8oNYWmtsNiJzWyk0W4EVX5dQVlCBTLKZ6sBxUnHboxO5ITCHBUNvcZ8i6mSnZqXD_R5ew1KqAum-AKufle8ZUiYQ/6DTvS_sDAJoK4IrQvhaRMWeSnlfwAgSwksjIjwRFqVs",
+              "width": 3000,
+              "height": 2250
+            }
+          }
+        }
+      ],
+      "레코드ID": "recLXuGvSR4KLCBRK",
+      "네이버": "완료",
+      "실투자금(융자포함)": 54700,
+      "주구조값": 50,
+      "연식값": 4,
+      "현재가치지수(%)": 68,
+      "건물가치(만원)": 54783,
+      "토지가치(만원)": 168794,
+      "10년간수익(만원)": 107880,
+      "감정비교": 1.05,
+      "10년후건물가치(만원)": 42874,
+      "10년후토지가치(만원)": 218188,
+      "10년가치지수(%)": 112
     }
   },
   {
@@ -1902,18 +1290,18 @@
       "건축물대장": [
         {
           "id": "attgTuVjwZm9awPhS",
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/_-zPo7WwuT8XbF1nAvN7iw/4U4V4sJokBr8OU6iWpB3dLCWsB9zihI0Ssq_eHodZj0emZwK5u5Ggk3Mr6RGWTT93jb6KwXfjKH-zcwzJQvyUqvyHYlNK2IEjssi9WHPquIb9-a8fGzzRoA_5eT8kgnrCw1kskIrsAdooeyr0JeI5iRu_0QEsa7iQOUAKIfvuFY/nZfPrtzWF_SNrzZfh_yu0M9AljVNaRrI4MgMVQ53JO4",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/jUP8kKhku_k6Ew_5kwkA_w/h2Mm7xwmS319QXXtrZ9Nb4wDo1k4bqJnpWWqvnxeuBfS3RddnHNBq1v2EJAqRhUsU076YZ7-6bs0_KUaNBa7IU6eTASeWMIDumHSUYw8QW73Ntx4fYhDnmcJkP4u3xnA0uiilhE4TpGUWUX1BKI6qzDrdTFHCwlDQ-pEI3G5yzs/sz_WOkBx8sXt018Dbquv_8EQ8X9_Sy0MUesaORbxGaA",
           "filename": "봉천동1645-47_건축물대장.pdf",
           "size": 365114,
           "type": "application/pdf",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/RorDg9qV-mWYaw6BZvayOA/vfObGidNpEK_BTUKT_OFvDv6IRzmCngq_Eohdoqawad0NrUGRdIjl99BHGRpSAuOOyGPag6v2B0LKIe8IhlWexUaxuqAVB2a1HuYE2CQS3OgzZmYhakC0jU-Z0SUAcxTiKv2YE6bhP2ghe_Vj3TutA/N6mWX1Egadzc5HP1dqH1wx_RfNj5bILEDlhv8Cw2FC8",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/DcJdSDjrHvYwBuG7efQDpA/3_MU7dpG-CgtiDgfqirz9Pm5LCroVKMCZuwo3n2NmpuTq1Jp14Nu0HJidoHTuOScMWcdqwxYOs60CN16ctx_8ob0qJFpYn6X6GCeCV3vCQfzJwkUJWdyCWICj3F321AofPDP-DQIRvDatsYPH-ZAbA/lAl5B4uqUCQSje9FkYywXEFWKsskb630VBOPueXV324",
               "width": 51,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/cNV7HoG5-eJgjEf44DPljQ/7qAonK-Wvv2nw5lad2o7RovyrYLt0WUGVCZ415ODMoVmzH5gTD_QFiI8qQiRgYFj92EnKeAfAWFtZbl2F7LCfVYk5wgUdl6LItRsMK6aN03Ww1ZsHoKgeqVd8B3YsipPFEDaC-tMwYvdNI8HjHNamQ/Jx7cLX8tvChDexgWSxMvLiFZ4WPMIfFjE6WqbVcOGS8",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/hz9KGFtBQn6jpqBk2GJvGw/P3BtelqeecXoBM6TgWRvuMMAeN3iCOTNsT2-E5FVUgtt-1CEWZcvEJl8gzkMaO4lo7BjfYyc2ucI7h4rLVV2WDhLPAoJiG7Oat-SqVwkDkDDTMwXY-oUruLvXw9qfIKi0IqYxP4egfX0FHAmUzeKMw/GSLCkdhh7kYCzdG2VmS5llWN927VpffRgBv6LR_Bza8",
               "width": 724,
               "height": 512
             }
@@ -1938,23 +1326,23 @@
           "id": "attPstskU5wwe6qHq",
           "width": 1111,
           "height": 892,
-          "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/tGRqeAGelveomTRL0MZf3w/ky_kTui9XnGAwHTmh9qOLA7yDY5nf2z9xGiahu9tpDLXIuza86BjD9u263OU6UqzHZC-p5uuJ5Ufkz2QyNYpkwaUkhErDJrGGYjm_3LNfBJ5CmtZ9nPSUh5s9LJNa2B7IuZw43Cr0NrYzsuIUIiYLuowoYOlcgHPfsIwB-AZ39U/EYMxJzlxJCBoSjNU7dVQM29L8-HNzbA_eD5DDReiPWo",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/QngO-DmY2BwlzbhW7Afa_w/buLV6z1vue_hIS91KlRsR_KMdlUYmNhi7F0M6CsZWKbbtMuJNW-if7OEgs_Yj6ktSAToBWyI3sjpV4CCc3Oom3t7wqPeJBi6wyfZC_O9ZMftmhEjBuPGwNuWbInSgNvj17A4C-2MBnGFmXvTamYfozX6tNYxuROe3jFIpzrTWFg/IvOM7U6jX0lg5hLiU-HuYlQd1WRLDmOkBeJx29S5Z7k",
           "filename": "화면 캡처 2025-05-12 135207.jpg",
           "size": 233584,
           "type": "image/jpeg",
           "thumbnails": {
             "small": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/TDgUKqCKBKKHBWVAasrFug/bZmC45wPRuuLRe3Bl9k_L-oKaGB60vu4CaEcKijw-gMfRKDlMAvl75wxk51f9Gt65WWehpQLs_vev-gSu7Lr2XMs1kP16QteI_mXvnhXQpPiGlX2AUlcn74bpWEyzLliFrj1bU8qJNXbJl8BAEbqVw/YCJN-KNfb281Ace1RsbDpVo173m95jvUJk02Nwyreig",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/dJbJIpdTDuyMsfghppKXtg/_2Ks8U0rDwmg-E59S9lPBvsR41k95hPraBa07ghNq6k_Fxo3Ta_eOoTi65BAsFPUV-SjbDGToL5fc5rB3XZvqfAX2lJ8sOWugYEgDs1tXMk11zwsRbSuyDZ5C_hZpb-uTw1SMhrA_JoXzmHSBdE5CA/aXQr6HR2cUmaUSaN1zb4YVh0wBJF2XdJgAQ7FdQc7no",
               "width": 45,
               "height": 36
             },
             "large": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/mEccVFElq15Whr62j0YrPg/26n4FUGX6jrvDu9HTf-csRU6VIPc_O0zujO34p-SykHRZiU4GjaqIyg7PrMW6iSjuUoeYn8pm1k6rvbGc3lELTuIgmeCNwk-6CZ74YlH09fp0fSJLzS4EIBNq1H5zpWuQXagRlnLTAT3lFjBTXrfUg/dc_XpQi5r8KbDkd6JVKD5A1Q8rkVq80EJjkXCSWQBAA",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/sWqTbc9z5Am3eWvJ66qRjg/t4XMWQwbBvXcdDxEt_oanTY4wpkW9qc-kGmV8OpJEDkaxOi1qqM3ptrN9N-x6mDmPz5DWEz_SwUMhhW-7XQaSRZ0tDjMzVQrAg6ZCZTbsSZFkNE5-RikYGkwrVssq6TJ6i0aj8nK7W4ErJE4ftNsgg/dB-2ZLGmDfDXPZd6btpZKBmTN9tN5ZT7cP9lvcPhQsE",
               "width": 638,
               "height": 512
             },
             "full": {
-              "url": "https://v5.airtableusercontent.com/v3/u/41/41/1749506400000/vqD_6U0V7ATSndQFwaud1w/A_JApuftfJWyHeuHRWn_AdR-mI5mb9jWk24sTHgyb2-zlSuXbuR2axGx_PYsApu3oKONIEoozuZuVZkqj47_mKgirQ9AdJDuMwHck0uJwNHK_Tc_jlG_laRqw5LB58BQZGmdljGJwu7c5ZJijCswKQ/jsx4vLkoCHK8gg3MvaCL3VMXoN4aVwWWSsXkPKeAxd4",
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/DOfdP8qLiA75hyyz4ccfsg/p6lREsZ9ee7hSds6zc9mwbgKiwdwBddmhuFMZhBpN8n2FsYf_qwfdQT1zJXIC-RBBotdWoDHZBZzGwgz-IUfeOQrq5fo5FclKACZV_CufEbF709_8iyGlb999tsdXE1GAAe3ck9ZXy92HZxlS_miEw/ZlLoHz7y9d8BqJcd1S4y2Ib25sxVTBdxiEXKLSZaZPU",
               "width": 1111,
               "height": 892
             }
@@ -1975,6 +1363,618 @@
       "10년후건물가치(만원)": 17951,
       "10년후토지가치(만원)": 117108,
       "10년가치지수(%)": 176
+    }
+  },
+  {
+    "id": "recQ0XlViNU3VSUX1",
+    "createdTime": "2025-04-12T07:05:19.000Z",
+    "fields": {
+      "지번 주소": "동작구 상도1동 325-4",
+      "도로명주소": "서울특별시 동작구 상도로47길 84-15 (상도1동)",
+      "토지면적(㎡)": 244,
+      "연면적(㎡)": 589.44,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 145.2,
+      "용적률산정용연면적(㎡)": 476.04,
+      "주구조": "철근콘크리트구조",
+      "주용도": "제2종근린생활시설",
+      "층수": "-1/4",
+      "건폐율(%)": 59.51,
+      "용적률(%)": 195.1,
+      "높이(m)": 11.5,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "김희인",
+      "소유자주소": "서울특별시 관악구 봉천로 387, 105동 1101호(봉천동, 두산아파트)",
+      "소유자생년월일": 670910,
+      "세대/가구/호": "0/0/0",
+      "현황": [
+        "네이버",
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 280000,
+      "감정가(만원,랜드북)": 300000,
+      "감정가율(%)": 93.4,
+      "인접역": "상도역",
+      "거리(m)": 518,
+      "보증금(만원)": 29700,
+      "월세(만원)": 1400,
+      "사용승인일": "2008-08-12",
+      "주차대수": 4,
+      "승강기수": 0,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-8669-7235",
+      "건물구성": "원룸 34실",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 약 1400만원 월세 받는 올근생 건물\n- 7호선 상도역 도보 8분 역세권 원룸건물\n- 중앙대, 숭실대 등 대학생 수요와 7호선 강남 직장인 수요 넘치는 곳\n- 매매금액 : 28억원\n- 보증금액 : 약3억원/약 1,400만원 (수시로 변동함)\n- 대지 : 244m²(약74평) / 589.44m²(약178.6평)\n- 세대현황 : 원룸 총 34호\n- 지상4층~지하1층\n- 주용도 : 근린생활시설\n- 지역 : 제2종일반주거지역\n- 방향 : 동향(주출입구 기준, 호실별 상이함)\n- 주차 : 4대 (거주자우선구역 활용)\n- 사용승인일 : 1991-12-14\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1HnIiGmtw_HqK9uyUOkwSuKPU9BJ2jH0c&usp=drive_fs",
+      "비공개메모": "010-8669-7235 (김희인) 공실번호 0502-4218-2368\n원룸 34실 (지층/1층/2층/3층 : 7호실, 4층 : 6호실)",
+      "융자제외수익률(%)": 6.7,
+      "지도": "https://map.kakao.com/link/search/동작구상도1동325-4",
+      "건축물대장": [
+        {
+          "id": "attCxpmyjJdzQ3kaU",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Q5dfDLjAqhDpDmPcT6j7-Q/B-HslC7_mSKNSnMXG0acItczpk9Vqb0BF77kvlhCW5o-QWDlr21wh5rhVwiXsK7M_IW7jHQdlGcXttK8u6x2G0ff9IN4_ly2s2ldGeEA_gXvq-rU4Sr_dDZsJQO7ya5rmJc40cu6LQ9rGJD5qGy2gm3pqSidNa_LyBOsNN_D6Y4/ZQBWb8b0aBePnkYF8VvY6ZWsJ3ywVh9tx-v2n1ClzBU",
+          "filename": "건축물대장_상도1동 325-4.pdf",
+          "size": 403689,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/TYybEDNH4zhoH5zJZJoZvw/nTy9HWNTQpywrg3Q4_Od6DoNpXCkpxKc1m5WWhAq_9FET1HwvrYff8vRk4BuB1JrhUsioVFaCII8pf_4vye42HYZshrFnQEXODQ0gwp_bp7zaSkrqRKPSY8oGDAIyBo2-cIdY8ABz5wHGHK9p-q-Qw/6oeS0VTi3voBdY1t8j_AK6PDwO9whw0FrLYYMTVtiok",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/zyvlAhbV_J7r11tpLV8Mbw/MW17hMiKjzSkTeFe1oWjwQ8sSm1_0g7WpDYnX_H8kP8XuIM-VdMBZnbcL9eghQE9lSn4AEIvLjq61K8TgVSwrhlDO4baHjjcgX72q9GtfZPgQAVZ5b5qPkLemf97ERzEF-iV62lPMqOUE2vRDd04Xw/5qo4OpjxCwmn_UFmfKIyrpe0Vs4wg2gq6lhPccP3TOs",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/rq7bmlxp",
+      "실투자금": 250300,
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 6.7,
+      "건물명": " ",
+      "기타용도": "제2종근린생활시설(독서실)",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 244,
+      "레코드생성일자": "2025-04-12T07:05:19.000Z",
+      "공시지가(원/㎡)": 4491000,
+      "대표사진": [
+        {
+          "id": "attmYaMR5SEHjMA7x",
+          "width": 1400,
+          "height": 1050,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Kp9Uf7pRPxUhNBbkcCv7PA/sjhKpveJ12HmjPxErjYPyTbkB9lqJ79eOf8s0X7rS3eXY-67DEdyiEtCjVevS4RoRG503TuA4pGK_jw-Wp8i22-fRx080jiBSCCfaMlM8qDeGeTVaOzMrOmnD8XLEGsN0Gu8GG76gGDYuvIbJozbiXj3TsIccCSMFpP1iLMQ8P_uHg9fwLgWJU-PCbyRoqlr/AeJZ80U40ozROyP6tdDmIwkmgD9S-UDfirCONOXHBJw",
+          "filename": "KakaoTalk_20250527_141742740_01.jpg",
+          "size": 589283,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Kp_daSCfYfLjd8bdrOQvvg/3q8ksr20Lg0O3Yo9n-UB_DPGwx46awqLNXGYKPiFg8IhkWlap5-flNhz3-Visu6aZXgoqZdbvGhLWUsB-Xyb_rjoHoUb1xvWiNs1G0VAg1ddivM233fW2WG_9CHnj-fu0bzHlMtN_ChbUWCk_sPTKQ/o7btgnUObHOjiil0g7xSioPJ11O7HISWmJ23S7DqvpA",
+              "width": 48,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/2tBTvbIKiUCn2rM3tmhFMA/hxMIaqIr8QXOAz4G5L7qtTL9FtkZ3NrE1D8vMnghaNHOqL9ZIfjW7nui57ZkYMbUdWo-qc6G6SPkHA29oNjlope-Ff-zod-xRWI7o5YOAhEgxPaTW2Mc1GFbytQ0R6LVTM8uzjjrHuFvybOob8T65Q/mrx5zsjwyES8BcGi4tgLNLQAIwn0gc12nm9ziBnnS-c",
+              "width": 683,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/VGpbIbBq5Y8B9UDzGS7f_g/WejBA9Ms2xdDR1O0m_ENx1zUlAfu5bgd73Vp0a4w9IHnw0GzxK9zgquFSV0VhunAypFGsdQDQl26VZbPZ5qf0Ww7vLZBWIzrT7DPIifm4BZ7AuF9b1GKWdv66ZZQeoOcAIJFR9z53ltENA-P8lEfAA/NGnC1SyeX2KNHcfFMlWZp9wcLjBz2SB--X2g3qelN7w",
+              "width": 1400,
+              "height": 1050
+            }
+          }
+        }
+      ],
+      "레코드ID": "recQ0XlViNU3VSUX1",
+      "네이버": "완료",
+      "실투자금(융자포함)": 250300,
+      "주구조값": 50,
+      "연식값": 15,
+      "현재가치지수(%)": 100,
+      "건물가치(만원)": 61891,
+      "토지가치(만원)": 219161,
+      "10년간수익(만원)": 168000,
+      "감정비교": 0.86,
+      "10년후건물가치(만원)": 44208,
+      "10년후토지가치(만원)": 283293,
+      "10년가치지수(%)": 177
+    }
+  },
+  {
+    "id": "recnU7ZIxcJDbtX4R",
+    "createdTime": "2024-10-01T09:19:15.000Z",
+    "fields": {
+      "지번 주소": "동작구 사당동 1025-41",
+      "도로명주소": "서울특별시 동작구 동작대로9길 67 (사당동)",
+      "토지면적(㎡)": 120.4,
+      "연면적(㎡)": 284.49,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 71.46,
+      "용적률산정용연면적(㎡)": 214.38,
+      "주구조": "철근콘크리트구조",
+      "주용도": "단독주택",
+      "층수": "-1/3",
+      "건폐율(%)": 59.35,
+      "용적률(%)": 178.06,
+      "높이(m)": 10.8,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "이진웅",
+      "소유자주소": "서울특별시 성북구 오패산로16가길 40,104동 903호 (하월곡동,꿈의숲푸르지오)",
+      "소유자생년월일": 830908,
+      "세대/가구/호": "0/1/0",
+      "현황": [
+        "네이버",
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 220000,
+      "감정가(만원,랜드북)": 152000,
+      "감정가율(%)": 144.8,
+      "인접역": "사당역",
+      "거리(m)": 610,
+      "융자(만원)": 57700,
+      "보증금(만원)": 105700,
+      "월세(만원)": 617,
+      "사용승인일": "2016-02-05",
+      "주차대수": 2,
+      "승강기수": 0,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-3811-1280",
+      "건물구성": "원룸 20호 (4층은 복층으로 보임)",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 사당역 도보 약 9분 조용한 주택가 원룸 건물 매매\n- 2/4호선 사당역 역세권으로 직장인 임대 수요 넘치는 지역\n- 4/7호선 이수역도 10분 이내 이동 가능하여 강남접근성 매우 우수\n- 매매금액 : 22억\n- 임대내역 : 보증금 약 10억5천만원/월수입 약 617만원 (관리비포함)\n- 수익률 : 약 6.5%\n- 대지 : 120.4m²(약36.4평) / 284.49m²(약86.2평)\n- 건물구성 : 지하1층/지상3층, 원룸 20호\n- 주용도 : 다중주택\n- 지역 : 제2종일반주거지역\n- 방향 : 서향 (주출입구 기준, 호실별 상이함)\n- 사용승인일 : 2016.2.5\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1Bvf90YPTSenyIMAdyvT_b41ok-BVFclB&usp=drive_fs",
+      "비공개메모": "소유주 이진웅 010-3811-1280\n10/2 통화함. 내용 보내주기로 함\n25.02.27. 임대내역 변경, 금액 21->22억으로 상향",
+      "융자제외수익률(%)": 6.5,
+      "지도": "https://map.kakao.com/link/search/동작구사당동1025-41",
+      "건축물대장": [
+        {
+          "id": "att2n0XFSRrD1uANm",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Tod8ZfRRNMsXyDT5xJNSUw/2keFk6nakwcDD5_vGtU_NyBjUxCz0kz9pOJ1vyZFwf5rqmMXwMdx5axeY0MMh6wWidwrAf7Sw3TnZ5WrA9jB3JI6D_tvRO1FlU5_DsLNLn5QztM9fgZCXNuxzFTS2PmeTKVAYHLIl3S-PBPblX8pCi2bxOssVY2rDSBf0bsb1Hc/z1FB6SBjIA0bHjyeHqlm0buuuSaBB81sgJvdvhuhBEM",
+          "filename": "건축물대장_사당동 1025-41.pdf",
+          "size": 365129,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/q6iDZjSCvNmXx47f9E_yAQ/2CepWOME4OphQ1tCy2IqkMjgfoAXfaVW8x4R5Wjev6WcemL1-4JOSVcZj7LgG6yjgCt4s2eA_LDGhAveQX-9oN8i15sgUVNdtXD0bBMke3p04of9os8fKGJEz73OCdU72dOdZ0YZfocSf5NQGrEQjw/YfiMR8K5aH7b34aRngFnyrejzIgPqULjLRQsLywfYG8",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/np_XazaYm3pgOMxGLJU0bA/zIFYhbDQNaTuywxYR4mRvC2vUi7gwppPniut6i36iwT4O4OIbx04w8Ft_74dSRU9VENnH5w8aS9TU30qJYWZcTI0cFZ4ZnZBTap6LEoyXOrtNtF9a6cHnIWE7kO1q3lKwQUutlfPNWhoba9wD_aLvA/uu0ZUxLDEqf7HMa7_zzGnlk0noGMd1FN11jj44W6NPE",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/ilidlw3a",
+      "실투자금": 114300,
+      "문의": "25.02.27. 010-4661-1019 문의 (2.28 방문 303호 예정이었으나 취소함)\n25.03.07. 010-4569-0960 방문 (278-22 봤던 손님)\n25.05.24. 010-3716-2800 방배동 부동산에서 문의",
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 8,
+      "건물명": "IL MARE",
+      "기타용도": "다중주택",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 120.4,
+      "레코드생성일자": "2024-10-01T09:19:15.000Z",
+      "공시지가(원/㎡)": 4819000,
+      "대표사진": [
+        {
+          "id": "attwxjFnVDahpS0CM",
+          "width": 4000,
+          "height": 2252,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/ulu9nUiQTFiUa_HXBT3Dfg/s28Uj_ryBDcxAn5JaYOtT-7NwayDr5RNiLDZZLOMCR-nwmqswy2JBMGL-74ebFSTNGMjOgmVuA-K-md5Fu45GQSrJtIqg4QCva1UT5wmFRhspUuoXkIQ0VnzpOTnUMLwKjxJCk9iDHnldfjQmP0h8HrgybJ-eoM37w667R4yOT4/x84RwdzkPIq0vR07GJaDkLSUcym7RY6oWStwXJFOMqc",
+          "filename": "20241003_093615.jpg",
+          "size": 2903715,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/mPCrm1ZESGzYyNFjlYaEUA/VZkHE4xBRJmqXEf44vmqSSNL6AiFtWCqpCwezYLmukn2nL-UOh0xdIs3Cp-nOcyz0bYkRofjXgeStMnbwMVqkqk-HsIv9czwCVhnz3QR3Y3Q8VMCmZGF-gWhCWjK-xH44E2pAluYpaFJuDYxKJ0s3g/QWfsU5f-ZLqk7nC8PUBMSSIjlJKNRL9oCWDDpmbgeic",
+              "width": 64,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/l73IhZMEG4_bhaXJLHUCxg/IAWwz8uB3LqXterOJHv0POF7r8h7p3GTf1noLZN1k45Cu6XH-ZW89VsAltLtqeGw3wXKUnGH84zElNaf-WjbFmVnG5a_qWWY-LPiL5Q0pcgNNVcophuCnUETuWpAebCWXdZ4Eg9KF3Yi19Q7KROPOA/l7NqydQNiVpMXzGvX9ZivaT9Ytj-umoVXMP-4P-TP-Y",
+              "width": 909,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/pF1NtUFrJW_7aqHk14tLZg/l1QqsW2Bs4zlRtOrcxzMr5QW6MTc5Zl4gFEozdgBMZKJ8uU62HKaZsgZxcSYmKP04xkS-M-P5yfSWyNoj3CTHpfSsHKbSR98qf7AIXfpRRbNQq-f0wU_e4XYYRY7Q_51NAiFuKVD2oYUDO24dzkRZg/cTeuuRFphXaWB2xxOTsGJt2UAALVKrYbbMZ806Zf0MY",
+              "width": 3000,
+              "height": 1689
+            }
+          }
+        }
+      ],
+      "레코드ID": "recnU7ZIxcJDbtX4R",
+      "네이버": "완료",
+      "실투자금(융자포함)": 56600,
+      "주구조값": 50,
+      "연식값": 9,
+      "현재가치지수(%)": 69,
+      "건물가치(만원)": 34992,
+      "토지가치(만원)": 116042,
+      "10년간수익(만원)": 74040,
+      "감정비교": 0.87,
+      "10년후건물가치(만원)": 26458,
+      "10년후토지가치(만원)": 149999,
+      "10년가치지수(%)": 114
+    }
+  },
+  {
+    "id": "recE1QISd9dB1JF6m",
+    "createdTime": "2024-10-01T09:19:15.000Z",
+    "fields": {
+      "지번 주소": "동작구 사당동 306-3",
+      "도로명주소": "서울특별시 동작구 사당로16길 85 (사당동)",
+      "토지면적(㎡)": 126,
+      "연면적(㎡)": 225.2,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 75.27,
+      "용적률산정용연면적(㎡)": 225.2,
+      "주구조": "철근콘크리트구조",
+      "주용도": "단독주택",
+      "층수": "-0/4",
+      "건폐율(%)": 59.74,
+      "용적률(%)": 178.73,
+      "높이(m)": 13.6,
+      "지붕": "기타지붕",
+      "소유자명": "강동주 임미자",
+      "소유자주소": "서울특별시 강서구 곰달래로19나길 40,502호(화곡동,동원데쟈뷰)",
+      "소유자생년월일": 630526,
+      "세대/가구/호": "1/0/0",
+      "현황": [
+        "디스코",
+        "경매진행중"
+      ],
+      "매가(만원)": 240000,
+      "감정가(만원,랜드북)": 217000,
+      "감정가율(%)": 110.6,
+      "인접역": "남성역",
+      "거리(m)": 623,
+      "융자(만원)": 57000,
+      "보증금(만원)": 170000,
+      "월세(만원)": 374,
+      "사용승인일": "2020-02-24",
+      "주차대수": 1,
+      "승강기수": 1,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-2533-1506",
+      "건물구성": "1층 상가1, 1.5룸1\n2-4층 1.5룸 (약 6.5평) 3세대씩\n총 방 10, 화 10",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n--------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02-3471-7377\n     금토끼부동산과 함께 안전하게 부자되세요.\n--------------------------------------------------------\n\n* 상세정보 *\n▶7호선 남성역 도보 약 10분 유동인구 많은 아파트 앞 상가주택\n▶재개발 추진지역으로 향후 지가 상승 유력\n\n▶매매금액 : 24억\n▶대지 : 126㎡(약38.2평) / 연면적 : 225.20㎡(약68.2평)\n▶보증금 : 약 17억원/월세 약 374만 \n▶수익률 : 약 9%\n▶세대현황 : 상가 1실, 1.5룸 10호\n▶지상 4층\n\n★주용도 : 근린생활시설 및 다중주택\n★지역 : 제2종일반주거지역\n★방향 : 남서향 (주출입구 기준, 호실별 상이함)\n★주차 : 1대, 승강기 : 有\n★사용승인일 : 2020.2.24\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실매물, 실사 사진으로 현장확인 매물로만 알려드립니다.\n- 확실한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1GnBxwwFqK2ecf3WbIDDuCM7ctQYZLPwR&usp=drive_fs",
+      "비공개메모": "25.03.14 경매 진행중 확인\n12.05 확인 /소유주 친절/ 4층 일부 3평 위반사항으로 년 180만원 / 매가 24억5천에서 24억으로 변경\n010-2533-1506 통신사 KT\n소유주 강동주, 임미자, 10/2 연락함",
+      "융자제외수익률(%)": 6.4,
+      "지도": "https://map.kakao.com/link/search/동작구사당동306-3",
+      "건축물대장": [
+        {
+          "id": "att7EzvcE2cj0TULZ",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/2Nm8_hJGYAV9gE0TixU6Ew/NZbs0DgMLOeYjQcuHw7w8qRIIdUais19HsfBO5PzdW7_3IRu7I4tKKrxjDIod3sIJOuvzIkhGad5e8uE5piiXHT9wx3QxA9AnQqcJVEIdyFFpu5FGgWwaf0MOzS3eFYRxa02DkoCaQWKX5TKXEqy758Roc8g7qL1qs7tjO6oTRg/Ax-oc7ldab9Tw0sHqSQ0LyiW5cpcjvKVeYdrBs6s9pE",
+          "filename": "건축물대장_사당동 306-3.pdf",
+          "size": 367904,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/UIDiqXIb81sBS3AGUutUEA/Tv33LPi3jSK3Fn7k3SgCAlRo2XZ-lzWT-t8vSiykUPo-HTOqGlBqMXkHroPSkZYrTjJpDla9Bjjlk_SmnT04qWauy2FAFBvl9Fwm5OdNC4U7H7TfYLx8v2g4tUNlecbxSIK_m1du3rdXDYDRhyhAzA/9UIE0Y1uuk40cMdAZTEdxBdmQnyntSIgJAWIjyoELQQ",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/8gGSeXgd9-xrxbj57-c5Sw/oeQ7GivBfCy0wui9wf9PCgZgQb9Q4PNG8Yk9bBEB5rcrX83kR_bCSZAMLekyKQ0cqhd7GvVWH2N_UEG-crqZX152l-reTI7Y4K23qe4fwKR2jhOXy1mKmSG9nBuBr0NUg2stperqSniEoxkzn0t9FA/Y1qB0SF9DLw2tzGaVkwhl8N8duaBofAa9J29TX8HGUo",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "O",
+      "디스코광고": "https://www.disco.re/m/3ks3etvo",
+      "실투자금": 70000,
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 12.6,
+      "건물명": " ",
+      "기타용도": "단독(다중)주택",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 126,
+      "레코드생성일자": "2024-10-01T09:19:15.000Z",
+      "공시지가(원/㎡)": 5813000,
+      "대표사진": [
+        {
+          "id": "attenpVgiebmuHpto",
+          "width": 4000,
+          "height": 2252,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Yw_VLrQJH_c1Nw7YJr54Bg/Qw27ifcsDYH9KU4FEDIUpLGKdd9lMTNTcBJxERL6hFuikuZAUJkkF1u-6UWTvT1_shRt6Mzl0eNLafuwXRCHikdrWvBQL-1O-jjlfJcfIKBH2dRuYIhl1IlqZQ3YJdhObtmrVvacM3wt1CKl4c6L36q8mi9JhZCV5gosBWinuU0/Y3fgnQypjpwhH3cazPJZem9oXnhFG2acA4F06ro3Irc",
+          "filename": "20241003_104744.jpg",
+          "size": 3183095,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Q2LNVbD046wKb8XE0eGuwA/EzcdDnxLSTb6o3HWA6WJvJpxZXCls5-eRwRaRjhKQSrmQLuRPdOhqi4IQ0xOqdevGNvWGqpy9ma8Kxd-UUkUUMdJRzNQH3cP02oJ0e0DRp7xoVCIxD5qEMH3-jExIhGlaUZj70GybtA4nC1JiiuqGQ/kzjg3Tar9VlC_i_ZNbLBWBYbPaUK_KDhz78XatV0qnk",
+              "width": 64,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/mis2QXpb2q8neCrGhGnomw/Kqs4t7zom54jhPQ6KfuNOdoIJ88kO1mIZ_jt4xkIQtBmBDRXaW1QdvxDBTCerxq1nL2cRzmAVwQYYg5k3yUi8gr2oY_BdPa1ND3_3MSP3Iol_nnesFio654DSJTbT4TfkluhABATQ_T_4MRwrsw0hA/Y9-HWNorBnphVmMbdDMgUnwow_9E2HHzM-eXkaUwceY",
+              "width": 909,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/m3hM4Oj7d-aJDs572S2WfA/YO_xfZyWxYAws914aVlPg9WJFd8UJ--VaJVT6uiRnPMSSUOCcRy6GUppss5k1X6M3St-d9QlxlMo2-UIHt1tIW9j66EEV5NyK4WWuBb1ucWbg7Yww0g_9E9trNV9JhcdhOQd1Cc84PjKjUHhA9Hahg/qT2ipzIyKKleWq9vn5qoC36Yjqqpa7-rNEfq5ojiQow",
+              "width": 3000,
+              "height": 1689
+            }
+          }
+        }
+      ],
+      "레코드ID": "recE1QISd9dB1JF6m",
+      "실투자금(융자포함)": 13000,
+      "주구조값": 50,
+      "연식값": 5,
+      "현재가치지수(%)": 74,
+      "건물가치(만원)": 30402,
+      "토지가치(만원)": 146488,
+      "10년간수익(만원)": 44880,
+      "감정비교": 1.26,
+      "10년후건물가치(만원)": 23646,
+      "10년후토지가치(만원)": 189354,
+      "10년가치지수(%)": 107
+    }
+  },
+  {
+    "id": "rec1XjobiQdRFnyHz",
+    "createdTime": "2025-03-28T07:07:43.000Z",
+    "fields": {
+      "지번 주소": "동작구 상도동 294-4",
+      "도로명주소": "서울특별시 동작구 국사봉길 109-2 (상도동)",
+      "토지면적(㎡)": 126,
+      "연면적(㎡)": 291.66,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 68.73,
+      "용적률산정용연면적(㎡)": 231.33,
+      "주구조": "철근콘크리트구조",
+      "주용도": "단독주택",
+      "층수": "-1/4",
+      "건폐율(%)": 59.42,
+      "용적률(%)": 199.99,
+      "높이(m)": 14.35,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "전상보",
+      "소유자주소": "서울특별시 동작구 사당로26가길17,101호(사당동)",
+      "소유자생년월일": 900208,
+      "세대/가구/호": "0/1/0",
+      "현황": [
+        "네이버",
+        "디스코",
+        "당근"
+      ],
+      "매가(만원)": 210000,
+      "감정가(만원,랜드북)": 177000,
+      "감정가율(%)": 118.7,
+      "인접역": "신대방삼거리역",
+      "거리(m)": 635,
+      "융자(만원)": 71000,
+      "보증금(만원)": 153900,
+      "월세(만원)": 300,
+      "사용승인일": "2022-11-09",
+      "주차대수": 2,
+      "승강기수": 0,
+      "주인세대": "O",
+      "주인거주": "X",
+      "소유주연락처": "010-9167-3979",
+      "건물구성": "지층 원룸 1, 1.5룸 1\n1층 101호 주인세대 1.5룸, 102호 분리형 원룸\n2층/3층 각 201/203호 원룸, 202호 1.5룸\n4층 401호 1.5룸, 402, 403호 복층 원룸",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n    금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 7호선 신대방삼거리역 도보 9분 고수익률 원룸건물 매매\n- 마을버스 정류장 바로 앞, 넓은 도로변으로 가시성 좋은 건물\n- 1.5룸/원룸/복층형 등 다양한 구성으로 선호도 높은 구조\n- 매매금액 : 21억원\n- 보증금액 : 약15억3천/약 300만(관리비포함)\n- 대지 : 126m²(약38평) / 291.66m²(약88평) \n- 세대현황 : 원룸 9호(복층 2호), 1.5룸 5호\n- 지상4층~지하1층\n- 주용도 : 다중 및 근린\n- 지역 : 제2종일반주거지역\n- 방향 : 북서향 (주출입구 기준, 호실별 상이)\n- 승강기 : 없음\n- 주차 : 2대\n- 사용승인일 : 2022-11-09\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1sgDCttMS9xh52CVtzCux9EecPkXo5Q8V&usp=drive_fs",
+      "비공개메모": "25.05.20 벨류최고 18.2억\n25.04.28. 타 부동산 21억으로 광고 중으로 수정 반영\n010-9167-3979 (전상보)\n융자 7.1억 (승계가능)\n지층 원룸 1, 1.5룸 1\n1층 101호 주인세대 1.5룸, 102호 분리형 원룸\n2층/3층 각 201/203호 원룸, 202호 1.5룸\n4층 401호 1.5룸, 402, 403호 복층 원룸\n총 1.5룸 5호, 원룸 9호 (복층 2호 포함)\n임차권등기 설정되어 있으나 아직 경매까지 안 간 상태 (11월 쯤 추정)",
+      "융자제외수익률(%)": 6.4,
+      "지도": "https://map.kakao.com/link/search/동작구상도동294-4",
+      "건축물대장": [
+        {
+          "id": "att6rReEKT196MRPC",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/C4fQQd0NZIbKJzW8zT33pA/eoxGca7vIpKi2JMsDY_RKvYH3L-IvgYX1PMoXUjcLcfA3hwFPP24SERcR4nd4XdLKnEn5EDv5tEmhEDhAqZQt6wuNgYF7rBNKAA1DTqk9_K5LhJnhvAWYCrbvbCtl3lJYLJYz-ufO-3flhLm228Y7hbaHOLA_pPfpMB2tqprOQ4/Tlty_kDHZ0R6bN2j_fQofozRlNSmScJK4b-xmhPJGWQ",
+          "filename": "건축물대장_상도동 294-4(위반).pdf",
+          "size": 370109,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/D67rPxJcaioLzJnhlmbFUA/Rf0bPtnU9fuLJppUQk5vtqOOdpFq9yHkLRo1JAS-qskOKHDSPWEXiXelRViI9sOnLuUprMl8KiN1Eozwgr9oQnqZXEEpwkFzaPvWBYnZYlsNRBMJtDM17EGsNCBaOyOpASX_8qTeK25QRjeXZoQvsw/swDLXUduBE-DAh6o0LcnngolIqlgGLFVq9sZ_tJNrVY",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/zNbIPY9wj2xMZN_R0ut1nw/gyGXlPyHLQawqQBWUuA-he0vw23I_6Fjv7LkDTzhucpH82rzpdSmWv3Em28v2oVlqCTlFn1i-o69XdNFI2ioI8wy-PQseyQqPNmZfdB-nGTzqFqHcwreBuyaJInQMAJgeoXGgzgUHQNzFdk3N3jr4w/72BnuO7U87pBeeJ2NBKJ0nqDzMjjJ9K2sczMtPZxMnU",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "O",
+      "디스코광고": "https://www.disco.re/m/nzfclv2z",
+      "실투자금": 56100,
+      "문의": "25.05.20. 010-7103-4508 금액 문의함. 20억도 비싸다.",
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": -0.3,
+      "건물명": "제이.파크",
+      "기타용도": "단독주택(제2종근린생활시설[사무소],단독[다중]주택)",
+      "생성일자": "2022-11-10",
+      "대지면적(㎡)": 115.67,
+      "레코드생성일자": "2025-03-28T07:07:43.000Z",
+      "공시지가(원/㎡)": 4228000,
+      "대표사진": [
+        {
+          "id": "att5PUQeeVaDp6v4a",
+          "width": 1400,
+          "height": 1050,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/4LNlydnMFtEvF9NuzqN99g/CyPDSW2Nu8VElgXkFFi0APzxHt_0gTZWh8kKK8EVSFihVQFHocDjLy5Jji8qBugwAGRTVFm5GZ1iYedkKhmlwwi_k6eSU6TNeqDv8M6RcnU1VA8n64Fs68bFDqvkugZuYRjbgBqBdeU9ewivVB4IPLRalxcuZLV-gqZymQAzqm-CTrQBWxOq7ZO7T9yhdNcT/FiUg7vumt_oh-r0sASTZsZ0sSUeQtN6ZJNGJ4z03Ppc",
+          "filename": "KakaoTalk_20250527_150407326_01.jpg",
+          "size": 622101,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/IVhcqpJr-AZdZlID4nmvvQ/vE2xZvkj9-BfRZFOJWGmqGkAUkD2WU2SfX6Xf6CeFwp1FktP5Yn2fH4kI8TQ_3FgHq5FIxsY9KoTEqSBhcEK8oMmDQs3qwsBlHpmhGLdWnYbf2VUcPJX4-ZHLKkX7grPcaNPsDdUbZ4aj8vd_RofZA/0IT6_uBXeFuQ-eiFKoG2H95sfvq-D6c6V6TeNdcKBCs",
+              "width": 48,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/PxGSR3XX-O_Cz7ZZgyVbeA/4v7xgTK2yEgJDAxrZLibLXo7Qtr5lgw2A4T6XATj7Wqnxvnc-7ACpF2fjj-cOVjnLHBI3F1X4RviENKZpok7BfMWDcuMYWanYTq8IHW4L74bzz181daZ8QXmG2Xf8K-6rZy7_T5Ku8ZvS_h0hZ9wMA/4KeAq_kA97lFMNsDLtW1T2Xha1ZEGFri8ftpOVEt4YQ",
+              "width": 683,
+              "height": 512
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/VgcbQmFYfqqYI1ME9Wn-sg/97PjwxkHdhV7gIyqNSTknnySjyCOxOTuHw6J2QmsxnRM3iUFxLduudr17GIyaOgQZm3Z0O0ZXDtm5JsyYNg0Q7DwxI96YnkciH9MwVKzqiJ42cExEyScNkhoWzYV4uqajMLgvZr3Gnae4jL038LKZA/e2u_54YfCtdgZSen3dEg9xUBGjqJ8YbCu_8TmwMbp24",
+              "width": 1400,
+              "height": 1050
+            }
+          }
+        }
+      ],
+      "레코드ID": "rec1XjobiQdRFnyHz",
+      "네이버": "완료",
+      "실투자금(융자포함)": -14900,
+      "주구조값": 50,
+      "연식값": 2,
+      "현재가치지수(%)": 71,
+      "건물가치(만원)": 41999,
+      "토지가치(만원)": 106546,
+      "10년간수익(만원)": 36000,
+      "감정비교": 1.24,
+      "10년후건물가치(만원)": 33249,
+      "10년후토지가치(만원)": 137724,
+      "10년가치지수(%)": 99
+    }
+  },
+  {
+    "id": "recQGTF7xNXjAS17u",
+    "createdTime": "2024-07-19T05:25:28.000Z",
+    "fields": {
+      "지번 주소": "동작구 상도1동 471-1",
+      "도로명주소": "서울특별시 동작구 상도로41다길 11-3 (상도1동)",
+      "토지면적(㎡)": 206.4,
+      "연면적(㎡)": 539.23,
+      "용도지역": "제2종일반주거지역",
+      "건축면적(㎡)": 123.3,
+      "용적률산정용연면적(㎡)": 412.27,
+      "주구조": "철근콘크리트구조",
+      "주용도": "단독주택",
+      "층수": "-1/4",
+      "건폐율(%)": 59.74,
+      "용적률(%)": 199.74,
+      "높이(m)": 12.5,
+      "지붕": "(철근)콘크리트",
+      "소유자명": "이미애",
+      "소유자주소": "인천광역시 남동구 장아산로128번길 22 105동 1105호 (서창동 태평아파트)",
+      "소유자생년월일": 660825,
+      "세대/가구/호": "0/1/3",
+      "현황": [
+        "디스코",
+        "경매진행중"
+      ],
+      "매가(만원)": 380000,
+      "감정가(만원,랜드북)": 281000,
+      "감정가율(%)": 135.3,
+      "인접역": "상도역",
+      "거리(m)": 352,
+      "융자(만원)": 220000,
+      "보증금(만원)": 299650,
+      "월세(만원)": 405,
+      "사용승인일": "2019-02-20",
+      "주차대수": 4,
+      "승강기수": 1,
+      "주인세대": "X",
+      "주인거주": "X",
+      "소유주연락처": "010-2771-5124",
+      "건물구성": "지하1층 1.5룸형 원룸, 1-4층 원룸 6개씩",
+      "상세설명": "↑ 위 매물번호를 알려주시면 빠른 상담가능합니다 ↑ \n-----------------------------------------------------------\n ♣ 금토끼공인중개사사무소 TEL. 02.3471.7377\n     금토끼부동산과 함께 안전하고 행복한 부자되세요.\n-----------------------------------------------------------\n\n* 상세정보 *\n- 7호선 상도역 도보 7분 강남접근성 좋은 높은 수익률 다중주택 급매\n- 역세권 준신축 다중주택 수익률 5%이상\n- 상도권역 재개발에 따른 이주수요 지속 발생 가능\n- 연결된 주택과 동시 매입 시 할인 가능\n- 매매금액 : 38억\n- 보증금 : 약 29억9,6500만원/약 405만(관리비포함)\n- 대지 : 206.4m²(약62.5평) / 539.23m²(약163.4평) \n- 건물구성 : 원룸 25\n- 지상4층 / 지하1층\n- 엘리베이터 있음\n- 주용도 : 근린 및 다중주택\n- 지역 : 제2종일반주거지역\n- 방향 : 남향 (호실별 상이함)\n- 사용승인일 : 2019.2.20\n\n-------------------------------------------------------------\n♣ 금토끼부동산은\n- 고객 니즈에 맞는 친절하고 자세한 상담드립니다.\n- 실제매물, 현장사진으로 확인매물로만 알려드립니다.\n- 정확한 권리분석과 고객님의 자산안전에 중점을 두고 중개합니다.\n\n♣ 금토끼부동산 위치 : 7호선 남성역 2번출구에서 직진 도보2분\n♣ 매물 보기, 상담 신청 : https://goldenrabbit.biz",
+      "사진링크": "https://drive.google.com/open?id=1r-9qHmvYpfR38CXfNKEnVsmHG0_v_c2b&usp=drive_fs",
+      "비공개메모": "연락은 소유주 남편 010-3339-7845\n소유주 (이미애)010-2771-5124(KT)\n공동사용 도로인 상도동 471-2번지는 50% 지분 함께",
+      "융자제외수익률(%)": 6,
+      "지도": "https://map.kakao.com/link/search/동작구상도1동471-1",
+      "건축물대장": [
+        {
+          "id": "att9ILYBOeDBSIEak",
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/HeL0IHPlXtbGxfWNz0AU-g/QZ1Xo-DyGZg4dGF-etRsSWgO1h5puE6vQMqR28cU92DZxeuPWFCVxspnNrhiGQ-FWLKUvA7zliFkDikvCQJtgxsAW7B12oTqRmHbQA4cg2se7dKx7zegfulEHJIHysc3zXxHmgwvKwe4sOZwGmVTZoej4XCZlyiMCWT2Cnqad_s/_4vKh2VWbR45HpYE4Mjc6DW4do0w8_5gyl1LytDp1tA",
+          "filename": "건축물대장_상도1동 471-1.pdf",
+          "size": 363461,
+          "type": "application/pdf",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/_YF1nbTaODI2RbPoJzBwIA/0nuqbGzhQC_aRFRP03G5OBw9weSUTl-RqVQCv48KcUOmtfLoRSJzNFprvL7IY0P4zqM7SdbjVFfiSgow0xxrAhhEdVN-Wm2syNiLMli893JuN--3_SsfwB-HoVslaPbHdm98JBu_49Q1JHT-WNW7zA/zd5efeK4Z_Mq6maEDhAdgAPTtyjFvLD5FGrKVCJ-0c4",
+              "width": 51,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/hD5Tz7SlYaTyy-P5eV1mag/BPwszds0dKQgy1zPAe663QoQiDSprgRZJUWblawvlPfKld5E4O-fG4zsh6uihoGMq_TnKUyD6k6CyYsW08ImoQoTbZRLDU8eKlKNsaAh7bmVcjxaf8gzGrosziETncdtECXpnYIropE7b72IhejOXg/pzvdivngy5LoQqXBoxcZc-ztvDPOXiVmcbs8q4beQf4",
+              "width": 724,
+              "height": 512
+            }
+          }
+        }
+      ],
+      "위반건축물": "X",
+      "디스코광고": "https://www.disco.re/m/7sbkqoxl",
+      "실투자금": 80350,
+      "사진필요": "X",
+      "SH가능": "X",
+      "융자포함수익률": 4.4,
+      "건물명": "푸른주택II",
+      "기타용도": "다중주택 및 근린생활시설",
+      "생성일자": "2022-08-13",
+      "대지면적(㎡)": 206.4,
+      "레코드생성일자": "2024-07-19T05:25:28.000Z",
+      "공시지가(원/㎡)": 3771000,
+      "대표사진": [
+        {
+          "id": "attrvdHTxJ5vLocxD",
+          "width": 1058,
+          "height": 1411,
+          "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/3EvNS2dsL8i3JJzdR2thYA/guQ54-gpe0mjk4NU982eo9m0c4vBqxlq2hG-_Xn2B7NeN4r3XbIqgl5o9_kOsOyg3CBHuoGUHe6uvQshvakfW1i1vOxKvxkIyiZwsKZ8nXC_yUllrlxiDYr5_8wGYtM8NyUkHLN73KRyJXh5wbWDmrASQKgkIpUD1Aw8w9fhSxUZ9AYKf70kGqvh7IBV3vvu/9qoAb2YKHQLfWbl07zS7LKvOG8Lf75095ojLMmnS0mU",
+          "filename": "KakaoTalk_20240719_161116044_05.jpg",
+          "size": 504958,
+          "type": "image/jpeg",
+          "thumbnails": {
+            "small": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/aRmcBWI_i-0FZiXOkxIEvg/ntLTR1pWd2AmLoEDR63Z5tNx-LB0iVz2JCdnGHmgijDhCKEg1BxzAAamUmF4qUWTObfYEXioaMNGhJqan2g5xQtUBcOM2rrWAIBbJdFpxqXfK1CMcFRmUTj_472WRbA4Ojb6BD5Ay4Gbo8pYHGJ65w/ndfxEa0drxK82tFsl7alVkbeZQBxD6zIPIPe--HSLB8",
+              "width": 27,
+              "height": 36
+            },
+            "large": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/Y55yC8C1er_sSckoq9dE6g/Ep7svCILYYpJ9QSBuufbv0uTjNm9IpFIrGl34CJTs_f36tCnMkDm2Et9PbhV28DZdah3K_j4MvBwr9f9hcoSUCrlWWI_43RmvYlOpkLjFMuACE10rgYD5r1_VSpDKMBfx9D2bYOx-nQ5S8UFSHR-fg/HSUHQjsP8ocxA5KzcyAf6tzsGZUO9fNJWmSwKjVpHEs",
+              "width": 512,
+              "height": 683
+            },
+            "full": {
+              "url": "https://v5.airtableusercontent.com/v3/u/42/42/1749679200000/3BFy1ynHSVtIvkeoTDdX6Q/tmxg2TQXpp0d-7aGDnRG57lfxos-0TWjF1ERwzIz8LvUSXNleLBxT4dLG9OZBAf-97b01c6B-2lB1OrK5TEShtzse72psPzjGBpW4pYVgOPGFYI58lnAPGuhXqB6lafBA4oOdl2OPZ8kpd15L9dZcA/n_YdhPg1rhzLAZHVq9wCRnOvGXl9HnrarvWef_kPzGQ",
+              "width": 1058,
+              "height": 1411
+            }
+          }
+        }
+      ],
+      "레코드ID": "recQGTF7xNXjAS17u",
+      "실투자금(융자포함)": -139650,
+      "주구조값": 50,
+      "연식값": 6,
+      "현재가치지수(%)": 60,
+      "건물가치(만원)": 71178,
+      "토지가치(만원)": 155667,
+      "10년간수익(만원)": 48600,
+      "감정비교": 1.32,
+      "10년후건물가치(만원)": 55001,
+      "10년후토지가치(만원)": 201219,
+      "10년가치지수(%)": 80
     }
   }
 ]
