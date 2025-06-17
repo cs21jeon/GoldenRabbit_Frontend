@@ -1598,7 +1598,54 @@ footer {
     }
 }
 
-/* ===== 통합 모달 z-index 시스템 ===== */
+/* ===== 통합 모달 z-index 시스템 - 올바른 계층 구조 ===== */
+
+/* 개인정보 동의 모달 - 최상위 */
+#privacyModal {
+    z-index: 400000 !important;  /* 상담 모달보다 높게 설정 */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0,0,0,0.8) !important;
+}
+
+#privacyModal .modal-content {
+    z-index: 400001 !important;
+    position: relative !important;
+}
+
+/* 완료 모달 - 최상위 */
+#completionModal {
+    z-index: 400000 !important;  /* 상담 모달보다 높게 설정 */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0,0,0,0.8) !important;
+}
+
+#completionModal .modal-content {
+    z-index: 400001 !important;
+    position: relative !important;
+}
+
+/* 상담 모달 */
+#consultModal {
+    z-index: 300000 !important;
+}
+#consultModal .modal-background {
+    z-index: 300000 !important;
+}
+#consultModal .modal-content {
+    z-index: 300001 !important;
+    position: relative !important;
+}
+#consultModal .modal-close {
+    z-index: 300002 !important;
+}
 
 /* 매물 상세 모달 */
 #propertyDetailModal {
@@ -1615,21 +1662,6 @@ footer {
     z-index: 200002 !important;
 }
 
-/* 상담 모달 - 최상위 */
-#consultModal {
-    z-index: 300000 !important;
-}
-#consultModal .modal-background {
-    z-index: 300000 !important;
-}
-#consultModal .modal-content {
-    z-index: 300001 !important;
-    position: relative !important;
-}
-#consultModal .modal-close {
-    z-index: 300002 !important;
-}
-
 /* 카테고리 모달 */
 #categoryModal {
     z-index: 150000 !important;
@@ -1643,6 +1675,67 @@ footer {
 }
 #categoryModal .modal-close {
     z-index: 150002 !important;
+}
+
+/* 추천매물 모달 배경 */
+#modalBackground {
+    z-index: 9900 !important;
+}
+
+/* PWA 환경 특별 처리 */
+@media (display-mode: standalone) {
+    #privacyModal,
+    #completionModal {
+        z-index: 2147483647 !important; /* 32비트 정수 최댓값 */
+        isolation: isolate !important;
+    }
+    
+    #privacyModal .modal-content,
+    #completionModal .modal-content {
+        z-index: 2147483647 !important;
+        isolation: isolate !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        margin: 0 !important;
+    }
+}
+
+/* 모바일 환경 추가 보정 */
+@media (max-width: 768px) {
+    #privacyModal,
+    #completionModal {
+        /* 안드로이드 WebView에서 position: fixed 문제 해결 */
+        position: absolute !important;
+        z-index: 400000 !important;  /* 상담 모달보다 높게 */
+    }
+    
+    #privacyModal .modal-content,
+    #completionModal .modal-content {
+        width: 95% !important;
+        max-width: 400px !important;
+        max-height: 80vh !important;
+        overflow-y: auto !important;
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        z-index: 400001 !important;  /* 상담 모달보다 높게 */
+    }
+}
+
+/* 강제 오버레이 스타일 */
+.modal-overlay-force {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 399999 !important;  /* 개인정보 모달보다 1 낮게 */
+    background: rgba(0,0,0,0.5) !important;
+    pointer-events: all !important;
+    display: block !important;
 }
 
 /* 전체화면 관련 - 모달보다 낮게 */
