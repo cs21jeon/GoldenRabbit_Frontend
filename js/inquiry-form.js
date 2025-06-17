@@ -1,21 +1,24 @@
-// 상담 문의 폼 제출 처리 스크립트 - 모든 문제 수정 버전 (통합 ID 지원)
+// 상담 문의 폼 제출 처리 스크립트 - z-index 문제 수정 버전
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM이 로드되었습니다. 상담 폼 초기화를 시작합니다.');
     
-    // z-index 문제 해결을 위한 스타일 추가
+    // z-index 문제 해결을 위한 스타일 추가 - 수정된 버전
     const styleElement = document.createElement('style');
     styleElement.textContent = `
         #privacyModal {
-            z-index: 10100 !important; /* 최상위 z-index */
+            z-index: 300100 !important; /* 상담모달보다 높은 z-index */
         }
         #completionModal {
-            z-index: 10100 !important; /* 최상위 z-index */
+            z-index: 300100 !important; /* 상담모달보다 높은 z-index */
         }
         #consultModal {
             z-index: 300000 !important; /* 추천매물 모달보다 높고, 개인정보/완료 모달보다 낮은 z-index */
         }
         #modalBackground, #categoryModal {
             z-index: 9900 !important; /* 추천매물 모달 */
+        }
+        #propertyDetailModal {
+            z-index: 9950 !important; /* 추천매물 모달보다 약간 높게 */
         }
     `;
     document.head.appendChild(styleElement);
@@ -64,11 +67,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return; // 유효성 검사 실패 시 중단
         }
         
-        // 개인정보 동의 모달 표시
+        // 개인정보 동의 모달 표시 - z-index 강제 설정 추가
         const privacyModal = document.getElementById('privacyModal');
         if (privacyModal) {
+            // z-index를 강제로 최상위로 설정
+            privacyModal.style.zIndex = "300100";
             privacyModal.style.display = 'block';
-            console.log('개인정보 동의 모달을 표시합니다.');
+            console.log('개인정보 동의 모달을 표시합니다. z-index:', privacyModal.style.zIndex);
         } else {
             console.error('privacyModal을 찾을 수 없습니다.');
         }
@@ -130,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return element ? element.value.trim() : '';
     }
     
-    // 모달 준비 함수
+    // 모달 준비 함수 - z-index 수정
     function prepareModals() {
         console.log('모달을 준비합니다.');
         
@@ -138,18 +143,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (document.getElementById('privacyModal')) {
             console.log('이미 모달이 존재합니다. 새로 생성하지 않습니다.');
             
-            // 기존 모달의 z-index 수정
+            // 기존 모달의 z-index 수정 - 최상위로 설정
             const privacyModal = document.getElementById('privacyModal');
             const completionModal = document.getElementById('completionModal');
             
             if (privacyModal) {
-                privacyModal.style.zIndex = "10100";
-                console.log('privacyModal z-index 수정: 10100');
+                privacyModal.style.zIndex = "300100";
+                console.log('privacyModal z-index 수정: 300100');
             }
             
             if (completionModal) {
-                completionModal.style.zIndex = "10100";
-                console.log('completionModal z-index 수정: 10100');
+                completionModal.style.zIndex = "300100";
+                console.log('completionModal z-index 수정: 300100');
             }
             
             // 상담 모달의 z-index도 수정
@@ -163,9 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // 개인정보 동의 모달 요소 생성 및 추가 (z-index 수정)
+        // 개인정보 동의 모달 요소 생성 및 추가 - z-index 수정 (최상위)
         const modalHTML = `
-        <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 10100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
+        <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 300100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
                 <h3 style="margin-top: 0;">개인정보 수집 및 이용 동의</h3>
                 <div style="margin-bottom: 20px; height: 150px; overflow-y: auto; padding: 10px; border: 1px solid #ddd; background-color: #f9f9f9;">
@@ -185,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         </div>
         
-        <div id="completionModal" class="modal" style="display: none; position: fixed; z-index: 10100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
+        <div id="completionModal" class="modal" style="display: none; position: fixed; z-index: 300100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); overflow: auto;">
             <div class="modal-content" style="background-color: white; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-align: center;">
                 <h3 style="margin-top: 0; color: green;">상담접수가 완료되었습니다</h3>
                 <p>빠른시일 내에 회신드리겠습니다.</p>
@@ -195,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 모달 HTML을 body에 추가
         document.body.insertAdjacentHTML('beforeend', modalHTML);
-        console.log('모달 HTML이 추가되었습니다. z-index 설정: 10100');
+        console.log('모달 HTML이 추가되었습니다. z-index 설정: 300100');
         
         setupExistingModals();
     }
@@ -370,9 +375,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 상태 메시지 숨기기 (팝업으로 대체)
                 hideAllFormStatus();
                 
-                // 완료 모달 표시
+                // 완료 모달 표시 - z-index 강제 설정 추가
+                completionModal.style.zIndex = "300100";
                 completionModal.style.display = 'block';
-                console.log('완료 모달이 표시되었습니다.');
+                console.log('완료 모달이 표시되었습니다. z-index:', completionModal.style.zIndex);
                 
             } catch (error) {
                 console.error('상담 접수 실패:', error);
@@ -541,7 +547,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('상담 폼 초기화가 완료되었습니다.');
     
-    // 전역 함수 등록 함수
+    // 전역 함수 등록 함수 - z-index 설정 추가
     function registerGlobalFunctions() {
         // 외부에서 상담 모달을 열 수 있도록 전역 함수 수정
         window.openConsultModal = function(address) {
