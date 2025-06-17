@@ -1598,11 +1598,11 @@ footer {
     }
 }
 
-/* ===== 통합 모달 z-index 시스템 - 올바른 계층 구조 ===== */
+/* ===== 수정된 z-index 계층 구조 ===== */
 
 /* 개인정보 동의 모달 - 최상위 */
 #privacyModal {
-    z-index: 400000 !important;  /* 상담 모달보다 높게 설정 */
+    z-index: 400000 !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -1618,7 +1618,7 @@ footer {
 
 /* 완료 모달 - 최상위 */
 #completionModal {
-    z-index: 400000 !important;  /* 상담 모달보다 높게 설정 */
+    z-index: 400000 !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -1647,18 +1647,29 @@ footer {
     z-index: 300002 !important;
 }
 
-/* 매물 상세 모달 */
+/* 매물 상세 모달 - 전체화면보다 높게 수정 */
 #propertyDetailModal {
-    z-index: 200000 !important;
+    z-index: 250000 !important;  /* 전체화면보다 높게 설정 */
 }
 #propertyDetailModal .modal-background {
-    z-index: 200000 !important;
+    z-index: 250000 !important;
 }
 #propertyDetailModal .modal-content {
-    z-index: 200001 !important;
+    z-index: 250001 !important;
     position: relative !important;
 }
 #propertyDetailModal .modal-close {
+    z-index: 250002 !important;
+}
+
+/* 전체화면 관련 - 매물 상세 모달보다 낮게 */
+.map-container.fullscreen {
+    z-index: 200000 !important;  /* 매물 상세 모달보다 낮게 설정 */
+}
+.map-container.fullscreen iframe {
+    z-index: 200001 !important;
+}
+.map-control-btn {
     z-index: 200002 !important;
 }
 
@@ -1700,15 +1711,19 @@ footer {
         transform: translate(-50%, -50%) !important;
         margin: 0 !important;
     }
+    
+    /* PWA에서 매물 상세 모달도 전체화면보다 위에 */
+    #propertyDetailModal {
+        z-index: 250000 !important;
+    }
 }
 
 /* 모바일 환경 추가 보정 */
 @media (max-width: 768px) {
     #privacyModal,
     #completionModal {
-        /* 안드로이드 WebView에서 position: fixed 문제 해결 */
         position: absolute !important;
-        z-index: 400000 !important;  /* 상담 모달보다 높게 */
+        z-index: 400000 !important;
     }
     
     #privacyModal .modal-content,
@@ -1721,7 +1736,16 @@ footer {
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
-        z-index: 400001 !important;  /* 상담 모달보다 높게 */
+        z-index: 400001 !important;
+    }
+    
+    /* 모바일에서도 매물 상세 모달이 전체화면보다 위에 */
+    #propertyDetailModal {
+        z-index: 250000 !important;
+    }
+    
+    #propertyDetailModal .modal-content {
+        z-index: 250001 !important;
     }
 }
 
@@ -1732,103 +1756,13 @@ footer {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 399999 !important;  /* 개인정보 모달보다 1 낮게 */
+    z-index: 399999 !important;
     background: rgba(0,0,0,0.5) !important;
     pointer-events: all !important;
     display: block !important;
 }
 
-/* 전체화면 관련 - 모달보다 낮게 */
-.map-container.fullscreen {
-    z-index: 50000 !important;
-}
-.map-container.fullscreen iframe {
-    z-index: 50001 !important;
-}
-.map-control-btn {
-    z-index: 50002 !important;
-}
-
 /* 업데이트 알림 - 최상위 */
 #update-notification {
     z-index: 500000 !important;
-}
-
-/* 반응형 매물 상세 정보 스타일 */
-.detail-row-responsive {
-    display: block;
-    margin-bottom: 15px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #eee;
-}
-
-.detail-label-responsive {
-    display: block;
-    font-weight: bold;
-    color: #666;
-    margin-bottom: 5px;
-    font-size: 14px;
-}
-
-.detail-value-responsive {
-    display: block;
-    color: #333;
-    font-size: 16px;
-}
-
-/* 태블릿 이상에서만 가로 배치 */
-@media (min-width: 600px) {
-    .detail-row-responsive {
-        display: flex;
-        align-items: center;
-        margin-bottom: 12px;
-    }
-    
-    .detail-label-responsive {
-        flex: 0 0 25%;
-        margin-bottom: 0;
-        margin-right: 15px;
-    }
-    
-    .detail-value-responsive {
-        flex: 1;
-    }
-}
-
-/* 모달 애니메이션 */
-.modal-content {
-    animation: modalSlideIn 0.3s ease-out;
-}
-
-@keyframes modalSlideIn {
-    from { 
-        opacity: 0;
-        transform: translateY(-30px) scale(0.95);
-    }
-    to { 
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .modal-content {
-        width: 95% !important;
-        max-width: none !important;
-        margin: 10px !important;
-        max-height: 90vh !important;
-        overflow-y: auto !important;
-    }
-    
-    #consultModal .modal-content {
-        width: 90% !important;
-        max-width: 400px !important;
-        margin: 20px !important;
-    }
-    
-    #categoryModal .modal-content {
-        width: 95% !important;
-        margin: 10px !important;
-    }
 }
