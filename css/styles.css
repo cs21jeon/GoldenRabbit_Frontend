@@ -906,7 +906,7 @@ header {
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 9999 !important;
+    z-index: 10000 !important;  /* ← 이 값으로 수정 */
     margin: 0 !important;
     padding: 0 !important;
     border-radius: 0 !important;
@@ -917,6 +917,11 @@ header {
     width: 100% !important;
     height: 100% !important;
     display: block !important;
+    z-index: 10001 !important;  /* ← 추가 */
+}
+
+.map-control-btn {
+    z-index: 10002 !important;  /* ← 수정 */
 }
 
 /* 스크롤 방지 */
@@ -1647,30 +1652,19 @@ footer {
     z-index: 300002 !important;
 }
 
-/* 매물 상세 모달 - 전체화면보다 높게 수정 */
+/* 매물 상세 모달 - 전체화면보다 높게 설정 */
 #propertyDetailModal {
-    z-index: 250000 !important;  /* 전체화면보다 높게 설정 */
+    z-index: 15000 !important;  /* 전체화면(10000)보다 높게 */
 }
 #propertyDetailModal .modal-background {
-    z-index: 250000 !important;
+    z-index: 15000 !important;
 }
 #propertyDetailModal .modal-content {
-    z-index: 250001 !important;
+    z-index: 15001 !important;
     position: relative !important;
 }
 #propertyDetailModal .modal-close {
-    z-index: 250002 !important;
-}
-
-/* 전체화면 관련 - 매물 상세 모달보다 낮게 */
-.map-container.fullscreen {
-    z-index: 200000 !important;  /* 매물 상세 모달보다 낮게 설정 */
-}
-.map-container.fullscreen iframe {
-    z-index: 200001 !important;
-}
-.map-control-btn {
-    z-index: 200002 !important;
+    z-index: 15002 !important;
 }
 
 /* 카테고리 모달 */
@@ -1718,34 +1712,28 @@ footer {
     }
 }
 
-/* 모바일 환경 추가 보정 */
-@media (max-width: 768px) {
+/* PWA 환경 특별 처리 */
+@media (display-mode: standalone) {
     #privacyModal,
     #completionModal {
-        position: absolute !important;
-        z-index: 400000 !important;
+        z-index: 2147483647 !important; /* 32비트 정수 최댓값 */
+        isolation: isolate !important;
     }
     
     #privacyModal .modal-content,
     #completionModal .modal-content {
-        width: 95% !important;
-        max-width: 400px !important;
-        max-height: 80vh !important;
-        overflow-y: auto !important;
-        position: fixed !important;
+        z-index: 2147483647 !important;
+        isolation: isolate !important;
+        position: absolute !important;
         top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
-        z-index: 400001 !important;
+        margin: 0 !important;
     }
     
-    /* 모바일에서도 매물 상세 모달이 전체화면보다 위에 */
+    /* PWA에서 매물 상세 모달도 적절한 높이로 */
     #propertyDetailModal {
-        z-index: 250000 !important;
-    }
-    
-    #propertyDetailModal .modal-content {
-        z-index: 250001 !important;
+        z-index: 15000 !important;
     }
 }
 
