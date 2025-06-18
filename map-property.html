@@ -62,17 +62,18 @@
         console.log('매물 상세 모달 열기:', recordId);
         
         try {
-            // 모달 표시
             const modal = document.getElementById('propertyDetailModal');
             const container = document.getElementById('propertyDetailContainer');
             
             if (!modal || !container) {
                 console.error('매물 상세 모달 요소를 찾을 수 없습니다.');
-                alert('모달을 표시할 수 없습니다.');
                 return;
             }
             
-            modal.style.zIndex = '15000';
+            // ← 모달 열 때마다 z-index 강제 최상위 설정
+            modal.style.zIndex = '99999';
+            modal.style.position = 'fixed';
+            console.log('매물 모달 열기 - z-index 강제 설정: 99999');
 
             // 로딩 메시지 표시
             container.innerHTML = `
@@ -459,17 +460,25 @@
             
             function toggleFullscreen() {
                 if (mapContainer.classList.contains('fullscreen')) {
+                    // 전체화면 종료
                     mapContainer.classList.remove('fullscreen');
                     document.body.classList.remove('map-fullscreen');
                     expandIcon.style.display = 'block';
                     collapseIcon.style.display = 'none';
                     expandText.style.display = 'block';
                     collapseText.style.display = 'none';
+                    
+                    // ← 전체화면 종료 시 매물 상세 모달 z-index 강제 리셋
+                    const propertyModal = document.getElementById('propertyDetailModal');
+                    if (propertyModal) {
+                        propertyModal.style.zIndex = '99999';
+                        console.log('전체화면 종료 - 매물 모달 z-index 리셋');
+                    }
+                    
                 } else {
+                    // 전체화면 시작
                     mapContainer.classList.add('fullscreen');
                     document.body.classList.add('map-fullscreen');
-                    
-                    // ← 여기에 z-index 강제 설정 추가
                     mapContainer.style.zIndex = '10000';
                     
                     expandIcon.style.display = 'none';
@@ -477,6 +486,13 @@
                     expandText.style.display = 'none';
                     collapseText.style.display = 'block';
                     window.scrollTo(0, 0);
+                    
+                    // ← 전체화면 시작 시 매물 상세 모달 z-index 강제 설정
+                    const propertyModal = document.getElementById('propertyDetailModal');
+                    if (propertyModal) {
+                        propertyModal.style.zIndex = '99999';
+                        console.log('전체화면 시작 - 매물 모달 z-index 설정');
+                    }
                 }
                 
                 setTimeout(function() {
