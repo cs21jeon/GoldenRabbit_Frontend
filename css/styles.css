@@ -1682,6 +1682,15 @@ footer {
     z-index: 150002 !important;
 }
 
+/* iframe z-index 명시적 설정 */
+#map-iframe {
+    z-index: 1 !important;  /* 매우 낮게 설정 */
+}
+
+.map-container.fullscreen #map-iframe {
+    z-index: 1 !important;  /* 전체화면에서도 낮게 */
+}
+
 /* 추천매물 모달 배경 */
 #modalBackground {
     z-index: 9900 !important;
