@@ -335,7 +335,8 @@
 
         // 매물 상세 모달 열기
         async function openPropertyDetailModal(recordId) {
-            console.log('매물 상세 모달 열기:', recordId);
+            // 콘솔 메세지 비활성화 
+            // console.log('매물 상세 모달 열기:', recordId);
             
             try {
                 const modal = document.getElementById('propertyDetailModal');
@@ -392,7 +393,8 @@
 
         // openPropertyDetail 함수 (별칭 - 에러 해결용)
         function openPropertyDetail(recordId) {
-            console.log('openPropertyDetail 호출됨:', recordId);
+            // 콘솔 메세지 비활성화 
+            // console.log('openPropertyDetail 호출됨:', recordId);
             return openPropertyDetailModal(recordId);
         }
 
@@ -673,17 +675,20 @@
 
         // iframe과의 메시지 통신 설정
         window.addEventListener('message', function(event) {
-            console.log('메시지 수신:', event.data);
+            // 콘솔 메세지 비활성화 
+            // console.log('메시지 수신:', event.data);
             
             if (event.data && event.data.action === 'openPropertyDetail') {
                 const recordId = event.data.recordId;
-                console.log('iframe으로부터 매물 상세 요청 수신:', recordId);
+                // 콘솔 메세지 비활성화 
+                // console.log('iframe으로부터 매물 상세 요청 수신:', recordId);
                 openPropertyDetailModal(recordId);
             }
             
             if (event.data && event.data.action === 'openConsultModal') {
                 const address = event.data.address;
-                console.log('iframe으로부터 상담 모달 요청 수신:', address);
+                // 콘솔 메세지 비활성화 
+                // console.log('iframe으로부터 상담 모달 요청 수신:', address);
                 openConsultModal(address);
             }
         });

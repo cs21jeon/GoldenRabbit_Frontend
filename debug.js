@@ -61,8 +61,8 @@
     panel.appendChild(logItem);
     panel.scrollTop = panel.scrollHeight;
     
-    // 콘솔에도 로그 출력
-    console.log(`DEBUG: ${message}`, data || '');
+    // 콘솔에서 로그 가림
+    // console.log(`DEBUG: ${message}`, data || '');
     }
 
     // 전역 객체 검사 및 상세 정보 출력

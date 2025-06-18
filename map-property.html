@@ -59,7 +59,8 @@
     <script>
     // 매물 상세 모달 열기
     async function openPropertyDetailModal(recordId) {
-        console.log('매물 상세 모달 열기:', recordId);
+        // 콘솔 메세지 비활성화 
+        // console.log('매물 상세 모달 열기:', recordId);
         
         try {
             const modal = document.getElementById('propertyDetailModal');
@@ -106,7 +107,8 @@
             }
             
             const data = await response.json();
-            console.log('매물 상세 API 응답:', data);
+            // 콘솔 메세지 비활성화 
+            // console.log('매물 상세 API 응답:', data);
             
             if (data.error) {
                 throw new Error(data.error);
@@ -179,22 +181,25 @@
         let photoUrl = '/images/default-thumb.jpg';
         
         try {
-            // 백업 이미지 API 호출
-            console.log(`매물 상세 - 백업 이미지 확인: ${recordId}`);
+            // 백업 이미지 API 호출, 콘솔 출력 가림
+            // console.log(`매물 상세 - 백업 이미지 확인: ${recordId}`);
             const response = await fetch(`/api/check-image?record_id=${recordId}`);
             
             if (response.ok) {
                 const data = await response.json();
-                console.log('매물 상세 - 이미지 확인 응답:', data);
+                // 콘솔 메세지 비활성화 
+                // console.log('매물 상세 - 이미지 확인 응답:', data);
                 
                 if (data.hasImage && data.filename) {
                     const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
-                    console.log(`매물 상세 - 백업 이미지 URL: ${backupImageUrl}`);
+                    // 콘솔 메세지 비활성화 
+                    // console.log(`매물 상세 - 백업 이미지 URL: ${backupImageUrl}`);
                     
                     // 이미지 로드 테스트
                     const img = new Image();
                     img.onload = function() {
-                        console.log(`매물 상세 - 백업 이미지 로드 성공: ${backupImageUrl}`);
+                        // 콘솔 메세지 비활성화 
+                        // console.log(`매물 상세 - 백업 이미지 로드 성공: ${backupImageUrl}`);
                         photoUrl = backupImageUrl;
                         updateImageInModal(backupImageUrl);
                     };
@@ -303,7 +308,8 @@
         const imageElement = document.getElementById('modalPropertyImageDetail');
         if (imageElement) {
             imageElement.style.backgroundImage = `url('${imageUrl}')`;
-            console.log(`매물 상세 모달 이미지 업데이트: ${imageUrl}`);
+            // 콘솔 메세지 비활성화 
+            // console.log(`매물 상세 모달 이미지 업데이트: ${imageUrl}`);
         }
     }
 
@@ -324,7 +330,8 @@
         }
         
         if (photoUrl) {
-            console.log(`매물 상세 - 에어테이블 이미지 시도: ${photoUrl}`);
+            // 콘솔 메세지 비활성화 
+            // console.log(`매물 상세 - 에어테이블 이미지 시도: ${photoUrl}`);
             
             const img = new Image();
             img.onload = function() {
@@ -557,7 +564,8 @@
     <script>
     // 매물 상세 페이지를 팝업 형태로 열기
     function openPropertyDetail(recordId) {
-        console.log('매물 상세 정보 열기:', recordId);
+        // 콘솔 메세지 비활성화 
+        // console.log('매물 상세 정보 열기:', recordId);
         openPropertyDetailModal(recordId);
     }
 

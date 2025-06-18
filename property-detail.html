@@ -306,9 +306,11 @@
                         });
                     }
                     
-                    console.log(message, safeData);
+                    // 콘솔 메세지 비활성화 
+                    // console.log(message, safeData);
                 } else {
-                    console.log(message);
+                    // 콘솔 메세지 비활성화 
+                    // console.log(message);
                 }
             }
         }
@@ -378,7 +380,7 @@
                 };
                 
                 img.onerror = function() {
-                    console.error(`이미지 로드 실패: ${imageUrl}`);
+                    console.error(`이미지 로드 실패: `);//이미지 이름 가림 ${imageUrl}
                     reject(new Error(`이미지 로드 실패: ${imageUrl}`));
                 };
                 

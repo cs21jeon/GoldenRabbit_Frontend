@@ -201,10 +201,11 @@
             const data = await response.json();
             
             if (data.status === 'success') {
-                console.log('백업 상태:', data.metadata);
+                //콘솔 데이터 가림
+                // console.log('백업 상태:', data.metadata);
                 return data;
             } else {
-                console.warn('백업 상태 확인 실패:', data.message);
+                console.warn('백업 상태 확인 실패:'); // 데이터 가림 , data.message
                 return null;
             }
         } catch (error) {

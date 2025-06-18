@@ -22,9 +22,11 @@ function safeLog(message, data) {
                 });
             }
             
-            console.log(message, safeData);
+            // 로그 출력 비활성화
+            // console.log(message, safeData);
         } else {
-            console.log(message);
+            // 로그 출력 비활성화
+            // console.log(message);
         }
     }
 }

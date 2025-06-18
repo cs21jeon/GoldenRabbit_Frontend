@@ -77,13 +77,13 @@ async function processAddresses() {
                 if (point && point.x && point.y) {
                     // 마커 추가 로직
                     addMarker(point, addr);
-                    console.log(`마커 추가 완료: ${addr[1]}`);
+                    console.log(`마커 추가 완료: `); //이름 가림 ${addr[1]}
                 }
             } else {
-                console.warn(`좌표 변환 실패: ${addr[1]}`);
+                console.warn(`좌표 변환 실패: `); //이름 가림 ${addr[1]}
             }
         } catch (error) {
-            console.error(`주소 처리 오류: ${addr[1]}`, error);
+            console.error(`주소 처리 오류: `, error); //이름 가림 ${addr[1]}
         }
     }
 }

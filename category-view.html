@@ -298,7 +298,8 @@
         // 백업 이미지 로딩 함수
         async function loadBackupImage(recordId) {
             try {
-                console.log(`백업 이미지 확인 중: ${recordId}`);
+                // 콘솔 메세지 비활성화 
+                // console.log(`백업 이미지 확인 중: ${recordId}`);
                 
                 const response = await fetch(`/api/check-image?record_id=${recordId}`);
                 
@@ -307,11 +308,13 @@
                 }
                 
                 const data = await response.json();
-                console.log('이미지 확인 응답:', data);
+                // 콘솔 메세지 비활성화 
+                // console.log('이미지 확인 응답:', data);
                 
                 if (data.hasImage && data.filename) {
                     const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
-                    console.log(`백업 이미지 URL: ${backupImageUrl}`);
+                    // 콘솔 메세지 비활성화 
+                    // console.log(`백업 이미지 URL: ${backupImageUrl}`);
                     
                     // 이미지가 실제로 로드 가능한지 확인
                     return await testImageLoad(backupImageUrl);
@@ -331,12 +334,13 @@
                 const img = new Image();
                 
                 img.onload = function() {
-                    console.log(`이미지 로드 성공: ${imageUrl}`);
+                    // 콘솔 메세지 비활성화 
+                    // console.log(`이미지 로드 성공: ${imageUrl}`);
                     resolve(imageUrl);
                 };
                 
                 img.onerror = function() {
-                    console.error(`이미지 로드 실패: ${imageUrl}`);
+                    console.error(`이미지 로드 실패`); // 이미지 이름 가림 ${imageUrl}
                     reject(new Error(`이미지 로드 실패: ${imageUrl}`));
                 };
                 
@@ -451,7 +455,8 @@
             try {
                 // 백업 이미지 확인
                 photoUrl = await loadBackupImage(propertyId);
-                console.log(`백업 이미지 사용: ${photoUrl}`);
+                // 콘솔 메세지 비활성화 
+                // console.log(`백업 이미지 사용: ${photoUrl}`);
             } catch (error) {
                 console.log('백업 이미지 실패, 에어테이블 이미지 시도');
                 
@@ -460,7 +465,8 @@
                 if (airtableUrl) {
                     try {
                         photoUrl = await testImageLoad(airtableUrl);
-                        console.log(`에어테이블 이미지 사용: ${photoUrl}`);
+                        // 콘솔 메세지 비활성화 
+                        // console.log(`에어테이블 이미지 사용: ${photoUrl}`);
                     } catch (airtableError) {
                         console.log('에어테이블 이미지도 실패, 기본 이미지 사용');
                         // photoUrl은 이미 기본값으로 설정됨
