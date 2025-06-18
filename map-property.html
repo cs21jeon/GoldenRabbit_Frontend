@@ -72,6 +72,8 @@
                 return;
             }
             
+            modal.style.zIndex = '15000';
+
             // 로딩 메시지 표시
             container.innerHTML = `
                 <div style="text-align:center; padding:40px;">
@@ -466,6 +468,10 @@
                 } else {
                     mapContainer.classList.add('fullscreen');
                     document.body.classList.add('map-fullscreen');
+                    
+                    // ← 여기에 z-index 강제 설정 추가
+                    mapContainer.style.zIndex = '10000';
+                    
                     expandIcon.style.display = 'none';
                     collapseIcon.style.display = 'block';
                     expandText.style.display = 'none';
