@@ -70,10 +70,21 @@
                 return;
             }
             
-            // ← 모달 열 때마다 z-index 강제 최상위 설정
-            modal.style.zIndex = '99999';
-            modal.style.position = 'fixed';
-            console.log('매물 모달 열기 - z-index 강제 설정: 99999');
+            // ← 전체화면 상태 확인하여 z-index 동적 설정
+            const mapContainer = document.querySelector('.map-container');
+            const isFullscreen = mapContainer && mapContainer.classList.contains('fullscreen');
+            
+            if (isFullscreen) {
+                // 전체화면 상태에서는 매우 높은 z-index 사용
+                modal.style.zIndex = '50000';
+                modal.style.position = 'fixed';
+                console.log('전체화면 상태 - 매물 모달 z-index: 50000');
+            } else {
+                // 일반 상태에서는 기본 z-index 사용
+                modal.style.zIndex = '15000';
+                modal.style.position = 'fixed';
+                console.log('일반 상태 - 매물 모달 z-index: 15000');
+            }
 
             // 로딩 메시지 표시
             container.innerHTML = `
@@ -128,12 +139,35 @@
 
     console.log('매물 상세 모달 이미지 로딩 최적화 v1.0 적용 완료');
 
-    // 매물 상세 모달 닫기
+    // 매물 상세 모달 닫기 (수정됨)
     function closePropertyDetailModal() {
         const modal = document.getElementById('propertyDetailModal');
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // ← z-index 정리
+            const mapContainer = document.querySelector('.map-container');
+            const isFullscreen = mapContainer && mapContainer.classList.contains('fullscreen');
+            
+            if (!isFullscreen) {
+                // 전체화면이 아닌 경우 z-index 리셋
+                modal.style.zIndex = '15000';
+            }
+            
+            console.log('매물 상세 모달 닫힘');
+        }
     }
+
+    // 전역 함수 등록
+    window.openPropertyDetailModal = openPropertyDetailModal;
+    window.closePropertyDetailModal = closePropertyDetailModal;
+
+    // iframe에서 호출할 수 있는 전역 함수들
+    window.openPropertyDetailGlobal = openPropertyDetailModal;
+    window.openConsultModalGlobal = function(address) {
+        openConsultModal(address);
+    };
 
     // 매물 정보 HTML 렌더링
     async function renderPropertyDetail(property) {
@@ -468,18 +502,23 @@
                     expandText.style.display = 'block';
                     collapseText.style.display = 'none';
                     
-                    // ← 전체화면 종료 시 매물 상세 모달 z-index 강제 리셋
+                    // ← 전체화면 종료 시 z-index 정상화
+                    mapContainer.style.zIndex = '';  // 기본값으로 리셋
+                    
+                    // 매물 상세 모달 z-index 정상화
                     const propertyModal = document.getElementById('propertyDetailModal');
                     if (propertyModal) {
-                        propertyModal.style.zIndex = '99999';
-                        console.log('전체화면 종료 - 매물 모달 z-index 리셋');
+                        propertyModal.style.zIndex = '15000';  // 기본값으로 리셋
+                        console.log('전체화면 종료 - 매물 모달 z-index 정상화: 15000');
                     }
                     
                 } else {
                     // 전체화면 시작
                     mapContainer.classList.add('fullscreen');
                     document.body.classList.add('map-fullscreen');
-                    mapContainer.style.zIndex = '10000';
+                    
+                    // ← 전체화면 z-index를 더 낮은 값으로 설정
+                    mapContainer.style.zIndex = '5000';  // 모달보다 낮게 설정
                     
                     expandIcon.style.display = 'none';
                     collapseIcon.style.display = 'block';
@@ -487,11 +526,11 @@
                     collapseText.style.display = 'block';
                     window.scrollTo(0, 0);
                     
-                    // ← 전체화면 시작 시 매물 상세 모달 z-index 강제 설정
+                    // ← 전체화면 시작 시 매물 상세 모달을 더 높은 z-index로 설정
                     const propertyModal = document.getElementById('propertyDetailModal');
                     if (propertyModal) {
-                        propertyModal.style.zIndex = '99999';
-                        console.log('전체화면 시작 - 매물 모달 z-index 설정');
+                        propertyModal.style.zIndex = '50000';  // 전체화면보다 훨씬 높게
+                        console.log('전체화면 시작 - 매물 모달 z-index 설정: 50000');
                     }
                 }
                 

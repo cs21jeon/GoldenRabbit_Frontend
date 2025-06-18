@@ -899,14 +899,14 @@ header {
     font-weight: 500;
 }
 
-/* 전체 화면 모드 스타일 */
+/* 전체화면 지도 - 낮은 우선순위로 변경 */
 .map-container.fullscreen {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    z-index: 10000 !important;  /* ← 이 값으로 수정 */
+    z-index: 5000 !important;  /* ← 기존 10000에서 5000으로 낮춤 */
     margin: 0 !important;
     padding: 0 !important;
     border-radius: 0 !important;
@@ -917,15 +917,19 @@ header {
     width: 100% !important;
     height: 100% !important;
     display: block !important;
-    z-index: 10001 !important;  /* ← 추가 */
+    z-index: 1 !important;  /* 매우 낮게 설정 */
 }
 
 .map-control-btn {
-    z-index: 10002 !important;  /* ← 수정 */
+    z-index: 5100 !important;  /* 전체화면 지도보다 약간 높게 */
 }
 
 /* 스크롤 방지 */
 body.map-fullscreen {
+    overflow: hidden !important;
+}
+
+body.modal-open {
     overflow: hidden !important;
 }
 
@@ -1607,7 +1611,7 @@ footer {
 
 /* 개인정보 동의 모달 - 최상위 */
 #privacyModal {
-    z-index: 400000 !important;
+    z-index: 60000 !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -1617,13 +1621,13 @@ footer {
 }
 
 #privacyModal .modal-content {
-    z-index: 400001 !important;
+    z-index: 60001 !important;
     position: relative !important;
 }
 
 /* 완료 모달 - 최상위 */
 #completionModal {
-    z-index: 400000 !important;
+    z-index: 60000 !important;
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -1633,53 +1637,57 @@ footer {
 }
 
 #completionModal .modal-content {
-    z-index: 400001 !important;
+    z-index: 60001 !important;
     position: relative !important;
 }
 
 /* 상담 모달 */
 #consultModal {
-    z-index: 300000 !important;
+    z-index: 20000 !important;
 }
 #consultModal .modal-background {
-    z-index: 300000 !important;
+    z-index: 20000 !important;
 }
 #consultModal .modal-content {
-    z-index: 300001 !important;
+    z-index: 20001 !important;
     position: relative !important;
 }
 #consultModal .modal-close {
-    z-index: 300002 !important;
+    z-index: 20002 !important;
+}
+/* 매물 상세 모달 - 동적으로 조정됨 */
+#propertyDetailModal {
+    z-index: 15000 !important;  /* 기본값 */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(0,0,0,0.8) !important;
 }
 
-/* 매물 상세 모달 - 전체화면보다 높게 설정 */
-#propertyDetailModal {
-    z-index: 15000 !important;  /* 전체화면(10000)보다 높게 */
-}
-#propertyDetailModal .modal-background {
-    z-index: 15000 !important;
-}
 #propertyDetailModal .modal-content {
-    z-index: 15001 !important;
+    z-index: inherit !important;  /* 부모로부터 상속 */
     position: relative !important;
 }
+
 #propertyDetailModal .modal-close {
-    z-index: 15002 !important;
+    z-index: inherit !important;  /* 부모로부터 상속 */
 }
 
 /* 카테고리 모달 */
 #categoryModal {
-    z-index: 150000 !important;
+    z-index: 25000 !important;
 }
 #categoryModal .modal-background {
-    z-index: 150000 !important;
+    z-index: 25000 !important;
 }
 #categoryModal .modal-content {
-    z-index: 150001 !important;
+    z-index: 25001 !important;
     position: relative !important;
 }
 #categoryModal .modal-close {
-    z-index: 150002 !important;
+    z-index: 25002 !important;
 }
 
 /* iframe z-index 명시적 설정 */
@@ -1694,6 +1702,11 @@ footer {
 /* 추천매물 모달 배경 */
 #modalBackground {
     z-index: 9900 !important;
+}
+
+/* 전체화면 상태에서 매물 모달이 보이도록 하는 특별 클래스 */
+.map-container.fullscreen ~ #propertyDetailModal {
+    z-index: 50000 !important;  /* 전체화면 상태에서 더 높게 */
 }
 
 /* PWA 환경 특별 처리 */
@@ -1713,11 +1726,6 @@ footer {
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
         margin: 0 !important;
-    }
-    
-    /* PWA에서 매물 상세 모달도 전체화면보다 위에 */
-    #propertyDetailModal {
-        z-index: 250000 !important;
     }
 }
 
@@ -1761,5 +1769,5 @@ footer {
 
 /* 업데이트 알림 - 최상위 */
 #update-notification {
-    z-index: 500000 !important;
+    z-index: 70000 !important;
 }
