@@ -1,6 +1,41 @@
 // ===== 전역 변수 및 설정 =====
 let currentCategoryModal = null;
 
+// 디버그 모드 설정 (배포 시 false로 변경)
+const DEBUG_MODE = false;
+
+// 안전한 로깅 함수
+function safeLog(message, data) {
+    if (DEBUG_MODE) {
+        if (data && typeof data === 'object') {
+            // 민감한 정보 필터링
+            const safeData = JSON.parse(JSON.stringify(data)); // 깊은 복사
+            
+            // 민감한 필드 제거
+            const sensitiveFields = ['소유자명', '소유자생년월일', '소유자주소', '소유주연락처', '비공개메모'];
+            
+            if (safeData.fields) {
+                sensitiveFields.forEach(field => {
+                    if (safeData.fields[field]) {
+                        safeData.fields[field] = '[비공개 정보]';
+                    }
+                });
+            }
+            
+            console.log(message, safeData);
+        } else {
+            console.log(message);
+        }
+    }
+}
+
+// 에러 로깅 최적화 함수 추가
+function logError(error, context) {
+    if (DEBUG_MODE) {
+        console.error(`오류 발생 (${context}):`, error.message);
+    }
+}
+
 // 카테고리 설정 객체
 const categoryConfig = {
     'viwzEVzrr47fCbDNU': {
@@ -30,7 +65,7 @@ async function loadCategoryProperty(viewId, categoryName) {
             loadingElement.style.display = 'block';
         }
         
-        console.log(`대표 매물 로딩: ${categoryName} (뷰: ${viewId})`);
+        safeLog(`대표 매물 로딩: ${categoryName} (뷰: ${viewId})`);
         
         // API 호출 - 기본 API 사용 (백업에서 자동으로 가져옴)
         const response = await fetch(`/api/category-property?view=${viewId}`);
@@ -41,7 +76,7 @@ async function loadCategoryProperty(viewId, categoryName) {
         }
         
         const data = await response.json();
-        console.log('API 응답:', data);
+        safeLog('API 응답:', data);
         
         // 응답 구조 확인 개선
         if (data && data.success !== false) {
@@ -49,10 +84,10 @@ async function loadCategoryProperty(viewId, categoryName) {
                 // 대표 매물 표시
                 showCategoryModal(data.records[0], categoryName, viewId);
             } else if (data.error) {
-                console.warn('API 오류:', data.error);
+                logError('API 오류:', data.error);
                 alert(`오류: ${data.message || data.error}`);
             } else {
-                console.warn('대표 매물을 찾을 수 없습니다.');
+                logError('대표 매물을 찾을 수 없습니다.');
                 alert('현재 해당 카테고리의 대표 매물이 없습니다.');
             }
         } else {
@@ -60,7 +95,7 @@ async function loadCategoryProperty(viewId, categoryName) {
         }
         
     } catch (error) {
-        console.error('대표 매물 로딩 실패:', error);
+        logError('대표 매물 로딩 실패:', error);
         alert(`매물 정보를 불러오는 중 오류가 발생했습니다.\n${error.message}`);
     } finally {
         // 로딩 숨김
@@ -72,11 +107,11 @@ async function loadCategoryProperty(viewId, categoryName) {
 
 // ===== 카테고리 모달 표시 함수 =====
 function showCategoryModal(property, categoryName, viewId) {
-    console.log('모달 표시:', property);
+    safeLog('모달 표시:', property);
     
     const modal = document.getElementById('categoryModal');
     if (!modal) {
-        console.error('카테고리 모달 요소를 찾을 수 없습니다.');
+        logError('카테고리 모달 요소를 찾을 수 없습니다.');
         return;
     }
     
@@ -103,17 +138,17 @@ function showCategoryModal(property, categoryName, viewId) {
         
         // 백업 이미지 확인 후 업데이트
         loadBackupImage(recordId).then(imageUrl => {
-            console.log(`백업 이미지 로드 결과: ${imageUrl}`);
+            safeLog(`백업 이미지 로드 결과: ${imageUrl}`);
             imageElement.style.backgroundImage = `url('${imageUrl}')`;
         }).catch(error => {
-            console.error('백업 이미지 로드 실패:', error);
+            logError('백업 이미지 로드 실패:', error);
             // 에어테이블 이미지 시도 (폴백)
             tryAirtableImage(fields, imageElement);
         });
 
         // 사진 클릭 시 내부 모달로 상세보기
         imageElement.onclick = function() {
-            console.log('사진 클릭, 레코드 ID:', recordId);
+            safeLog('사진 클릭, 레코드 ID:', recordId);
             
             // 카테고리 모달 닫기
             closeCategoryModal();
@@ -124,7 +159,7 @@ function showCategoryModal(property, categoryName, viewId) {
             } else if (typeof window.openPropertyDetailModal === 'function') {
                 window.openPropertyDetailModal(recordId);
             } else {
-                console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                logError('openPropertyDetailModal 함수를 찾을 수 없습니다.');
                 // 폴백: 페이지 이동
                 window.location.href = `/property-detail.html?id=${recordId}`;
             }
@@ -136,7 +171,7 @@ function showCategoryModal(property, categoryName, viewId) {
             detailBtn.href = "javascript:void(0);";
             detailBtn.onclick = function(e) {
                 e.preventDefault();
-                console.log('상세내용보기 클릭, 레코드 ID:', recordId);
+                safeLog('상세내용보기 클릭, 레코드 ID:', recordId);
                 
                 // 카테고리 모달 닫기
                 closeCategoryModal();
@@ -147,7 +182,7 @@ function showCategoryModal(property, categoryName, viewId) {
                 } else if (typeof window.openPropertyDetailModal === 'function') {
                     window.openPropertyDetailModal(recordId);
                 } else {
-                    console.warn('openPropertyDetailModal 함수를 찾을 수 없습니다.');
+                    logError('openPropertyDetailModal 함수를 찾을 수 없습니다.');
                     // 폴백: 페이지 이동
                     window.location.href = `/property-detail.html?id=${recordId}`;
                 }
@@ -166,7 +201,7 @@ function showCategoryModal(property, categoryName, viewId) {
             if (typeof openConsultModal === 'function') {
                 openConsultModal(address);
             } else {
-                console.warn('openConsultModal 함수를 찾을 수 없습니다.');
+                logError('openConsultModal 함수를 찾을 수 없습니다.');
             }
         };
     }
@@ -178,7 +213,7 @@ function showCategoryModal(property, categoryName, viewId) {
         categoryViewBtn.href = categoryViewUrl;
         categoryViewBtn.onclick = function(e) {
             e.preventDefault();
-            console.log('카테고리 전체 매물 보기 클릭, 링크:', categoryViewUrl);
+            safeLog('카테고리 전체 매물 보기 클릭, 링크:', categoryViewUrl);
             window.open(categoryViewUrl, '_blank');
         };
         
@@ -202,13 +237,13 @@ function showCategoryModal(property, categoryName, viewId) {
     document.body.style.overflow = 'hidden';
     currentCategoryModal = modal;
     
-    console.log('카테고리 모달 표시 완료');
+    safeLog('카테고리 모달 표시 완료');
 }
 
 // ===== 백업 이미지 로딩 함수 =====
 async function loadBackupImage(recordId) {
     try {
-        console.log(`백업 이미지 확인 중: ${recordId}`);
+        safeLog(`백업 이미지 확인 중: ${recordId}`);
         
         // 백업 이미지 API 호출
         const response = await fetch(`/api/check-image?record_id=${recordId}`);
@@ -218,11 +253,11 @@ async function loadBackupImage(recordId) {
         }
         
         const data = await response.json();
-        console.log('이미지 확인 응답:', data);
+        safeLog('이미지 확인 응답:', data);
         
         if (data.hasImage && data.filename) {
             const backupImageUrl = `/airtable_backup/images/${recordId}/${data.filename}`;
-            console.log(`백업 이미지 URL: ${backupImageUrl}`);
+            safeLog(`백업 이미지 URL: ${backupImageUrl}`);
             
             // 이미지가 실제로 로드 가능한지 확인
             return await testImageLoad(backupImageUrl);
@@ -231,7 +266,7 @@ async function loadBackupImage(recordId) {
         }
         
     } catch (error) {
-        console.error('백업 이미지 로드 실패:', error);
+        logError('백업 이미지 로드 실패:', error);
         throw error;
     }
 }
@@ -242,12 +277,12 @@ function testImageLoad(imageUrl) {
         const img = new Image();
         
         img.onload = function() {
-            console.log(`이미지 로드 성공: ${imageUrl}`);
+            safeLog(`이미지 로드 성공: ${imageUrl}`);
             resolve(imageUrl);
         };
         
         img.onerror = function() {
-            console.error(`이미지 로드 실패: ${imageUrl}`);
+            logError(`이미지 로드 실패: ${imageUrl}`);
             reject(new Error(`이미지 로드 실패: ${imageUrl}`));
         };
         
@@ -262,7 +297,7 @@ function testImageLoad(imageUrl) {
 
 // ===== 에어테이블 이미지 시도 함수 (폴백) =====
 function tryAirtableImage(fields, imageElement) {
-    console.log('에어테이블 이미지 시도 중...');
+    safeLog('에어테이블 이미지 시도 중...');
     
     let photoUrl = null;
     
@@ -279,17 +314,17 @@ function tryAirtableImage(fields, imageElement) {
     }
     
     if (photoUrl) {
-        console.log(`에어테이블 이미지 URL 시도: ${photoUrl}`);
+        safeLog(`에어테이블 이미지 URL 시도: ${photoUrl}`);
         
         testImageLoad(photoUrl).then(validUrl => {
-            console.log('에어테이블 이미지 로드 성공');
+            safeLog('에어테이블 이미지 로드 성공');
             imageElement.style.backgroundImage = `url('${validUrl}')`;
         }).catch(error => {
-            console.warn('에어테이블 이미지도 실패, 기본 이미지 유지:', error);
+            logError('에어테이블 이미지도 실패, 기본 이미지 유지:', error);
             // 이미 기본 이미지로 설정되어 있으므로 추가 작업 불필요
         });
     } else {
-        console.log('에어테이블 이미지 URL 없음, 기본 이미지 유지');
+        safeLog('에어테이블 이미지 URL 없음, 기본 이미지 유지');
     }
 }
 
@@ -465,7 +500,7 @@ function injectCategoryStyles() {
 
 // ===== 이벤트 리스너 등록 함수 =====
 function registerCategoryEventListeners() {
-    console.log('카테고리 이벤트 리스너 등록 중...');
+    safeLog('카테고리 이벤트 리스너 등록 중...');
     
     // ESC 키로 모달 닫기
     document.addEventListener('keydown', function(e) {
@@ -489,18 +524,18 @@ function registerCategoryEventListeners() {
         card.addEventListener('click', function() {
             const viewId = this.dataset.viewId;
             const category = this.dataset.category;
-            console.log(`카테고리 클릭: ${category} (${viewId})`);
+            safeLog(`카테고리 클릭: ${category} (${viewId})`);
             
             loadCategoryProperty(viewId, category);
         });
     });
     
-    console.log('카테고리 이벤트 리스너 등록 완료');
+    safeLog('카테고리 이벤트 리스너 등록 완료');
 }
 
 // ===== 초기화 함수 =====
 function initializeCategorySystem() {
-    console.log('카테고리 매물 시스템 초기화');
+    safeLog('카테고리 매물 시스템 초기화');
     
     // 스타일 주입 (CSS 파일이 로드되지 않은 경우 백업)
     injectCategoryStyles();
@@ -508,7 +543,7 @@ function initializeCategorySystem() {
     // 이벤트 리스너 등록
     registerCategoryEventListeners();
     
-    console.log('카테고리 시스템 초기화 완료');
+    safeLog('카테고리 시스템 초기화 완료');
 }
 
 // ===== DOM 로드 완료 시 실행 =====
@@ -538,10 +573,10 @@ window.debugImageFunctions = {
         try {
             const response = await fetch(`/api/check-image?record_id=${recordId}`);
             const data = await response.json();
-            console.log('이미지 확인 결과:', data);
+            safeLog('이미지 확인 결과:', data);
             return data;
         } catch (error) {
-            console.error('이미지 확인 오류:', error);
+            logError('이미지 확인 오류:', error);
             return null;
         }
     }
@@ -556,5 +591,5 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
-console.log('이미지 로딩 시스템 v2.0 로드 완료');
-console.log('Property API v2.0 (카테고리 시스템) 로드 완료');
+safeLog('이미지 로딩 시스템 v2.0 로드 완료');
+safeLog('Property API v2.0 (카테고리 시스템) 로드 완료');
