@@ -51,6 +51,27 @@
         </div>
     </section>
 
+    <!-- 오늘의 뉴스 섹션 -->
+    <section id="today-news">
+        <div class="container">
+            <div class="section-title">
+                <h2>오늘의 부동산 뉴스</h2>
+                <p id="news-update-time">업데이트: 로딩 중...</p>
+            </div>
+            
+            <div class="news-grid" id="news-container">
+                <!-- 5개의 뉴스 카드가 여기에 동적으로 추가됩니다 -->
+                <div class="loading">뉴스를 불러오는 중...</div>
+            </div>
+            
+            <div class="news-more">
+                <a href="https://land.naver.com/news/" target="_blank" class="btn-load-more">
+                    더 많은 뉴스 보기
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- 위치 섹션 -->
     <section id="location">
         <div class="container">
@@ -230,5 +251,6 @@
     <!-- 자바스크립트 -->
     <script src="/js/navigation.js"></script>
     <script src="/js/pwa-install.js"></script>
+    <script src="/js/news.js"></script>
 </body>
 </html>
