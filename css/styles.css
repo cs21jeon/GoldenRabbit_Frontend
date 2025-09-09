@@ -1942,7 +1942,7 @@ footer {
 .news-more .btn-load-more {
     display: inline-block;
     padding: 12px 24px;
-    background-color: #2962FF;
+    background-color: var(--main-color);  /* #2962FF → var(--main-color) */
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -1951,7 +1951,7 @@ footer {
 }
 
 .news-more .btn-load-more:hover {
-    background-color: #1e4ba8;
+    background-color: var(--dark-main-color);  /* #1e4ba8 → var(--dark-main-color) */
     color: white;
     text-decoration: none;
 }
