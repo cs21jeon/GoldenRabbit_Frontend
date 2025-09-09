@@ -59,10 +59,13 @@ function displayNews(data) {
     const newsHtml = data.news.slice(0, 5).map((news, index) => {
         const timeAgo = formatTimeAgo(data.update_time);
         const thumbnailHtml = news.thumbnail && news.thumbnail !== '/images/default_news.jpg' 
-            ? `<img src="${news.thumbnail}" alt="${news.title}" class="news-thumbnail" 
+            ? `<img src="${news.thumbnail}" alt="${news.title}" class="news-thumbnail clickable" 
+                 onclick="window.open('${news.url}', '_blank', 'noopener,noreferrer')"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-               <div class="news-thumbnail placeholder" style="display:none;">📰 뉴스 이미지</div>`
-            : `<div class="news-thumbnail placeholder">📰 뉴스 이미지</div>`;
+               <div class="news-thumbnail placeholder clickable" style="display:none;"
+                    onclick="window.open('${news.url}', '_blank', 'noopener,noreferrer')">📰 뉴스 이미지</div>`
+            : `<div class="news-thumbnail placeholder clickable"
+                   onclick="window.open('${news.url}', '_blank', 'noopener,noreferrer')">📰 뉴스 이미지</div>`;
 
         return `
             <div class="news-card" style="animation-delay: ${index * 0.1}s">
@@ -71,7 +74,7 @@ function displayNews(data) {
                     <div class="news-meta">
                         <span class="news-time">${timeAgo}</span>
                     </div>
-                    <h3 class="news-title">${escapeHtml(news.title)}</h3>
+                    <h3 class="news-title clickable" onclick="window.open('${news.url}', '_blank', 'noopener,noreferrer')">${escapeHtml(news.title)}</h3>
                     <p class="news-summary">${escapeHtml(news.summary)}</p>
                     <a href="${news.url}" target="_blank" rel="noopener noreferrer" class="news-link">
                         자세히 보기
