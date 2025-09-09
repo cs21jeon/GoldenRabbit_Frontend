@@ -1,17 +1,17 @@
 {
-  "last_backup_date": "2025-07-02",
-  "last_backup_time": "2025-07-02T03:04:16.142629",
+  "last_backup_date": "2025-09-09",
+  "last_backup_time": "2025-09-09T03:05:30.552456",
   "backup_mode": "완전 새로고침",
   "full_refresh_enabled": true,
-  "total_records": 293,
+  "total_records": 347,
   "views_processed": 4,
   "total_views": 4,
   "image_stats": {
-    "new_images": 201,
+    "new_images": 241,
     "updated_images": 0,
     "skipped_images": 0,
     "error_images": 0,
-    "total_processed": 201,
+    "total_processed": 241,
     "full_refresh_mode": true
   },
   "backup_type": "full_refresh"
