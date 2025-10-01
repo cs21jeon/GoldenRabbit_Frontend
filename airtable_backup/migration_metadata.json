@@ -1,7 +1,0 @@
-{
-  "migration_date": "2025-06-09",
-  "migration_time": "2025-06-09T13:17:57.682720",
-  "backup_type": "single_folder_incremental",
-  "system_version": "2.0",
-  "note": "날짜별 폴더 시스템에서 단일 폴더 시스템으로 마이그레이션됨"
-}
