@@ -300,7 +300,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // 동의하기 버튼 클릭 시 실제 폼 제출 처리 - 수정됨 (통합 ID 지원)
         agreeBtn.addEventListener('click', async function() {
             console.log('동의하기 버튼이 클릭되었습니다.');
-            privacyModal.style.display = 'none'; // 동의 모달 닫기
+            privacyModal.style.display = 'none';
+            
+            // 중복 제출 방지
+            if (submitButton.disabled) {
+                console.log('이미 처리 중입니다.');
+                return;
+            }
             
             // 로딩 표시
             const originalButtonText = submitButton.textContent;
@@ -315,49 +321,50 @@ document.addEventListener('DOMContentLoaded', function() {
                 formStatus.style.color = '#666';
             }
             
-            // 현재 활성화된 폼 확인 (메인 폼인지 모달 폼인지)
+            // 폼 데이터 수집
             const consultModal = document.getElementById('consultModal');
             const isMainForm = (!consultModal || getComputedStyle(consultModal).display === 'none');
             
-            // 폼 데이터 수집 - 통합 ID 지원
             let propertyType, phone, email, message;
             
             if (isMainForm) {
-                // 메인 폼에서 데이터 수집 - 통합 ID 사용
                 propertyType = getElementValue('propertyType');
                 phone = getElementValue('phone');
                 email = getElementValue('email');
                 message = getElementValue('message');
             } else {
-                // 모달 폼에서 데이터 수집 - 기존 modal 접두사 ID와 통합 ID 모두 지원
                 propertyType = getElementValue('modalpropertyType') || getElementValue('propertyType');
                 phone = getElementValue('modalphone') || getElementValue('phone');
                 email = getElementValue('modalemail') || getElementValue('email');
                 message = getElementValue('modalmessage') || getElementValue('message');
             }
             
-            // 서버에 보낼 데이터
             const data = {
                 propertyType: propertyType,
                 phone: phone,
-                email: email,
+                email: email || '',  // 빈 문자열로 전송
                 message: message
             };
             
-            console.log('전송할 데이터:', data); // 디버깅용
+            console.log('전송할 데이터:', data);
             
             try {
-                // 서버리스 함수 호출
+                // 30초 타임아웃 추가
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 30000);
+                
                 console.log('서버에 데이터 전송 중...');
                 const response = await fetch('/api/submit-inquiry', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(data),
+                    signal: controller.signal  // 타임아웃 시그널
                 });
                 
-                // 응답 로깅 (디버깅용)
+                clearTimeout(timeoutId);
+                
                 console.log('서버 응답 상태:', response.status);
                 const responseData = await response.json();
                 console.log('서버 응답 데이터:', responseData);
@@ -369,23 +376,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // 폼 초기화
                 resetAllForms();
-                
                 console.log('폼이 초기화되었습니다.');
                 
-                // 상태 메시지 숨기기 (팝업으로 대체)
+                // 상태 메시지 숨기기
                 hideAllFormStatus();
                 
-                // 완료 모달 표시 - z-index 강제 설정 추가
+                // 완료 모달 표시
                 completionModal.style.zIndex = "300100";
                 completionModal.style.display = 'block';
-                console.log('완료 모달이 표시되었습니다. z-index:', completionModal.style.zIndex);
+                console.log('완료 모달이 표시되었습니다.');
                 
             } catch (error) {
                 console.error('상담 접수 실패:', error);
-                // 오류 메시지
-                if (formStatus) {
-                    formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
-                    formStatus.style.color = 'red';
+                
+                if (error.name === 'AbortError') {
+                    // 타임아웃 에러
+                    if (formStatus) {
+                        formStatus.textContent = '요청 시간이 초과되었습니다. 다시 시도해주세요.';
+                        formStatus.style.color = 'red';
+                    }
+                } else {
+                    // 기타 에러
+                    if (formStatus) {
+                        formStatus.textContent = `상담 접수 중 오류가 발생했습니다: ${error.message}`;
+                        formStatus.style.color = 'red';
+                    }
                 }
             } finally {
                 // 버튼 상태 복원
