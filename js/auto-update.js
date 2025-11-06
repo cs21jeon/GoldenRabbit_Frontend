@@ -2,7 +2,7 @@
 class AutoUpdater {
     constructor() {
         this.currentVersion = null;
-        this.checkInterval = 10 * 60 * 1000; // 10분마다 체크
+        this.checkInterval = 60 * 60 * 1000; // 1시간마다 체크
         this.isChecking = false;
         this.isInitialized = false;
         this.init();
